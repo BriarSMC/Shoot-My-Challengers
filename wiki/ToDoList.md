@@ -38,5 +38,7 @@
   - [ ] Level5
 * [ ] Add scripts
   - [x] Add Long Shield Refill Power-up to the game
-  - [ ] Add ControlUI parent class for control UI Screens
-  - [ ] Modify Control UI Screens to be children of parent class
+  - [x] Add ControlUI parent class for control UI Screens
+  - [x] Modify Control UI Screens to be children of parent class
+* [ ] Add graphic for Credit Screen
+* [ ] Make Credits roll

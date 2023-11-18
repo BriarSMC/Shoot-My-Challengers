@@ -1,8 +1,10 @@
-extends Node2D
+extends GameControlScreen
+class_name SplashScreen
 
 #++
-# <description>
+# This defines the class for the splash screen.
 #
+# Not much going on here as it's all taken care of in the AnimationPlayer
 #--
 
 #+
@@ -16,20 +18,8 @@ extends Node2D
 #+
 # Virtual Godot methods
 #-
-func _ready():
-	Globals.positionUIImage(self)
-	
-func _process(_delta):
-	Globals.positionUIImage(self)
-# Temp to exit the scene for debugging
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+
 #+
 # Class specific methods
 #-
 
-
-func goToNextScene() -> void:
-	MCP.changeGameState(MCP.state.START)
-	

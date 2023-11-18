@@ -1,27 +1,29 @@
-extends Node2D
+extends GameControlScreen
+class_name StartScreen
 
 #++
-# <description>
+# This defines the class for the Start Control Screen.
 #
+# SMC displays this screen immediately following the splash screen.
+# It allows the player to:
+#	* Start a new game
+#	* Quit back to the O/S
+#	* View the game credits
+#
+# Levels return to this screen after a win or loss.
 #--
 
 #+
 # Properties
 #-
 
-# The following properties must be set in the Inspector by the designer
-@export var winScreen : PackedScene
+# The following properties must be set in the Inspector by the designer	
 
 # The following are set based on the Inspector values
 
 #+
 # Virtual Godot methods
 #-
-func _ready():
-	Globals.positionUIImage($Sprite2D)	
-
-func _process(_delta):
-	Globals.positionUIImage($Sprite2D)
 
 # Temp to exit the scene for debugging
 func _input(event):
@@ -32,22 +34,6 @@ func _input(event):
 # Class specific methods
 #-
 
-
-
-# goToNextScreen()
-# This method loads the next screen. 
-#
-# HUGE NOTE: The end of $Sprite2D/AnimationPlayer needs to call this method
-#
-# Paramters
-#	paramname: type				Description
-# Return 
-#	value|None					Description
-#==
-# Call the MCP to change over to the next screen		
-func goToNextScreen(nextScene: int, level: int):
-	print('Start going to ', nextScene, '  ', level)
-	MCP.changeGameState(nextScene, level)
 
 #++
 # Signal callbacks

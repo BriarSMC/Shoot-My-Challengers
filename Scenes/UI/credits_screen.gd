@@ -1,7 +1,11 @@
-extends Node2D
-
+extends GameControlScreen
+class_name CreditsScreen
 #++
-# <description>
+# This class defines the credits screen.
+#
+# The credits screen has two components:
+#	* Scrolling text area
+#	* A goback button
 #
 #--
 
@@ -16,11 +20,6 @@ extends Node2D
 #+
 # Virtual Godot methods
 #-
-func _ready():
-	Globals.positionUIImage(self)
-
-func _process(_delta):
-	Globals.positionUIImage(self)
 
 # Temp to exit the scene for debugging
 func _input(event):
@@ -32,24 +31,9 @@ func _input(event):
 # Class specific methods
 #-
 
-# goToNextScreen()
-# This method loads the next screen. 
-#
-# HUGE NOTE: The end of $Sprite2D/AnimationPlayer needs to call this method
-#
-# Paramters
-#	None
-# Return 
-#	None
-#==
-# Call the MCP to change over to the next screen		
-func goToNextScreen():
-	MCP.changeGameState(MCP.state.START)
-		
-
-#++
+#+
 # Signal callbacks
-#--
+#-
 
 # _on_credit_screen_ai_back_to_start_game()
 # Captures the signal from the UI for the Credits Screen when the

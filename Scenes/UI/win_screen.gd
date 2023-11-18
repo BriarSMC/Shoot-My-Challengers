@@ -1,7 +1,9 @@
-extends Node2D
+extends GameControlScreen
+class_name WinScreen
 
 #++
-# <description>
+# This defines the lose control screen displayed when the player
+# wins the game.
 #
 #--
 
@@ -10,7 +12,6 @@ extends Node2D
 #-
 
 # The following properties must be set in the Inspector by the designer
-@export var loseScreen : PackedScene
 
 # The following are set based on the Inspector values
 
@@ -23,31 +24,12 @@ extends Node2D
 # Class specific methods
 #-
 
-func _ready():
-	Globals.positionUIImage(self)
 
-func _process(_delta):
-	Globals.positionUIImage(self)
-	
 # Temp to exit the scene for debugging
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
-# goToNextScreen()
-# This method loads the next screen. 
-#
-# HUGE NOTE: The end of $Sprite2D/AnimationPlayer needs to call this method
-#
-# Paramters
-#	paramname: type				Description
-# Return 
-#	value|None					Description
-#==
-# Call the MCP to change over to the next screen		
-func goToNextScreen():
-	MCP.changeGameState(MCP.state.START)
-		
 
 #++
 # Signal callbacks
