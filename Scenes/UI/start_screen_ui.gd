@@ -13,6 +13,13 @@ signal startGame
 signal showCredits
 signal showDemoPage
 
+func _ready():
+	MCP.connect("fadeTheUI", fadeTheUI)
+	
+func fadeTheUI():
+	print("fadeTheUI called")
+	$VBoxContainer/AnimationPlayer.play("FadeToBlack")
+
 func _on_start_game_pressed():
 	startGame.emit()
 	

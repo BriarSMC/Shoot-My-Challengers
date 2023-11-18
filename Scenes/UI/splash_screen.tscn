@@ -56,7 +56,6 @@ scale = Vector2(3, 3)
 script = ExtResource("1_dpps5")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(2, 1.66667)
 scale = Vector2(0.519531, 0.407227)
 texture = ExtResource("1_w6tc5")

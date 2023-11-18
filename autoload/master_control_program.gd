@@ -9,6 +9,9 @@ extends Node
 #+
 # Properties
 #-
+
+signal fadeTheUI
+
 const LEVELSPATH = "res://Scenes/Levels/"
 const LEVELFILENAME = "level_"
 const LEVELEXTENSION = ".tscn"

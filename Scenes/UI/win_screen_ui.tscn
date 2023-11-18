@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://de82xquykqxeh"]
+[gd_scene load_steps=6 format=3 uid="uid://de82xquykqxeh"]
 
 [ext_resource type="Script" path="res://Scenes/UI/win_screen_ui.gd" id="1_m5n5l"]
 [ext_resource type="FontFile" uid="uid://b485tyxniqils" path="res://fonts/BattlesbridgeDemo-AL126.ttf" id="2_3v8p8"]
@@ -8,33 +8,54 @@ font = ExtResource("2_3v8p8")
 font_size = 30
 font_color = Color(0.270588, 0.980392, 0.686275, 1)
 
+[sub_resource type="Animation" id="Animation_yi7qn"]
+resource_name = "FadeToBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75onp"]
+_data = {
+"FadeToBlack": SubResource("Animation_yi7qn")
+}
+
 [node name="WinScreenUI" type="CanvasLayer"]
 script = ExtResource("1_m5n5l")
 
-[node name="Label" type="Label" parent="."]
+[node name="Container" type="VBoxContainer" parent="."]
 anchors_preset = -1
-anchor_left = 0.314
-anchor_top = 0.092
-anchor_right = 0.45
-anchor_bottom = 0.092
-offset_right = 40.0
-offset_bottom = 23.0
+anchor_left = 0.496
+anchor_top = 0.112
+anchor_right = 0.496
+anchor_bottom = 0.112
+offset_left = -240.0
+offset_bottom = 103.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Container"]
+layout_mode = 2
 text = "You Won"
 label_settings = SubResource("LabelSettings_ug45a")
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.384
-anchor_top = 0.718
-anchor_right = 0.384
-anchor_bottom = 0.718
-offset_top = 125.0
-offset_right = 175.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Continue" type="Button" parent="Container"]
+layout_mode = 2
 text = "Continue
 "
 
-[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Container"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_75onp")
+}
+
+[connection signal="pressed" from="Container/Continue" to="." method="_on_continue_pressed"]

@@ -9,7 +9,7 @@ class_name GameControlScreen
 #+
 # Properties
 #-
-var mySprite2D: Sprite2D 				# Must be set by child in _ready()
+
 
 # The following properties must be set in the Inspector by the designer
 

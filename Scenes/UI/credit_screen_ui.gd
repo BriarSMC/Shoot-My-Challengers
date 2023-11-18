@@ -11,5 +11,12 @@ extends CanvasLayer
 
 signal backToStart
 
+func _ready():
+	MCP.connect("fadeTheUI", fadeTheUI)
+	
+func fadeTheUI():
+	print("fadeTheUI called")
+	$VBoxContainer/AnimationPlayer.play("FadeToBlack")
+
 func _on_back_pressed():
 	backToStart.emit()

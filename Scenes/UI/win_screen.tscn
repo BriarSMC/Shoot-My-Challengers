@@ -45,7 +45,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [0, 0],
 "method": &"goToNextScreen"
 }]
 }

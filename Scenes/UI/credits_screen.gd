@@ -31,7 +31,6 @@ class_name CreditsScreen
 #==
 # Set the background image for the parent class
 func _ready() -> void:
-	mySprite2D = $Sprite2D
 	super._ready()
 	
 # Temp to exit the scene for debugging
@@ -60,4 +59,5 @@ func _input(event):
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.
 func _on_credit_screen_ui_back_to_start():
+	MCP.fadeTheUI.emit()
 	$Sprite2D/AnimationPlayer.play("FadeToBlack")

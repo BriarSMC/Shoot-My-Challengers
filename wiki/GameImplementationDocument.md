@@ -159,3 +159,22 @@ The player interacts with the Game Control UI to:
 This is consists of buttons allowing the player to choose whether they want to play, quit, continue or see the credits.
 Each scene using a Game Control UI button defines a corresponding signal. When the button is clicked, then the function
 for that button emits the associated signal. The parent node connects to the signal and responds to it.
+
+#### Fading the UI
+
+This takes some doing. We need to send a signal down to the UI to run an animation to fade itself. So we have defined a
+signal in the MCP: `signal fadeTheUI`
+
+Each screen needs to emit this signal (`MCP.fadeTheUI.emit()`) whenever it fades itself. The UI component of the screen
+needs to connect to that signal and then provide a routine to respond to the signal.
+
+```
+func _ready():
+	MCP.connect("fadeTheUI", fadeTheUI)
+	
+func fadeTheUI():
+	print("fadeTheUI called")
+	$VBoxContainer/AnimationPlayer.play("FadeToBlack")
+```
+
+Then the UI's AnimationPlayer fades the top UI component.

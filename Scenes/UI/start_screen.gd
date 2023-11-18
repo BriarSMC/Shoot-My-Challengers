@@ -35,7 +35,6 @@ class_name StartScreen
 #==
 # Set the background image for the parent class
 func _ready() -> void:
-	mySprite2D = $Sprite2D
 	super._ready()
 	
 # Temp to exit the scene for debugging
@@ -64,6 +63,7 @@ func _input(event):
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.		
 func _on_start_screen_ui_start_game():
+	MCP.fadeTheUI.emit()
 	$Sprite2D/AnimationPlayer.play("FadeToBlack")
 
 
@@ -79,6 +79,7 @@ func _on_start_screen_ui_start_game():
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.		
 func _on_start_screen_ui_show_credits():
+	MCP.fadeTheUI.emit()
 	$Sprite2D/AnimationPlayer.play("FadeToBlackCredits")
 
 
@@ -94,4 +95,5 @@ func _on_start_screen_ui_show_credits():
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.		
 func _on_start_screen_ui_show_demo_page():
+	MCP.fadeTheUI.emit()
 	$Sprite2D/AnimationPlayer.play("FadeToBlackDemo")

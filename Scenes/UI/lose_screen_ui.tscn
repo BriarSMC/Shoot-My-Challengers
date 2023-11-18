@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddfrjg6olf77t"]
+
+[ext_resource type="Script" path="res://Scenes/UI/lose_screen_ui.gd" id="1_4q82m"]
+[ext_resource type="FontFile" uid="uid://b485tyxniqils" path="res://fonts/BattlesbridgeDemo-AL126.ttf" id="2_0n3i5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dob7t"]
+font = ExtResource("2_0n3i5")
+font_size = 30
+font_color = Color(0.878431, 0, 0.0588235, 1)
+
+[sub_resource type="Animation" id="Animation_b8j7q"]
+resource_name = "FadeToBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76ua2"]
+_data = {
+"FadeToBlack": SubResource("Animation_b8j7q")
+}
+
+[node name="LoseScreenAI" type="CanvasLayer"]
+script = ExtResource("1_4q82m")
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.322
+anchor_top = 0.055
+anchor_right = 0.322
+anchor_bottom = 0.055
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Container"]
+layout_mode = 2
+text = "You Lose"
+label_settings = SubResource("LabelSettings_dob7t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="Container"]
+layout_mode = 2
+text = "Continue"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Container"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_76ua2")
+}
+
+[connection signal="pressed" from="Container/Continue" to="." method="_on_continue_pressed"]
