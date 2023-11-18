@@ -1,8 +1,8 @@
-extends Item
-class_name ShortShieldRefill
+extends Weapon
+class_name HeroPWeapon
 
 #++
-# Defines the class for the Hero's Short Shield Refill Power-up
+# This is the class for the Hero's Primary Weapon (Arrow).
 #
 #--
 
@@ -17,7 +17,7 @@ class_name ShortShieldRefill
 #+
 # Virtual Godot methods
 #-
-	
+
 #+
 # Class specific methods
 #-

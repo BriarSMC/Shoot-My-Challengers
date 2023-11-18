@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cnqfcy6t6aqr0"]
 
-[ext_resource type="Script" path="res://Scenes/Characters/Challengers/SkullOfDeath.gd" id="1_fsni0"]
+[ext_resource type="Script" path="res://Scenes/Characters/Challengers/skull_of_death.gd" id="1_fsni0"]
 [ext_resource type="Texture2D" uid="uid://dxccpjv21qmg5" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_1.png" id="2_wc5oo"]
 [ext_resource type="Texture2D" uid="uid://ddwsokltm1blv" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_2.png" id="3_08ijh"]
 [ext_resource type="Texture2D" uid="uid://cwgghkdu3hdv1" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_3.png" id="4_3milt"]

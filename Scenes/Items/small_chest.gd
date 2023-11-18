@@ -1,14 +1,14 @@
-extends Item
-class_name ShortShieldRefill
+extends Chest
+class_name SmallChest
 
 #++
-# Defines the class for the Hero's Short Shield Refill Power-up
-#
+# This class defines the small chest container#
 #--
 
 #+
 # Properties
 #-
+var chestClosed: bool = true
 
 # The following properties must be set in the Inspector by the designer
 
@@ -17,7 +17,7 @@ class_name ShortShieldRefill
 #+
 # Virtual Godot methods
 #-
+
+
+# Put chest open here
 	
-#+
-# Class specific methods
-#-

@@ -1,5 +1,6 @@
 extends Node2D
 class_name Level1
+
 #++
 # This is the Level 1 scene
 #
@@ -41,10 +42,10 @@ func _input(event):
 # HUGE NOTE: The end of $Sprite2D/AnimationPlayer needs to call this method
 #
 # Paramters
-#	paramname: type				Description
+#	nextLevel: int				The next level to go to 
 # Return 
-#	value|None					Description
+#	None
 #==
 # Call the MCP to change over to the next screen		
-func goToNextScreen(s: int):
-	MCP.changeGameState(s)
+func goToNextScreen(nextLevel: int):
+	MCP.changeGameState(nextLevel)

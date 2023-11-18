@@ -1,5 +1,6 @@
 extends Character
 class_name Hero
+
 #++
 # This class defines the Hero character which the player controls
 #
@@ -26,6 +27,7 @@ class_name Hero
 #	None
 #==
 # Just a debug print.
+# Remember to call the parent
 # TODO: Delete this if we don't add any real functionality
 func _ready() -> void:
 	print('Hero ready')

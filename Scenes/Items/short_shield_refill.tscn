@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://i0285wikdqwo"]
 
 [ext_resource type="Script" path="res://Scenes/Items/short_shield_refill.gd" id="1_5pw1q"]
-[ext_resource type="Texture2D" uid="uid://d1av1sgjkbw5o" path="res://Graphics/Weapons/67.png" id="1_mhvse"]
+[ext_resource type="Texture2D" uid="uid://cjsgrfktdmayy" path="res://Graphics/Items/short_shield.png" id="2_c3lav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wro51"]
 size = Vector2(76, 114)
@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_wro51")
 
 [node name="Spite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 20)
-texture = ExtResource("1_mhvse")
+texture = ExtResource("2_c3lav")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spite2D"]
 autoplay = "Bounce"

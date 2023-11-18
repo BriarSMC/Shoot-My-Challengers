@@ -2,7 +2,7 @@ extends Node2D
 class_name Level3
 
 #++
-# This is the Level 2 scene
+# This is the Level 3 scene
 #
 #--
 

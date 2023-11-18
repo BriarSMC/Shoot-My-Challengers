@@ -26,18 +26,6 @@ class_name Bomb
 # Virtual Godot methods
 #-
 
-# _ready():
-# Called when the object is ready
-#
-# Paramters
-#	None
-# Return 
-#	None
-#==
-# Just in case we need it
-func _ready() -> void:
-	pass
-	
 	
 #+
 # Class specific methods

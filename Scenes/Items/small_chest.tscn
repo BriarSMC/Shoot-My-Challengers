@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://u56jhr43aik0"]
 
-[ext_resource type="Script" path="res://Scenes/Characters/Challengers/SmallChest.gd" id="1_ivspu"]
+[ext_resource type="Script" path="res://Scenes/Items/small_chest.gd" id="1_0k7mn"]
 [ext_resource type="Texture2D" uid="uid://blfb78b8w7nhw" path="res://Graphics/Items/chest_2.png" id="2_ehopc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svg1m"]
@@ -48,7 +48,7 @@ collision_mask = 4
 input_pickable = true
 mass = 26.83
 freeze = true
-script = ExtResource("1_ivspu")
+script = ExtResource("1_0k7mn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

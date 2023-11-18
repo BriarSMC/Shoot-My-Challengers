@@ -1,7 +1,27 @@
 extends Node2D
 
+#++
+# <description>
+#
+#--
 
+#+
+# Properties
+#-
+
+# The following properties must be set in the Inspector by the designer
 @export var loseScreen : PackedScene
+
+# The following are set based on the Inspector values
+
+#+
+# Virtual Godot methods
+#-
+
+	
+#+
+# Class specific methods
+#-
 
 func _ready():
 	Globals.positionUIImage(self)
@@ -28,6 +48,10 @@ func _input(event):
 func goToNextScreen():
 	MCP.changeGameState(MCP.state.START)
 		
+
+#++
+# Signal callbacks
+#--
 
 # _on_win_screen_ai_continue_game()
 # Captures the signal from the UI for the Win Screen when the

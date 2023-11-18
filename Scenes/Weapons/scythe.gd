@@ -1,8 +1,8 @@
-extends Item
-class_name ShortShieldRefill
+extends Weapon
+class_name Scythe
 
 #++
-# Defines the class for the Hero's Short Shield Refill Power-up
+# This class defines the Skeleton Grim Reaper's secondary weapon (Scythe)
 #
 #--
 
@@ -17,6 +17,9 @@ class_name ShortShieldRefill
 #+
 # Virtual Godot methods
 #-
+
+func _ready() -> void:
+	pass
 	
 #+
 # Class specific methods

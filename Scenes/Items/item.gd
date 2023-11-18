@@ -1,5 +1,6 @@
 extends Node2D
 class_name Item
+
 #++
 # This defines the parent class for an Item.
 #

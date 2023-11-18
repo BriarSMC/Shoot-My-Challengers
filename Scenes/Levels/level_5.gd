@@ -1,4 +1,4 @@
-extends Node2
+extends Node2D
 class_name Level5
 
 #++

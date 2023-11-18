@@ -1,7 +1,7 @@
 # name(params)
 # Brief description
 #
-# Paramters
+# Parameters
 #	paramname: type				Description
 # Return 
 #	value|None					Description

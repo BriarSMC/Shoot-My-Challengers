@@ -1,12 +1,23 @@
-extends RigidBody2D
+extends Chest
+class_name MediumChest
 
+#++
+# This class defines the medium chest container#
+#--
+
+#+
+# Properties
+#-
 var chestClosed: bool = true
 
-func _ready():
-	Globals.scaleMe(self)
+# The following properties must be set in the Inspector by the designer
 
-func _on_input_event(_viewport, event, _shape_idx):
-	print('MediumChest clicked')
-	if event is InputEventMouseButton and chestClosed:
-		$AnimatedSprite2D.play("Open")
-		chestClosed = false
+# The following are set based on the Inspector values
+
+#+
+# Virtual Godot methods
+#-
+
+
+# Put chest open here
+	

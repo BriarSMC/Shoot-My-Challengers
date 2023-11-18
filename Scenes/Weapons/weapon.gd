@@ -56,5 +56,5 @@ func _ready() -> void:
 #	None
 #==
 # What the code is doing (steps)
-func name() -> void:
+func deleteMe() -> void:
 	queue_free() # For now

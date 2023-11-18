@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://c63k14e82n5q4"]
 
-[ext_resource type="Script" path="res://Scenes/Characters/Hero.gd" id="1_ife15"]
+[ext_resource type="Script" path="res://Scenes/Characters/hero.gd" id="1_ife15"]
 [ext_resource type="Texture2D" uid="uid://diy3i6valnrq3" path="res://Graphics/Hero/george.png" id="2_xy0ue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lyqfm"]

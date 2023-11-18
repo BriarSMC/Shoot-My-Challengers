@@ -1,8 +1,8 @@
 extends Item
-class_name ShortShieldRefill
+class_name LongShieldRefill
 
 #++
-# Defines the class for the Hero's Short Shield Refill Power-up
+# Defines the class for the Hero's Long Shield Refill Power-up
 #
 #--
 
@@ -21,3 +21,4 @@ class_name ShortShieldRefill
 #+
 # Class specific methods
 #-
+

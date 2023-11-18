@@ -28,3 +28,15 @@
   - [x] Short shield refill
   - [x] Long Shield refill
 * [ ] - Add fonts to the GDD and GID
+
+# Godot Coding Actions
+* [ ] - Flesh out these scenes
+  - [ ] Level1
+  - [ ] Level2
+  - [ ] Level3
+  - [ ] Level4
+  - [ ] Level5
+* [ ] Add scripts
+  - [x] Add Long Shield Refill Power-up to the game
+  - [ ] Add ControlUI parent class for control UI Screens
+  - [ ] Modify Control UI Screens to be children of parent class

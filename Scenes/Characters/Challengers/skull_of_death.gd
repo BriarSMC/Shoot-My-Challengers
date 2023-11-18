@@ -1,8 +1,8 @@
-extends Item
-class_name ShortShieldRefill
+extends Character
+class_name SkullOfDeath
 
 #++
-# Defines the class for the Hero's Short Shield Refill Power-up
+# <description>
 #
 #--
 
@@ -17,7 +17,8 @@ class_name ShortShieldRefill
 #+
 # Virtual Godot methods
 #-
-	
+
+
 #+
 # Class specific methods
 #-

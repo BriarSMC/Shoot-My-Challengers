@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name Character
+
 #++
 # This is the root class for all characters in the game.
 # Right now that's the Hero and the Challengers.

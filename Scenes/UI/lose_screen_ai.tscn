@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddfrjg6olf77t"]
 
-[ext_resource type="Script" path="res://Scenes/UI/lose_screen_ai.gd" id="1_4q82m"]
+[ext_resource type="Script" path="res://Scenes/UI/lose_screen_ui.gd" id="1_4q82m"]
 [ext_resource type="FontFile" uid="uid://b485tyxniqils" path="res://fonts/BattlesbridgeDemo-AL126.ttf" id="2_0n3i5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dob7t"]

@@ -1,13 +1,26 @@
-extends RigidBody2D
+extends Chest
+class_name LargeChest
 
+#++
+# This class defines the large chest container#
+#--
+
+#+
+# Properties
+#-
 var chestClosed: bool = true
 
-func _ready():
-	Globals.scaleMe(self, 1.2)
+# The following properties must be set in the Inspector by the designer
 
+# The following are set based on the Inspector values
 
-func _on_input_event(_viewport, event, _shape_idx):
-	print('LargeChest Clicked')
-	if event is InputEventMouseButton and chestClosed:
-		$AnimatedSprite2D.play("Open")
-		chestClosed = false
+#+
+# Virtual Godot methods
+#-
+
+	
+#+
+# Class specific methods
+#-
+
+# Put chest open here
