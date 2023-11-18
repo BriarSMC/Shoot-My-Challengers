@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://tt70difc0fta"]
+
+[ext_resource type="Script" path="res://Scenes/UI/lose_screen.gd" id="1_eakih"]
+[ext_resource type="Texture2D" uid="uid://cevcjjoom5csv" path="res://Graphics/UIImages/SMCLoseScreen.png" id="2_4fd4j"]
+[ext_resource type="PackedScene" uid="uid://ddfrjg6olf77t" path="res://Scenes/UI/lose_screen_ai.tscn" id="3_5dm23"]
+
+[sub_resource type="Animation" id="Animation_jrdvt"]
+resource_name = "FadeFromBlack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qqogw"]
+resource_name = "FadeToBlack"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"goToNextScreen"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1haiu"]
+_data = {
+"FadeFromBlack": SubResource("Animation_jrdvt"),
+"FadeToBlack": SubResource("Animation_qqogw")
+}
+
+[node name="LoseScreen" type="Node2D"]
+script = ExtResource("1_eakih")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_4fd4j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+autoplay = "FadeFromBlack"
+libraries = {
+"": SubResource("AnimationLibrary_1haiu")
+}
+
+[node name="LoseScreenAI" parent="." instance=ExtResource("3_5dm23")]
+
+[connection signal="continueGame" from="LoseScreenAI" to="." method="_on_lose_screen_ai_continue_game"]

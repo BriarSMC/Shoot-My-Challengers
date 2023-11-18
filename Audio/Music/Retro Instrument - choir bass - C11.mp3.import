@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vjt2dob5rkvy"
+path="res://.godot/imported/Retro Instrument - choir bass - C11.mp3-4353a3d1996d54ceee6b785a9bedcee0.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Retro Instrument - choir bass - C11.mp3"
+dest_files=["res://.godot/imported/Retro Instrument - choir bass - C11.mp3-4353a3d1996d54ceee6b785a9bedcee0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

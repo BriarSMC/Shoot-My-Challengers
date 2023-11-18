@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwcp3um3h2i4f"
+path="res://.godot/imported/Retro Event UI 01.mp3-cb4a23b7f46eb8e5f1e8dec5178b508f.mp3str"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/Retro Event UI 01.mp3"
+dest_files=["res://.godot/imported/Retro Event UI 01.mp3-cb4a23b7f46eb8e5f1e8dec5178b508f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

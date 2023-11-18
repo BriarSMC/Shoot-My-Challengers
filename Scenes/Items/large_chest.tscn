@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://dj0yksmo1t0ut"]
+
+[ext_resource type="Script" path="res://Scenes/Items/large_chest.gd" id="1_bti4a"]
+[ext_resource type="Texture2D" uid="uid://qwlmehgxeey6" path="res://Graphics/Items/chest_1.png" id="2_sxkiu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5cmm"]
+size = Vector2(16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qprpw"]
+atlas = ExtResource("2_sxkiu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lsoy"]
+atlas = ExtResource("2_sxkiu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg1wp"]
+atlas = ExtResource("2_sxkiu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51cbq"]
+atlas = ExtResource("2_sxkiu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ggqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qprpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lsoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lg1wp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51cbq")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[node name="LargeChest" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 15
+input_pickable = true
+mass = 100.0
+freeze = true
+script = ExtResource("1_bti4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_f5cmm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ggqs")
+animation = &"Open"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

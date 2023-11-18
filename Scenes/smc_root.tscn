@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjh02yappt781"]
+
+[ext_resource type="Script" path="res://Scenes/smc_root.gd" id="1_t4rce"]
+[ext_resource type="PackedScene" uid="uid://2x58dnohmhi" path="res://Scenes/Sandbox/display_game_objects.tscn" id="2_ytb1t"]
+
+[node name="SMCRoot" type="Node2D"]
+script = ExtResource("1_t4rce")
+
+[node name="DisplayGameObjects" parent="." instance=ExtResource("2_ytb1t")]

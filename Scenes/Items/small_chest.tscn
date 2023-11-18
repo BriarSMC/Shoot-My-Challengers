@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://u56jhr43aik0"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Challengers/SmallChest.gd" id="1_ivspu"]
+[ext_resource type="Texture2D" uid="uid://blfb78b8w7nhw" path="res://Graphics/Items/chest_2.png" id="2_ehopc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svg1m"]
+size = Vector2(12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxdek"]
+atlas = ExtResource("2_ehopc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7ihr"]
+atlas = ExtResource("2_ehopc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyy10"]
+atlas = ExtResource("2_ehopc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyc60"]
+atlas = ExtResource("2_ehopc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lou7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxdek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7ihr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyy10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyc60")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[node name="SmallChest" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 4
+input_pickable = true
+mass = 26.83
+freeze = true
+script = ExtResource("1_ivspu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_svg1m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lou7r")
+animation = &"Open"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

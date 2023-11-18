@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://xy5lrbdxpegs"]
+
+[ext_resource type="Script" path="res://Scenes/UI/start_screen.gd" id="1_wiorc"]
+[ext_resource type="PackedScene" uid="uid://t08fae2ksin6" path="res://Scenes/UI/win_screen.tscn" id="2_ouv4p"]
+[ext_resource type="Texture2D" uid="uid://bcmnl0ruwx7eb" path="res://Graphics/UIImages/SMCStartScreen.png" id="2_qqjsp"]
+[ext_resource type="PackedScene" uid="uid://blehuc240pu7n" path="res://Scenes/UI/start_screen_ui.tscn" id="4_6fi25"]
+
+[sub_resource type="Animation" id="Animation_g1vyg"]
+resource_name = "FadeFromBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0117647), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s6foq"]
+resource_name = "FadeToBlack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [5, 1],
+"method": &"goToNextScreen"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sa8ls"]
+resource_name = "FadeToBlackCredits"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [3, 0],
+"method": &"goToNextScreen"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_o4u63"]
+resource_name = "FadeToBlackDemo"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [5, 0],
+"method": &"goToNextScreen"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2rt8b"]
+_data = {
+"FadeFromBlack": SubResource("Animation_g1vyg"),
+"FadeToBlack": SubResource("Animation_s6foq"),
+"FadeToBlackCredits": SubResource("Animation_sa8ls"),
+"FadeToBlackDemo": SubResource("Animation_o4u63")
+}
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource("1_wiorc")
+winScreen = ExtResource("2_ouv4p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_qqjsp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+autoplay = "FadeFromBlack"
+libraries = {
+"": SubResource("AnimationLibrary_2rt8b")
+}
+
+[node name="StartScreenUI" parent="." instance=ExtResource("4_6fi25")]
+
+[connection signal="showCredits" from="StartScreenUI" to="." method="_on_start_screen_ui_show_credits"]
+[connection signal="showDemoPage" from="StartScreenUI" to="." method="_on_start_screen_ui_show_demo_page"]
+[connection signal="startGame" from="StartScreenUI" to="." method="_on_start_screen_ui_start_game"]

@@ -1,0 +1,257 @@
+[gd_scene load_steps=62 format=3 uid="uid://bqtgy01s214mh"]
+
+[ext_resource type="Texture2D" uid="uid://dwbl1843kceg3" path="res://Graphics/Weapons/FireBlast/1_30.png" id="1_cj8vw"]
+[ext_resource type="Texture2D" uid="uid://be7twrfk5gjwc" path="res://Graphics/Weapons/FireBlast/1_31.png" id="2_pclfw"]
+[ext_resource type="Texture2D" uid="uid://dmpbya5wa7jrg" path="res://Graphics/Weapons/FireBlast/1_32.png" id="3_xcc04"]
+[ext_resource type="Texture2D" uid="uid://6xt2pbhmq8d6" path="res://Graphics/Weapons/FireBlast/1_33.png" id="4_gwct8"]
+[ext_resource type="Texture2D" uid="uid://d2xpk5b2v0853" path="res://Graphics/Weapons/FireBlast/1_34.png" id="5_jq4es"]
+[ext_resource type="Texture2D" uid="uid://dxcl6yxbt7sde" path="res://Graphics/Weapons/FireBlast/1_35.png" id="6_32ceu"]
+[ext_resource type="Texture2D" uid="uid://cm1q4p63fhhnm" path="res://Graphics/Weapons/FireBlast/1_36.png" id="7_klpxi"]
+[ext_resource type="Texture2D" uid="uid://c1bri4uk7pevi" path="res://Graphics/Weapons/FireBlast/1_37.png" id="8_uh1ua"]
+[ext_resource type="Texture2D" uid="uid://cybpfk3dgxw4x" path="res://Graphics/Weapons/FireBlast/1_38.png" id="9_auxtg"]
+[ext_resource type="Texture2D" uid="uid://bkgqyrih1j8e0" path="res://Graphics/Weapons/FireBlast/1_39.png" id="10_ceamu"]
+[ext_resource type="Texture2D" uid="uid://bbjenlascoa0v" path="res://Graphics/Weapons/FireBlast/1_40.png" id="11_usoaf"]
+[ext_resource type="Texture2D" uid="uid://nrceivgekn2f" path="res://Graphics/Weapons/FireBlast/1_41.png" id="12_ggo8j"]
+[ext_resource type="Texture2D" uid="uid://cgg3008m7g1ou" path="res://Graphics/Weapons/FireBlast/1_42.png" id="13_ln40l"]
+[ext_resource type="Texture2D" uid="uid://b8rw1iv1ypub" path="res://Graphics/Weapons/FireBlast/1_43.png" id="14_4d0ji"]
+[ext_resource type="Texture2D" uid="uid://bou5yvrydp4py" path="res://Graphics/Weapons/FireBlast/1_44.png" id="15_2i56s"]
+[ext_resource type="Texture2D" uid="uid://b1gxxkdqx6rym" path="res://Graphics/Weapons/FireBlast/1_45.png" id="16_derht"]
+[ext_resource type="Texture2D" uid="uid://cbuemvxfcdbeg" path="res://Graphics/Weapons/FireBlast/1_46.png" id="17_iw0ji"]
+[ext_resource type="Texture2D" uid="uid://7he8rskl55nj" path="res://Graphics/Weapons/FireBlast/1_47.png" id="18_kohii"]
+[ext_resource type="Texture2D" uid="uid://bcjb2wfoosaq5" path="res://Graphics/Weapons/FireBlast/1_48.png" id="19_k0m7m"]
+[ext_resource type="Texture2D" uid="uid://givjxaxms50h" path="res://Graphics/Weapons/FireBlast/1_49.png" id="20_d5vv4"]
+[ext_resource type="Texture2D" uid="uid://bnknpi0ichsk3" path="res://Graphics/Weapons/FireBlast/1_50.png" id="21_7lbse"]
+[ext_resource type="Texture2D" uid="uid://dva2xxk6oa00u" path="res://Graphics/Weapons/FireBlast/1_51.png" id="22_sj88t"]
+[ext_resource type="Texture2D" uid="uid://c3dm4w1jqnd5x" path="res://Graphics/Weapons/FireBlast/1_52.png" id="23_t1cmf"]
+[ext_resource type="Texture2D" uid="uid://dkf3rapf2dyp8" path="res://Graphics/Weapons/FireBlast/1_53.png" id="24_v3tgo"]
+[ext_resource type="Texture2D" uid="uid://b1ye7hdwqtanb" path="res://Graphics/Weapons/FireBlast/1_54.png" id="25_aopu7"]
+[ext_resource type="Texture2D" uid="uid://q7iry44dgf2o" path="res://Graphics/Weapons/FireBlast/1_55.png" id="26_pro6g"]
+[ext_resource type="Texture2D" uid="uid://mk1ke528kdda" path="res://Graphics/Weapons/FireBlast/1_56.png" id="27_y11dy"]
+[ext_resource type="Texture2D" uid="uid://sdtf7druf2tf" path="res://Graphics/Weapons/FireBlast/1_57.png" id="28_qy80i"]
+[ext_resource type="Texture2D" uid="uid://b00tnunxs321c" path="res://Graphics/Weapons/FireBlast/1_58.png" id="29_vpeha"]
+[ext_resource type="Texture2D" uid="uid://c1by6865r514b" path="res://Graphics/Weapons/FireBlast/1_59.png" id="30_3vda6"]
+[ext_resource type="Texture2D" uid="uid://wyhqph8knh84" path="res://Graphics/Weapons/FireBlast/1_60.png" id="31_bby0q"]
+[ext_resource type="Texture2D" uid="uid://c2vhxr4sai28r" path="res://Graphics/Weapons/FireBlast/1_61.png" id="32_0gqy1"]
+[ext_resource type="Texture2D" uid="uid://ccp751ke11u4l" path="res://Graphics/Weapons/FireBlast/1_62.png" id="33_y2x8q"]
+[ext_resource type="Texture2D" uid="uid://baavhch5uuga0" path="res://Graphics/Weapons/FireBlast/1_63.png" id="34_rmkes"]
+[ext_resource type="Texture2D" uid="uid://ccclrp6j21t8" path="res://Graphics/Weapons/FireBlast/1_64.png" id="35_3311b"]
+[ext_resource type="Texture2D" uid="uid://wax7u0n8gpgv" path="res://Graphics/Weapons/FireBlast/1_65.png" id="36_pqyis"]
+[ext_resource type="Texture2D" uid="uid://gd2wnwhlb7hv" path="res://Graphics/Weapons/FireBlast/1_66.png" id="37_xdcoh"]
+[ext_resource type="Texture2D" uid="uid://b7l0k8ym3v5hc" path="res://Graphics/Weapons/FireBlast/1_67.png" id="38_f4h5u"]
+[ext_resource type="Texture2D" uid="uid://dll6e80evywp5" path="res://Graphics/Weapons/FireBlast/1_68.png" id="39_n0f84"]
+[ext_resource type="Texture2D" uid="uid://i3k470kfnhix" path="res://Graphics/Weapons/FireBlast/1_69.png" id="40_ipo8e"]
+[ext_resource type="Texture2D" uid="uid://7n5y56bex6a7" path="res://Graphics/Weapons/FireBlast/1_70.png" id="41_1lybu"]
+[ext_resource type="Texture2D" uid="uid://ct7dvr30qvquk" path="res://Graphics/Weapons/FireBlast/1_71.png" id="42_l4rju"]
+[ext_resource type="Texture2D" uid="uid://crgf8m0k35vy2" path="res://Graphics/Weapons/FireBlast/1_72.png" id="43_8e65p"]
+[ext_resource type="Texture2D" uid="uid://pweke16mis1k" path="res://Graphics/Weapons/FireBlast/1_73.png" id="44_ttlnc"]
+[ext_resource type="Texture2D" uid="uid://c0ftke3buh7pl" path="res://Graphics/Weapons/FireBlast/1_74.png" id="45_ts1rx"]
+[ext_resource type="Texture2D" uid="uid://bc0rk4kxx38jt" path="res://Graphics/Weapons/FireBlast/1_75.png" id="46_d04ry"]
+[ext_resource type="Texture2D" uid="uid://n8odnneq4k0j" path="res://Graphics/Weapons/FireBlast/1_76.png" id="47_oc1k2"]
+[ext_resource type="Texture2D" uid="uid://dy0lvd6bgckdn" path="res://Graphics/Weapons/FireBlast/1_77.png" id="48_skhmn"]
+[ext_resource type="Texture2D" uid="uid://xaky34dlcas8" path="res://Graphics/Weapons/FireBlast/1_78.png" id="49_toh03"]
+[ext_resource type="Texture2D" uid="uid://buwoxxmftwc5h" path="res://Graphics/Weapons/FireBlast/1_79.png" id="50_diolc"]
+[ext_resource type="Texture2D" uid="uid://c3pbkeif3yw8b" path="res://Graphics/Weapons/FireBlast/1_80.png" id="51_rrqeg"]
+[ext_resource type="Texture2D" uid="uid://b1a05t6kqsdv2" path="res://Graphics/Weapons/FireBlast/1_81.png" id="52_dnqh7"]
+[ext_resource type="Texture2D" uid="uid://14efe10wn2ox" path="res://Graphics/Weapons/FireBlast/1_82.png" id="53_abske"]
+[ext_resource type="Texture2D" uid="uid://04xfc0hhcblj" path="res://Graphics/Weapons/FireBlast/1_83.png" id="54_a3nvv"]
+[ext_resource type="Texture2D" uid="uid://bb6tgkqjq10c2" path="res://Graphics/Weapons/FireBlast/1_84.png" id="55_tie0k"]
+[ext_resource type="Texture2D" uid="uid://dxt52wj4bwen" path="res://Graphics/Weapons/FireBlast/1_85.png" id="56_udiq5"]
+[ext_resource type="Texture2D" uid="uid://bjexec6xiy3u0" path="res://Graphics/Weapons/FireBlast/1_86.png" id="57_wurin"]
+[ext_resource type="Texture2D" uid="uid://wq2wdtw0bn06" path="res://Graphics/Weapons/FireBlast/1_87.png" id="58_e8ywo"]
+[ext_resource type="Texture2D" uid="uid://dncjfsxgyvc2q" path="res://Graphics/Weapons/FireBlast/1_88.png" id="59_0sy1x"]
+[ext_resource type="Script" path="res://Scenes/Weapons/fire_blast.gd" id="60_fw26l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kb6qm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cj8vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pclfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xcc04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gwct8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jq4es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_32ceu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_klpxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uh1ua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_auxtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ceamu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_usoaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ggo8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ln40l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4d0ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2i56s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_derht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iw0ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kohii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_k0m7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_d5vv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_7lbse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_sj88t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_t1cmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_v3tgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_aopu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_pro6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_y11dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_qy80i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_vpeha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3vda6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_bby0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_0gqy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_y2x8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_rmkes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_3311b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_pqyis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_xdcoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_f4h5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_n0f84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ipo8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1lybu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_l4rju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_8e65p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_ttlnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ts1rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_d04ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_oc1k2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_skhmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_toh03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_diolc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_rrqeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_dnqh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_abske")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_a3nvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_tie0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_udiq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_wurin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_e8ywo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_0sy1x")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 30.0
+}]
+
+[node name="FireBlast" type="AnimatedSprite2D"]
+editor_description = "Z is 2 because it needs to be positioned on top oof the hero."
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_kb6qm")
+animation = &"Fire"
+autoplay = "Fire"
+frame = 58
+frame_progress = 1.0
+script = ExtResource("60_fw26l")

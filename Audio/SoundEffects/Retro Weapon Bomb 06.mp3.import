@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cm6d7ngnygikp"
+path="res://.godot/imported/Retro Weapon Bomb 06.mp3-c65a12f402a4fec1cc41d04c52fbeeca.mp3str"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/Retro Weapon Bomb 06.mp3"
+dest_files=["res://.godot/imported/Retro Weapon Bomb 06.mp3-c65a12f402a4fec1cc41d04c52fbeeca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

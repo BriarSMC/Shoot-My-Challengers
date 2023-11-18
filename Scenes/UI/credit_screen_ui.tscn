@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1nw184mg2hj7"]
+
+[ext_resource type="Script" path="res://Scenes/UI/credit_screen_ui.gd" id="1_2x01i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5d4nl"]
+font_size = 12
+
+[node name="CreditScreenUI" type="CanvasLayer"]
+script = ExtResource("1_2x01i")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.84
+offset_bottom = 8.0
+grow_horizontal = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Label" type="Label" parent="ScrollContainer"]
+layout_mode = 2
+text = "### Inspiration
+- Alistair Coghill
+
+### Game Concept
+- Steven Coghill
+- Brent Coghill
+
+### Game Design
+- Steven Coghill
+
+### Game Architecture
+- Steven Coghill
+
+### Coding
+- Steven Coghill
+
+### Graphics
+- [Pixel Poem](https://itch.io/profile/pixel-poem)
+- [ClearCode](http://www.youtube.com/@ClearCode)
+- [sheep](https://opengameart.org/users/sheep)
+- [Winternaut](https://opengameart.org/users/winternaut)
+- [Cethiel](https://opengameart.org/users/cethiel)
+- [ScratchIO](https://opengameart.org/users/scratchio)
+- [Chrisblue](https://opengameart.org/users/chrisblue)
+- [cemkalyoncu](https://opengameart.org/users/cemkalyoncu)
+- [rawdanitsu](https://opengameart.org/users/rawdanitsu)
+- [Nekith](https://opengameart.org/users/nekith)
+
+### Music
+- [MATRIXXX_](https://freesound.org/people/MATRIXXX_/)
+- [TheoJT](https://freesound.org/people/TheoJT/)
+- [SnowFightStudios](https://freesound.org/people/SnowFightStudios/)
+- [Sirkoto51](https://freesound.org/people/Sirkoto51/)
+- [klavo1985](https://freesound.org/people/klavo1985/)
+- [wolfdoctor](https://freesound.org/people/wolfdoctor/)
+
+### Sound Effects
+- [Beetlemuse](https://freesound.org/people/Beetlemuse/)
+- [jarl_fenrir](https://freesound.org/people/jarl_fenrir/)
+- [Bernuy](https://freesound.org/people/Bernuy/)
+- [AntumDeluge](https://freesound.org/people/AntumDeluge/)
+- [Zulfish](https://freesound.org/people/Zulfish/)
+- [strangehorizon](https://freesound.org/people/strangehorizon/)
+- [Za-Games](https://freesound.org/people/Za-Games/)
+- [EminYILDIRIM](https://freesound.org/people/EminYILDIRIM/)
+- [Sadiquecat](https://freesound.org/people/Sadiquecat/)
+- [MATRIXXX_](https://freesound.org/people/MATRIXXX_/)
+- [jacksonacademyashmore](https://freesound.org/people/jacksonacademyashmore/)
+- [Camouflaged_Noob](https://freesound.org/people/Camouflaged_Noob/)
+- [harrietniamh](https://freesound.org/people/harrietniamh/)
+- [xtrgamr](https://freesound.org/people/xtrgamr/)
+- [LittleRobotSoundFactory](https://freesound.org/people/LittleRobotSoundFactory/)
+- [nioczkus](https://freesound.org/people/nioczkus/)
+- [Bratish](https://freesound.org/people/Bratish/)
+
+### Other Resources
+- [DevTeam.Space](https://devteam.space)"
+label_settings = SubResource("LabelSettings_5d4nl")
+
+[node name="Back" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -31.0
+offset_right = 22.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

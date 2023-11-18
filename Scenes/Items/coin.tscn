@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://boow2ix5jkn6j"]
+
+[ext_resource type="Script" path="res://Scenes/Items/coin.gd" id="1_2itpe"]
+[ext_resource type="Texture2D" uid="uid://dhytovwf0juen" path="res://Graphics/Items/coin.png" id="1_5f24o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fipv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugwnx"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6aw2"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj7xa"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4mxb"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymuom"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahpjx"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrl4u"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vpmk"]
+atlas = ExtResource("1_5f24o")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pfp7v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugwnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6aw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj7xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4mxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymuom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahpjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrl4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vpmk")
+}],
+"loop": true,
+"name": &"Spin",
+"speed": 5.0
+}]
+
+[node name="Coin" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_2itpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4fipv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pfp7v")
+animation = &"Spin"
+autoplay = "Spin"
+frame = 1
+frame_progress = 0.0852817

@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://egreuidahxrp"]
+
+[ext_resource type="Texture2D" uid="uid://d04dhuo7vkoaw" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_1.png" id="1_56lot"]
+[ext_resource type="Script" path="res://Scenes/Characters/Challengers/skeleton_warrior.gd" id="1_jomj0"]
+[ext_resource type="Texture2D" uid="uid://7ggdyehaa32c" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_2.png" id="2_n656f"]
+[ext_resource type="Texture2D" uid="uid://buh56bwpfp063" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_3.png" id="3_w7kug"]
+[ext_resource type="Texture2D" uid="uid://35o4y2qp5h6t" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_4.png" id="4_vr2cb"]
+[ext_resource type="Texture2D" uid="uid://yd7reu0jv0ff" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v2_1.png" id="5_j7sot"]
+[ext_resource type="Texture2D" uid="uid://bkxgis20e135g" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v2_2.png" id="6_h6pjc"]
+[ext_resource type="Texture2D" uid="uid://dnafg7s6f7gxy" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v2_3.png" id="7_0gkfp"]
+[ext_resource type="Texture2D" uid="uid://5ete18aqva5h" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v2_4.png" id="8_peb1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5qid"]
+size = Vector2(15, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ui6w"]
+radius = 228.219
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tfyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_56lot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n656f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w7kug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vr2cb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_j7sot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h6pjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0gkfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_peb1r")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="SkeletonWarrior" type="CharacterBody2D" groups=["Challenger"]]
+collision_layer = 2
+collision_mask = 151
+script = ExtResource("1_jomj0")
+scaleFactor = 1.0
+
+[node name="HitArea" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_g5qid")
+
+[node name="NoticeArea" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8ui6w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0tfyn")
+animation = &"Idle"
+autoplay = "Idle"

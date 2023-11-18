@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3g02em8hprug"
+path="res://.godot/imported/Retro Explosion Long 02.mp3-18ee55d049bd991e4221501b923100bf.mp3str"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/Retro Explosion Long 02.mp3"
+dest_files=["res://.godot/imported/Retro Explosion Long 02.mp3-18ee55d049bd991e4221501b923100bf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

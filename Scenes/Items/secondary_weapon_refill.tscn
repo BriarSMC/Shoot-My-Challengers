@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://7mw663fe3sky"]
+
+[ext_resource type="Texture2D" uid="uid://bsj6xwgqnb116" path="res://Graphics/Weapons/bomb.png" id="1_fhfdg"]
+[ext_resource type="Script" path="res://Scenes/Items/secondary_weapon_refill.gd" id="2_ddsi3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ak3w"]
+size = Vector2(16, 37)
+
+[sub_resource type="Animation" id="Animation_nskr6"]
+resource_name = "Bounce"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 20), Vector2(0, -20), Vector2(0, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tompt"]
+_data = {
+"Bounce": SubResource("Animation_nskr6")
+}
+
+[node name="SecondaryWeaponRefill" type="Area2D"]
+script = ExtResource("2_ddsi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_1ak3w")
+
+[node name="Spite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 20)
+texture = ExtResource("1_fhfdg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spite2D"]
+autoplay = "Bounce"
+libraries = {
+"": SubResource("AnimationLibrary_tompt")
+}

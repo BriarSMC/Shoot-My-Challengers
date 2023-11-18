@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://i0285wikdqwo"]
+
+[ext_resource type="Script" path="res://Scenes/Items/short_shield_refill.gd" id="1_5pw1q"]
+[ext_resource type="Texture2D" uid="uid://d1av1sgjkbw5o" path="res://Graphics/Weapons/67.png" id="1_mhvse"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wro51"]
+size = Vector2(76, 114)
+
+[sub_resource type="Animation" id="Animation_nskr6"]
+resource_name = "Bounce"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 20), Vector2(0, -20), Vector2(0, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tompt"]
+_data = {
+"Bounce": SubResource("Animation_nskr6")
+}
+
+[node name="ShortShieldRefill" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_5pw1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_wro51")
+
+[node name="Spite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 20)
+texture = ExtResource("1_mhvse")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spite2D"]
+autoplay = "Bounce"
+libraries = {
+"": SubResource("AnimationLibrary_tompt")
+}

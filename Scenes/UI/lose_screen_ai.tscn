@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddfrjg6olf77t"]
+
+[ext_resource type="Script" path="res://Scenes/UI/lose_screen_ai.gd" id="1_4q82m"]
+[ext_resource type="FontFile" uid="uid://b485tyxniqils" path="res://fonts/BattlesbridgeDemo-AL126.ttf" id="2_0n3i5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dob7t"]
+font = ExtResource("2_0n3i5")
+font_size = 30
+font_color = Color(0.878431, 0, 0.0588235, 1)
+
+[node name="LoseScreenAI" type="CanvasLayer"]
+script = ExtResource("1_4q82m")
+
+[node name="Continue" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.328
+anchor_top = 0.472
+anchor_right = 0.328
+anchor_bottom = 0.472
+offset_top = 125.0
+offset_right = 175.0
+offset_bottom = 154.5
+text = "Continue"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.205
+anchor_top = 0.096
+anchor_right = 0.365
+anchor_bottom = 0.096
+offset_right = 242.0
+offset_bottom = 68.0
+text = "You Lose"
+label_settings = SubResource("LabelSettings_dob7t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

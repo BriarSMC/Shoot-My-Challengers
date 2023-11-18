@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmraomi5h26q3"]
+
+[ext_resource type="Script" path="res://Scenes/Items/gem.gd" id="1_7w75d"]
+[ext_resource type="Texture2D" uid="uid://buqblynixvtir" path="res://Graphics/Items/Gems/12.png" id="2_f5ema"]
+[ext_resource type="Texture2D" uid="uid://bcwoo7xgg05i0" path="res://Graphics/Items/Gems/6.png" id="3_kdo7m"]
+[ext_resource type="Texture2D" uid="uid://cbelmsa4r76g6" path="res://Graphics/Items/Gems/4.png" id="4_gagbv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lndy"]
+size = Vector2(14, 14)
+
+[node name="Gem" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_7w75d")
+images = Array[Texture]([ExtResource("2_f5ema"), ExtResource("3_kdo7m"), ExtResource("4_gagbv")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6lndy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f5ema")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://0guw75f0ngpq"]
+
+[ext_resource type="Texture2D" uid="uid://p6r8heq7mq2v" path="res://Graphics/Items/Gems/11.png" id="1_ad7bg"]
+[ext_resource type="Script" path="res://Scenes/Items/primary_weapon_refill.gd" id="1_ncd06"]
+[ext_resource type="Texture2D" uid="uid://ddln3wp0u5d4l" path="res://Graphics/Weapons/bow_green.png" id="2_tu4ur"]
+[ext_resource type="Texture2D" uid="uid://bxf33p1rnr0y5" path="res://Graphics/Weapons/arrow_purple.png" id="3_nieeg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w5q7"]
+size = Vector2(20, 26)
+
+[sub_resource type="Animation" id="Animation_rm0ek"]
+resource_name = " Skew"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xhiyl"]
+_data = {
+" Skew": SubResource("Animation_rm0ek")
+}
+
+[node name="PrimaryWeaponRefill" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_ncd06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0w5q7")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("1_ad7bg")
+
+[node name="Weapon" type="Node2D" parent="."]
+position = Vector2(1, -4)
+
+[node name="Bow" type="Sprite2D" parent="Weapon"]
+texture = ExtResource("2_tu4ur")
+
+[node name="Arrow" type="Sprite2D" parent="Weapon"]
+rotation = -1.55509
+texture = ExtResource("3_nieeg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+autoplay = " Skew"
+libraries = {
+"": SubResource("AnimationLibrary_xhiyl")
+}

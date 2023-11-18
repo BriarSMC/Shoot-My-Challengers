@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Shoot My Challengers"
+run/main_scene="res://Scenes/UI/splash_screen.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+boot_splash/show_image=false
+config/icon="res://skull_icon.svg"
+
+[autoload]
+
+Globals="*res://autoload/globals.gd"
+MCP="*res://autoload/master_control_program.gd"
+
+[display]
+
+window/size/viewport_width=500
+window/size/viewport_height=350
+window/size/mode=2
+mouse_cursor/custom_image="res://Graphics/Misc/cursor.png"
+
+[layer_names]
+
+2d_physics/layer_1="Hero"
+2d_physics/layer_2="Challenger"
+2d_physics/layer_3="Hero Weapons"
+2d_physics/layer_4="Challenger Weapons"
+2d_physics/layer_5="Containers and Items"
+2d_physics/layer_6="Power-ups"
+2d_physics/layer_7="Zones and Areas"
+2d_physics/layer_8="Walls and Objects"
+
+[rendering]
+
+renderer/rendering_method="mobile"

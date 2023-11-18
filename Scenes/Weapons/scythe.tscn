@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1uha5r645hm"]
+
+[ext_resource type="Texture2D" uid="uid://e2kdpj8v8a4" path="res://Graphics/Weapons/scythe.png" id="1_uawmg"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Sprite2D.gd" id="2_pf2iv"]
+
+[sub_resource type="Animation" id="Animation_sxynn"]
+resource_name = "Swing"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gln8u"]
+_data = {
+"Swing": SubResource("Animation_sxynn")
+}
+
+[node name="Scythe" type="Node2D"]
+rotation = -6.28319
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uawmg")
+centered = false
+offset = Vector2(-8, -45)
+script = ExtResource("2_pf2iv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Swing"
+libraries = {
+"": SubResource("AnimationLibrary_gln8u")
+}

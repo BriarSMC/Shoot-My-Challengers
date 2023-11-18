@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckmp78u8vt1xy"]
+
+[ext_resource type="Texture2D" uid="uid://d2v1hq1427dij" path="res://Graphics/Misc/ground.png" id="1_3b53c"]
+
+[node name="Ground" type="Sprite2D"]
+z_index = -2
+texture_repeat = 2
+position = Vector2(1527, 593)
+texture = ExtResource("1_3b53c")
+region_enabled = true
+region_rect = Rect2(-1924.38, -1271.38, 4613.62, 2247.75)

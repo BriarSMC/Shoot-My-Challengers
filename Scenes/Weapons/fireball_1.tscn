@@ -1,0 +1,123 @@
+[gd_scene load_steps=25 format=3 uid="uid://nctphmt60ojn"]
+
+[ext_resource type="Script" path="res://Scenes/Weapons/Fireball1.gd" id="1_xceq2"]
+[ext_resource type="Texture2D" uid="uid://dne67qt4cuerj" path="res://Graphics/Weapons/Explosion1/0002.png" id="2_fpwjc"]
+[ext_resource type="Texture2D" uid="uid://dodxrglhqud4m" path="res://Graphics/Weapons/Explosion1/0003.png" id="3_kj43v"]
+[ext_resource type="Texture2D" uid="uid://dhv1aljmnmqud" path="res://Graphics/Weapons/Explosion1/0004.png" id="4_l72x0"]
+[ext_resource type="Texture2D" uid="uid://cmhi5geo16j2d" path="res://Graphics/Weapons/Explosion1/0007.png" id="5_e461x"]
+[ext_resource type="Texture2D" uid="uid://of3ft48unueb" path="res://Graphics/Weapons/Explosion1/0009.png" id="6_skx4j"]
+[ext_resource type="Texture2D" uid="uid://7vuu55gpbqs5" path="res://Graphics/Weapons/Explosion1/0010.png" id="7_a4pbu"]
+[ext_resource type="Texture2D" uid="uid://cbdrn2g2x6510" path="res://Graphics/Weapons/Explosion1/0011.png" id="8_iu3xp"]
+[ext_resource type="Texture2D" uid="uid://bac3wh5yvus7u" path="res://Graphics/Weapons/Explosion1/0013.png" id="9_xw7po"]
+[ext_resource type="Texture2D" uid="uid://bn251dfbc43qc" path="res://Graphics/Weapons/Explosion1/0015.png" id="10_m2hs0"]
+[ext_resource type="Texture2D" uid="uid://xhbqi5ri4k00" path="res://Graphics/Weapons/Explosion1/0017.png" id="11_psnpk"]
+[ext_resource type="Texture2D" uid="uid://fpmewdicb5ch" path="res://Graphics/Weapons/Explosion1/0019.png" id="12_8jpat"]
+[ext_resource type="Texture2D" uid="uid://bl7bm4sqyilcv" path="res://Graphics/Weapons/Fireball1/0045.png" id="13_1hm1v"]
+[ext_resource type="Texture2D" uid="uid://pq80xq2gnxn4" path="res://Graphics/Weapons/Fireball1/0047.png" id="14_qn06p"]
+[ext_resource type="Texture2D" uid="uid://ya76x52sq70e" path="res://Graphics/Weapons/Fireball1/0049.png" id="15_08bra"]
+[ext_resource type="Texture2D" uid="uid://db3kuf8eh4lhe" path="res://Graphics/Weapons/Fireball1/0051.png" id="16_lymif"]
+[ext_resource type="Texture2D" uid="uid://doa614dmgmamr" path="res://Graphics/Weapons/Fireball1/0053.png" id="17_46tdo"]
+[ext_resource type="Texture2D" uid="uid://nsh5bs1b3b66" path="res://Graphics/Weapons/Fireball1/0055.png" id="18_m6dte"]
+[ext_resource type="Texture2D" uid="uid://lu2rx1d3i4uw" path="res://Graphics/Weapons/Fireball1/0057.png" id="19_enut3"]
+[ext_resource type="Texture2D" uid="uid://yaiqdpaqgj01" path="res://Graphics/Weapons/Fireball1/0059.png" id="20_tpfhk"]
+[ext_resource type="Texture2D" uid="uid://0gcuxnh6g8h4" path="res://Graphics/Weapons/Fireball1/0061.png" id="21_pxtfc"]
+[ext_resource type="Texture2D" uid="uid://deuxr13546th2" path="res://Graphics/Weapons/Fireball1/0063.png" id="22_1umrx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fibo2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fk15v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fpwjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kj43v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l72x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e461x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_skx4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a4pbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iu3xp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xw7po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m2hs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_psnpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8jpat")
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_1hm1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qn06p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_08bra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lymif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_46tdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_m6dte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_enut3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_tpfhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pxtfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1umrx")
+}],
+"loop": true,
+"name": &"Throw",
+"speed": 5.0
+}]
+
+[node name="Fireball1" type="Area2D"]
+collision_layer = 8
+collision_mask = 145
+script = ExtResource("1_xceq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_fibo2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_fk15v")
+animation = &"Explosion"
+autoplay = "Throw"
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]

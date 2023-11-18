@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnqfcy6t6aqr0"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Challengers/SkullOfDeath.gd" id="1_fsni0"]
+[ext_resource type="Texture2D" uid="uid://dxccpjv21qmg5" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_1.png" id="2_wc5oo"]
+[ext_resource type="Texture2D" uid="uid://ddwsokltm1blv" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_2.png" id="3_08ijh"]
+[ext_resource type="Texture2D" uid="uid://cwgghkdu3hdv1" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_3.png" id="4_3milt"]
+[ext_resource type="Texture2D" uid="uid://cemoeplg0dxqo" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_4.png" id="5_6rim7"]
+[ext_resource type="Texture2D" uid="uid://dywtgtaolq4uw" path="res://Graphics/Challengers/SkullOfDeath/skull_v2_1.png" id="6_k07x7"]
+[ext_resource type="Texture2D" uid="uid://c87s8pqsj216l" path="res://Graphics/Challengers/SkullOfDeath/skull_v2_2.png" id="7_ndn5f"]
+[ext_resource type="Texture2D" uid="uid://48qxew7h6no4" path="res://Graphics/Challengers/SkullOfDeath/skull_v2_3.png" id="8_0ylvv"]
+[ext_resource type="Texture2D" uid="uid://btygmq15wunjl" path="res://Graphics/Challengers/SkullOfDeath/skull_v2_4.png" id="9_4eqo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nuvk1"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6bpyd"]
+radius = 46.1736
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38s6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wc5oo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_08ijh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3milt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6rim7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_k07x7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ndn5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0ylvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4eqo8")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="SkullOfDeath" type="CharacterBody2D" groups=["Challenger"]]
+collision_layer = 2
+collision_mask = 151
+script = ExtResource("1_fsni0")
+
+[node name="HitArea" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nuvk1")
+
+[node name="NoticeArea" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6bpyd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_38s6h")
+animation = &"Walk"
+autoplay = "Idle"
+frame_progress = 0.322868
