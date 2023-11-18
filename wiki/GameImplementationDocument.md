@@ -178,3 +178,13 @@ func fadeTheUI():
 ```
 
 Then the UI's AnimationPlayer fades the top UI component.
+
+# Characters
+
+## Hero
+
+### Spawning
+
+Each level has a Marker2D node named "TeleportIn". This is the starting position for the Hero on each level.
+We set a timer (SpawnTimer) to fire when Hero scene is ready. When the timer expires, then the Hero script 
+executes code  to make the Hero appear on the level.

@@ -25,7 +25,8 @@
 - [cemkalyoncu](https://opengameart.org/users/cemkalyoncu)
 - [rawdanitsu](https://opengameart.org/users/rawdanitsu)
 - [Nekith](https://opengameart.org/users/nekith)
-
+- [rubberduck](https://opengameart.org/users/rubberduck)
+- 
 ### Music
 - [MATRIXXX_](https://freesound.org/people/MATRIXXX_/)
 - [TheoJT](https://freesound.org/people/TheoJT/)

@@ -10,9 +10,13 @@ class_name Hero
 # Properties
 #-
 
+var isActive: bool = false				# Has to wait for the teleport effect to finish
+
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
+
+# Get the position of the spawn point
 
 #+
 # Virtual Godot methods
@@ -26,14 +30,13 @@ class_name Hero
 # Return 
 #	None
 #==
-# Just a debug print.
+# Move us to the spawn location
+# Look East
 # Remember to call the parent
-# TODO: Delete this if we don't add any real functionality
 func _ready() -> void:
-	print('Hero ready')
-	print('Hero health ', health)
-	print('Hero scaleFactor ', scaleFactor)
-	print('Hero speed ', speed)
+	position = find_parent("Level*").find_child("TeleportIn").position
+	$HeroGraphic.play("IdleEast")
+	visible = true
 	super._ready()
 	
 	
@@ -56,3 +59,33 @@ func _process(_delta):
 func die() -> void:
 	print('Hero died')
 	super.die()
+
+# spawn()
+# Spawn the Hero with a teleport effect
+#
+# Each level has a TeleportIn Marker2D. This is the location where the Hero will
+# spawn/teleport in. We capture this location with an @onready to load spawnPosition.
+#
+#
+# Parameters
+#	paramname: type				Description
+# Return 
+#	value|None					Description
+#==
+
+# Make us visible
+func spawn() -> void:
+	
+	$HeroGraphic/AnimationPlayer.play("FadeFromBlack")
+
+
+#+
+# Signal callbacks
+#-
+
+func _on_spawn_timer_timeout():
+	spawn()
+
+
+func _on_teleport_effect_animation_finished():
+	isActive = true
