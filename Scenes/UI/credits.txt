@@ -1,57 +1,57 @@
-### Inspiration
-- Alistair Coghill
+[b]Inspiration[/b]
+   Alistair Coghill
 
-### Game Concept
-- Steven Coghill
-- Brent Coghill
+[b]Game Concept[/b]
+   Steven Coghill
+   Brent Coghill
 
-### Game Design
-- Steven Coghill
+[b]Game Design[/b]
+   Steven Coghill
 
-### Game Architecture
-- Steven Coghill
+[b]Game Architecture[/b]
+   Steven Coghill
 
-### Coding
-- Steven Coghill
+[b]Coding[/b]
+   Steven Coghill
 
-### Graphics
-- [Pixel Poem](https://itch.io/profile/pixel-poem)
-- [ClearCode](http://www.youtube.com/@ClearCode)
-- [sheep](https://opengameart.org/users/sheep)
-- [Winternaut](https://opengameart.org/users/winternaut)
-- [Cethiel](https://opengameart.org/users/cethiel)
-- [ScratchIO](https://opengameart.org/users/scratchio)
-- [Chrisblue](https://opengameart.org/users/chrisblue)
-- [cemkalyoncu](https://opengameart.org/users/cemkalyoncu)
-- [rawdanitsu](https://opengameart.org/users/rawdanitsu)
-- [Nekith](https://opengameart.org/users/nekith)
+[b]Graphics[/b]
+   Pixel Poem[i](https://itch.io/profile/pixel-poem)[/i]
+   ClearCode[i](http://www.youtube.com/@ClearCode)[/i]
+   sheep[i](https://opengameart.org/users/sheep)[/i]
+   Winternaut[i](https://opengameart.org/users/winternaut)[/i]
+   Cethiel[i](https://opengameart.org/users/cethiel)[/i]
+   ScratchIO[i](https://opengameart.org/users/scratchio)[/i]
+   Chrisblue[i](https://opengameart.org/users/chrisblue)[/i]
+   cemkalyoncu[i](https://opengameart.org/users/cemkalyoncu)[/i]
+   rawdanitsu[i](https://opengameart.org/users/rawdanitsu)[/i]
+   Nekith[i](https://opengameart.org/users/nekith)[/i]
 
-### Music
-- [MATRIXXX_](https://freesound.org/people/MATRIXXX_/)
-- [TheoJT](https://freesound.org/people/TheoJT/)
-- [SnowFightStudios](https://freesound.org/people/SnowFightStudios/)
-- [Sirkoto51](https://freesound.org/people/Sirkoto51/)
-- [klavo1985](https://freesound.org/people/klavo1985/)
-- [wolfdoctor](https://freesound.org/people/wolfdoctor/)
+[b]Music[/b]
+   MATRIXXX_[i](https://freesound.org/people/MATRIXXX_/)[/i]
+   TheoJT[i](https://freesound.org/people/TheoJT/)[/i]
+   SnowFightStudios[i](https://freesound.org/people/SnowFightStudios/)[/i]
+   Sirkoto51[i](https://freesound.org/people/Sirkoto51/)[/i]
+   klavo1985[i](https://freesound.org/people/klavo1985/)[/i]
+   wolfdoctor[i](https://freesound.org/people/wolfdoctor/)[/i]
 
-### Sound Effects
-- [Beetlemuse](https://freesound.org/people/Beetlemuse/)
-- [jarl_fenrir](https://freesound.org/people/jarl_fenrir/)
-- [Bernuy](https://freesound.org/people/Bernuy/)
-- [AntumDeluge](https://freesound.org/people/AntumDeluge/)
-- [Zulfish](https://freesound.org/people/Zulfish/)
-- [strangehorizon](https://freesound.org/people/strangehorizon/)
-- [Za-Games](https://freesound.org/people/Za-Games/)
-- [EminYILDIRIM](https://freesound.org/people/EminYILDIRIM/)
-- [Sadiquecat](https://freesound.org/people/Sadiquecat/)
-- [MATRIXXX_](https://freesound.org/people/MATRIXXX_/)
-- [jacksonacademyashmore](https://freesound.org/people/jacksonacademyashmore/)
-- [Camouflaged_Noob](https://freesound.org/people/Camouflaged_Noob/)
-- [harrietniamh](https://freesound.org/people/harrietniamh/)
-- [xtrgamr](https://freesound.org/people/xtrgamr/)
-- [LittleRobotSoundFactory](https://freesound.org/people/LittleRobotSoundFactory/)
-- [nioczkus](https://freesound.org/people/nioczkus/)
-- [Bratish](https://freesound.org/people/Bratish/)
+[b]Sound Effects[/b]
+   Beetlemuse[i](https://freesound.org/people/Beetlemuse/)[/i]
+   jarl_fenrir[i](https://freesound.org/people/jarl_fenrir/)[/i]
+   Bernuy[i](https://freesound.org/people/Bernuy/)[/i]
+   AntumDeluge[i](https://freesound.org/people/AntumDeluge/)[/i]
+   Zulfish[i](https://freesound.org/people/Zulfish/)[/i]
+   strangehorizon[i](https://freesound.org/people/strangehorizon/)[/i]
+   Za-Games[i](https://freesound.org/people/Za-Games/)[/i]
+   EminYILDIRIM[i](https://freesound.org/people/EminYILDIRIM/)[/i]
+   Sadiquecat[i](https://freesound.org/people/Sadiquecat/)[/i]
+   MATRIXXX_[i](https://freesound.org/people/MATRIXXX_/)[/i]
+   jacksonacademyashmore[i](https://freesound.org/people/jacksonacademyashmore/)[/i]
+   Camouflaged_Noob[i](https://freesound.org/people/Camouflaged_Noob/)[/i]
+   harrietniamh[i](https://freesound.org/people/harrietniamh/)[/i]
+   xtrgamr[i](https://freesound.org/people/xtrgamr/)[/i]
+   LittleRobotSoundFactory[i](https://freesound.org/people/LittleRobotSoundFactory/)[/i]
+   nioczkus[i](https://freesound.org/people/nioczkus/)[/i]
+   Bratish[i](https://freesound.org/people/Bratish/)[/i]
 
-### Other Resources
-- [DevTeam.Space](https://devteam.space)
+[b]Other Resources[/b]
+   DevTeam.Space[i](https://devteam.space)[/i]

@@ -29,8 +29,8 @@ tracks/1/keys = {
 "times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"goToNextScene"
+"args": [0, 0],
+"method": &"goToNextScreen"
 }]
 }
 tracks/2/type = "value"
@@ -62,7 +62,7 @@ scale = Vector2(0.519531, 0.407227)
 texture = ExtResource("1_w6tc5")
 
 [node name="ForegroundImage" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.588235)
+modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_utaca")
 

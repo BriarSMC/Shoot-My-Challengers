@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 class_name GameControlScreen
 
 #++
@@ -9,9 +9,9 @@ class_name GameControlScreen
 #+
 # Properties
 #-
+var mySprite2D: Sprite2D 				# Must be set by child in _ready()
 
 # The following properties must be set in the Inspector by the designer
-@export var winScreen : PackedScene				# Graphic for this scene
 
 # The following are set based on the Inspector values
 
@@ -28,7 +28,7 @@ class_name GameControlScreen
 #==
 # Reposistion the graphic to the center of the screen
 func _ready():
-	Globals.positionUIImage($Sprite2D)	
+	Globals.positionUIImage(self)	
 
 # _process(_delta)
 # Called once per frame
@@ -42,7 +42,8 @@ func _ready():
 #==
 # Reposition the graphic
 func _process(_delta):
-	Globals.positionUIImage($Sprite2D)
+	pass
+#	Globals.positionUIImage(self)
 
 #+
 # Class specific methods

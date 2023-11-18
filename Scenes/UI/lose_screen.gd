@@ -18,7 +18,20 @@ class_name LoseScreen
 #+
 # Virtual Godot methods
 #-
-	
+
+# _ready()
+# Called when object is ready
+#
+# Parameters
+#	None
+# Return 
+#	None
+#==
+# Set the background image for the parent class
+func _ready() -> void:
+	mySprite2D = $Sprite2D
+	super._ready()
+		
 # Temp to exit the scene for debugging
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://t08fae2ksin6"]
+[gd_scene load_steps=7 format=3 uid="uid://t08fae2ksin6"]
 
 [ext_resource type="Script" path="res://Scenes/UI/win_screen.gd" id="1_6go87"]
-[ext_resource type="PackedScene" uid="uid://tt70difc0fta" path="res://Scenes/UI/lose_screen.tscn" id="2_hjktc"]
 [ext_resource type="Texture2D" uid="uid://bj3ahhnaqtaja" path="res://Graphics/UIImages/WinScreen1.png" id="2_nmnwl"]
 [ext_resource type="PackedScene" uid="uid://de82xquykqxeh" path="res://Scenes/UI/win_screen_ui.tscn" id="4_ho6gp"]
 
@@ -59,7 +58,6 @@ _data = {
 
 [node name="WinScreen" type="Node2D"]
 script = ExtResource("1_6go87")
-loseScreen = ExtResource("2_hjktc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
