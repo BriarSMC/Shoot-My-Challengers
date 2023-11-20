@@ -19,8 +19,6 @@ var moved: bool = false							# Whether Hero moved this frame
 
 # The following are set based on the Inspector values
 
-# Get the position of the spawn point
-
 #+
 # Virtual Godot methods
 #-
@@ -41,12 +39,15 @@ var moved: bool = false							# Whether Hero moved this frame
 func _ready() -> void:
 	if Input.get_connected_joypads().size() > 0:
 		inputDevice = inputType.GAMECONTROLLER
+#		$TargetPointer.position = self.position + Vector2.RIGHT * 300
+		$TargetPointer.visible = true
 	else:
 		inputDevice = inputType.KEYBOARD
 		
 	global_position = find_parent("Level*").find_child("TeleportIn").global_position
 	$CharacterImage.play("IdleEast")
 	visible = true
+	$TargetPointer.visible = false
 	super._ready()
 	
 # _process(delta)
@@ -106,3 +107,4 @@ func _on_spawn_timer_timeout():
 
 func _on_teleport_effect_animation_finished():
 	active = true
+	$TargetPointer.visible = true
