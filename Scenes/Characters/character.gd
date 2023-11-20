@@ -24,6 +24,7 @@ class_name Character
 # The following properties are common to all characters
 var immune: bool = false
 var active: bool = false
+var direction: Vector2
 
 #+
 # Virtual Godot methods
@@ -31,7 +32,7 @@ var active: bool = false
 
 # Required: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
-	Globals.scaleMe(self, scaleFactor)
+	Globals.scaleMe(self.find_child("CharacterImage"), scaleFactor)
 	
 #+
 # Class specific methods

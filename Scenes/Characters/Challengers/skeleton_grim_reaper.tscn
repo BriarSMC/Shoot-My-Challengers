@@ -61,7 +61,7 @@ startingHealth = 50
 startingSpeed = 20.0
 scaleFactor = 1.5
 
-[node name="HitArea" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s3ry0")
 
 [node name="NoticeArea" type="Area2D" parent="."]
@@ -69,7 +69,7 @@ shape = SubResource("RectangleShape2D_s3ry0")
 [node name="NoticeAreaCollider" type="CollisionShape2D" parent="NoticeArea"]
 shape = SubResource("CircleShape2D_wf0o0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CharacterImage" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7p7vo")
 animation = &"Idle"
 autoplay = "Idle"

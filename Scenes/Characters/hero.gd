@@ -10,7 +10,10 @@ class_name Hero
 # Properties
 #-
 
-var isActive: bool = false				# Has to wait for the teleport effect to finish
+enum inputType {KEYBOARD, GAMECONTROLLER, }
+
+var inputDevice: inputType
+var moved: bool = false							# Whether Hero moved this frame
 
 # The following properties must be set in the Inspector by the designer
 
@@ -30,17 +33,32 @@ var isActive: bool = false				# Has to wait for the teleport effect to finish
 # Return 
 #	None
 #==
+# See if we are using a game controller
+# If not, then we set to keyboard/mouse
 # Move us to the spawn location
 # Look East
 # Remember to call the parent
 func _ready() -> void:
-	position = find_parent("Level*").find_child("TeleportIn").position
-	$HeroGraphic.play("IdleEast")
+	if Input.get_connected_joypads().size() > 0:
+		inputDevice = inputType.GAMECONTROLLER
+	else:
+		inputDevice = inputType.KEYBOARD
+		
+	global_position = find_parent("Level*").find_child("TeleportIn").global_position
+	$CharacterImage.play("IdleEast")
 	visible = true
 	super._ready()
 	
-	
-func _process(_delta):
+# _process(delta)
+# Called every frame of the game
+#
+# Parameters
+#	delta: float				Time elapsed since last call
+# Return 
+#	None
+#==
+# Save the Hero's position so that other Characters know where we are.
+func _process(delta):
 	Globals.heroPosition = position
 #+
 # Class specific methods
@@ -74,9 +92,8 @@ func die() -> void:
 #==
 
 # Make us visible
-func spawn() -> void:
-	
-	$HeroGraphic/AnimationPlayer.play("FadeFromBlack")
+func spawn() -> void:	
+	$CharacterImage/AnimationPlayer.play("FadeFromBlack")
 
 
 #+
@@ -88,4 +105,4 @@ func _on_spawn_timer_timeout():
 
 
 func _on_teleport_effect_animation_finished():
-	isActive = true
+	active = true

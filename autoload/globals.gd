@@ -68,7 +68,6 @@ var challengersDefeated: int :
 var scaleBy: Vector2 = Vector2(scaleByBase, scaleByBase)
 
 func scaleMe(me: Object, additionalScale: float = 1.0) -> void:
-	print("scaleMe called by ", me.name)
 	me.scale = scaleBy * additionalScale
 	
 # positionUIImage(me)

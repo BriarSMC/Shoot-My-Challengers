@@ -181,6 +181,19 @@ Then the UI's AnimationPlayer fades the top UI component.
 
 # Characters
 
+When SMC instantiates a character it is inactive (`active: bool = false`). Hero becomes active when the spawning sequence is finished.
+A Challenger becomes active when the Hero enters its Notice Area. 
+## Scaling
+
+We don't want to scale the whole scene; just the graphic. So, the node containing the character's graphic __MUST BE NAMED__
+*CharacterImage*. This so the parent class (Character) can find the node in the tree and call Globals.scaleMe() for it.
+
+## Notice Area
+
+The Challengers each have a *Notice Area*. When the Hero enters this area, then the Challenger *sees* him and initiates the 
+appropriate action(s). The collider for the notice area __MUST BE__ an Area2D so the `move_and_slide()` calls do not 
+impede the Hero's movement.
+
 ## Hero
 
 ### Spawning

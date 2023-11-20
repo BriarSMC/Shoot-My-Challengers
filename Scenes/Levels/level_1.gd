@@ -22,18 +22,20 @@ class_name Level1
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	
+func _physics_process(_delta):
+	checkKeyPressed()
 #+
 # Class specific methods
 #-
 
 # Temp to exit the scene for debugging
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+func checkKeyPressed() -> void:
+	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
-	if event is InputEventKey and event.is_pressed():
-		match event.keycode:
-			KEY_W: $AnimationPlayer.play("FadeToBlackWin")
-			KEY_L: $AnimationPlayer.play("FadeToBlackLose")
+	if Input.is_key_pressed(KEY_W):
+		$AnimationPlayer.play("FadeToBlackWin")
+	if Input.is_key_pressed(KEY_L):
+		$AnimationPlayer.play("FadeToBlackLose")
 		
 		
 # goToNextScreen()

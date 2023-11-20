@@ -36,20 +36,22 @@ collision_layer = 2
 collision_mask = 151
 script = ExtResource("1_hmvp6")
 
-[node name="HitArea" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_wbkyo")
 
-[node name="NoticeArea" type="CollisionShape2D" parent="."]
+[node name="NoticeArea" type="Area2D" parent="."]
+
+[node name="NoticeAreaCollider" type="CollisionShape2D" parent="NoticeArea"]
 shape = SubResource("CircleShape2D_6vo3e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CharacterImage" type="Sprite2D" parent="."]
 skew = -0.0749646
 texture = ExtResource("2_oabd7")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterImage"]
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_grwag")

@@ -58,13 +58,15 @@ collision_layer = 2
 collision_mask = 151
 script = ExtResource("1_fsni0")
 
-[node name="HitArea" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nuvk1")
 
-[node name="NoticeArea" type="CollisionShape2D" parent="."]
+[node name="NoticeArea" type="Area2D" parent="."]
+
+[node name="NoticeAreaCollider" type="CollisionShape2D" parent="NoticeArea"]
 shape = SubResource("CircleShape2D_6bpyd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CharacterImage" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_38s6h")
 animation = &"Walk"
 autoplay = "Idle"
