@@ -183,6 +183,7 @@ Then the UI's AnimationPlayer fades the top UI component.
 
 When SMC instantiates a character it is inactive (`active: bool = false`). Hero becomes active when the spawning sequence is finished.
 A Challenger becomes active when the Hero enters its Notice Area. 
+
 ## Scaling
 
 We don't want to scale the whole scene; just the graphic. So, the node containing the character's graphic __MUST BE NAMED__
@@ -201,3 +202,13 @@ impede the Hero's movement.
 Each level has a Marker2D node named "TeleportIn". This is the starting position for the Hero on each level.
 We set a timer (SpawnTimer) to fire when Hero scene is ready. When the timer expires, then the Hero script 
 executes code  to make the Hero appear on the level.
+
+### Moving
+
+We use an object named HeroInputHandler to process all input from the player to manipulate the Hero. It is added
+as a child of the Hero scene.
+
+*__Polling v. _input(event)__* 
+
+We tried doing event processing for moving, but we encountered some sort of lag. Therefore, we decided to use
+Input polling for all inputs.

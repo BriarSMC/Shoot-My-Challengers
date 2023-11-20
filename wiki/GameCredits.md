@@ -53,6 +53,8 @@
 - [LittleRobotSoundFactory](https://freesound.org/people/LittleRobotSoundFactory/)
 - [nioczkus](https://freesound.org/people/nioczkus/)
 - [Bratish](https://freesound.org/people/Bratish/)
-
+- [tim.kahn](https://freesound.org/people/tim.kahn/)
+- [Jacco18](https://freesound.org/people/Jacco18/)
+- 
 ### Other Resources
 - [DevTeam.Space](https://devteam.space)

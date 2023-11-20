@@ -537,6 +537,9 @@ period that may be active. No other shields can be used while this one is active
 *Long Shield* - This makes the Hero immune from damage for a preset amount of time which is longer than the short shield.
 This shield cancels any damage immunity period that may be active. No other shields can be used while this one is active.
 
+*Empty* - If the player activates the Primary Weapon/Secondary Weapon/Short Shield/Long Shield and the inventory count is zero (0),
+then nothing happens except of an empty sound being played.
+
 ##### Vampire
 
 *Movement* - None.
@@ -842,7 +845,9 @@ __Sound Effects__
   * Bomb (Secondary Weapon) - 
     - Impact sound: Plays when the player triggers the input for this weapon.
     - Explosion sound: Plays when the bomb explodes.
+  * Shield: Humming sound while shield is active
   * Death - Plays when Hero dies.
+  * Empty Inventory - Plays when the player tries to activate something that has a zero (0) inventory count.
 
 ### Vampire
 
@@ -1199,6 +1204,8 @@ SMC sets the gem image randomly when it is instantiated.
   - Secondary weapon: 
     + Impact: *REtro Impact Metal 05.mp3*
     + Explosion: *Retro Weapon Bomb 06.mp3*
+  - Shield: *44823__timkahn__dronnee.mp3*
+  - Empty: *419023__jacco18__acess-denied-buzz-amplified.mp3*
   - Death: *572335_jarl_fenrir_dies-irae.mp3*
 * Vampire
   - Primary weapon: *268501_bernuy_vampire-bites.mp3*

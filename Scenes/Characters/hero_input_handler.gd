@@ -73,15 +73,16 @@ func _physics_process(delta):
 #		
 func pollInput(delta) -> void:
 	moveTarget(delta)	
-	hero.direction = Input.get_vector("Left", "Right", "Up", "Down")
-	if hero.direction != Vector2.ZERO:
-		move()
+	moveHero()
+	firePrimary()
+	fireSecondary()
+	raiseShield()
 
 #+
 # Class specific methods
 #-
 
-# move()
+# moveHero()
 # Move Hero accordingly
 #
 # Parameters
@@ -90,12 +91,18 @@ func pollInput(delta) -> void:
 #	None
 #==
 # Just return if we aren't active yet
+# Get the input vector
+# If it's zero, then just return
 # Set that we've moved
 # Set the new velocity
 # Move the Hero
 # Record Hero's new position
-func move() -> void:
+func moveHero() -> void:
 	if not hero.active:
+		return
+		
+	hero.direction = Input.get_vector("Left", "Right", "Up", "Down")
+	if hero.direction == Vector2.ZERO:
 		return
 		
 	hero.moved = true
@@ -126,6 +133,63 @@ func moveTarget(delta) -> void:
 	if targetVelocity != Vector2.ZERO:
 		targetPointer.position += (targetVelocity * targetSpeed * delta)
 
+# firePrimary()
+# If the player activates the primary weapon, then fire it
+#
+# Parameters
+#	None
+# Return 
+#	None
+#==
+# If the inventory is empty, then warn the player
+func firePrimary() -> void:
+	if Globals.primaryWeaponCount <= 0:
+		emptyWarning()
+		return
+		
+	
+# fireSecondary()
+# If the player activated secondary weapon, then fire it
+#
+# Parameters
+#	None
+# Return 
+#	None
+#==
+# If the inventory is empty, then warn the player
+func fireSecondary() -> void:
+	if Globals.secondaryWeaponCount <= 0:
+		emptyWarning()
+		return
+	
+# func raiseShield()
+# If player activates the shield, then raise it
+#
+# Parameters
+#	None
+# Return 
+#	None
+#==
+# If the inventory is empty, then warn the player
+func raiseShield() -> void:
+	if Globals.shortShieldCount <= 0 and Globals.longShieldCount <= 0:
+		emptyWarning()
+		return
+
+# emptyWarning()
+# If the player tries to activate a weapon or shield and the inventory is empty,
+# then SMC executes this method
+#
+# Parameters
+#	None
+# Return 
+#	None
+#==
+# Play empty sound
+func emptyWarning() -> void:
+	pass
+	
+	
 #+
 # Signal Callbacks
 #-
