@@ -16,13 +16,17 @@ const LEVELSPATH = "res://Scenes/Levels/"
 const LEVELFILENAME = "level_"
 const LEVELEXTENSION = ".tscn"
 
+var level: Node 
+
 # Preloaded scenes
 var preloadedScenes: Array[PackedScene] =[
 	preload("res://Scenes/UI/start_screen.tscn"),
 	preload("res://Scenes/UI/win_screen.tscn"),
 	preload("res://Scenes/UI/lose_screen.tscn"),
 	preload("res://Scenes/UI/credits_screen.tscn")
-]
+	]
+var heroPWeaponScene: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
+var heroSWeaponScene: PackedScene = preload("res://Scenes/Weapons/bomb.tscn")
 
 # State control
 # Start = 0, Win = 1, Lose = 2, Credits = 3, Exit = 4, Level = 5
@@ -70,3 +74,42 @@ func changeGameState(newState: state, level: int = 0) -> void:
 				get_tree().change_scene_to_file("res://Scenes/scene_demo.tscn")
 		_: 
 			print('Invalid state value for MCP.ChangeGameState')
+			
+# getDirection(src, tgt)
+# Return the direction from source to target
+#
+# Parameters
+#	src: Object					Oject shooting
+#	tgt: Object 				Object of the target
+# Return 
+#	Vector2						Direction to the target
+#==
+# 
+func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true) -> Vector2:
+	var to: Object
+	if useTargetPointer:
+		to = level.get_node("Hero").get_node("TargetPointer")
+	else:
+		to = tgt
+		
+	return (to.get_global_position() - src.position).normalized()
+					
+# fireHeroPWeapon(pos, dir, rot)
+# Creates amd fires the Hero's Primary Weapon
+#
+# Parameters
+#	pos: Vector2				Starting position for the weapon
+#	dir: Vector2				Direction the weapon will go
+#	rot: float					Rotation applied to the weapon before firing it
+# Return 
+#	None
+#==
+# Create a new object for the weapon
+# Set its position, direction and rotation
+# Add it to the tree
+func fireHeroPWeapon(pos: Vector2, dir: Vector2, rot: float) -> void:
+		var weapon = heroPWeaponScene.instantiate()
+		weapon.position = pos
+		weapon.direction = dir
+		weapon.rotation = rot
+		level.get_node("Weapons").add_child(weapon)

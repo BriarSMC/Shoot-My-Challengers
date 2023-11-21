@@ -19,9 +19,21 @@ class_name Level1
 # Virtual Godot methods
 #-
 
+# _ready()
+# Called when the node is ready
+#
+# Parameters
+#	None
+# Return 
+#	None
+#==
+# Scale the playing area images
+# Tell the MCP what level is playing
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
-	
+	MCP.level = self
+
+# Temp to exit the scene for debugging	
 func _physics_process(_delta):
 	checkKeyPressed()
 #+

@@ -4,3 +4,21 @@
 
 [node name="HeroInputHandler" type="Node2D"]
 script = ExtResource("1_sicyg")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PrimaryCooldownTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+
+[node name="SecondaryCooldownTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+
+[node name="ShieldsActiveTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="ImmuneTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true

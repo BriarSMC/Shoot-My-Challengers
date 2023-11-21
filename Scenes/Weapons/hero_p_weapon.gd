@@ -18,6 +18,9 @@ class_name HeroPWeapon
 # Virtual Godot methods
 #-
 
+func _process(delta):
+	position += direction + speed * delta
+	
 #+
 # Class specific methods
 #-

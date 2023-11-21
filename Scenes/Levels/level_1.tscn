@@ -160,3 +160,5 @@ autoplay = "FadeFromBlack"
 libraries = {
 "": SubResource("AnimationLibrary_l2tgc")
 }
+
+[node name="Weapons" type="Node2D" parent="."]

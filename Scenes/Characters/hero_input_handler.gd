@@ -12,6 +12,12 @@ class_name HeroInputHandler
 @onready var hero: Object = self.find_parent("Hero")  # Get the Hero object
 @onready var targetPointer: Object = hero.get_node("TargetPointer")
 
+var primaryWeapon: HeroPWeapon 
+
+var primaryCooldownFinished: bool = true
+var secondaryCooldownFinished: bool = true
+var shieldActive: bool = false
+
 # The following properties must be set in the Inspector by the designer
 @export var targetSpeed: float = 500
 
@@ -127,7 +133,7 @@ func moveHero() -> void:
 func moveTarget(delta) -> void:
 	if hero.inputDevice != hero.inputType.GAMECONTROLLER:
 		return
-
+	
 	var targetPosition: Vector2 = targetPointer.position
 	var targetVelocity: Vector2 = Input.get_vector("CursorLeft", "CursorRight", "CursorUp", "CursorDown")
 	if targetVelocity != Vector2.ZERO:
@@ -142,12 +148,24 @@ func moveTarget(delta) -> void:
 #	None
 #==
 # If the inventory is empty, then warn the player
+# Instantiate a new weapon object
+# Fire it at the TargetPointer
+# Decrement the inventory
 func firePrimary() -> void:
 	if Globals.primaryWeaponCount <= 0:
+		print('Primary weapon empty')
 		emptyWarning()
 		return
-		
 	
+	if not Input.is_action_just_pressed("PrimaryWeapon")	:
+		return
+				
+	if primaryCooldownFinished:
+		print('Player pressed fire primary')						
+		MCP.fireHeroPWeapon(hero.position, MCP.getDirection(hero), 0)
+		
+		
+		
 # fireSecondary()
 # If the player activated secondary weapon, then fire it
 #
@@ -189,7 +207,7 @@ func raiseShield() -> void:
 func emptyWarning() -> void:
 	pass
 	
-	
+
 #+
 # Signal Callbacks
 #-

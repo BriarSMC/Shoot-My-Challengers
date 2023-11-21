@@ -16,6 +16,10 @@ var inputDevice: inputType
 var moved: bool = false							# Whether Hero moved this frame
 
 # The following properties must be set in the Inspector by the designer
+@export var startingPWeapon: int 
+@export var startingSWeapon: int
+@export var startingSShield: int
+@export var staringLShield: int
 
 # The following are set based on the Inspector values
 
@@ -36,6 +40,7 @@ var moved: bool = false							# Whether Hero moved this frame
 # Move us to the spawn location
 # Look East
 # Remember to call the parent
+# Set inventory
 func _ready() -> void:
 	if Input.get_connected_joypads().size() > 0:
 		inputDevice = inputType.GAMECONTROLLER
@@ -48,6 +53,12 @@ func _ready() -> void:
 	$CharacterImage.play("IdleEast")
 	visible = true
 	$TargetPointer.visible = false
+	
+	Globals.primaryWeaponCount = startingPWeapon
+	Globals.secondaryWeaponCount = startingSWeapon
+	Globals.shortShieldCount = startingSShield
+	Globals.longShieldCount = startingSShield
+	
 	super._ready()
 	
 # _process(delta)
