@@ -69,4 +69,4 @@ libraries = {
 
 [node name="CreditScreenUI" parent="." instance=ExtResource("3_3ws05")]
 
-[connection signal="backToStart" from="CreditScreenUI" to="." method="_on_credit_screen_ui_back_to_start"]
+[connection signal="backButtonClicked" from="CreditScreenUI" to="." method="_on_credit_screen_ui_back_button_clicked"]

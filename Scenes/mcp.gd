@@ -85,9 +85,8 @@ func changeScreen(newScreen: screen, newLevel: int = 0) -> void:
 	match newScreen:
 		screen.START, screen.WIN, screen.LOSE, screen.CREDITS:
 			print("Changing to ", newScreen)
-#			var e = get_tree().change_scene_to_packed(Preloaded.preloadedScenes[newScreen])
-			var e = get_tree().change_scene_to_file(gameScenes[newScreen])
-			print(e)
+#			get_tree().change_scene_to_packed(Preloaded.preloadedScenes[newScreen])
+			get_tree().change_scene_to_file(gameScenes[newScreen])
 		screen.LEVEL:
 			if newLevel > 0:
 				get_tree().change_scene_to_file(

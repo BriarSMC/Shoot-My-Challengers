@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 #++
-# This is the Game Control UI script for the WinScreen scene.
+# This is the Game Control UI script for the CreditScreen scene.
 #
 # The only thing this script does is declare signals for each of the
 # buttons on the screen, and provides functions Godot will run when the
@@ -9,7 +9,7 @@ extends CanvasLayer
 #
 #--
 
-signal backToStart
+signal backButtonClicked
 signal fadeTheUI
 
 func _ready():
@@ -20,4 +20,5 @@ func fadeUI():
 	$VBoxContainer/AnimationPlayer.play("FadeToBlack")
 
 func _on_back_pressed():
-	backToStart.emit()
+	print('Credit Screen Back clicked')
+	backButtonClicked.emit()
