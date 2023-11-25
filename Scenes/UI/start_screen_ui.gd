@@ -12,12 +12,13 @@ extends CanvasLayer
 signal startGame
 signal showCredits
 signal showDemoPage
+signal fadeTheUI
 
 func _ready():
-	MCP.connect("fadeTheUI", fadeTheUI)
+	connect("fadeTheUI", fadeUI)
 	
-func fadeTheUI():
-	print("fadeTheUI called")
+func fadeUI():
+	print("fadeUI called")
 	$VBoxContainer/AnimationPlayer.play("FadeToBlack")
 
 func _on_start_game_pressed():

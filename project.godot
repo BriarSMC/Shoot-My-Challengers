@@ -18,8 +18,8 @@ config/icon="res://skull_icon.svg"
 
 [autoload]
 
+Preloaded="*res://autoload/preloaded.gd"
 Globals="*res://autoload/globals.gd"
-MCP="*res://autoload/master_control_program.gd"
 
 [display]
 
@@ -27,6 +27,10 @@ window/size/viewport_width=500
 window/size/viewport_height=350
 window/size/mode=2
 mouse_cursor/custom_image="res://Graphics/Misc/cursor.png"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

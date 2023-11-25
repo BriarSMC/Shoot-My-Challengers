@@ -1,4 +1,5 @@
-extends Node
+extends Node2D
+class_name Mcp
 
 #++
 # This is the entry point for the game. It controls the flow of the screens and levels
@@ -11,6 +12,7 @@ extends Node
 #-
 
 signal fadeTheUI
+signal changeGameScreen
 
 const LEVELSPATH = "res://Scenes/Levels/"
 const LEVELFILENAME = "level_"
@@ -19,18 +21,18 @@ const LEVELEXTENSION = ".tscn"
 var level: Node 
 
 # Preloaded scenes
-var preloadedScenes: Array[PackedScene] =[
-	preload("res://Scenes/UI/start_screen.tscn"),
-	preload("res://Scenes/UI/win_screen.tscn"),
-	preload("res://Scenes/UI/lose_screen.tscn"),
-	preload("res://Scenes/UI/credits_screen.tscn")
+var gameScenes: Array[String] =[
+	"res://Scenes/UI/start_screen.tscn",
+	"res://Scenes/UI/win_screen.tscn",
+	"res://Scenes/UI/lose_screen.tscn",
+	"res://Scenes/UI/credits_screen.tscn"
 	]
-var heroPWeaponScene: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
-var heroSWeaponScene: PackedScene = preload("res://Scenes/Weapons/bomb.tscn")
+var heroPWeaponScene: String = "res://Scenes/Weapons/hero_p_weapon.tscn"
+var heroSWeaponScene: String = "res://Scenes/Weapons/bomb.tscn"
 
-# State control
+# Screen control
 # Start = 0, Win = 1, Lose = 2, Credits = 3, Exit = 4, Level = 5
-enum state {START, WIN, LOSE, CREDITS, EXIT, LEVEL }
+enum screen {START, WIN, LOSE, CREDITS, EXIT, LEVEL, }
 
 # The following properties must be set in the Inspector by the designer
 
@@ -40,10 +42,29 @@ enum state {START, WIN, LOSE, CREDITS, EXIT, LEVEL }
 # Virtual Godot methods
 #-
 
-#func _ready() -> void:
-#	pass
-	
+# _ready()
+# Called when the node is ready
+#
+# Parameters
+#	None
+# Return 
+#	None
+#==
+# What the code is doing (steps)
+func _ready() -> void:
+	connect("changeGameScreen", changeScreen)
 
+# _process(delta)
+# Called every frame
+#
+# Parameters
+#	delta: float				Elapsed time since last call
+# Return 
+#	None
+#==
+# What the code is doing (steps)
+func _process(_delta) -> void:
+	pass
 
 #+
 # Class specific methods
@@ -59,15 +80,16 @@ enum state {START, WIN, LOSE, CREDITS, EXIT, LEVEL }
 #	None
 #==
 # What the code is doing (steps)
-func changeGameState(newState: state, level: int = 0) -> void:
-	print('Mcp.changeGameState: state=', newState, '  level=', level)
-	match newState:
-		state.START, state.WIN, state.LOSE, state.CREDITS:
-			print("Changing to ", newState)
-			var e = get_tree().change_scene_to_packed(preloadedScenes[newState])
+func changeScreen(newScreen: screen, newLevel: int = 0) -> void:
+	print('changeScreen: screen=', newScreen, '  newLevel=', newLevel)
+	match newScreen:
+		screen.START, screen.WIN, screen.LOSE, screen.CREDITS:
+			print("Changing to ", newScreen)
+#			var e = get_tree().change_scene_to_packed(Preloaded.preloadedScenes[newScreen])
+			var e = get_tree().change_scene_to_file(gameScenes[newScreen])
 			print(e)
-		state.LEVEL:
-			if level > 0:
+		screen.LEVEL:
+			if newLevel > 0:
 				get_tree().change_scene_to_file(
 					LEVELSPATH + LEVELFILENAME + str(level) + LEVELEXTENSION)
 			else:
@@ -108,7 +130,7 @@ func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true
 # Set its position, direction and rotation
 # Add it to the tree
 func fireHeroPWeapon(pos: Vector2, dir: Vector2, rot: float) -> void:
-		var weapon = heroPWeaponScene.instantiate()
+		var weapon = Preloaded.heroPWeaponScene.instantiate()
 		weapon.position = pos
 		weapon.direction = dir
 		weapon.rotation = rot

@@ -162,7 +162,7 @@ func firePrimary() -> void:
 				
 	if primaryCooldownFinished:
 		print('Player pressed fire primary')						
-		MCP.fireHeroPWeapon(hero.position, MCP.getDirection(hero), 0)
+		Mcp.fireHeroPWeapon(hero.position, Mcp.getDirection(hero), 0)
 		
 		
 		

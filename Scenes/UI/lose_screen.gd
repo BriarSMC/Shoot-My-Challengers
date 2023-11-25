@@ -19,18 +19,8 @@ class_name LoseScreen
 # Virtual Godot methods
 #-
 
-# _ready()
-# Called when object is ready
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# Set the background image for the parent class
-func _ready() -> void:
-	super._ready()
-		
+
+	
 # Temp to exit the scene for debugging
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -53,5 +43,5 @@ func _input(event):
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.
 func _on_lose_screen_ai_continue_game():
-	MCP.fadeTheUI.emit()
+#	fadeTheUI.emit()
 	$Sprite2D/AnimationPlayer.play("FadeToBlack")

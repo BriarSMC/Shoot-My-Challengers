@@ -1,10 +1,11 @@
-extends Node2D
+extends Mcp
 class_name GameControlScreen
 
 #++
 # This defines the parent class for all game control UI screens
 #
 #--
+
 
 #+
 # Properties
@@ -29,6 +30,7 @@ class_name GameControlScreen
 # Reposistion the graphic to the center of the screen
 func _ready():
 	Globals.positionUIImage(self)	
+	super._ready()
 
 # _process(_delta)
 # Called once per frame
@@ -41,23 +43,10 @@ func _ready():
 #	None
 #==
 # Reposition the graphic
-func _process(_delta):
-	pass
-#	Globals.positionUIImage(self)
+func _process(delta):
+	Globals.positionUIImage(self)
+	super._process(delta)
 
 #+
 # Class specific methods
 #-
-# goToNextScreen()
-# This method loads the next screen. 
-#
-# HUGE NOTE: The end of $Sprite2D/AnimationPlayer needs to call this method
-#
-# Paramters
-#	paramname: type				Description
-# Return 
-#	value|None					Description
-#==
-# Call the MCP to change over to the next screen		
-func goToNextScreen(nextScene: int, level: int):
-	MCP.changeGameState(nextScene, level)

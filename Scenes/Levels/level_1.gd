@@ -28,10 +28,10 @@ class_name Level1
 #	None
 #==
 # Scale the playing area images
-# Tell the MCP what level is playing
+# Tell the Mcp what level is playing
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
-	MCP.level = self
+	Mcp.level = self
 
 # Temp to exit the scene for debugging	
 func _physics_process(_delta):
@@ -60,6 +60,6 @@ func checkKeyPressed() -> void:
 # Return 
 #	None
 #==
-# Call the MCP to change over to the next screen		
+# Call the Mcp to change over to the next screen		
 func goToNextScreen(nextLevel: int):
-	MCP.changeGameState(nextLevel)
+	Mcp.changeGameState(nextLevel)

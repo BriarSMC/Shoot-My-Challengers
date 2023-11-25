@@ -29,8 +29,8 @@ tracks/1/keys = {
 "times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0, 0],
-"method": &"goToNextScreen"
+"args": [&"changeGameScreen", 0, 0],
+"method": &"emit_signal"
 }]
 }
 tracks/2/type = "value"

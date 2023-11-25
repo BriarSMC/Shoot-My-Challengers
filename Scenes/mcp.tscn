@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duew45nqj2a3r"]
+
+[ext_resource type="Script" path="res://Scenes/mcp.gd" id="1_x473b"]
+
+[node name="mcp" type="Node2D"]
+script = ExtResource("1_x473b")

@@ -10,11 +10,12 @@ extends CanvasLayer
 #--
 
 signal continueGame
+signal fadeTheUI
 
 func _ready():
-	MCP.connect("fadeTheUI", fadeTheUI)
+	connect("fadeTheUI", fadeUI)
 	
-func fadeTheUI():
+func fadeUI():
 	$Container/AnimationPlayer.play("FadeToBlack")
 
 func _on_continue_pressed():
