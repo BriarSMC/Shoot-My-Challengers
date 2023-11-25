@@ -6,6 +6,8 @@ class_name HeroInputHandler
 #
 #--
 
+signal fireHeroPWeapon
+
 #+
 # Properties
 #-
@@ -162,7 +164,7 @@ func firePrimary() -> void:
 				
 	if primaryCooldownFinished:
 		print('Player pressed fire primary')						
-		Mcp.fireHeroPWeapon(hero.position, Mcp.getDirection(hero), 0)
+		fireHeroPWeapon.emit()
 		
 		
 		

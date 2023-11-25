@@ -35,6 +35,7 @@ var moved: bool = false							# Whether Hero moved this frame
 # Return 
 #	None
 #==
+# Connect to signals
 # See if we are using a game controller
 # If not, then we set to keyboard/mouse
 # Move us to the spawn location
@@ -42,6 +43,8 @@ var moved: bool = false							# Whether Hero moved this frame
 # Remember to call the parent
 # Set inventory
 func _ready() -> void:
+	connect("fireHeroPWeapon", firePWeapon)
+
 	if Input.get_connected_joypads().size() > 0:
 		inputDevice = inputType.GAMECONTROLLER
 #		$TargetPointer.position = self.position + Vector2.RIGHT * 300
@@ -75,6 +78,45 @@ func _process(delta):
 #+
 # Class specific methods
 #-
+# firePWeapon(pos, dir, rot)
+# Creates amd fires the Hero's Primary Weapon
+#
+# Parameters
+#	pos: Vector2				Starting position for the weapon
+#	dir: Vector2				Direction the weapon will go
+#	rot: float					Rotation applied to the weapon before firing it
+# Return 
+#	None
+#==
+# Create a new object for the weapon
+# Set its position, direction and rotation
+# Add it to the tree
+func firePWeapon() -> void:
+		var weapon = Preloaded.heroPWeaponScene.instantiate()
+#		weapon.position = pos
+#		weapon.direction = dir
+#		weapon.rotation = rot
+#		level.get_node("Weapons").add_child(weapon)
+
+# getDirection(src, tgt)
+# Return the direction from source to target
+#
+# Parameters
+#	src: Object					Oject shooting
+#	tgt: Object 				Object of the target
+# Return 
+#	Vector2						Direction to the target
+#==
+# 
+func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true) -> Vector2:
+	var to: Object
+	if useTargetPointer:
+		to = level.get_node("Hero").get_node("TargetPointer")
+	else:
+		to = tgt
+		
+	return (to.get_global_position() - src.position).normalized()
+
 
 # die()
 # Called by the Character class when our health hits zero
