@@ -31,7 +31,7 @@ class_name Level1
 # Tell the Mcp what level is playing
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
-	Mcp.level = self
+#	Mcp.level = self
 
 # Temp to exit the scene for debugging	
 func _physics_process(_delta):

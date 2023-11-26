@@ -114,7 +114,7 @@ func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true
 		to = level.get_node("Hero").get_node("TargetPointer")
 	else:
 		to = tgt
-		
+
 	return (to.get_global_position() - src.position).normalized()
 
 

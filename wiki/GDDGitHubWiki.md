@@ -114,10 +114,10 @@ game's logo, and 'Loading..." text. Usually, this will be just a flash until the
 
 __Game Start__
 
-This screen is displayed when the game has been loaded/reloaded and is ready to play. It be a splash screen displaying
+This screen is displayed when the game has been loaded/reloaded and is ready to play. It is a screen displaying
 'Start Game', 'Exit Game', and 'Game Credits' buttons. When the player clicks the 'Start Game' button, then the game
 starts by loading and displaying the Level-1 Scene. When the player clicks the 'Exit Game' button, then the game
-immediately exits to the hardware's operation system.
+immediately exits to the hardware's operating system.
 
 __Game End__
 
@@ -150,7 +150,7 @@ During game play each level will display a UI containing critical stats. They ar
 
 The game play consists of 5 levels. When the player starts game play (Start Screen), SMC displays the first level (Level 1). 
 Levels are larger than the game viewport. At the beginning of a level the viewport contains the portion of 
-the level the Hero will start from. SMC blocks the player's input at this time.
+the level the Hero will start from. SMC blocks the player's input until the Hero's spawning process is complete.
 
 The Hero character is not visible when the level loads and displays. At a preset time the game shows the Hero in the viewport using
 an effect akin to using a teleport. When the Hero character finishes with the teleport, then SMC enables
@@ -464,8 +464,7 @@ these input devices.
 ##### UI Interaction
 
 The sole interaction with the UI is clicking buttons on the Start, End, and Credits screens. When using the keyboard/mouse the 
-player uses the left mouse button to click on buttons. When the player is using a game controller then the following buttons
-select buttons:
+player uses the left mouse button to click on buttons. The player can select the following buttons:
 
 * Game Start
   - Start Game - A button
@@ -491,9 +490,10 @@ __Keyboard/Mouse__
 __Game Controller__
 
 * Movement - Left Joystick
+* Aim/Move Target Pointer - Right Joystick
 * Primary Weapon - Right Trigger
 * Secondary Weapon - Left Trigger
-* Shields - Left Button or Right Button
+* Shields - Left Shoulder Button or Right Shoulder Button
 
 ##### Viewport
 
