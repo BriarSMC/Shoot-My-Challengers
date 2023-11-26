@@ -1,9 +1,11 @@
-extends Node2D
+extends Level
 class_name Level1
 
 #++
 # This is the Level 1 scene
 #
+# Not much happens here. Almost all the script for a level is in the parent class
+# Level.
 #--
 
 #+
@@ -11,7 +13,6 @@ class_name Level1
 #-
 
 # The following properties must be set in the Inspector by the designer
-@export var scaleFactor: float
 
 # The following are set based on the Inspector values
 
@@ -19,47 +20,6 @@ class_name Level1
 # Virtual Godot methods
 #-
 
-# _ready()
-# Called when the node is ready
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# Scale the playing area images
-# Tell the Mcp what level is playing
-func _ready() -> void:
-	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
-#	Mcp.level = self
 
-# Temp to exit the scene for debugging	
-func _physics_process(_delta):
-	checkKeyPressed()
-#+
-# Class specific methods
-#-
 
-# Temp to exit the scene for debugging
-func checkKeyPressed() -> void:
-	if Input.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-	if Input.is_key_pressed(KEY_W):
-		$AnimationPlayer.play("FadeToBlackWin")
-	if Input.is_key_pressed(KEY_L):
-		$AnimationPlayer.play("FadeToBlackLose")
-		
-		
-# goToNextScreen()
-# This method loads the next screen. 
-#
-# HUGE NOTE: The end of $Sprite2D/AnimationPlayer needs to call this method
-#
-# Paramters
-#	nextLevel: int				The next level to go to 
-# Return 
-#	None
-#==
-# Call the Mcp to change over to the next screen		
-func goToNextScreen(nextLevel: int):
-	Mcp.changeGameState(nextLevel)
+

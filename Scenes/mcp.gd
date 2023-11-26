@@ -18,9 +18,9 @@ const LEVELSPATH = "res://Scenes/Levels/"
 const LEVELFILENAME = "level_"
 const LEVELEXTENSION = ".tscn"
 
-var level: Node 
+var challengersLeft: int					# Number of challengers left on level
 
-# Preloaded scenes
+# Game Control Scene files
 var gameScenes: Array[String] =[
 	"res://Scenes/UI/start_screen.tscn",
 	"res://Scenes/UI/win_screen.tscn",
@@ -66,6 +66,19 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	pass
 
+# _physics_process(delta)
+# Called every frame
+#
+# Parameters
+#	delta: float				Elapsed time since last call
+# Return 
+#	None
+#==
+# What the code is doing (steps)
+func _physics_process(_delta) -> void:
+	pass
+	
+	
 #+
 # Class specific methods
 #-
@@ -89,8 +102,9 @@ func changeScreen(newScreen: screen, newLevel: int = 0) -> void:
 			get_tree().change_scene_to_file(gameScenes[newScreen])
 		screen.LEVEL:
 			if newLevel > 0:
+				print('Changing to level ', newLevel)
 				get_tree().change_scene_to_file(
-					LEVELSPATH + LEVELFILENAME + str(level) + LEVELEXTENSION)
+					LEVELSPATH + LEVELFILENAME + str(newLevel) + LEVELEXTENSION)
 			else:
 				get_tree().change_scene_to_file("res://Scenes/scene_demo.tscn")
 		_: 

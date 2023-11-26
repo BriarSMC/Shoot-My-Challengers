@@ -1,6 +1,12 @@
 extends Node
 
 #++
+# Misc globals
+#--
+var currentLevelNdx: int				# Current level playing
+var currentLevel: Object				# Current level object pointer
+
+#++
 # This block is so that enemies can find the Hero.
 # The hero must constantly update his position here 
 # so other characters can find him.

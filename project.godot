@@ -18,7 +18,6 @@ config/icon="res://skull_icon.svg"
 
 [autoload]
 
-Preloaded="*res://autoload/preloaded.gd"
 Globals="*res://autoload/globals.gd"
 
 [display]
