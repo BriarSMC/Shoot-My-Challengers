@@ -920,5 +920,7 @@ position = Vector2(150, 0)
 [node name="Sprite2D" type="Sprite2D" parent="TargetPointer"]
 texture = ExtResource("5_6iwhs")
 
+[node name="WeaponsDeployed" type="Node2D" parent="."]
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="animation_finished" from="TeleportEffect" to="." method="_on_teleport_effect_animation_finished"]

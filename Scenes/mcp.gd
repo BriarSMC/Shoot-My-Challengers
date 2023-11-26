@@ -50,9 +50,16 @@ enum screen {START, WIN, LOSE, CREDITS, EXIT, LEVEL, }
 # Return 
 #	None
 #==
-# What the code is doing (steps)
+# Set up changing to next game screen
+# Detect what kind of input device the player is using
+# Hide the mouse pointer if it's a game controller
 func _ready() -> void:
 	connect("changeGameScreen", changeScreen)
+	if Input.get_connected_joypads().size() > 0:
+		Globals.inputDevice = Globals.inputType.GAMECONTROLLER
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Globals.inputDevice = Globals.inputType.KEYBOARD
 
 # _process(delta)
 # Called every frame

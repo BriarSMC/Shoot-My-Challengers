@@ -10,10 +10,10 @@ class_name Hero
 # Properties
 #-
 
-enum inputType {KEYBOARD, GAMECONTROLLER, }
+var moved: bool = false						# Whether Hero moved this frame
 
-var inputDevice: inputType
-var moved: bool = false							# Whether Hero moved this frame
+@onready var pWeapon: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
+@onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/bomb.tscn")
 
 # The following properties must be set in the Inspector by the designer
 @export var startingPWeapon: int 
@@ -37,7 +37,7 @@ var moved: bool = false							# Whether Hero moved this frame
 #==
 # Connect to signals
 # See if we are using a game controller
-# If not, then we set to keyboard/mouse
+# Turn on TargetPointer if using game controller
 # Move us to the spawn location
 # Look East
 # Remember to call the parent
@@ -45,12 +45,10 @@ var moved: bool = false							# Whether Hero moved this frame
 func _ready() -> void:
 	connect("fireHeroPWeapon", firePWeapon)
 
-	if Input.get_connected_joypads().size() > 0:
-		inputDevice = inputType.GAMECONTROLLER
-#		$TargetPointer.position = self.position + Vector2.RIGHT * 300
+	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
 		$TargetPointer.visible = true
 	else:
-		inputDevice = inputType.KEYBOARD
+		$TargetPointer.visible = false
 		
 	global_position = find_parent("Level*").find_child("TeleportIn").global_position
 	$CharacterImage.play("IdleEast")
@@ -92,11 +90,19 @@ func _process(delta):
 # Set its position, direction and rotation
 # Add it to the tree
 func firePWeapon() -> void:
-		var weapon = Preloaded.heroPWeaponScene.instantiate()
-#		weapon.position = pos
-#		weapon.direction = dir
-#		weapon.rotation = rot
-#		level.get_node("Weapons").add_child(weapon)
+	var weapon = pWeapon.instantiate()
+	var rot: float	= self.rotation
+	var pos: Vector2
+	
+	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
+		pos = $TargetPointer.position
+	else:
+		pos = get_viewport().get_mouse_position()
+
+	weapon.position = self.position
+	weapon.direction = (pos - self.position).normalized()
+	weapon.rotation = rot
+	$WeaponsDeployed.add_child(weapon)
 
 # getDirection(src, tgt)
 # Return the direction from source to target
@@ -111,7 +117,7 @@ func firePWeapon() -> void:
 func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true) -> Vector2:
 	var to: Object
 	if useTargetPointer:
-		to = level.get_node("Hero").get_node("TargetPointer")
+		to = $TargetPointer
 	else:
 		to = tgt
 

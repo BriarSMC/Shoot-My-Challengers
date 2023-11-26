@@ -29,33 +29,6 @@ var shieldActive: bool = false
 # Virtual Godot methods
 #-
 
-# _ready()
-# Called when the node is ready
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# If a game controller is hooked up, then hide the mouse
-# cuz we'll be using the Hero's TargetPointer for aiming.
-func _ready() -> void:
-	if hero.inputType.GAMECONTROLLER:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
-# _exit_tree()
-# Called when the node is destroyed
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# Just make the mouse visible regardless
-func _exit_tree():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	
 # _physics_process(delta)
 # Called every physics frame
 #

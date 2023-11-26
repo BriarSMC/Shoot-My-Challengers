@@ -6,6 +6,10 @@ extends Node
 var currentLevelNdx: int				# Current level playing
 var currentLevel: Object				# Current level object pointer
 
+# Mcp sets this
+enum inputType {KEYBOARD, GAMECONTROLLER, }
+var inputDevice: inputType
+
 #++
 # This block is so that enemies can find the Hero.
 # The hero must constantly update his position here 
