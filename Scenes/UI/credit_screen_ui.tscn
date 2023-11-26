@@ -1,6 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1nw184mg2hj7"]
+[gd_scene load_steps=9 format=3 uid="uid://b1nw184mg2hj7"]
 
 [ext_resource type="Script" path="res://Scenes/UI/credit_screen_ui.gd" id="1_2x01i"]
+[ext_resource type="StyleBox" uid="uid://ctuctcvw68syx" path="res://Scenes/UI/UI-hover-button-style.tres" id="2_23fyy"]
+[ext_resource type="StyleBox" uid="uid://bqgoi1tqc1f3p" path="res://Scenes/UI/UI-normal-button-style.tres" id="3_0o7t2"]
+[ext_resource type="StyleBox" uid="uid://bvk7u42qhe10j" path="res://Scenes/UI/UI-pressed-button-style.tres" id="4_sjor6"]
+[ext_resource type="Script" path="res://Scenes/UI/back.gd" id="5_wfjyx"]
+
+[sub_resource type="Theme" id="Theme_6pptt"]
+Button/styles/focus = ExtResource("2_23fyy")
+Button/styles/hover = ExtResource("2_23fyy")
+Button/styles/normal = ExtResource("3_0o7t2")
+Button/styles/pressed = ExtResource("4_sjor6")
 
 [sub_resource type="Animation" id="Animation_7j54v"]
 resource_name = "fadeTheUI"
@@ -28,6 +38,7 @@ script = ExtResource("1_2x01i")
 [node name="Container" type="Container" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = SubResource("Theme_6pptt")
 
 [node name="ColorRect" type="ColorRect" parent="Container"]
 layout_mode = 2
@@ -102,6 +113,7 @@ text = "[b]Inspiration[/b]
 [node name="Back" type="Button" parent="Container"]
 layout_mode = 2
 text = "Back"
+script = ExtResource("5_wfjyx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

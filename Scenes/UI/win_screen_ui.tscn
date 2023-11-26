@@ -1,7 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://de82xquykqxeh"]
+[gd_scene load_steps=11 format=3 uid="uid://de82xquykqxeh"]
 
 [ext_resource type="Script" path="res://Scenes/UI/win_screen_ui.gd" id="1_m5n5l"]
 [ext_resource type="FontFile" uid="uid://b485tyxniqils" path="res://fonts/BattlesbridgeDemo-AL126.ttf" id="2_3v8p8"]
+[ext_resource type="StyleBox" uid="uid://ctuctcvw68syx" path="res://Scenes/UI/UI-hover-button-style.tres" id="2_61y0v"]
+[ext_resource type="StyleBox" uid="uid://bqgoi1tqc1f3p" path="res://Scenes/UI/UI-normal-button-style.tres" id="3_j4lco"]
+[ext_resource type="StyleBox" uid="uid://bvk7u42qhe10j" path="res://Scenes/UI/UI-pressed-button-style.tres" id="4_h5wl3"]
+[ext_resource type="Script" path="res://Scenes/UI/continue.gd" id="6_4shfi"]
+
+[sub_resource type="Theme" id="Theme_crj2s"]
+Button/styles/focus = ExtResource("2_61y0v")
+Button/styles/hover = ExtResource("2_61y0v")
+Button/styles/normal = ExtResource("3_j4lco")
+Button/styles/pressed = ExtResource("4_h5wl3")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ug45a"]
 font = ExtResource("2_3v8p8")
@@ -40,6 +50,7 @@ anchor_bottom = 0.112
 offset_left = -240.0
 offset_bottom = 103.0
 grow_horizontal = 0
+theme = SubResource("Theme_crj2s")
 
 [node name="Label" type="Label" parent="Container"]
 layout_mode = 2
@@ -51,6 +62,7 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Continue
 "
+script = ExtResource("6_4shfi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container"]
 root_node = NodePath("../..")
