@@ -41,6 +41,19 @@ func _process(delta):
 	Globals.positionUIImage(self)
 	super._process(delta)
 
+
+# _input(event)
+# Called whenever an input event occurs
+#
+# Parameters
+#	event						Describes the input event
+# Return 
+#	None
+#==
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+	
 # Class specific methods
 
 # Signal callbacks

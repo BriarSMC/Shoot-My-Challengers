@@ -5,10 +5,13 @@ extends CanvasLayer
 # The only thing this script does is declare signals for each of the
 # buttons on the screen, and provides functions Godot will run when the
 # player clicks one of those buttons.
+#
+# When we exit this screen for another we run the FadeToBlack animation to dim the screen.
+# Godot won't let us modulate the StartScreenUI. So we have to call the fadeUI() method 
+# in StartScreenUI.
 
 # Signals
 signal backButtonClicked
-signal fadeTheUI
 
 # Properties
 
@@ -17,18 +20,6 @@ signal fadeTheUI
 # The following are set based on the Inspector values
 
 # Virtual Godot methods
-
-# _ready()
-# Called when node is ready
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# Set up handling the fade the UI signal
-func _ready():
-	connect("fadeTheUI", fadeUI)
 
 # Class specific methods
 	

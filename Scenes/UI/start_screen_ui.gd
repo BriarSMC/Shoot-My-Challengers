@@ -2,16 +2,17 @@ extends CanvasLayer
 
 # This is the Game Control UI script for the StartScreen scene.
 #
-# The only thing this script does is declare signals for each of the
+# This script does declares signals for each of the
 # buttons on the screen, and provides functions Godot will run when the
-# player clicks one of those buttons.
+# player clicks one of those buttons. It also defines a function to fade the UI
+# elements.
 
 # Signals
 
 signal startGame
 signal showCredits
 signal showDemoPage
-signal fadeTheUI
+
 
 # Properties
 
@@ -21,18 +22,6 @@ signal fadeTheUI
 
 # Virtual Godot methods
 
-# _ready()
-# Called when node is ready
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# Set up handling the fade the UI signal
-func _ready():
-	connect("fadeTheUI", fadeUI)
-	
 # Class specific methods
 
 func fadeUI():

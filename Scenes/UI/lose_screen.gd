@@ -12,21 +12,6 @@ class_name LoseScreen
 
 # Virtual Godot methods
 
-
-	
-# _input(event)
-# Called whenever an input happens
-#
-# Parameters
-#	event						What event happened
-# Return 
-#	None
-#==
-# Quit the game is the player requests it
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-		
 # Class specific methods
 
 # Signal callbacks
@@ -43,5 +28,5 @@ func _input(event):
 # Start the animation player for FadeToBlack. This animation player will
 # signal the next screen to show.
 func _on_lose_screen_ai_continue_game():
-#	fadeTheUI.emit()
+	$LoseScreenAI.fadeUI()
 	$Sprite2D/AnimationPlayer.play("FadeToBlack")

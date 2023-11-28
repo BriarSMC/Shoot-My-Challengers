@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://blehuc240pu7n"]
 
 [ext_resource type="Script" path="res://Scenes/UI/start_screen_ui.gd" id="1_d725p"]
-[ext_resource type="StyleBox" path="res://Scenes/UI/UI-hover-button-style.tres" id="2_ibygu"]
-[ext_resource type="StyleBox" path="res://Scenes/UI/UI-normal-button-style.tres" id="3_3dscl"]
-[ext_resource type="StyleBox" path="res://Scenes/UI/UI-pressed-button-style.tres" id="4_nvl44"]
+[ext_resource type="StyleBox" uid="uid://ctuctcvw68syx" path="res://Scenes/UI/UI-hover-button-style.tres" id="2_ibygu"]
+[ext_resource type="StyleBox" uid="uid://bqgoi1tqc1f3p" path="res://Scenes/UI/UI-normal-button-style.tres" id="3_3dscl"]
+[ext_resource type="StyleBox" uid="uid://bvk7u42qhe10j" path="res://Scenes/UI/UI-pressed-button-style.tres" id="4_nvl44"]
 [ext_resource type="Script" path="res://Scenes/UI/StartGame.gd" id="5_m43a5"]
 
 [sub_resource type="Theme" id="Theme_oynqh"]

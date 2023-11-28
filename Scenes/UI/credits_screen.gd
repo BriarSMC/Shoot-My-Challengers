@@ -15,20 +15,6 @@ class_name CreditsScreen
 
 # Virtual Godot methods
 
-
-# _input(event)
-# Called whenever an input event occurs
-#
-# Parameters
-#	event						Describes the input event
-# Return 
-#	None
-#==
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-	
-		
 # Class specific methods
 
 # Signal callbacks
@@ -45,7 +31,7 @@ func _input(event):
 # Start the animation player for FadeToBlack. This animation player will
 # signal what screen is next.
 func _on_credit_screen_ui_back_to_start():
-#	fadeTheUI.emit()
+	$CreditScreenUI.fadeUI()
 	$Sprite2D/AnimationPlayer.play("FadeToBlack")
 
 

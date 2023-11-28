@@ -8,7 +8,7 @@ class_name Hero
 var moved: bool = false						# Whether Hero moved this frame
 
 @onready var pWeapon: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
-@onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/bomb.tscn")
+@onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/hero_s_weapon.tscn")
 
 # The following properties must be set in the Inspector by the designer
 @export var startingPWeapon: int 

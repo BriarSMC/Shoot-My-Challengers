@@ -9,7 +9,6 @@ extends CanvasLayer
 # Signals
 
 signal continueGame
-signal fadeTheUI
 
 # Properties
 
@@ -19,18 +18,6 @@ signal fadeTheUI
 
 # Virtual Godot methods
 
-# _ready()
-# Called when node is ready
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# Set up fading the UI signal
-func _ready():
-	connect("fadeTheUI", fadeUI)
-	
 # Class specific methods
 
 func fadeUI():

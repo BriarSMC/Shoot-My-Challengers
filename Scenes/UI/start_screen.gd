@@ -10,6 +10,10 @@ class_name StartScreen
 #	* View the game credits
 #
 # Levels return to this screen after a win or loss.
+#
+# When we exit this screen for another we run the FadeToBlack animation to dim the screen.
+# Godot won't let us modulate the StartScreenUI. So we have to call the fadeUI() method 
+# in StartScreenUI.
 
 # Signals
 
@@ -21,19 +25,6 @@ class_name StartScreen
 
 # Virtual Godot methods
 
-# _input(event)
-# Called whenever an input happens
-#
-# Parameters
-#	event						What event happened
-# Return 
-#	None
-#==
-# Quit the game is the player requests it
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-		
 # Class specific methods
 
 
@@ -51,7 +42,7 @@ func _input(event):
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.		
 func _on_start_screen_ui_start_game():
-#	fadeTheUI.emit()
+	$StartScreenUI.fadeUI()
 	$Sprite2D/AnimationPlayer.play("FadeToBlack")
 
 
@@ -67,7 +58,7 @@ func _on_start_screen_ui_start_game():
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.		
 func _on_start_screen_ui_show_credits():
-#	fadeTheUI.emit()
+	$StartScreenUI.fadeUI()
 	$Sprite2D/AnimationPlayer.play("FadeToBlackCredits")
 
 
@@ -83,5 +74,4 @@ func _on_start_screen_ui_show_credits():
 # Start the animation player for FadeToBlack. This animation player will
 # call our goToNextScreen() method.		
 func _on_start_screen_ui_show_demo_page():
-#	fadeTheUI.emit()
-	$Sprite2D/AnimationPlayer.play("FadeToBlackDemo")
+	$StartScreenUI.fadeUI()
