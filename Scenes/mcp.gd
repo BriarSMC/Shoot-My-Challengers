@@ -1,18 +1,14 @@
 extends Node2D
 class_name Mcp
 
-#++
 # This is the entry point for the game. It controls the flow of the screens and levels
 # presented to the player. 
-#
-#--
 
-#+
-# Properties
-#-
-
+# Signals
 signal fadeTheUI
 signal changeGameScreen
+
+# Properties
 
 const LEVELSPATH = "res://Scenes/Levels/"
 const LEVELFILENAME = "level_"
@@ -38,9 +34,7 @@ enum screen {START, WIN, LOSE, CREDITS, EXIT, LEVEL, }
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
 
 # _ready()
 # Called when the node is ready
@@ -86,11 +80,9 @@ func _physics_process(_delta) -> void:
 	pass
 	
 	
-#+
 # Class specific methods
-#-
 
-# changeGameState(newState [, level])
+# changeGameScreen(newState [, level])
 # This is used to change UI screens & scenes or exit the game
 #
 # Paramters
@@ -99,22 +91,22 @@ func _physics_process(_delta) -> void:
 # Return 
 #	None
 #==
-# What the code is doing (steps)
+# If it's a game control screen, then switch to it.
+# If it's for level screen 1-5, then switch to the level screen.
+# It it's for level 0, then switch to the demo screen (TODO: REMOVE THIS AT SOME POINT)
+# Then it's the "You can't get there from here" clause
 func changeScreen(newScreen: screen, newLevel: int = 0) -> void:
-	print('changeScreen: screen=', newScreen, '  newLevel=', newLevel)
 	match newScreen:
 		screen.START, screen.WIN, screen.LOSE, screen.CREDITS:
-			print("Changing to ", newScreen)
-#			get_tree().change_scene_to_packed(Preloaded.preloadedScenes[newScreen])
 			get_tree().change_scene_to_file(gameScenes[newScreen])
 		screen.LEVEL:
 			if newLevel > 0:
-				print('Changing to level ', newLevel)
 				get_tree().change_scene_to_file(
 					LEVELSPATH + LEVELFILENAME + str(newLevel) + LEVELEXTENSION)
 			else:
 				get_tree().change_scene_to_file("res://Scenes/scene_demo.tscn")
 		_: 
-			print('Invalid state value for Mcp.ChangeGameState')
+			print('Invalid state value for Mcp.changeGameScreen')
 			
 
+# Signal callbacks

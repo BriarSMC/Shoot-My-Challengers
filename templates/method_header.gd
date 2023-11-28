@@ -17,9 +17,9 @@ func name(params) -> void:
 # Parameters
 #	None
 # Return 
-#	vNone
+#	None
 #==
 # What the code is doing (steps)
-# Required: Child must call super._ready() if it defines own _ready() method
+# NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
 	pass

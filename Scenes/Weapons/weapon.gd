@@ -41,18 +41,6 @@ func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
 	pass
 
-# name(params)
-# Brief description
-#
-# Parameters
-#	paramname: type				Description
-# Return 
-#	value|None					Description
-#==
-# What the code is doing (steps)
-func name(params) -> void:
-	pass
-	
 # _process(delta)
 # Called every frame
 #

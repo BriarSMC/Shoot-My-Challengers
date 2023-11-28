@@ -1,24 +1,18 @@
 extends Mcp
 class_name GameControlScreen
 
-#++
 # This defines the parent class for all game control UI screens
-#
-#--
 
+# Signals
 
-#+
 # Properties
-#-
-
 
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
+
 # _ready()
 # Called when the object is ready
 #
@@ -47,6 +41,6 @@ func _process(delta):
 	Globals.positionUIImage(self)
 	super._process(delta)
 
-#+
 # Class specific methods
-#-
+
+# Signal callbacks

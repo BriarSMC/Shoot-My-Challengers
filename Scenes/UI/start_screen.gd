@@ -1,7 +1,6 @@
 extends GameControlScreen
 class_name StartScreen
 
-#++
 # This defines the class for the Start Control Screen.
 #
 # SMC displays this screen immediately following the splash screen.
@@ -11,35 +10,34 @@ class_name StartScreen
 #	* View the game credits
 #
 # Levels return to this screen after a win or loss.
-#--
 
-#+
+# Signals
+
 # Properties
-#-
 
 # The following properties must be set in the Inspector by the designer	
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
 
-
-
-# Temp to exit the scene for debugging
+# _input(event)
+# Called whenever an input happens
+#
+# Parameters
+#	event						What event happened
+# Return 
+#	None
+#==
+# Quit the game is the player requests it
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 		
-#+
 # Class specific methods
-#-
 
 
-#++
 # Signal callbacks
-#--
 
 # _on_start_screen_ai_start_game()
 # Captures the signal from the UI for the Start Screen when the
