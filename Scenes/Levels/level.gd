@@ -2,14 +2,9 @@ extends Mcp
 class_name Level
 
 
-#++
-# <description>
-#
-#--
+# This is the parent class for all levels
 
-#+
 # Properties
-#-
 
 # The following properties must be set in the Inspector by the designer
 @export var scaleFactor: float
@@ -17,9 +12,7 @@ class_name Level
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
 
 # _ready()
 # Called when the node is ready
@@ -56,37 +49,23 @@ func _ready() -> void:
 # Return 
 #	None
 #==
+# Check to see if player wants to quit the game
 # Check to see if we are dead
 # If so, then end the game
 # Check to see if all the enemies are dead
 # If so, then go to next level
 # Call the super
 func _process(delta) -> void:
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 	if Globals.health <= 0:
 		exitTheLevel('lose')
 	if challengersLeft <= 0:
 		exitTheLevel('won')	
 	super._process(delta)
 
-# Temp to exit the scene for debugging	
-func _physics_process(_delta):
-	checkKeyPressed()
-	super._physics_process(_delta)
 	
-	
-#+
 # Class specific methods
-#-
-
-# Temp to exit the scene for debugging
-func checkKeyPressed() -> void:
-	if Input.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-	if Input.is_key_pressed(KEY_W):
-		exitTheLevel('win')
-	if Input.is_key_pressed(KEY_L):
-		exitTheLevel('lose')
-		
 
 # exitTheLevel()
 # Exit the level and go to the next
@@ -104,7 +83,4 @@ func exitTheLevel(how: String) -> void:
 		'lose':
 			$AnimationPlayer.play("FadeToBlackLose")
 
-
-#+
 # Signal Callbacks
-#-

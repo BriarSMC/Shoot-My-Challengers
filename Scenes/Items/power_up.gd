@@ -1,15 +1,12 @@
 extends Node2D
 class_name PowerUp
-#++
-# This defines the parent class for an Item.
-#
-#--
 
-#+
+# This defines the parent class for an Item.
+
 # Properties
-#-
 
 # Designer will choose one of these types in the Inspector
+# LIFE = 0, PWEAPON = 1, SWEAPON = 2, SSHIELD = 3, LSHEILD = 4
 enum powerUpIs {LIFE, PWEAPON, SWEAPON, SSHIELD, LSHIELD,}
 
 # The following properties must be set in the Inspector by the designer
@@ -19,9 +16,7 @@ enum powerUpIs {LIFE, PWEAPON, SWEAPON, SSHIELD, LSHIELD,}
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
 
 # _ready()
 # Called when the object is ready
@@ -35,9 +30,7 @@ enum powerUpIs {LIFE, PWEAPON, SWEAPON, SSHIELD, LSHIELD,}
 func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
 	
-#+
 # Class specific methods
-#-
 
 # weHaveBeenCollected()
 # Called by the child when a collision with the Hero is detected.
@@ -62,3 +55,5 @@ func weHaveBeenCollected() -> void:
 			Globals.shortShieldCount += increaseItemCountBy
 		powerUpIs.LSHIELD:
 			Globals.longShieldCount += increaseItemCountBy
+
+# Signal callbacks

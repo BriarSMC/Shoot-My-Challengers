@@ -1,24 +1,18 @@
 extends Character
 class_name SkeletonGrimReaper
-#++
 # This character 'stalks' the Hero. When the Hero is in out Notice Area, then
 # we use a Naviation Agent to move toward him. The NavigationRegion2D in the
 # current level defines our area of operation.
 #
 # We also play special music when the Hero is in our Notice Area.
-#--
 
-#+
 # Properties
-#-
 
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
 
 # _ready()
 # Executed when the node is ready
@@ -97,6 +91,6 @@ func _on_notice_area_body_exited(body):
 		active = false
 
 	
-#+
 # Class specific methods
-#-
+
+# Signal callbacks

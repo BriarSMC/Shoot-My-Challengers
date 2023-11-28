@@ -1,14 +1,9 @@
 extends Character
 class_name Hero
 
-#++
 # This class defines the Hero character which the player controls
-#
-#--
 
-#+
 # Properties
-#-
 
 var moved: bool = false						# Whether Hero moved this frame
 
@@ -23,12 +18,10 @@ var moved: bool = false						# Whether Hero moved this frame
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
 
 # _ready()
-# Our _ready method
+# Called when the node is ready
 #
 # Paramters
 #	None
@@ -41,6 +34,7 @@ var moved: bool = false						# Whether Hero moved this frame
 # Look East
 # Remember to call the parent
 # Set health and inventory
+# Call the parent _ready
 func _ready() -> void:
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
 		$TargetPointer.visible = true
@@ -71,9 +65,9 @@ func _ready() -> void:
 # Save the Hero's position so that other Characters know where we are.
 func _process(_delta):
 	Globals.heroPosition = position
-#+
+
 # Class specific methods
-#-
+
 # firePWeapon(pos, dir, rot)
 # Creates amd fires the Hero's Primary Weapon
 #
@@ -152,24 +146,23 @@ func die() -> void:
 # Return 
 #	value|None					Description
 #==
-
-# Make us visible
+# Play the animation to make us visible
 func spawn() -> void:	
 	$CharacterImage/AnimationPlayer.play("FadeFromBlack")
 
-
-#+
 # Signal callbacks
-#-
 
+# Spawn us when the timer fires
 func _on_spawn_timer_timeout():
 	spawn()
 
-
+# We can set the Hero as active now
+# If the game controller is plugged in, then turn on the target pointer
 func _on_teleport_effect_animation_finished():
 	active = true
-	$TargetPointer.visible = true
+	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
+		$TargetPointer.visible = true
 
-
+# Trigger pulled, then call the firePWeapon method
 func _on_hero_input_handler_fire_hero_p_weapon():
 	firePWeapon()

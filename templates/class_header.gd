@@ -11,9 +11,6 @@ class_name yourclassname
 
 # Virtual Godot methods
 
-func _ready() -> void:
-	pass
-	
 # Class specific methods
 
 # Signal Callbacks

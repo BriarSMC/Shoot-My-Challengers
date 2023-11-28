@@ -1,16 +1,12 @@
 extends Node2D
 class_name Chest
 
-#++
 # This is the base class definition for any container in the game. 
 # It's primary purpose is to provide a place for items to spawn from, and
 # to provide methods to instantiate them and position them on the level.
-#
-#--
 
-#+
 # Properties
-#-
+var chestClosed: bool = true
 
 # The following properties must be set in the Inspector by the designer
 @export var scaleFactor: float
@@ -19,9 +15,7 @@ class_name Chest
 # The following are set based on the Inspector values
 @onready var itemsCount: int = items.size()
 
-#+
 # Virtual Godot methods
-#-
 
 # _ready()
 # Called when object is ready
@@ -32,13 +26,10 @@ class_name Chest
 #	value|None					Description
 #==
 # Resize the graphic
-
 func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
 	
-#+
 # Class specific methods
-#-
 
 # openChest(animationPlayer)
 # This method does the following:
@@ -51,6 +42,9 @@ func _ready() -> void:
 # Return 
 #	value|None					Description
 #==
-# What the code is doing (steps)
+# Open the chest only if its closed
 func openChest(animationPlayer: AnimationPlayer) -> void:
-	pass
+	if chestClosed:
+		chestClosed = false
+		animationPlayer.play("Open")
+		# Display items goes here

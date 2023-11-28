@@ -1,16 +1,16 @@
 extends CharacterBody2D
 class_name Character
 
-#++
 # This is the root class for all characters in the game.
 # Right now that's the Hero and the Challengers.
 #
 # This class contains all properties and methods common to all
 # character classes.
 
-#+
 # Properties
-#-
+var immune: bool = false
+var active: bool = false
+var direction: Vector2
 
 # The following properties must be set in the Inspector by the designer
 @export var startingHealth: int	      			 # Character's starting health 
@@ -21,22 +21,22 @@ class_name Character
 @onready var health: int = startingHealth		# Set character's starting health
 @onready var speed: float = startingSpeed		# Set character's starting speed
 
-# The following properties are common to all characters
-var immune: bool = false
-var active: bool = false
-var direction: Vector2
-
-#+
 # Virtual Godot methods
-#-
 
-# Required: Child must call super._ready() if it defines own _ready() method
+# _ready()
+# Called when node is ready
+#
+# Parameters
+#	None
+# Return 
+#	vNone
+#==
+# Scale the object
+# NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
 	Globals.scaleMe(self.find_child("CharacterImage"), scaleFactor)
 	
-#+
 # Class specific methods
-#-
 
 # takeDamage(damage)
 # Called by other nodes whenever they deal damage to us
@@ -53,7 +53,7 @@ func takeDamage(damage: int) -> void:
 	if health <= 0:
 		self.die()
 		
-# dir()
+# die()
 # 
 # This is just a backup method in case one of the children inheriting this class
 # doesn't have it's own die function to override this one.
