@@ -40,11 +40,32 @@ var tmp: int
 func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
 	pass
+
+# name(params)
+# Brief description
+#
+# Parameters
+#	paramname: type				Description
+# Return 
+#	value|None					Description
+#==
+# What the code is doing (steps)
+func name(params) -> void:
+	pass
 	
-func _physics_process(delta):
-	tmp += 1
-	if tmp%60 == 0:
-		print(position)
+# _process(delta)
+# Called every frame
+#
+# Parameters
+#	delta						Time elapsed since last call
+# Return 
+#	None
+#==
+# Move the weapon
+# NOTE: Set speed to zero if the weapon doesn't move
+func _process(delta) -> void:
+	position += direction * (speed * delta)
+	
 #+
 # Class specific methods
 #-

@@ -9,7 +9,6 @@ class_name HeroPWeapon
 #+
 # Properties
 #-
-var sw: bool = true
 
 # The following properties must be set in the Inspector by the designer
 
@@ -19,27 +18,9 @@ var sw: bool = true
 # Virtual Godot methods
 #-
 
-# _ready()
-# Called when the node is ready
-#
-# Parameters
-#	None
-# Return 
-#	None
-#==
-# What the code is doing (steps)
-func _ready() -> void:
-	print('HeroPWeapon Fired: Speed=', speed)
-	visible = true
-	super._ready()
 
-func _process(delta):
-	if sw:
-		sw = false
-		print('direction: ', direction)
-#	position = position.move_toward(direction, speed * delta)
-	position += direction * (speed * delta)
-	
+
+
 #+
 # Class specific methods
 #-
