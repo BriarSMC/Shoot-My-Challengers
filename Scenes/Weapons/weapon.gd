@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 class_name Weapon
 #++
 # This is the base class for all Weapons in the game.
@@ -14,6 +14,7 @@ var velocity: Vector2
 var direction: Vector2
 
 var pooled: bool = false				# Override in child using _enter_tree()
+var tmp: int
 
 # The following properties must be set in the Inspector by the designer
 @export var damage: int
@@ -40,6 +41,10 @@ func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
 	pass
 	
+func _physics_process(delta):
+	tmp += 1
+	if tmp%60 == 0:
+		print(position)
 #+
 # Class specific methods
 #-

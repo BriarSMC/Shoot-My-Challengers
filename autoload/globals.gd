@@ -5,6 +5,7 @@ extends Node
 #--
 var currentLevelNdx: int				# Current level playing
 var currentLevel: Object				# Current level object pointer
+var weaponsDeployed: Node2D				# Pointer to the WeaponsDeployed node in the current level
 
 # Mcp sets this
 enum inputType {KEYBOARD, GAMECONTROLLER, }

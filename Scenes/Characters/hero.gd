@@ -35,16 +35,13 @@ var moved: bool = false						# Whether Hero moved this frame
 # Return 
 #	None
 #==
-# Connect to signals
 # See if we are using a game controller
 # Turn on TargetPointer if using game controller
 # Move us to the spawn location
 # Look East
 # Remember to call the parent
-# Set inventory
+# Set health and inventory
 func _ready() -> void:
-	connect("fireHeroPWeapon", firePWeapon)
-
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
 		$TargetPointer.visible = true
 	else:
@@ -55,6 +52,7 @@ func _ready() -> void:
 	visible = true
 	$TargetPointer.visible = false
 	
+	Globals.health = startingHealth
 	Globals.primaryWeaponCount = startingPWeapon
 	Globals.secondaryWeaponCount = startingSWeapon
 	Globals.shortShieldCount = startingSShield
@@ -71,7 +69,7 @@ func _ready() -> void:
 #	None
 #==
 # Save the Hero's position so that other Characters know where we are.
-func _process(delta):
+func _process(_delta):
 	Globals.heroPosition = position
 #+
 # Class specific methods
@@ -90,19 +88,23 @@ func _process(delta):
 # Set its position, direction and rotation
 # Add it to the tree
 func firePWeapon() -> void:
-	var weapon = pWeapon.instantiate()
+	print('Hero.firePWeapon')
+	var weapon: Area2D  = pWeapon.instantiate()
 	var rot: float	= self.rotation
 	var pos: Vector2
 	
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
-		pos = $TargetPointer.position
+		pos = $TargetPointer.global_position
 	else:
-		pos = get_viewport().get_mouse_position()
+		pos = get_viewport().get_global_mouse_position()
 
-	weapon.position = self.position
+	weapon.position = self.global_position
 	weapon.direction = (pos - self.position).normalized()
-	weapon.rotation = rot
-	$WeaponsDeployed.add_child(weapon)
+	weapon.look_at(pos)
+	print(position)
+	print(weapon.position)
+	print(weapon.direction)
+	Globals.weaponsDeployed.add_child(weapon)
 
 # getDirection(src, tgt)
 # Return the direction from source to target
@@ -167,3 +169,7 @@ func _on_spawn_timer_timeout():
 func _on_teleport_effect_animation_finished():
 	active = true
 	$TargetPointer.visible = true
+
+
+func _on_hero_input_handler_fire_hero_p_weapon():
+	firePWeapon()

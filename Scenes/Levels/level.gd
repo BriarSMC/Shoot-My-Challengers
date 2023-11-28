@@ -31,14 +31,21 @@ class_name Level
 #==
 # Scale the playing area images
 # Set which level is playing
+# Set WeaponsDeployed pointer
 # Find out how many challengers there are
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	Globals.currentLevel =  self
 	Globals.currentLevelNdx = levelNumber
 	
+	var n: Node2D = Node2D.new()
+	n.set('name', 'WeaponsDeployed')
+	add_child(n)
+	Globals.weaponsDeployed = n
+	
 	challengersLeft = find_child("Challengers").get_child_count()
-		
+	Globals.challengersDefeated = 0
+	
 	super._ready()
 	
 # _process(delta)

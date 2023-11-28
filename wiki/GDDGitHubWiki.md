@@ -466,14 +466,28 @@ these input devices.
 The sole interaction with the UI is clicking buttons on the Start, End, and Credits screens. When using the keyboard/mouse the 
 player uses the left mouse button to click on buttons. The player can select the following buttons:
 
-* Game Start
-  - Start Game - A button
-  - Exit Game - X Button
-  - Credits - B Button
+* Select to Menu Button
+  * Keyboard
+    * Next Button: Tab or Down Arrow
+    * Previous Button: Shift+Tab or Up Arrow
+  * Mouse
+    * Hover mouse pointer over button
+  * Game Controller
+    * Next Button: Left Joystick Down or D-pad Down
+    * Previous Button: Left Joystick Up or D-pad Up
+* Activate Menu Button
+  * Keyboard
+    * Enter or Space Keypad-Enter
+  * Mouse
+    * Right click on button
+  * Game Controller
+    *  Bottom Action, Sony Cross, Xbox A, Nintendo B
 * Game Exit
-  - Return to Start - A button
-* Credits
-  - Return to Start - A button
+  * Keyboard
+    * Escape
+  * Game Controller
+    * Back, Sony Select, Xbox Back, Nintendo -
+
 
 ##### Hero Control
 

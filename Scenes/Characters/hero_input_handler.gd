@@ -1,16 +1,12 @@
 extends Node2D
 class_name HeroInputHandler
 
-#++
 # This defines the class that handles all input for the Hero
-#
-#--
 
+# Signals
 signal fireHeroPWeapon
 
-#+
 # Properties
-#-
 @onready var hero: Object = self.find_parent("Hero")  # Get the Hero object
 @onready var targetPointer: Object = hero.get_node("TargetPointer")
 
@@ -25,9 +21,7 @@ var shieldActive: bool = false
 
 # The following are set based on the Inspector values
 
-#+
 # Virtual Godot methods
-#-
 
 # _physics_process(delta)
 # Called every physics frame
@@ -49,19 +43,20 @@ func _physics_process(delta):
 # Return 
 #	None
 #==
+# Exit the game if the player says to do so
 # Get the movement vector from Godot
 # If we've moved (vector is non-zero), then move the Hero
 #		
 func pollInput(delta) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 	moveTarget(delta)	
 	moveHero()
 	firePrimary()
 	fireSecondary()
 	raiseShield()
 
-#+
 # Class specific methods
-#-
 
 # moveHero()
 # Move Hero accordingly
@@ -106,10 +101,9 @@ func moveHero() -> void:
 # Otherwise update the new position
 # 
 func moveTarget(delta) -> void:
-	if hero.inputDevice != hero.inputType.GAMECONTROLLER:
+	if Globals.inputDevice != Globals.inputType.GAMECONTROLLER:
 		return
 	
-	var targetPosition: Vector2 = targetPointer.position
 	var targetVelocity: Vector2 = Input.get_vector("CursorLeft", "CursorRight", "CursorUp", "CursorDown")
 	if targetVelocity != Vector2.ZERO:
 		targetPointer.position += (targetVelocity * targetSpeed * delta)
@@ -136,10 +130,8 @@ func firePrimary() -> void:
 		return
 				
 	if primaryCooldownFinished:
-		print('Player pressed fire primary')						
+		print('HeroInputHandler emitting fireHeroPWeapon')						
 		fireHeroPWeapon.emit()
-		
-		
 		
 # fireSecondary()
 # If the player activated secondary weapon, then fire it
@@ -183,6 +175,4 @@ func emptyWarning() -> void:
 	pass
 	
 
-#+
 # Signal Callbacks
-#-

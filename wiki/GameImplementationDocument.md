@@ -99,7 +99,21 @@ The child classes have no children.
   * ShortShieldRefill
   * LongShieldRefill
   * LifePotion
-    
+* Mcp (Master Control Program)
+  * GameControlScreen
+    * CreditsScreen
+    * LoseScreen
+    * SplashScreen
+    * StartScreen
+    * WinScreen
+  * Level
+    * Level1
+    * Level2
+    * Level3
+    * Level4
+    * Level5
+
+
 # Level/UI Screen Transitions
 
 ## Animations
@@ -113,6 +127,8 @@ when it's time to display another scene. Also, a method track is added to this a
 scene's `goToNextScreen()` method at the end of the animation. This triggers the change to the next scene.
 
 ## MCP 
+
+>>>>>>>>>>>>>>>>>>>>ALL HAS TO BE REWRITTEN
 
 SMC autoloads the MCP (Master Control Program) from file: 
 > `res://master_control_program.gd`
@@ -212,3 +228,23 @@ as a child of the Hero scene.
 
 We tried doing event processing for moving, but we encountered some sort of lag. Therefore, we decided to use
 Input polling for all inputs.
+
+# Input Map
+
+## Built-in Actions
+
+These are the Godot Built-in Actions we've modified.
+
+### ui_cancel
+
+Added the Joypad Button 4 (Back, Sony Select, Xbox Back, Nintendo -) to also serve as a cancel (`get_tree().quit()`).
+
+# Weapon Instantiation
+
+We instantiate weapons as we need them. We need to put them somewhere, so the Level class has a Node2D named WeaponsDeployed.
+Its sole purpose is to the *home* fro instantiated weapons. During _ready() the Level class stores a pointer to this node
+in *__Globals.weaponsDeployed__*. Any script instantiating a Weapon class must add it as a child to WeaponsDeployed.
+
+```
+Globals.weaponsDeployed.add_child(instantiated-object) 
+```
