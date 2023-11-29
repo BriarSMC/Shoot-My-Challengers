@@ -23,8 +23,6 @@ var gameScenes: Array[String] =[
 	"res://Scenes/UI/lose_screen.tscn",
 	"res://Scenes/UI/credits_screen.tscn"
 	]
-var heroPWeaponScene: String = "res://Scenes/Weapons/hero_p_weapon.tscn"
-var heroSWeaponScene: String = "res://Scenes/Weapons/bomb.tscn"
 
 # Screen control
 # Start = 0, Win = 1, Lose = 2, Credits = 3, Exit = 4, Level = 5
