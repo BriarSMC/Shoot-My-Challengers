@@ -49,6 +49,7 @@ input_pickable = true
 mass = 26.83
 freeze = true
 script = ExtResource("1_0k7mn")
+scaleFactor = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

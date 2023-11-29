@@ -49,6 +49,7 @@ input_pickable = true
 mass = 100.0
 freeze = true
 script = ExtResource("1_bti4a")
+scaleFactor = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -57,8 +58,6 @@ shape = SubResource("RectangleShape2D_f5cmm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3ggqs")
 animation = &"Open"
-frame = 3
-frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

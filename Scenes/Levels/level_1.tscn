@@ -122,31 +122,31 @@ layer_1/tile_data = PackedInt32Array(655363, 131074, 3, 393221, 131074, 3, 19662
 position = Vector2(132, 7)
 
 [node name="SkeletonWarrior" parent="Challengers" instance=ExtResource("5_eeflx")]
-position = Vector2(-2, 238)
+position = Vector2(265, 236)
 
 [node name="SkeletonWarrior2" parent="Challengers" instance=ExtResource("5_eeflx")]
-position = Vector2(572, 504)
+position = Vector2(722, 509)
 
 [node name="Vampire" parent="Challengers" instance=ExtResource("6_fitl2")]
-position = Vector2(1231, 385)
+position = Vector2(1139, 333)
 
 [node name="SkullOfDeath" parent="Challengers" instance=ExtResource("7_bom3b")]
-position = Vector2(1863, 395)
+position = Vector2(1631, 376)
 
 [node name="Containers" type="Node2D" parent="."]
 position = Vector2(30, 21)
 
 [node name="LargeChest" parent="Containers" instance=ExtResource("5_wkoo8")]
-position = Vector2(1194, -44)
+position = Vector2(1103, 43)
 
 [node name="SmallChest" parent="Containers" instance=ExtResource("9_myp5g")]
-position = Vector2(672, 285)
+position = Vector2(522, 256)
 
 [node name="MediumChest" parent="Containers" instance=ExtResource("10_hthyr")]
-position = Vector2(100, 408)
+position = Vector2(125, 339)
 
 [node name="LargeChest2" parent="Containers" instance=ExtResource("5_wkoo8")]
-position = Vector2(1603, 217)
+position = Vector2(1566, 281)
 
 [node name="Hero" parent="." instance=ExtResource("4_3xghm")]
 z_index = 1
