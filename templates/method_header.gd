@@ -2,9 +2,9 @@
 # Brief description
 #
 # Parameters
-#	paramname: type				Description
+#		paramname: type				Description
 # Return 
-#	value|None					Description
+#		value|None					Description
 #==
 # What the code is doing (steps)
 func name(params) -> void:
@@ -15,9 +15,9 @@ func name(params) -> void:
 # Called when node is ready
 #
 # Parameters
-#	None
+#		None
 # Return 
-#	None
+#		None
 #==
 # What the code is doing (steps)
 # NOTE: Child must call super._ready() if it defines own _ready() method

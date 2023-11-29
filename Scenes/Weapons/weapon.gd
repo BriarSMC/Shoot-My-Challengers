@@ -33,27 +33,26 @@ var tmp: int
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Scale our image and colliders
 func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
-	pass
 
 # _process(delta)
 # Called every frame
 #
 # Parameters
 #	delta						Time elapsed since last call
-# Return 
+# Return
 #	None
 #==
 # Move the weapon
 # NOTE: Set speed to zero if the weapon doesn't move
 func _process(delta) -> void:
 	position += direction * (speed * delta)
-	
+
 #+
 # Class specific methods
 #-
@@ -66,7 +65,7 @@ func _process(delta) -> void:
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # What the code is doing (steps)

@@ -71,15 +71,13 @@ func _process(_delta):
 
 # Class specific methods
 
-# firePWeapon(pos, dir, rot)
+# firePWeapon()
 # Creates amd fires the Hero's Primary Weapon
 #
-# Parameters
-#	pos: Vector2				Starting position for the weapon
-#	dir: Vector2				Direction the weapon will go
-#	rot: float					Rotation applied to the weapon before firing it
-# Return
-#	None
+#	Parameters
+#		None
+#	Return
+#		None
 #==
 # Create a new object for the weapon
 # Set its position, direction and rotation
@@ -97,9 +95,25 @@ func firePWeapon() -> void:
 	weapon.position = self.global_position
 	weapon.direction = (pos - self.position).normalized()
 	weapon.look_at(pos)
-	print(position)
-	print(weapon.position)
-	print(weapon.direction)
+	Globals.weaponsDeployed.add_child(weapon)
+
+# fireSWeapon()
+# Creates amd fires the Hero's Secondary Weapon
+#
+# Parameters
+#		Nonet
+# Return
+#		None
+#==
+# Create a new object for the weapon
+# Set its position
+# Add it to the tree
+func fireSWeapon() -> void:
+	print('Hero.fireSWeapon')
+	var weapon: Area2D  = sWeapon.instantiate()
+
+	weapon.position = self.global_position
+	weapon.direction = Vector2.ZERO
 	Globals.weaponsDeployed.add_child(weapon)
 
 # getDirection(src, tgt)
@@ -165,6 +179,10 @@ func _on_teleport_effect_animation_finished():
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
 		$TargetPointer.visible = true
 
-# Trigger pulled, then call the firePWeapon method
+# Primary Trigger pulled, then call the firePWeapon method
 func _on_hero_input_handler_fire_hero_p_weapon():
 	firePWeapon()
+
+# Secondary Trigger pulled, then call the fireSWeapon method
+func _on_hero_input_handler_fire_hero_s_weapon():
+	fireSWeapon()

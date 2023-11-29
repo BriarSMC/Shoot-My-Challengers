@@ -15,6 +15,6 @@ script = ExtResource("1_2dnf3")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_vqenf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WeaponImage" type="Sprite2D" parent="."]
 rotation = 0.785398
 texture = ExtResource("2_0sev5")

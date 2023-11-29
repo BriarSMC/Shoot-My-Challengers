@@ -22,14 +22,14 @@ const offset: float = 12.0				# Adjust where the fireball is positioned
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # What the code is doing (steps)
 # NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
 	pass
-	
+
 # Class specific methods
 
 # explode()
@@ -37,7 +37,7 @@ func _ready() -> void:
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Play the explosion
@@ -47,7 +47,7 @@ func explode() -> void:
 
 # Signal callbacks
 
-# If the fireball hasn't hit anyting by now, 
+# If the fireball hasn't hit anyting by now,
 # then explode it
 func _on_explode_timer_timeout():
 	explode()

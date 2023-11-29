@@ -1,11 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi4hn86eo84hg"]
+[gd_scene load_steps=18 format=3 uid="uid://bi4hn86eo84hg"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/hero_s_weapon.gd" id="1_kthke"]
 [ext_resource type="Texture2D" uid="uid://bsj6xwgqnb116" path="res://Graphics/Weapons/bomb.png" id="2_rytuh"]
 [ext_resource type="Texture2D" uid="uid://shhotxlttc4s" path="res://Graphics/Misc/2x2_yellow.png" id="3_bgacw"]
+[ext_resource type="Texture2D" uid="uid://dne67qt4cuerj" path="res://Graphics/Weapons/Explosion1/0002.png" id="4_nwtpe"]
+[ext_resource type="Texture2D" uid="uid://dodxrglhqud4m" path="res://Graphics/Weapons/Explosion1/0003.png" id="5_tmjai"]
+[ext_resource type="Texture2D" uid="uid://dhv1aljmnmqud" path="res://Graphics/Weapons/Explosion1/0004.png" id="6_e4un0"]
+[ext_resource type="Texture2D" uid="uid://cmhi5geo16j2d" path="res://Graphics/Weapons/Explosion1/0007.png" id="7_xud4m"]
+[ext_resource type="Texture2D" uid="uid://of3ft48unueb" path="res://Graphics/Weapons/Explosion1/0009.png" id="8_71li2"]
+[ext_resource type="Texture2D" uid="uid://7vuu55gpbqs5" path="res://Graphics/Weapons/Explosion1/0010.png" id="9_1hb3k"]
+[ext_resource type="Texture2D" uid="uid://cbdrn2g2x6510" path="res://Graphics/Weapons/Explosion1/0011.png" id="10_chqc4"]
+[ext_resource type="Texture2D" uid="uid://bac3wh5yvus7u" path="res://Graphics/Weapons/Explosion1/0013.png" id="11_scjjl"]
+[ext_resource type="Texture2D" uid="uid://bn251dfbc43qc" path="res://Graphics/Weapons/Explosion1/0015.png" id="12_sq6vt"]
+[ext_resource type="Texture2D" uid="uid://xhbqi5ri4k00" path="res://Graphics/Weapons/Explosion1/0017.png" id="13_qsqmp"]
+[ext_resource type="Texture2D" uid="uid://fpmewdicb5ch" path="res://Graphics/Weapons/Explosion1/0019.png" id="14_sc0y7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhgq5"]
-radius = 7.07107
+radius = 7.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bd4u2"]
 lifetime_randomness = 0.3
@@ -18,19 +29,62 @@ angular_velocity_max = 0.75
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 
-[node name="HeroSWeapon" type="RigidBody2D" groups=["HeroWeapon"]]
+[sub_resource type="SpriteFrames" id="SpriteFrames_q640u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nwtpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tmjai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e4un0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xud4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_71li2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1hb3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_chqc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_scjjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sq6vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qsqmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_sc0y7")
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 5.0
+}]
+
+[node name="HeroSWeapon" type="Area2D" groups=["HeroWeapon"]]
 collision_layer = 4
 collision_mask = 146
-freeze = true
 script = ExtResource("1_kthke")
+damageRadius = 50.0
+damage = 30
+scaleFactor = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bhgq5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WeaponImage" type="Sprite2D" parent="."]
 texture = ExtResource("2_rytuh")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="WeaponImage"]
 position = Vector2(2, -7)
 process_material = SubResource("ParticleProcessMaterial_bd4u2")
 texture = ExtResource("3_bgacw")
@@ -40,3 +94,12 @@ trail_enabled = true
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q640u")
+animation = &"Explosion"
+frame = 10
+frame_progress = 1.0
+
+[connection signal="timeout" from="DetentationTimer" to="." method="_on_detentation_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

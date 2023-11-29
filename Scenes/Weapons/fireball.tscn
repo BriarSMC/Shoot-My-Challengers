@@ -105,15 +105,16 @@ animations = [{
 collision_layer = 8
 collision_mask = 145
 script = ExtResource("1_xceq2")
+scaleFactor = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CapsuleShape2D_fibo2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="WeaponImage" type="AnimatedSprite2D" parent="."]
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_fk15v")
-animation = &"Throw"
+animation = &"Explosion"
 autoplay = "Throw"
 
 [node name="ExplodeTimer" type="Timer" parent="."]
@@ -121,5 +122,5 @@ wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="WeaponImage" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]

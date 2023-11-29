@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1uha5r645hm"]
 
 [ext_resource type="Texture2D" uid="uid://e2kdpj8v8a4" path="res://Graphics/Weapons/scythe.png" id="1_uawmg"]
-[ext_resource type="Script" path="res://Scenes/Weapons/Sprite2D.gd" id="2_pf2iv"]
+[ext_resource type="Script" path="res://Scenes/Weapons/scythe.gd" id="2_pf2iv"]
 
 [sub_resource type="Animation" id="Animation_sxynn"]
 resource_name = "Swing"

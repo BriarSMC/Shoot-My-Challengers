@@ -255,3 +255,4 @@ autoplay = "Fire"
 frame = 58
 frame_progress = 1.0
 script = ExtResource("60_fw26l")
+scaleFactor = 1.0

@@ -5,6 +5,7 @@ class_name HeroInputHandler
 
 # Signals
 signal fireHeroPWeapon
+signal fireHeroSWeapon
 
 # Properties
 @onready var hero: Object = self.find_parent("Hero")  # Get the Hero object
@@ -124,16 +125,17 @@ func moveTarget(delta) -> void:
 # Fire it at the TargetPointer
 # Decrement the inventory
 func firePrimary() -> void:
+	if not Input.is_action_just_pressed("PrimaryWeapon")	:
+		return
+
 	if Globals.primaryWeaponCount <= 0:
 		print('Primary weapon empty')
 		emptyWarning()
 		return
 
-	if not Input.is_action_just_pressed("PrimaryWeapon")	:
-		return
-
 	if primaryCooldownFinished:
 		print('HeroInputHandler emitting fireHeroPWeapon')
+		Globals.primaryWeaponCount -= 1
 		fireHeroPWeapon.emit()
 
 # fireSecondary()
@@ -146,9 +148,19 @@ func firePrimary() -> void:
 #==
 # If the inventory is empty, then warn the player
 func fireSecondary() -> void:
+	if not Input.is_action_just_pressed("SecondaryWeapon")	:
+		return
+
 	if Globals.secondaryWeaponCount <= 0:
+		print('Secondary weapon empty')
 		emptyWarning()
 		return
+
+	if secondaryCooldownFinished:
+		print('HeroInputHandler emitting fireHeroSWeapon')
+		Globals.secondaryWeaponCount -= 1
+		fireHeroSWeapon.emit()
+
 
 # func raiseShield()
 # If player activates the shield, then raise it

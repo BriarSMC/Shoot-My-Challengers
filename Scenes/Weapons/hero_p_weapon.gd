@@ -20,7 +20,7 @@ class_name HeroPWeapon
 #
 # Parameters
 #	body: Object				What we hit
-# Return 
+# Return
 #	None
 #==
 # We only care if we hit a Challenger
@@ -28,6 +28,7 @@ class_name HeroPWeapon
 # Regardless, we always delete ourself after a collision
 func _on_body_entered(body):
 	if body.is_in_group("Challenger"):
-		pass # Replace with damage call
+		if body.has_method("takeDamage"):
+			body.takeDamage(damage)
 
 	deleteMe()
