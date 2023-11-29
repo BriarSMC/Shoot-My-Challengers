@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name HeroInputHandler
 
 # This defines the class that handles all input for the Hero
@@ -10,7 +10,7 @@ signal fireHeroPWeapon
 @onready var hero: Object = self.find_parent("Hero")  # Get the Hero object
 @onready var targetPointer: Object = hero.get_node("TargetPointer")
 
-var primaryWeapon: HeroPWeapon 
+var primaryWeapon: HeroPWeapon
 
 var primaryCooldownFinished: bool = true
 var secondaryCooldownFinished: bool = true
@@ -28,7 +28,7 @@ var shieldActive: bool = false
 #
 # Parameters
 #	delta: float				Time elapsed since last call
-# Return 
+# Return
 #	None
 #==
 # Move the Hero
@@ -40,21 +40,24 @@ func _physics_process(delta):
 #
 # Parameters
 #	delta: float					Time elapsed since last call
-# Return 
+# Return
 #	None
 #==
 # Exit the game if the player says to do so
 # Get the movement vector from Godot
 # If we've moved (vector is non-zero), then move the Hero
-#		
+#
 func pollInput(delta) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-	moveTarget(delta)	
+	moveTarget(delta)
 	moveHero()
 	firePrimary()
 	fireSecondary()
 	raiseShield()
+
+	if Input.is_key_pressed(KEY_Z): # Debug/Test GamePlayUI
+		Globals.coinCount += 1
 
 # Class specific methods
 
@@ -63,7 +66,7 @@ func pollInput(delta) -> void:
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Just return if we aren't active yet
@@ -76,11 +79,11 @@ func pollInput(delta) -> void:
 func moveHero() -> void:
 	if not hero.active:
 		return
-		
+
 	hero.direction = Input.get_vector("Left", "Right", "Up", "Down")
 	if hero.direction == Vector2.ZERO:
 		return
-		
+
 	hero.moved = true
 	hero.velocity = hero.speed * hero.direction
 	hero.move_and_slide()
@@ -91,7 +94,7 @@ func moveHero() -> void:
 #
 # Parameters
 #	delta: float				# Time elapsed since last call
-# Return 
+# Return
 #	None
 #==
 # Ignore if game controller is not connected
@@ -99,11 +102,11 @@ func moveHero() -> void:
 # Get the controller's input vector for the joystick
 # Ignore if the vector is zero (no movement)
 # Otherwise update the new position
-# 
+#
 func moveTarget(delta) -> void:
 	if Globals.inputDevice != Globals.inputType.GAMECONTROLLER:
 		return
-	
+
 	var targetVelocity: Vector2 = Input.get_vector("CursorLeft", "CursorRight", "CursorUp", "CursorDown")
 	if targetVelocity != Vector2.ZERO:
 		targetPointer.position += (targetVelocity * targetSpeed * delta)
@@ -113,7 +116,7 @@ func moveTarget(delta) -> void:
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # If the inventory is empty, then warn the player
@@ -125,20 +128,20 @@ func firePrimary() -> void:
 		print('Primary weapon empty')
 		emptyWarning()
 		return
-	
+
 	if not Input.is_action_just_pressed("PrimaryWeapon")	:
 		return
-				
+
 	if primaryCooldownFinished:
-		print('HeroInputHandler emitting fireHeroPWeapon')						
+		print('HeroInputHandler emitting fireHeroPWeapon')
 		fireHeroPWeapon.emit()
-		
+
 # fireSecondary()
 # If the player activated secondary weapon, then fire it
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # If the inventory is empty, then warn the player
@@ -146,13 +149,13 @@ func fireSecondary() -> void:
 	if Globals.secondaryWeaponCount <= 0:
 		emptyWarning()
 		return
-	
+
 # func raiseShield()
 # If player activates the shield, then raise it
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # If the inventory is empty, then warn the player
@@ -167,12 +170,12 @@ func raiseShield() -> void:
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Play empty sound
 func emptyWarning() -> void:
 	pass
-	
+
 
 # Signal Callbacks

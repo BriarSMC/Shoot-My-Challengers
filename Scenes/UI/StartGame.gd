@@ -17,7 +17,7 @@ extends Button
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 func _ready():

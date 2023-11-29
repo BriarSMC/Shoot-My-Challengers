@@ -1,4 +1,4 @@
-extends Node2D #GameControlScreen
+extends GameControlScreen
 class_name WinScreen
 
 # This defines the lose control screen displayed when the player

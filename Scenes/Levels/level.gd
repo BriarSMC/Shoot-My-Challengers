@@ -6,6 +6,9 @@ class_name Level
 
 # Properties
 
+# Load the game play UI
+@onready var gamePlayUIScene: PackedScene = preload("res://Scenes/Levels/game_play_ui.tscn")
+
 # The following properties must be set in the Inspector by the designer
 @export var scaleFactor: float
 @export var levelNumber: int
@@ -19,34 +22,41 @@ class_name Level
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
+# Connect to the updateUIValues signal (In Globals)
 # Scale the playing area images
 # Set which level is playing
 # Set WeaponsDeployed pointer
 # Find out how many challengers there are
+# Create the game play UI
+# Save the GamePlayUI labels then update UI
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	Globals.currentLevel =  self
 	Globals.currentLevelNdx = levelNumber
-	
+
 	var n: Node2D = Node2D.new()
 	n.set('name', 'WeaponsDeployed')
 	add_child(n)
 	Globals.weaponsDeployed = n
-	
+
 	challengersLeft = find_child("Challengers").get_child_count()
 	Globals.challengersDefeated = 0
-	
+
+	var gamePlayUI: Object = gamePlayUIScene.instantiate()
+	add_child(gamePlayUI)
+	gamePlayUI.updateUI()
+
 	super._ready()
-	
+
 # _process(delta)
 # Called every frame
 #
 # Parameters
 #	delta: float				Time elapsed since last call
-# Return 
+# Return
 #	None
 #==
 # Check to see if player wants to quit the game
@@ -61,19 +71,19 @@ func _process(delta) -> void:
 	if Globals.health <= 0:
 		exitTheLevel('lose')
 	if challengersLeft <= 0:
-		exitTheLevel('won')	
+		exitTheLevel('won')
 	super._process(delta)
 
-	
+
 # Class specific methods
 
 # exitTheLevel()
 # Exit the level and go to the next
 #
 # Parameters
-#	None
-# Return 
-#	None
+#		None
+# Return
+#		None
 #==
 # If we are the last level (5) then exit to the win/lose screen
 func exitTheLevel(how: String) -> void:

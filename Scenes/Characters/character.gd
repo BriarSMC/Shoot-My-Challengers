@@ -13,7 +13,7 @@ var active: bool = false
 var direction: Vector2
 
 # The following properties must be set in the Inspector by the designer
-@export var startingHealth: int	      			 # Character's starting health 
+@export var startingHealth: int	      			 # Character's starting health
 @export var startingSpeed: float				 # Character's starting movement speed
 @export var scaleFactor: float					 # Scale factor for Globals.scaleMe()
 
@@ -28,14 +28,14 @@ var direction: Vector2
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	vNone
 #==
 # Scale the object
 # NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
 	Globals.scaleMe(self.find_child("CharacterImage"), scaleFactor)
-	
+
 # Class specific methods
 
 # takeDamage(damage)
@@ -43,7 +43,7 @@ func _ready() -> void:
 #
 # Paramters
 #	damage: int The amount of health points to deduct from this character's health
-# Return 
+# Return
 #	None
 #==
 # Deduct the damage from character health
@@ -52,12 +52,12 @@ func takeDamage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
 		self.die()
-		
+
 # die()
-# 
+#
 # This is just a backup method in case one of the children inheriting this class
 # doesn't have it's own die function to override this one.
-# 
+#
 # Usually called by takeDamage()
 #
 # Parameters
@@ -68,4 +68,4 @@ func takeDamage(damage: int) -> void:
 # Just get rid of the node
 func die() -> void:
 	queue_free()
-		
+

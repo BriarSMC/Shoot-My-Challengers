@@ -2,7 +2,7 @@ extends Node2D
 class_name Mcp
 
 # This is the entry point for the game. It controls the flow of the screens and levels
-# presented to the player. 
+# presented to the player.
 
 # Signals
 signal fadeTheUI
@@ -41,7 +41,7 @@ enum screen {START, WIN, LOSE, CREDITS, EXIT, LEVEL, }
 #
 # Parameters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Set up changing to next game screen
@@ -60,7 +60,7 @@ func _ready() -> void:
 #
 # Parameters
 #	delta: float				Elapsed time since last call
-# Return 
+# Return
 #	None
 #==
 # What the code is doing (steps)
@@ -72,14 +72,14 @@ func _process(_delta) -> void:
 #
 # Parameters
 #	delta: float				Elapsed time since last call
-# Return 
+# Return
 #	None
 #==
 # What the code is doing (steps)
 func _physics_process(_delta) -> void:
 	pass
-	
-	
+
+
 # Class specific methods
 
 # changeGameScreen(newState [, level])
@@ -88,7 +88,7 @@ func _physics_process(_delta) -> void:
 # Paramters
 #	newState: state				# Switch to this state
 # 	level: int					# Level number to switch to
-# Return 
+# Return
 #	None
 #==
 # If it's a game control screen, then switch to it.
@@ -105,8 +105,8 @@ func changeScreen(newScreen: screen, newLevel: int = 0) -> void:
 					LEVELSPATH + LEVELFILENAME + str(newLevel) + LEVELEXTENSION)
 			else:
 				get_tree().change_scene_to_file("res://Scenes/scene_demo.tscn")
-		_: 
+		_:
 			print('Invalid state value for Mcp.changeGameScreen')
-			
+
 
 # Signal callbacks

@@ -2,6 +2,8 @@ extends Character
 class_name Hero
 
 # This class defines the Hero character which the player controls
+# NOTE: Do not use the health in the Character class for the hero.
+# Use the health and maxHealth in Globals for Hero's health status.
 
 # Properties
 
@@ -11,7 +13,7 @@ var moved: bool = false						# Whether Hero moved this frame
 @onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/hero_s_weapon.tscn")
 
 # The following properties must be set in the Inspector by the designer
-@export var startingPWeapon: int 
+@export var startingPWeapon: int
 @export var startingSWeapon: int
 @export var startingSShield: int
 @export var staringLShield: int
@@ -25,7 +27,7 @@ var moved: bool = false						# Whether Hero moved this frame
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # See if we are using a game controller
@@ -40,26 +42,27 @@ func _ready() -> void:
 		$TargetPointer.visible = true
 	else:
 		$TargetPointer.visible = false
-		
+
 	global_position = find_parent("Level*").find_child("TeleportIn").global_position
 	$CharacterImage.play("IdleEast")
 	visible = true
 	$TargetPointer.visible = false
-	
+
 	Globals.health = startingHealth
+	Globals.maxHealth = startingHealth
 	Globals.primaryWeaponCount = startingPWeapon
 	Globals.secondaryWeaponCount = startingSWeapon
 	Globals.shortShieldCount = startingSShield
 	Globals.longShieldCount = startingSShield
-	
+
 	super._ready()
-	
+
 # _process(delta)
 # Called every frame of the game
 #
 # Parameters
 #	delta: float				Time elapsed since last call
-# Return 
+# Return
 #	None
 #==
 # Save the Hero's position so that other Characters know where we are.
@@ -75,7 +78,7 @@ func _process(_delta):
 #	pos: Vector2				Starting position for the weapon
 #	dir: Vector2				Direction the weapon will go
 #	rot: float					Rotation applied to the weapon before firing it
-# Return 
+# Return
 #	None
 #==
 # Create a new object for the weapon
@@ -84,9 +87,8 @@ func _process(_delta):
 func firePWeapon() -> void:
 	print('Hero.firePWeapon')
 	var weapon: Area2D  = pWeapon.instantiate()
-	var rot: float	= self.rotation
 	var pos: Vector2
-	
+
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
 		pos = $TargetPointer.global_position
 	else:
@@ -106,10 +108,10 @@ func firePWeapon() -> void:
 # Parameters
 #	src: Object					Oject shooting
 #	tgt: Object 				Object of the target
-# Return 
+# Return
 #	Vector2						Direction to the target
 #==
-# 
+#
 func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true) -> Vector2:
 	var to: Object
 	if useTargetPointer:
@@ -125,7 +127,7 @@ func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Debug print for now
@@ -143,11 +145,11 @@ func die() -> void:
 #
 # Parameters
 #	paramname: type				Description
-# Return 
+# Return
 #	value|None					Description
 #==
 # Play the animation to make us visible
-func spawn() -> void:	
+func spawn() -> void:
 	$CharacterImage/AnimationPlayer.play("FadeFromBlack")
 
 # Signal callbacks
