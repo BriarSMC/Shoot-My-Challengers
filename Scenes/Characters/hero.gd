@@ -83,7 +83,6 @@ func _process(_delta):
 # Set its position, direction and rotation
 # Add it to the tree
 func firePWeapon() -> void:
-	print('Hero.firePWeapon')
 	var weapon: Area2D  = pWeapon.instantiate()
 	var pos: Vector2
 
@@ -135,6 +134,8 @@ func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true
 
 	return (to.get_global_position() - src.position).normalized()
 
+func takeDamage(damage: int) -> void:
+	Globals.health -= damage
 
 # die()
 # Called by the Character class when our health hits zero

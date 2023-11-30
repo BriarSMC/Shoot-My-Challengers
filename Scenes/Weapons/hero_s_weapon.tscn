@@ -75,7 +75,7 @@ collision_layer = 4
 collision_mask = 146
 script = ExtResource("1_kthke")
 damageRadius = 50.0
-damage = 30
+damage = 20
 scaleFactor = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

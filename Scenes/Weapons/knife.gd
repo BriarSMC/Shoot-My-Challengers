@@ -14,3 +14,11 @@ class_name Knife
 # Class specific methods
 
 # Signal Callbacks
+
+# Deal damage if it's the Hero.
+# Go away regardless
+func _on_body_entered(body):
+	if body.is_in_group("Hero"):
+		body.takeDamage(damage)
+
+	queue_free()

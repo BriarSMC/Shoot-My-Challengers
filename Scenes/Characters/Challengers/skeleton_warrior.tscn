@@ -57,7 +57,7 @@ radius = 228.219
 collision_layer = 2
 collision_mask = 151
 script = ExtResource("1_jomj0")
-startingHealth = 45
+startingHealth = 30
 startingSpeed = 70.0
 scaleFactor = 1.0
 
@@ -76,3 +76,13 @@ autoplay = "Idle"
 
 [node name="NoticeAreaCollider" type="CollisionShape2D" parent="DetectionAreas/NoticeArea"]
 shape = SubResource("CircleShape2D_8ui6w")
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="ThrowTheKnife" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="DetectionAreas/NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="DetectionAreas/NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="timeout" from="Timers/ThrowTheKnife" to="." method="_on_throw_the_knife_timeout"]
