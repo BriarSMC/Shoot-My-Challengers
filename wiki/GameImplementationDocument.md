@@ -123,8 +123,8 @@ Each Level and UI Screen has an AnimationPlayer attached to it. The AnimationPla
 * FadeToBlack
 
 FadeFromBlack plays automatically when the scene is loaded. The scene calls AnimationPlayer.play("FadeToBlack") 
-when it's time to display another scene. Also, a method track is added to this animation. It's purpose is to call the
-scene's `goToNextScreen()` method at the end of the animation. This triggers the change to the next scene.
+when it's time to display another scene. Also, a method track is added to this animation. It's purpose is to 
+emit a signal at the end of the animation to tell the MCP to change to the next scene.
 
 ## MCP 
 
@@ -210,6 +210,11 @@ We don't want to scale the whole scene; just the graphic. So, the node containin
 The Challengers each have a *Notice Area*. When the Hero enters this area, then the Challenger *sees* him and initiates the 
 appropriate action(s). The collider for the notice area __MUST BE__ an Area2D so the `move_and_slide()` calls do not 
 impede the Hero's movement.
+
+## Taking Damage
+
+Each character must have a function named `takeDamage(damage: int):`. Whenever a weapon collides with the character, then that
+weapon will call this character's function with the amount of damage dealt. The character then deals with the damage appropriately.
 
 ## Hero
 
