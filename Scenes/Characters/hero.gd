@@ -57,18 +57,6 @@ func _ready() -> void:
 
 	super._ready()
 
-# _process(delta)
-# Called every frame of the game
-#
-# Parameters
-#	delta: float				Time elapsed since last call
-# Return
-#	None
-#==
-# Save the Hero's position so that other Characters know where we are.
-func _process(_delta):
-	Globals.heroPosition = position
-
 # Class specific methods
 
 # firePWeapon()

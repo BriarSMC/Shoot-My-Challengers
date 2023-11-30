@@ -48,7 +48,7 @@ func _draw() -> void:
 #	None
 #==
 # Move the Hero
-func _physics_process(delta):
+func _process(delta):
 	pollInput(delta)
 
 # pollInput(delta)
@@ -103,7 +103,7 @@ func moveHero() -> void:
 	hero.moved = true
 	hero.velocity = hero.speed * hero.direction
 	hero.move_and_slide()
-	Globals.heroPosition = hero.global_position
+	Globals.heroPosition = hero.position
 
 # positionCursor(delta)
 # Called to move cursor to new location via gamepad
