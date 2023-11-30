@@ -12,6 +12,12 @@ var immune: bool = false
 var active: bool = false
 var direction: Vector2
 
+var default_font = ThemeDB.fallback_font
+var default_font_size = ThemeDB.fallback_font_size
+const red: Color = Color(1,0,0)
+const green: Color = Color(0,1,0)
+var healthColor: Color
+
 # The following properties must be set in the Inspector by the designer
 @export var startingHealth: int	      			 # Character's starting health
 @export var startingSpeed: float				 # Character's starting movement speed
@@ -20,6 +26,8 @@ var direction: Vector2
 # The following are set based on the Inspector values
 @onready var health: int = startingHealth		# Set character's starting health
 @onready var speed: float = startingSpeed		# Set character's starting speed
+@onready var isChallenger: bool = is_in_group("Challenger")
+@onready var isHero: bool = is_in_group("Hero")
 
 # Virtual Godot methods
 
@@ -36,6 +44,33 @@ var direction: Vector2
 func _ready() -> void:
 	Globals.scaleMe(self.find_child("CharacterImage"), scaleFactor)
 
+# _draw()
+# Called when draw functions need to happen
+# What we are doing is putting the Challenger's
+# Health status above their heads. Green unless it
+# reaches a critical part, then it turns red.
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Skip if we're the Hero
+# Select the text color based on how low our health is
+# Draw the health value
+func _draw():
+	if isHero:
+		return
+
+	if isChallenger:
+		if health <= 15:
+			healthColor = red
+		else:
+			healthColor = green
+
+		draw_string(default_font, Vector2(-5, -50), str(health), HORIZONTAL_ALIGNMENT_CENTER, -1,
+			default_font_size,  healthColor)
+
 # Class specific methods
 
 # takeDamage(damage)
@@ -50,6 +85,7 @@ func _ready() -> void:
 # If zero or less then call our instance's die method
 func takeDamage(damage: int) -> void:
 	health -= damage
+	queue_redraw()
 	if health <= 0:
 		self.die()
 

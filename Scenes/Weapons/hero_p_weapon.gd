@@ -32,3 +32,7 @@ func _on_body_entered(body):
 			body.takeDamage(damage)
 
 	deleteMe()
+
+# Arrow can only go so far
+func _on_arrow_range_timer_timeout():
+	deleteMe()
