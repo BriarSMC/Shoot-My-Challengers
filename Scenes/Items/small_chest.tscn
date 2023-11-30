@@ -42,7 +42,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SmallChest" type="RigidBody2D"]
+[node name="SmallChest" type="RigidBody2D" groups=["Container"]]
 collision_layer = 16
 collision_mask = 4
 input_pickable = true
@@ -55,7 +55,7 @@ scaleFactor = 1.0
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_svg1m")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lou7r")
 animation = &"Open"
 

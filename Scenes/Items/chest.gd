@@ -1,7 +1,7 @@
 extends Node2D
 class_name Chest
 
-# This is the base class definition for any container in the game. 
+# This is the base class definition for any container in the game.
 # It's primary purpose is to provide a place for items to spawn from, and
 # to provide methods to instantiate them and position them on the level.
 
@@ -22,13 +22,13 @@ var chestClosed: bool = true
 #
 # Paramters
 #	paramname: type				Description
-# Return 
+# Return
 #	value|None					Description
 #==
 # Resize the graphic
 func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
-	
+
 # Class specific methods
 
 # openChest(animationPlayer)
@@ -39,12 +39,13 @@ func _ready() -> void:
 #
 # Paramters
 #	animationPlayer: AnimationPlayer	Reference to the child's AnimationPlayer
-# Return 
+# Return
 #	value|None					Description
 #==
 # Open the chest only if its closed
-func openChest(animationPlayer: AnimationPlayer) -> void:
+func open() -> void:
 	if chestClosed:
+		var animation = find_child("Animation")
 		chestClosed = false
-		animationPlayer.play("Open")
+		animation.play("Open")
 		# Display items goes here

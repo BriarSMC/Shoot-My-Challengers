@@ -263,3 +263,10 @@ in *__Globals.weaponsDeployed__*. Any script instantiating a Weapon class must a
 ```
 Globals.weaponsDeployed.add_child(instantiated-object) 
 ```
+
+## Hero's Primary Weapon
+
+*__Interacting with Chests__*
+
+Chests are RigidBody2D objects. Because of this, we cannot detect when its collider has been hit by the Hero's primary weapon.
+So, the Hero's primary weapon detects if it hit a chest. If it does, then it calls the chest's open method.

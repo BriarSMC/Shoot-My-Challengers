@@ -23,13 +23,18 @@ class_name HeroPWeapon
 # Return
 #	None
 #==
-# We only care if we hit a Challenger
+# Was it a Challenger?
 # If so, then we tell the Challenger we hit them
+# Was it a Container (chest)
+# If so, then call it's open method
 # Regardless, we always delete ourself after a collision
 func _on_body_entered(body):
 	if body.is_in_group("Challenger"):
 		if body.has_method("takeDamage"):
 			body.takeDamage(damage)
+
+	if body.is_in_group("Container"):
+		body.open()
 
 	deleteMe()
 

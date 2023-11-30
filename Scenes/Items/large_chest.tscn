@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Items/large_chest.gd" id="1_bti4a"]
 [ext_resource type="Texture2D" uid="uid://qwlmehgxeey6" path="res://Graphics/Items/chest_1.png" id="2_sxkiu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5cmm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tmt2"]
 size = Vector2(16, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qprpw"]
@@ -42,7 +42,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="LargeChest" type="RigidBody2D"]
+[node name="LargeChest" type="RigidBody2D" groups=["Container"]]
 collision_layer = 16
 collision_mask = 15
 input_pickable = true
@@ -53,11 +53,8 @@ scaleFactor = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_f5cmm")
+shape = SubResource("RectangleShape2D_4tmt2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3ggqs")
 animation = &"Open"
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="input_event" from="." to="." method="_on_input_event"]

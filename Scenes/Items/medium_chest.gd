@@ -13,7 +13,3 @@ class_name MediumChest
 
 # Signal callbacks
 
-# Call the open if we were hit by Hero's Weapon
-func _on_body_entered(body):
-	if body.is_in_group("HeroWeapon"):
-		openChest($AnimatedSprite2D)
