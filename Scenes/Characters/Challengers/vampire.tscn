@@ -7,7 +7,7 @@
 size = Vector2(13, 51)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vo3e"]
-radius = 84.0238
+radius = 269.268
 
 [sub_resource type="Animation" id="Animation_sidrx"]
 resource_name = "Idle"
@@ -38,7 +38,9 @@ script = ExtResource("1_hmvp6")
 startingHealth = 40
 scaleFactor = 1.0
 
-[node name="BodyCollider" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="BodyCollider" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_wbkyo")
 
@@ -57,3 +59,12 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_grwag")
 }
+
+[node name="BitingTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="timeout" from="BitingTimer" to="." method="_on_biting_timer_timeout"]

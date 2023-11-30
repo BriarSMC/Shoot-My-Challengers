@@ -140,7 +140,8 @@ func moveTarget(delta) -> void:
 # Fire it at the TargetPointer
 # Decrement the inventory
 func firePrimary() -> void:
-	if not Input.is_action_just_pressed("PrimaryWeapon")	:
+	if not Input.is_action_just_pressed("PrimaryWeapon") or \
+		not hero.active:
 		return
 
 	if Globals.primaryWeaponCount <= 0:
@@ -164,7 +165,8 @@ func firePrimary() -> void:
 #==
 # If the inventory is empty, then warn the player
 func fireSecondary() -> void:
-	if not Input.is_action_just_pressed("SecondaryWeapon")	:
+	if not Input.is_action_just_pressed("SecondaryWeapon") or \
+		not hero.active:
 		return
 
 	if Globals.secondaryWeaponCount <= 0:
@@ -193,6 +195,9 @@ func fireSecondary() -> void:
 # Reduce inventory
 # Turn the shield on
 func raiseShield() -> void:
+	if not hero.active:
+		return
+
 	if Globals.shortShieldCount <= 0 and Globals.longShieldCount <= 0:
 		emptyWarning()
 		return

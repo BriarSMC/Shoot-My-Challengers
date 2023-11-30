@@ -8,6 +8,11 @@ class_name Hero
 # Properties
 
 var moved: bool = false						# Whether Hero moved this frame
+var hitVampire: bool							# We've made contact with the Vampire
+var hypnotized: bool = false			# Whether or not we are hypnotized
+var hypnoDir: Vector2							# Direction of Vampire
+var hypnoSpeed: float							# Movement speed while hypnotized
+var vampire: Vampire							# Vampire hypnotizing us
 
 @onready var pWeapon: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
 @onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/hero_s_weapon.tscn")
@@ -36,6 +41,7 @@ var moved: bool = false						# Whether Hero moved this frame
 # Look East
 # Remember to call the parent
 # Set health and inventory
+# Set hypnotize stuff
 # Call the parent _ready
 func _ready() -> void:
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
@@ -55,7 +61,23 @@ func _ready() -> void:
 	Globals.shortShieldCount = startingSShield
 	Globals.longShieldCount = startingSShield
 
+	hypnoSpeed = speed/2.0
+
 	super._ready()
+
+# _process(delta)
+# Called every frame
+#
+# Parameters
+#		delta: float						Time elapsed since last call
+# Return
+#		None
+#==
+# If we are hypnotized, then move to the Vampire
+func _process(delta) -> void:
+	if hypnotized and not hitVampire:
+		position += hypnoDir * hypnoSpeed * delta
+
 
 # Class specific methods
 
@@ -155,6 +177,33 @@ func die() -> void:
 func spawn() -> void:
 	$CharacterImage/AnimationPlayer.play("FadeFromBlack")
 
+# hypnotize(byWhom: Vampire, sw: bool)
+# A vampire has hypnotized us. Dire things happen.
+# All player input is disabled.
+# Hero walks strait to the vampire.
+# When they collide, then vampire sucks our blood.
+#
+# Parameters
+#		byWhom: Vampire			Who is hypnotizing us
+#		sw: bool						true: Begin hypnotize, false: End hypnotize
+#													Default is true
+# Return
+#		None
+#==
+# Make us inactive. That causes the input handler to stop responding to
+# movement and weapons.
+# Get the direction to the vampire
+# Save who is hypnotizing us
+func hypnotize(byWhom: Vampire, sw: bool = true) -> void:
+	hitVampire = false
+	hypnotized = sw
+	active = not sw
+	hypnoDir = (byWhom.get_global_position() - self.position).normalized()
+	vampire = byWhom
+
+func hitTheVampire():
+	hitVampire = true
+
 # Signal callbacks
 
 # Spawn us when the timer fires
@@ -175,3 +224,4 @@ func _on_hero_input_handler_fire_hero_p_weapon():
 # Secondary Trigger pulled, then call the fireSWeapon method
 func _on_hero_input_handler_fire_hero_s_weapon():
 	fireSWeapon()
+

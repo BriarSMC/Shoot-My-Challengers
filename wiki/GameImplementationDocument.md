@@ -234,6 +234,16 @@ as a child of the Hero scene.
 We tried doing event processing for moving, but we encountered some sort of lag. Therefore, we decided to use
 Input polling for all inputs.
 
+*__Hypnotized__*
+
+When the Hero enters a Vampire's Notice Area, the Vampire will call Hero.hypnotize() with a pointer to the vampire
+and a boolean on whether hypnotize is on or off. When hypnotize is on, then we set the Hero to inactive. This prevents 
+the hero input handler from handling input requests. The Hero *slowly* walks to the Vampire and stops when it reaches the
+Vampire. The Vampire will then bite (attack) the Hero. This also breaks the hypnotism. The Vampire calls Hero.hypnotize()
+to end the hypnotism. The Hero will once again be active. We use `position += direction * speed * delta` to move the Hero.
+This means the Hero will *pass through* any solid objects. We have to detect when we hit the Vampire in order to stop moving.
+
+
 # Input Map
 
 ## Built-in Actions

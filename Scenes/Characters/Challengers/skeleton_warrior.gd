@@ -68,7 +68,6 @@ func throwKnife() -> void:
 	if knifeCooldown:
 		return
 
-	print('Knife thrown')
 	knifeCooldown = true
 	$Timers/ThrowTheKnife.start()
 	var weapon: Area2D  = knifeScene.instantiate()
@@ -76,7 +75,6 @@ func throwKnife() -> void:
 
 	weapon.position = self.global_position
 	weapon.direction = (pos - weapon.position).normalized()
-	print("Knife: ", pos, weapon.direction)
 	weapon.look_at(pos)
 	Globals.weaponsDeployed.add_child(weapon)
 
