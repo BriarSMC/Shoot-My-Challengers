@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name HeroInputHandler
 
 # This defines the class that handles all input for the Hero
@@ -6,6 +6,7 @@ class_name HeroInputHandler
 # Signals
 signal fireHeroPWeapon
 signal fireHeroSWeapon
+signal shieldsChange
 
 # Properties
 @onready var hero: Object = self.find_parent("Hero")  # Get the Hero object
@@ -16,6 +17,7 @@ var primaryWeapon: HeroPWeapon
 var primaryCooldownFinished: bool = true
 var secondaryCooldownFinished: bool = true
 var shieldActive: bool = false
+var immune: bool = false
 
 # The following properties must be set in the Inspector by the designer
 @export var targetSpeed: float = 500
@@ -23,6 +25,19 @@ var shieldActive: bool = false
 # The following are set based on the Inspector values
 
 # Virtual Godot methods
+
+# _draw()
+# Called when we need to draw things
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Draw the shields if active
+func _draw() -> void:
+	if shieldActive:
+		draw_circle(Vector2.ZERO, 30.0, Color(186.0/256.0, 127.0/256.0, 244.0/256.0, .39))	# rgba(186, 127, 244, 0.39)
 
 # _physics_process(delta)
 # Called every physics frame
@@ -134,7 +149,8 @@ func firePrimary() -> void:
 		return
 
 	if primaryCooldownFinished:
-		print('HeroInputHandler emitting fireHeroPWeapon')
+		primaryCooldownFinished = false
+		$Timers/PrimaryCooldownTimer.start()
 		Globals.primaryWeaponCount -= 1
 		fireHeroPWeapon.emit()
 
@@ -157,7 +173,8 @@ func fireSecondary() -> void:
 		return
 
 	if secondaryCooldownFinished:
-		print('HeroInputHandler emitting fireHeroSWeapon')
+		secondaryCooldownFinished = false
+		$Timers/SecondaryCooldownTimer.start()
 		Globals.secondaryWeaponCount -= 1
 		fireHeroSWeapon.emit()
 
@@ -170,11 +187,34 @@ func fireSecondary() -> void:
 # Return
 #	None
 #==
-# If the inventory is empty, then warn the player
+# If the inventory is empty, then warn the player and return
+# If the shields are active or the button wasn't press then just return.
+# Use long shields first
+# Reduce inventory
+# Turn the shield on
 func raiseShield() -> void:
 	if Globals.shortShieldCount <= 0 and Globals.longShieldCount <= 0:
 		emptyWarning()
 		return
+
+	if shieldActive or not Input.is_action_just_pressed("Shield"):
+		return
+
+	if Globals.longShieldCount > 0:
+		Globals.longShieldCount -= 1
+		shieldActive = true
+		queue_redraw()
+		$Timers/ShieldsActiveTimer.wait_time = 5.0
+		$Timers/ShieldsActiveTimer.start()
+		return
+
+	Globals.shortShieldCount -= 1
+	shieldActive = true
+	queue_redraw()
+	$Timers/ShieldsActiveTimer.wait_time = 3.0
+	$Timers/ShieldsActiveTimer.start()
+
+
 
 # emptyWarning()
 # If the player tries to activate a weapon or shield and the inventory is empty,
@@ -189,5 +229,36 @@ func raiseShield() -> void:
 func emptyWarning() -> void:
 	pass
 
+# takeDamage(damage)
+# Called when something has caused us damage
+#
+# Parameters
+#		damage: int					Amount to deduct from health
+# Return
+#		None
+#==
+# If we are immune, then just return
+# Set our immunity
+func takeDamage(damage: int) -> void:
+	if immune:
+		return
+
+	immune = true
+	$Timers/ImmuneTimer.start()
+
+	Globals.health -= damage
 
 # Signal Callbacks
+
+func _on_shields_active_timer_timeout():
+	shieldActive = false
+	queue_redraw()
+
+func _on_primary_cooldown_timer_timeout():
+	primaryCooldownFinished = true
+
+func _on_secondary_cooldown_timer_timeout():
+	secondaryCooldownFinished = true
+
+func _on_immune_timer_timeout():
+	immune = false

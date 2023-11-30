@@ -27,20 +27,6 @@ var drawBlastRadius: bool = true
 
 # Virtual Godot methods
 
-# _ready()
-# Called when node is ready
-#
-# Parameters
-#		None
-# Return
-#		None
-#==
-# Do all _draw() stuff
-# NOTE: Child must call super._ready() if it defines own _ready() method
-func _ready() -> void:
-#	_draw()
-	super._ready()
-
 # _draw()
 # Called to draw things on the canvas
 #
