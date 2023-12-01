@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 20), Vector2(0, -20), Vector2(0, 20)]
+"values": [Vector2(0, 10), Vector2(0, -10), Vector2(0, 10)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tompt"]
@@ -28,9 +28,12 @@ _data = {
 "Bounce": SubResource("Animation_nskr6")
 }
 
-[node name="ShortShieldRefill" type="Area2D"]
+[node name="ShortShieldRefill" type="Area2D" groups=["Item"]]
 collision_layer = 32
 script = ExtResource("1_5pw1q")
+scaleFactor = 0.06
+increaseItemCountBy = 1
+itemType = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
@@ -45,3 +48,5 @@ autoplay = "Bounce"
 libraries = {
 "": SubResource("AnimationLibrary_tompt")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

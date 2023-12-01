@@ -1,0 +1,46 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcolmbxckwejv"]
+
+[ext_resource type="Script" path="res://demo_scene.gd" id="1_yj6iy"]
+[ext_resource type="PackedScene" uid="uid://btjf5wvklthx6" path="res://Scenes/Characters/Challengers/skeleton_grim_reaper.tscn" id="2_8ee8l"]
+[ext_resource type="PackedScene" uid="uid://egreuidahxrp" path="res://Scenes/Characters/Challengers/skeleton_warrior.tscn" id="3_6rncy"]
+[ext_resource type="PackedScene" uid="uid://cnqfcy6t6aqr0" path="res://Scenes/Characters/Challengers/skull_of_death.tscn" id="4_gxjn5"]
+[ext_resource type="PackedScene" uid="uid://3p2ux16007x0" path="res://Scenes/Characters/Challengers/vampire.tscn" id="5_cva7y"]
+[ext_resource type="PackedScene" uid="uid://boow2ix5jkn6j" path="res://Scenes/Items/coin.tscn" id="6_xae62"]
+[ext_resource type="PackedScene" uid="uid://bmraomi5h26q3" path="res://Scenes/Items/gem.tscn" id="7_uwlti"]
+[ext_resource type="PackedScene" uid="uid://c6f37iqrpu3c4" path="res://Scenes/Items/extra_life_points.tscn" id="8_l5r5h"]
+[ext_resource type="PackedScene" uid="uid://dufbjij38tud6" path="res://Scenes/Items/life_points.tscn" id="9_iq1nv"]
+[ext_resource type="PackedScene" uid="uid://cqmro16dvr65l" path="res://Scenes/Items/long_shield_refill.tscn" id="10_3t0g5"]
+[ext_resource type="PackedScene" uid="uid://i0285wikdqwo" path="res://Scenes/Items/short_shield_refill.tscn" id="11_hbdym"]
+
+[node name="DemoScene" type="Node2D"]
+script = ExtResource("1_yj6iy")
+
+[node name="SkeletonGrimReaper" parent="." instance=ExtResource("2_8ee8l")]
+position = Vector2(56, 83)
+
+[node name="SkeletonWarrior" parent="." instance=ExtResource("3_6rncy")]
+position = Vector2(216, 71)
+
+[node name="SkullOfDeath" parent="." instance=ExtResource("4_gxjn5")]
+position = Vector2(131, 75)
+
+[node name="Vampire" parent="." instance=ExtResource("5_cva7y")]
+position = Vector2(290, 74)
+
+[node name="Coin" parent="." instance=ExtResource("6_xae62")]
+position = Vector2(60, 194)
+
+[node name="Gem" parent="." instance=ExtResource("7_uwlti")]
+position = Vector2(111, 197)
+
+[node name="ExtraLifePoints" parent="." instance=ExtResource("8_l5r5h")]
+position = Vector2(157, 202)
+
+[node name="LifePoints" parent="." instance=ExtResource("9_iq1nv")]
+position = Vector2(191, 203)
+
+[node name="LongShieldRefill" parent="." instance=ExtResource("10_3t0g5")]
+position = Vector2(267, 182)
+
+[node name="ShortShieldRefill" parent="." instance=ExtResource("11_hbdym")]
+position = Vector2(365, 166)

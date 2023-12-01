@@ -229,6 +229,7 @@ increases their respective counters in the UI.
 #### Power-ups
 
 SMC generates power-ups randomly. SMC randomly generates a power-up between 1 and 10 seconds.
+All the these can also show up in containers.
 
 The following list shows each power-up, the probability of SMC
 generating it, and its value.

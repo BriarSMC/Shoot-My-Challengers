@@ -28,8 +28,11 @@ _data = {
 "Bounce": SubResource("Animation_nskr6")
 }
 
-[node name="SecondaryWeaponRefill" type="Area2D"]
+[node name="SecondaryWeaponRefill" type="Area2D" groups=["Item"]]
 script = ExtResource("2_ddsi3")
+scaleFactor = 0.25
+increaseItemCountBy = 1
+itemType = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
@@ -44,3 +47,5 @@ autoplay = "Bounce"
 libraries = {
 "": SubResource("AnimationLibrary_tompt")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

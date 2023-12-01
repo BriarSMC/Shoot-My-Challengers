@@ -1,7 +1,7 @@
 extends Item
-class_name SecondaryWeaponRefill
+class_name LifePoints
 
-# This defines the class for the Hero's Secondary Weapon Refill Power-up
+# This defines the extra max life potion
 
 # Properties
 
@@ -12,8 +12,6 @@ class_name SecondaryWeaponRefill
 # Virtual Godot methods
 
 # Class specific methods
-
-# Signal Callbacks
 
 # See if Hero collected us
 func _on_body_entered(body):

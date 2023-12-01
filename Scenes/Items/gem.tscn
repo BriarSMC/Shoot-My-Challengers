@@ -8,13 +8,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lndy"]
 size = Vector2(14, 14)
 
-[node name="Gem" type="StaticBody2D"]
+[node name="Gem" type="Area2D" groups=["Item"]]
 collision_layer = 16
 script = ExtResource("1_7w75d")
 images = Array[Texture]([ExtResource("2_f5ema"), ExtResource("3_kdo7m"), ExtResource("4_gagbv")])
+scaleFactor = 0.7
+increaseItemCountBy = 1
+itemType = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6lndy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_f5ema")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

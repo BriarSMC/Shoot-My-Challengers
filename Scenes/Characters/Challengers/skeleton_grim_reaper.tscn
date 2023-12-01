@@ -59,7 +59,7 @@ collision_mask = 151
 script = ExtResource("1_qskpw")
 startingHealth = 50
 startingSpeed = 20.0
-scaleFactor = 1.5
+scaleFactor = 1.0
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s3ry0")

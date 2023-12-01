@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 class_name Item
 
 #++
@@ -11,7 +11,7 @@ class_name Item
 #-
 
 # Designer will choose one of these types in the Inspector
-enum itemIs {COIN, GEM, LIFE, }
+enum itemIs {COIN, GEM, MAXLIFE, LIFE, PWEAPON, SWEAPON, SSHIELD, LSHIELD, }
 
 # The following properties must be set in the Inspector by the designer
 @export var scaleFactor: float
@@ -29,13 +29,13 @@ enum itemIs {COIN, GEM, LIFE, }
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Scale our image
 func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
-	
+
 #+
 # Class specific methods
 #-
@@ -47,15 +47,28 @@ func _ready() -> void:
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Bump the appropriate counter based on our type
-func weHaveBeenCollected() -> void:
+# Then we go away
+func collected() -> void:
 	match itemType:
 		itemIs.COIN:
 			Globals.coinCount += increaseItemCountBy
 		itemIs.GEM:
 			Globals.gemCount += increaseItemCountBy
-		itemIs.LIFE: 
+		itemIs.MAXLIFE:
 			Globals.maxHealth += increaseItemCountBy
+		itemIs.LIFE:
+			Globals.health += increaseItemCountBy
+		itemIs.PWEAPON:
+			Globals.primaryWeaponCount += increaseItemCountBy
+		itemIs.SWEAPON:
+			Globals.secondaryWeaponCount += increaseItemCountBy
+		itemIs.SSHIELD:
+			Globals.shortShieldCount += increaseItemCountBy
+		itemIs.LSHIELD:
+			Globals.longShieldCount += increaseItemCountBy
+
+	queue_free()

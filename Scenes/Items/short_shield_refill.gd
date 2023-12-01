@@ -14,3 +14,8 @@ class_name ShortShieldRefill
 # Class specific methods
 
 # Signal Callbacks
+
+# See if Hero collected us
+func _on_body_entered(body):
+	if body.is_in_group("Hero"):
+		collected()

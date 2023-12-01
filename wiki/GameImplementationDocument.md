@@ -26,6 +26,7 @@ Current groups are:
 * Challenger
 * HeroWeapon
 * ChallengerWeapon
+* Item
 
 # Directory Structure 
 * res://

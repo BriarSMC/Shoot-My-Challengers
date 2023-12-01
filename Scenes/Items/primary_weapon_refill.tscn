@@ -30,9 +30,12 @@ _data = {
 " Skew": SubResource("Animation_rm0ek")
 }
 
-[node name="PrimaryWeaponRefill" type="Area2D"]
+[node name="PrimaryWeaponRefill" type="Area2D" groups=["Item"]]
 collision_layer = 32
 script = ExtResource("1_ncd06")
+scaleFactor = 0.2
+increaseItemCountBy = 5
+itemType = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0w5q7")
@@ -56,3 +59,5 @@ autoplay = " Skew"
 libraries = {
 "": SubResource("AnimationLibrary_xhiyl")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

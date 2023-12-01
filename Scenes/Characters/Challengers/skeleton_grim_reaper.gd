@@ -19,19 +19,20 @@ class_name SkeletonGrimReaper
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Calculate the first target position for the path
 func _ready() -> void:
 	$NavigationAgent2D.target_position = Globals.heroPosition
+	super._ready()
 
 # _physics_process(delta)
 # Called every physics cycle
 #
 # Paramters
 #	delta: float				Amount of time elaped since last call
-# Return 
+# Return
 #	None
 #==
 # Only run the path and move code if the Hero is in our notice area
@@ -55,19 +56,19 @@ func _physics_process(_delta) -> void:
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # What the code is doing (steps)
 func _on_recalculate_path_timer_timeout() -> void:
 	$NavigationAgent2D.target_position = Globals.heroPosition
-	
+
 # _on_notice_area_body_entered(body)
 # Set the active flag only if the Hero enters the notice area.
 #
 # Paramters
 #	body: Object				# Reference to the node entering the area
-# Return 
+# Return
 #	None
 #==
 # If it's the Hero, then set the active flag
@@ -75,13 +76,13 @@ func _on_recalculate_path_timer_timeout() -> void:
 func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
 		active = true
-		
+
 # _on_notice_area_body_exited(body)
 # Clear the active flag only if the Hero leaves the notice area.
 #
 # Paramters
 #	body: Object				# Reference to the node exiting the area
-# Return 
+# Return
 #	None
 #==
 # If it's the Hero, then clear the active flag
@@ -90,7 +91,7 @@ func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
 		active = false
 
-	
+
 # Class specific methods
 
 # Signal callbacks

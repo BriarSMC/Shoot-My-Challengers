@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dufbjij38tud6"]
+
+[ext_resource type="Script" path="res://Scenes/Items/life_points.gd" id="1_slr06"]
+[ext_resource type="Texture2D" uid="uid://5j6d7o0gcmxy" path="res://Graphics/Misc/Dungeon_item_props_v2.png" id="2_15ixx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifp7"]
+size = Vector2(20, 49)
+
+[sub_resource type="Animation" id="Animation_15jer"]
+resource_name = "Bob"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jdof"]
+_data = {
+"Bob": SubResource("Animation_15jer")
+}
+
+[node name="LifePoints" type="Area2D" groups=["Item"]]
+script = ExtResource("1_slr06")
+scaleFactor = 0.4
+increaseItemCountBy = 5
+itemType = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_iifp7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("2_15ixx")
+hframes = 12
+vframes = 5
+frame = 33
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+autoplay = "Bob"
+libraries = {
+"": SubResource("AnimationLibrary_3jdof")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

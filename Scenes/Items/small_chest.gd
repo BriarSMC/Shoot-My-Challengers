@@ -11,6 +11,5 @@ class_name SmallChest
 
 # Virtual Godot methods
 
-
 # Signal callbacks
 

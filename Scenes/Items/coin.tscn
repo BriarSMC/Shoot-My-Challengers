@@ -69,9 +69,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Coin" type="StaticBody2D"]
+[node name="Coin" type="Area2D" groups=["Item"]]
 collision_layer = 16
 script = ExtResource("1_2itpe")
+scaleFactor = 0.3
+increaseItemCountBy = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4fipv")
@@ -82,3 +84,5 @@ animation = &"Spin"
 autoplay = "Spin"
 frame = 1
 frame_progress = 0.0852817
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

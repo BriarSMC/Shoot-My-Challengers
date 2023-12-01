@@ -4,16 +4,19 @@ class_name Chest
 # This is the base class definition for any container in the game.
 # It's primary purpose is to provide a place for items to spawn from, and
 # to provide methods to instantiate them and position them on the level.
+#
+# We attach the contents of the chest in the Editor. At level instantiation
+# We find what items we contain and load them into an array. We also hide
+# them just incase we didn't hide them with the Editor.
 
 # Properties
-var chestClosed: bool = true
+var chestClosed: bool = true						# Chest starts off closed
+var contents: Array[Item] = []					# Items in the chest
 
 # The following properties must be set in the Inspector by the designer
 @export var scaleFactor: float
-@export var items: Array[Item]
 
 # The following are set based on the Inspector values
-@onready var itemsCount: int = items.size()
 
 # Virtual Godot methods
 
@@ -26,8 +29,14 @@ var chestClosed: bool = true
 #	value|None					Description
 #==
 # Resize the graphic
+# Find out what we contain
+# Hide them for now
 func _ready() -> void:
 	Globals.scaleMe(self, scaleFactor)
+	for c in get_children():
+		if c.is_in_group('Item'):
+			contents.push_back(c)
+			c.visible = false
 
 # Class specific methods
 
@@ -48,4 +57,24 @@ func open() -> void:
 		var animation = find_child("Animation")
 		chestClosed = false
 		animation.play("Open")
-		# Display items goes here
+		displayContents()
+
+# displayContents()
+# Make the contents of the chest visible
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Loop through the contents array
+# Make each item visible
+# Position it in a random location in front of the chest
+func displayContents() -> void:
+	var pos: Vector2
+	for i in range(0, contents.size()):
+		contents[i].visible = true
+		pos = Vector2(randi_range(-10, 10), randi_range(10, 20))
+		contents[i].position = pos
+
+# Signal Callbacks

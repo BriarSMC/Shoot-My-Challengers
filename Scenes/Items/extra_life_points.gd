@@ -1,7 +1,7 @@
 extends Item
-class_name SecondaryWeaponRefill
+class_name ExtraLifePoints
 
-# This defines the class for the Hero's Secondary Weapon Refill Power-up
+# <description>
 
 # Properties
 

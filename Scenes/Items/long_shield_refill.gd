@@ -10,6 +10,10 @@ class_name LongShieldRefill
 # The following are set based on the Inspector values
 
 # Virtual Godot methods
-	
+
 # Class specific methods
 
+# See if Hero collected us
+func _on_body_entered(body):
+	if body.is_in_group("Hero"):
+		collected()
