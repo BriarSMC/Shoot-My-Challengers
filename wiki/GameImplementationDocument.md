@@ -2,6 +2,16 @@ This documents how the Godot application is constructed.
 
 At the moment, it is an unorganized collection of important information.
 
+# Randomization
+
+For development purposes we use a fixed set of random numbers to aid in debugging. However, we want
+different sets of random numbers each time the game is ran in production. To control this we've exported
+`Globals.trueRandom: bool` (`res://autoload/globals.gd`). The coded default is `false`. 
+
+When it's time to 
+build the production game __BE SURE TO GO INTO THE INSPECTOR FOR__ `globals.gd` and set `trueRandom` to `true`.
+
+
 # Collision Layers
 
 SMC operates with eight (8) collision layers:

@@ -72,6 +72,7 @@ func open() -> void:
 # Position it in a random location in front of the chest
 func displayContents() -> void:
 	var pos: Vector2
+	print(contents)
 	for i in range(0, contents.size()):
 		contents[i].visible = true
 		pos = Vector2(randi_range(-10, 10), randi_range(10, 20))

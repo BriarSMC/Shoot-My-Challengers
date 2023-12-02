@@ -6,8 +6,11 @@ class_name Level
 
 # Properties
 
+var powerupSpawner: PowerupSpawner
+
 # Load the game play UI
 @onready var gamePlayUIScene: PackedScene = preload("res://Scenes/Levels/game_play_ui.tscn")
+@onready var powerupSpawnerScene: PackedScene = preload("res://Scenes/Levels/powerup_spawner.tscn")
 
 # The following properties must be set in the Inspector by the designer
 @export var scaleFactor: float
@@ -32,6 +35,8 @@ class_name Level
 # Find out how many challengers there are
 # Create the game play UI
 # Save the GamePlayUI labels then update UI
+# Set the randomizer
+# Startup the powerup spawner
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	Globals.currentLevel =  self
@@ -48,6 +53,15 @@ func _ready() -> void:
 	var gamePlayUI: Object = gamePlayUIScene.instantiate()
 	add_child(gamePlayUI)
 	gamePlayUI.updateUI()
+
+	# Besure to set trueRandom to true in the Inspector before deploy
+	if Globals.trueRandom:
+		randomize()
+	else:
+		seed(8675309)
+
+	powerupSpawner = powerupSpawnerScene.instantiate()
+	add_child(powerupSpawner)
 
 	super._ready()
 

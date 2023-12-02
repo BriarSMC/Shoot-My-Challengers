@@ -90,6 +90,7 @@ func pollInput(delta) -> void:
 # If it's zero, then just return
 # Set that we've moved
 # Set the new velocity
+# Enable powerup spawning
 # Move the Hero
 # Record Hero's new position
 func moveHero() -> void:
@@ -101,6 +102,7 @@ func moveHero() -> void:
 		return
 
 	hero.moved = true
+	Globals.startSpawning = true
 	hero.velocity = hero.speed * hero.direction
 	hero.move_and_slide()
 	Globals.heroPosition = hero.position

@@ -216,9 +216,10 @@ moving the Hero graphic so that it collides with the items.
 * Medium Chest
 * Small Chest
 
-#### Items
+#### Items/Power-ups
 
-Items only appear in containers. Gems and coins serve no purpose other than giving the
+Items and power-ups can  appear in containers. Only power-ups are spawned dynamically during game play.
+Gems and coins serve no purpose other than giving the
 player a sense of accomplishment by collecting them. Collecting gems and coins only
 increases their respective counters in the UI.
 
@@ -226,9 +227,9 @@ increases their respective counters in the UI.
 * Gems, and
 * Coins.
 
-#### Power-ups
+*__Dynamically Spawned Power-up__*
 
-SMC generates power-ups randomly. SMC randomly generates a power-up between 1 and 10 seconds.
+SMC also generates power-ups randomly. SMC spawns these power-ups between 1 and 10 second intervals.
 All the these can also show up in containers.
 
 The following list shows each power-up, the probability of SMC
@@ -236,7 +237,7 @@ generating it, and its value.
 
 * Extra life points 
   - 25% probability
-  - 5 to 10 life points
+  - 5 life points
 * Primary weapon refill of 5 units
   - 30%
   - 5 units

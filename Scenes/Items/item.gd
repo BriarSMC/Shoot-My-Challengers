@@ -9,6 +9,7 @@ class_name Item
 #+
 # Properties
 #-
+var isPowerup: bool = false
 
 # Designer will choose one of these types in the Inspector
 enum itemIs {COIN, GEM, MAXLIFE, LIFE, PWEAPON, SWEAPON, SSHIELD, LSHIELD, }
@@ -34,7 +35,7 @@ enum itemIs {COIN, GEM, MAXLIFE, LIFE, PWEAPON, SWEAPON, SSHIELD, LSHIELD, }
 #==
 # Scale our image
 func _ready() -> void:
-	Globals.scaleMe(self, scaleFactor)
+	if not isPowerup: Globals.scaleMe(self, scaleFactor)
 
 #+
 # Class specific methods

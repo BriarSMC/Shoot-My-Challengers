@@ -43,6 +43,7 @@ var vampire: Vampire							# Vampire hypnotizing us
 # Set health and inventory
 # Set hypnotize stuff
 # Call the parent _ready
+# Save where we are
 func _ready() -> void:
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
 		$TargetPointer.visible = true
@@ -62,6 +63,8 @@ func _ready() -> void:
 	Globals.longShieldCount = startingSShield
 
 	hypnoSpeed = speed/2.0
+
+	Globals.heroPosition = position
 
 	super._ready()
 

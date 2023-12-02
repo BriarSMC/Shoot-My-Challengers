@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://f4wjgyt0g6e6"]
+[gd_scene load_steps=23 format=3 uid="uid://f4wjgyt0g6e6"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_om8e3"]
 [ext_resource type="PackedScene" uid="uid://ckmp78u8vt1xy" path="res://Scenes/Levels/ground.tscn" id="2_foxsu"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dufbjij38tud6" path="res://Scenes/Items/life_points.tscn" id="11_6se7h"]
 [ext_resource type="PackedScene" uid="uid://boow2ix5jkn6j" path="res://Scenes/Items/coin.tscn" id="14_djuf6"]
 [ext_resource type="PackedScene" uid="uid://i0285wikdqwo" path="res://Scenes/Items/short_shield_refill.tscn" id="14_hoohu"]
+[ext_resource type="PackedScene" uid="uid://c6f37iqrpu3c4" path="res://Scenes/Items/extra_life_points.tscn" id="14_pvphk"]
+[ext_resource type="PackedScene" uid="uid://bmraomi5h26q3" path="res://Scenes/Items/gem.tscn" id="15_jaqb2"]
 
 [sub_resource type="Animation" id="Animation_gmpaw"]
 resource_name = "FadeFromBlack"
@@ -200,6 +202,18 @@ position = Vector2(125, 339)
 [node name="PrimaryWeaponRefill2" parent="Containers/MediumChest" instance=ExtResource("8_l0f4r")]
 
 [node name="LifePoints" parent="Containers/MediumChest" instance=ExtResource("11_6se7h")]
+
+[node name="Coin" parent="Containers/MediumChest" instance=ExtResource("14_djuf6")]
+
+[node name="ExtraLifePoints" parent="Containers/MediumChest" instance=ExtResource("14_pvphk")]
+
+[node name="Gem" parent="Containers/MediumChest" instance=ExtResource("15_jaqb2")]
+
+[node name="LifePoints2" parent="Containers/MediumChest" instance=ExtResource("11_6se7h")]
+
+[node name="LongShieldRefill" parent="Containers/MediumChest" instance=ExtResource("10_5tayf")]
+
+[node name="ShortShieldRefill" parent="Containers/MediumChest" instance=ExtResource("14_hoohu")]
 
 [node name="SmallChest" parent="Containers" instance=ExtResource("9_myp5g")]
 position = Vector2(522, 256)
