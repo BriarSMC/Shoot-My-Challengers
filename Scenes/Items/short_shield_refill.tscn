@@ -31,7 +31,7 @@ _data = {
 [node name="ShortShieldRefill" type="Area2D" groups=["Item"]]
 collision_layer = 32
 script = ExtResource("1_5pw1q")
-scaleFactor = 0.06
+scaleFactor = 0.14
 increaseItemCountBy = 1
 itemType = 6
 
@@ -39,11 +39,11 @@ itemType = 6
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_wro51")
 
-[node name="Spite2D" type="Sprite2D" parent="."]
+[node name="ItemImage" type="Sprite2D" parent="."]
 position = Vector2(0, 20)
 texture = ExtResource("2_c3lav")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ItemImage"]
 autoplay = "Bounce"
 libraries = {
 "": SubResource("AnimationLibrary_tompt")

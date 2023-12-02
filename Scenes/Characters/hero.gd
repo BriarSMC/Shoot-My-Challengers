@@ -51,7 +51,7 @@ func _ready() -> void:
 		$TargetPointer.visible = false
 
 	global_position = find_parent("Level*").find_child("TeleportIn").global_position
-	$CharacterImage.play("IdleEast")
+	$Character/CharacterImage.play("IdleEast")
 	visible = true
 	$TargetPointer.visible = false
 
@@ -178,7 +178,7 @@ func die() -> void:
 #==
 # Play the animation to make us visible
 func spawn() -> void:
-	$CharacterImage/AnimationPlayer.play("FadeFromBlack")
+	$Character/CharacterImage/AnimationPlayer.play("FadeFromBlack")
 
 # hypnotize(byWhom: Vampire, sw: bool)
 # A vampire has hypnotized us. Dire things happen.

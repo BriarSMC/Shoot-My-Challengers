@@ -30,7 +30,7 @@ _data = {
 
 [node name="LongShieldRefill" type="Area2D" groups=["Item"]]
 script = ExtResource("1_quty8")
-scaleFactor = 0.06
+scaleFactor = 0.14
 increaseItemCountBy = 1
 itemType = 7
 
@@ -38,11 +38,11 @@ itemType = 7
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_pj7cr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ItemImage" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 texture = ExtResource("2_ei8kf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ItemImage"]
 autoplay = "Bob"
 libraries = {
 "": SubResource("AnimationLibrary_qv20b")

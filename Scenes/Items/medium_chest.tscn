@@ -55,7 +55,7 @@ scaleFactor = 0.85
 position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_f5cmm")
 
-[node name="Animation" type="AnimatedSprite2D" parent="."]
+[node name="ChestImage" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3ggqs")
 animation = &"Open"
 

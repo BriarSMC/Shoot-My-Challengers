@@ -35,7 +35,8 @@ enum itemIs {COIN, GEM, MAXLIFE, LIFE, PWEAPON, SWEAPON, SSHIELD, LSHIELD, }
 #==
 # Scale our image
 func _ready() -> void:
-	if not isPowerup: Globals.scaleMe(self, scaleFactor)
+	#if not isPowerup:
+	Globals.scaleMe(self.find_child('ItemImage'), scaleFactor)
 
 #+
 # Class specific methods

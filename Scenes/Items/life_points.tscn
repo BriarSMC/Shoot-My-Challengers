@@ -30,7 +30,7 @@ _data = {
 
 [node name="LifePoints" type="Area2D" groups=["Item"]]
 script = ExtResource("1_slr06")
-scaleFactor = 0.4
+scaleFactor = 1.0
 increaseItemCountBy = 5
 itemType = 3
 
@@ -38,14 +38,14 @@ itemType = 3
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_iifp7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ItemImage" type="Sprite2D" parent="."]
 position = Vector2(0, 10)
 texture = ExtResource("2_15ixx")
 hframes = 12
 vframes = 5
 frame = 33
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ItemImage"]
 autoplay = "Bob"
 libraries = {
 "": SubResource("AnimationLibrary_3jdof")

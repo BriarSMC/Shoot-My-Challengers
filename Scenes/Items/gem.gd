@@ -49,7 +49,7 @@ func _ready():
 #==
 # Randomly set the image to one in our images array
 func setGemImage() -> void:
-	$Sprite2D.texture = images[randi_range(0, imagesSize - 1)]
+	$ItemImage.texture = images[randi_range(0, imagesSize - 1)]
 
 # See if Hero collected us
 func _on_body_entered(body):

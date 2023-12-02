@@ -30,13 +30,13 @@ _data = {
 
 [node name="ExtraLifePoints" type="Area2D" groups=["Item"]]
 script = ExtResource("1_cf5gp")
-scaleFactor = 0.7
+scaleFactor = 1.0
 itemType = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lat03")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ItemImage" type="Sprite2D" parent="."]
 position = Vector2(0, -20)
 scale = Vector2(0.994792, 1)
 texture = ExtResource("2_5h5uq")
@@ -44,7 +44,7 @@ hframes = 12
 vframes = 5
 frame = 32
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ItemImage"]
 autoplay = "Bob"
 libraries = {
 "": SubResource("AnimationLibrary_5auut")

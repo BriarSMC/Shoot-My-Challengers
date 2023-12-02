@@ -72,13 +72,13 @@ animations = [{
 [node name="Coin" type="Area2D" groups=["Item"]]
 collision_layer = 16
 script = ExtResource("1_2itpe")
-scaleFactor = 0.3
+scaleFactor = 0.6
 increaseItemCountBy = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4fipv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="ItemImage" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pfp7v")
 animation = &"Spin"
 autoplay = "Spin"

@@ -19,7 +19,7 @@ itemType = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6lndy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ItemImage" type="Sprite2D" parent="."]
 texture = ExtResource("2_f5ema")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

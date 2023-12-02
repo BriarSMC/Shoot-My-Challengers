@@ -32,7 +32,7 @@ var contents: Array[Item] = []					# Items in the chest
 # Find out what we contain
 # Hide them for now
 func _ready() -> void:
-	Globals.scaleMe(self, scaleFactor)
+	Globals.scaleMe(self.find_child("ChestImage"), scaleFactor)
 	for c in get_children():
 		if c.is_in_group('Item'):
 			contents.push_back(c)
@@ -54,7 +54,7 @@ func _ready() -> void:
 # Open the chest only if its closed
 func open() -> void:
 	if chestClosed:
-		var animation = find_child("Animation")
+		var animation = find_child("ChestImage")
 		chestClosed = false
 		animation.play("Open")
 		displayContents()
