@@ -1,6 +1,5 @@
-extends Node2D
+extends Level
 class_name Level2
-
 
 # This is the Level 2 scene
 

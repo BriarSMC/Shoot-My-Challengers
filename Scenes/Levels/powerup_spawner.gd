@@ -50,7 +50,6 @@ var powerups: Array[PackedScene] =[
 #==
 # Set up the timer
 func _ready() -> void:
-	print('Setting new spawn timer')
 	setNewTimer()
 
 # Class specific methods
@@ -86,12 +85,21 @@ func setNewTimer() -> void:
 func spawnPowerup():
 	if Globals.startSpawning:
 		var i: int = selectPowerup()
-		print('Selected powerup ', i)
 		var powerup = powerups[i].instantiate()
 		powerup.isPowerup = true
-		powerup.position += Globals.heroPosition + Vector2(-100,80)
-		if position.x <= 0: position.x = 20
-		if position.y <= 0: position.y = 20
+
+		# So, what we are doing here is putting the powerup between
+		# two circles around the Hero with radii 75 and 200. We generate
+		# new x and y that are both positive. Then we generate another
+		# random number to determine if we should make the coordinate negative
+		var newX: float = randi_range(75,200)
+		if randf_range(-1.0, 1.0) < 0: newX *= -1.0
+		var newY: float = randf_range(75,200)
+		if randf_range(-1.0, 1.0) < 0: newY *= -1.0
+
+		powerup.position += Globals.heroPosition + Vector2(newX, newY)
+		if powerup.position.x <= 0: powerup.position.x = 40
+		if powerup.position.y <= 0: powerup.position.y = 40
 
 		add_child(powerup)
 
@@ -114,7 +122,6 @@ func spawnPowerup():
 # If ran is <= the  sum, then return the index of that powerup.
 # The return 0 is there just to make GD happy.
 func selectPowerup() -> int:
-	print('Selecting powerup')
 	var ran: float = randf_range(0.0, 1.0)
 	var prob: float = 0.0
 	for i in range(0, powerupValues.size()):
@@ -125,5 +132,4 @@ func selectPowerup() -> int:
 # Signal Callbacks
 
 func _on_spawn_timer_timeout():
-	print('Spawn timer fired')
 	spawnPowerup()
