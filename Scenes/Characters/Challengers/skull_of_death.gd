@@ -23,29 +23,20 @@ var level: Level
 #		None
 #==
 # Position us at the arena marker. This is our anchor point.
-# Draw a circle for the arena
 # NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
 	level = find_parent('Level*')
-	arenaCenter = level.find_child('SkullArena').position
-	position = arenaCenter
-	_draw()
+	arenaCenter = level.find_child('SkullArena').global_position
+	global_position = arenaCenter
 	super._ready()
-
-# _draw()
-# Called when any drawing needs to be done
-#
-# Parameters
-#		None
-# Return
-#		None
-#==
-# Draw a circle for the Skull Arena
-# NOTE: Child must call super._ready() if it defines own _ready() method
-func _draw() -> void:
-	print('Drawing arena')
-	draw_circle(arenaCenter, level.arenaRadius, Color(.8, .68, 0, .2))
 
 # Class specific methods
 
 # Signal Callbacks
+
+# Make us active/inactive based on presence of Hero in Notice Area
+func _on_notice_area_body_entered(body):
+	if body.is_in_group("Hero"): active = true
+
+func _on_notice_area_body_exited(body):
+	if body.is_in_group("Hero"): active = false

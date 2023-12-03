@@ -47,6 +47,9 @@ func biteHero() -> void:
 	hero.takeDamage(damage)
 	$BitingTimer.start()
 
+func takeDamage(damage: int) -> void:
+	super.takeDamage(damage)
+
 # Signal Callbacks
 
 # Only care about Hero
@@ -54,7 +57,6 @@ func biteHero() -> void:
 # Hypnotize him
 func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
-		print('Hypnotizing Hero')
 		hero = body
 		active = true
 		body.hypnotize(self)
@@ -72,7 +74,6 @@ func _on_notice_area_body_exited(body):
 # Tell Hero he's touched the Vampire
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Hero"):
-		print('Hero has touched the vampire')
 		startBiting = true
 		body.hitTheVampire()
 
@@ -80,5 +81,4 @@ func _on_area_2d_body_entered(body):
 # Stop hypnotism
 # TODO: Stop any biting media
 func _on_biting_timer_timeout():
-	print('Stop the hypnotism')
 	hero.hypnotize(self, false)

@@ -104,6 +104,7 @@ _data = {
 script = ExtResource("1_om8e3")
 scaleFactor = 0.3
 levelNumber = 1
+arenaColor = Color(100, 100, 0.384314, 0.0588235)
 
 [node name="PlayingArea" type="Node2D" parent="."]
 

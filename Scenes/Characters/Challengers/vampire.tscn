@@ -1,7 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://3p2ux16007x0"]
+[gd_scene load_steps=9 format=3 uid="uid://3p2ux16007x0"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/vampire.gd" id="1_hmvp6"]
 [ext_resource type="Texture2D" uid="uid://uv5c7kg1wyrx" path="res://Graphics/Challengers/Dungeon_Enemy_v2.png" id="2_oabd7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csnxy"]
+size = Vector2(13, 91)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r7fs"]
+size = Vector2(13, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbkyo"]
 size = Vector2(13, 51)
@@ -38,6 +44,14 @@ script = ExtResource("1_hmvp6")
 startingHealth = 40
 scaleFactor = 1.0
 
+[node name="DoorBlocker" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_csnxy")
+
+[node name="TakeDamageCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_3r7fs")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="BodyCollider" type="CollisionShape2D" parent="Area2D"]
@@ -55,10 +69,10 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterImage"]
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_grwag")
 }
+autoplay = "Idle"
 
 [node name="BitingTimer" type="Timer" parent="."]
 wait_time = 2.0

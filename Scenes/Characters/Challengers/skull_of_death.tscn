@@ -14,7 +14,7 @@
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6bpyd"]
-radius = 229.107
+radius = 200.022
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_38s6h"]
 animations = [{
@@ -73,3 +73,6 @@ sprite_frames = SubResource("SpriteFrames_38s6h")
 animation = &"Walk"
 autoplay = "Idle"
 frame_progress = 0.322868
+
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]

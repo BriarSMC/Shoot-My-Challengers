@@ -121,7 +121,6 @@ func firePWeapon() -> void:
 # Set its position
 # Add it to the tree
 func fireSWeapon() -> void:
-	print('Hero.fireSWeapon')
 	var weapon: Area2D  = sWeapon.instantiate()
 
 	weapon.position = self.global_position
@@ -161,7 +160,6 @@ func takeDamage(damage: int) -> void:
 # Debug print for now
 # Call the parent class to do any cleanup work
 func die() -> void:
-	print('Hero died')
 	super.die()
 
 # spawn()

@@ -25,14 +25,13 @@ signal showDemoPage
 # Class specific methods
 
 func fadeUI():
-	print("fadeUI called")
 	$VBoxContainer/AnimationPlayer.play("FadeToBlack")
 
 # Signal callbacks
 
 func _on_start_game_pressed():
 	startGame.emit()
-	
+
 func _on_quit_pressed():
 	get_tree().quit()
 

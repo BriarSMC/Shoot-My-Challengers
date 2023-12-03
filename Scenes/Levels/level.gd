@@ -7,6 +7,7 @@ class_name Level
 # Properties
 
 var powerupSpawner: PowerupSpawner
+var skullArena: Marker2D
 
 # Load the game play UI
 @onready var gamePlayUIScene: PackedScene = preload("res://Scenes/Levels/game_play_ui.tscn")
@@ -16,6 +17,7 @@ var powerupSpawner: PowerupSpawner
 @export var scaleFactor: float
 @export var levelNumber: int
 @export var arenaRadius: int = 200
+@export var arenaColor: Color = Color(1,0,0,.3)
 
 
 # The following are set based on the Inspector values
@@ -39,6 +41,7 @@ var powerupSpawner: PowerupSpawner
 # Save the GamePlayUI labels then update UI
 # Set the randomizer
 # Startup the powerup spawner
+# Save location of the Skull Arena
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	Globals.currentLevel =  self
@@ -65,6 +68,7 @@ func _ready() -> void:
 	powerupSpawner = powerupSpawnerScene.instantiate()
 	add_child(powerupSpawner)
 
+	skullArena = find_child('SkullArena')
 	super._ready()
 
 # _process(delta)
@@ -90,6 +94,18 @@ func _process(delta) -> void:
 		exitTheLevel('won')
 	super._process(delta)
 
+# _draw()
+# Called when any drawing needs to be done
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Draw a circle for the Skull Arena
+# NOTE: Child must call super._ready() if it defines own _ready() method
+func _draw() -> void:
+	draw_circle(skullArena.position, arenaRadius, arenaColor) #Color(.8, .68, 0, .2))
 
 # Class specific methods
 

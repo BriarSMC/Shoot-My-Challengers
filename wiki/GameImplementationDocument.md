@@ -25,6 +25,17 @@ SMC operates with eight (8) collision layers:
 1. Zones and Areas - Unassigned at this time as we are not using these right now.
 1. Walls and Objects - This is assigned to all walls and objects that other scenes need to 'see'. Used mainly by the tile sets.
 
+## The Strange Case of the Vampire
+
+There has to be a better way to do this. Vampire has 4 collision shapes: Notice Area, Body Collider, Take Damage Collider, and
+DoorBlocker. 
+
+Because the Vampire is a CharacterBody2D it cannot 
+connect to signals from the colliders unless the colliders are in an Area2D. Then the Area2D signals can be attached to the
+Vampire script. These colliders do not stop anything using `move_and_slide()`. So, the Vampire has a collider to take damage.
+It's the size of the image. However, the Hero cannot pass through a doorway while the Vampire is there (i.e. not dead). 
+So we have another collider whose sole purpose is to prevent the hero from passing through the doorway.
+
 # Groups
 
 We use groups to add metadata about certain scenes. We use this to make decisions on whether or not to execute certain code. Example: Run code for a signal only if it's the Hero:
