@@ -74,3 +74,5 @@ func collected() -> void:
 			Globals.longShieldCount += increaseItemCountBy
 
 	queue_free()
+
+# Signal callbacks

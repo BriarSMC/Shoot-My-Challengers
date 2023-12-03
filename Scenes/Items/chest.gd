@@ -69,13 +69,18 @@ func open() -> void:
 #==
 # Loop through the contents array
 # Make each item visible
+# GIANT NOTE: Turns out that if the Hero is close enough to the chest when it
+# opens, then some items are 'collected' before this method even runs. This
+# causes visible=true to die a horrible death because we've already freed
+# the object. So we check to see if the object is even there before manipulating
+# it.
 # Position it in a random location in front of the chest
 func displayContents() -> void:
 	var pos: Vector2
-	print(contents)
 	for i in range(0, contents.size()):
-		contents[i].visible = true
-		pos = Vector2(randi_range(-10, 10), randi_range(10, 20))
-		contents[i].position = pos
+		if is_instance_valid(contents[i]):
+			contents[i].visible = true
+			pos = Vector2(randi_range(-10, 10), randi_range(10, 20))
+			contents[i].position = pos
 
 # Signal Callbacks

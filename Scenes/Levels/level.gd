@@ -15,6 +15,8 @@ var powerupSpawner: PowerupSpawner
 # The following properties must be set in the Inspector by the designer
 @export var scaleFactor: float
 @export var levelNumber: int
+@export var arenaRadius: int = 200
+
 
 # The following are set based on the Inspector values
 
