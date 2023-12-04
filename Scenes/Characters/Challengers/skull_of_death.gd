@@ -32,6 +32,56 @@ func _ready() -> void:
 
 # Class specific methods
 
+# lungeAtHero()
+# Called to lunch at the Hero
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Start the lunge timer
+func lungeAtHero() -> void:
+	startLungeTimer()
+
+# fireLaser()
+# Fires the laser
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Start the laser timer
+func fireLaser() -> void:
+	startLaserTimer()
+
+# startLungeTimer()
+# Called to star the lunge timer
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Set a random time to fire
+func startLungeTimer() -> void:
+	$Timers/LungeTimer.wait_time = randf_range(2.0, 8.0)
+	$Timers/LungeTimer.start()
+
+# startLaserTimer()
+# Called to set the laser timer
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Set random time to fire
+func startLaserTimer() -> void:
+	$Timers/LaserTimer.wait_time = randf_range(2.0, 4.0)
+	$Timers/LaserTimer.start()
+
 # Signal Callbacks
 
 # Make us active/inactive based on presence of Hero in Notice Area
@@ -40,3 +90,9 @@ func _on_notice_area_body_entered(body):
 
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"): active = false
+
+func _on_lunge_timer_timeout():
+	lungeAtHero()
+
+func _on_laser_timer_timeout():
+	fireLaser()

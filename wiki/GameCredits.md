@@ -23,9 +23,9 @@
 - [ScratchIO](https://opengameart.org/users/scratchio)
 - [Chrisblue](https://opengameart.org/users/chrisblue)
 - [cemkalyoncu](https://opengameart.org/users/cemkalyoncu)
-- [rawdanitsu](https://opengameart.org/users/rawdanitsu)
 - [Nekith](https://opengameart.org/users/nekith)
 - [rubberduck](https://opengameart.org/users/rubberduck)
+- [bdragon1727](https://bdragon1727.itch.io/)
 - 
 ### Music
 - [MATRIXXX_](https://freesound.org/people/MATRIXXX_/)

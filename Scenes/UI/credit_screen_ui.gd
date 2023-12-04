@@ -7,7 +7,7 @@ extends CanvasLayer
 # player clicks one of those buttons.
 #
 # When we exit this screen for another we run the FadeToBlack animation to dim the screen.
-# Godot won't let us modulate the StartScreenUI. So we have to call the fadeUI() method 
+# Godot won't let us modulate the StartScreenUI. So we have to call the fadeUI() method
 # in StartScreenUI.
 
 # Signals
@@ -22,7 +22,7 @@ signal backButtonClicked
 # Virtual Godot methods
 
 # Class specific methods
-	
+
 func fadeUI():
 	print("fadeUI called")
 	$VBoxContainer/AnimationPlayer.play("FadeToBlack")

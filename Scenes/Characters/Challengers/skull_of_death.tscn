@@ -74,5 +74,15 @@ animation = &"Walk"
 autoplay = "Idle"
 frame_progress = 0.322868
 
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="LungeTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="LaserTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="timeout" from="Timers/LungeTimer" to="." method="_on_lunge_timer_timeout"]
+[connection signal="timeout" from="Timers/LaserTimer" to="." method="_on_laser_timer_timeout"]

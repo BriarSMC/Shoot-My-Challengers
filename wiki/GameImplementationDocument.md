@@ -36,6 +36,8 @@ Vampire script. These colliders do not stop anything using `move_and_slide()`. S
 It's the size of the image. However, the Hero cannot pass through a doorway while the Vampire is there (i.e. not dead). 
 So we have another collider whose sole purpose is to prevent the hero from passing through the doorway.
 
+NOTE: Maybe rework it so that the Door Blocker is a separate node and when the Vampire dies, we delete it.
+
 # Groups
 
 We use groups to add metadata about certain scenes. We use this to make decisions on whether or not to execute certain code. Example: Run code for a signal only if it's the Hero:
