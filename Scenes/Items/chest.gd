@@ -80,6 +80,7 @@ func displayContents() -> void:
 	for i in range(0, contents.size()):
 		if is_instance_valid(contents[i]):
 			contents[i].visible = true
+			contents[i].startExpires()
 			pos = Vector2(randi_range(-10, 10), randi_range(10, 20))
 			contents[i].position = pos
 

@@ -80,13 +80,13 @@ func setNewTimer() -> void:
 # 	Get the powerupType to spawn
 # 	Make it real
 # 	Position it, but don't let it go negative
+#		Start the self destruct timer
 # 	Give it a home with us
 # Start the timer again
 func spawnPowerup():
 	if Globals.startSpawning:
 		var i: int = selectPowerup()
 		var powerup = powerups[i].instantiate()
-		powerup.isPowerup = true
 
 		# So, what we are doing here is putting the powerup between
 		# two circles around the Hero with radii 75 and 200. We generate
@@ -101,7 +101,8 @@ func spawnPowerup():
 		if powerup.position.x <= 0: powerup.position.x = 40
 		if powerup.position.y <= 0: powerup.position.y = 40
 
-		add_child(powerup)
+		$Items.add_child(powerup)
+		powerup.startExpires()
 
 	setNewTimer()
 
@@ -131,5 +132,6 @@ func selectPowerup() -> int:
 
 # Signal Callbacks
 
+# Time to spawn another powerup
 func _on_spawn_timer_timeout():
 	spawnPowerup()
