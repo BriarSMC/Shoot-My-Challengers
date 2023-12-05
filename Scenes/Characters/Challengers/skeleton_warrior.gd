@@ -70,13 +70,7 @@ func throwKnife() -> void:
 
 	knifeCooldown = true
 	$Timers/ThrowTheKnife.start()
-	var weapon: Area2D  = knifeScene.instantiate()
-	var pos: Vector2 = Globals.heroPosition
-
-	weapon.position = self.global_position
-	weapon.direction = (pos - weapon.position).normalized()
-	weapon.look_at(pos)
-	Globals.weaponsDeployed.add_child(weapon)
+	pointAndShoot(knifeScene)
 
 # Something collided with our Notice Area. We only care about the hero.
 func _on_notice_area_body_entered(body):

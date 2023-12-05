@@ -8,6 +8,9 @@ class_name SkullOfDeath
 var arenaCenter: Vector2
 var level: Level
 
+var laserScene: PackedScene = preload("res://Scenes/Weapons/Laser.tscn")
+var fireBlastScene: PackedScene = preload("res://Scenes/Weapons/fire_blast.tscn")
+
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
@@ -23,11 +26,16 @@ var level: Level
 #		None
 #==
 # Position us at the arena marker. This is our anchor point.
+# Start our timers
 # NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
 	level = find_parent('Level*')
 	arenaCenter = level.find_child('SkullArena').global_position
 	global_position = arenaCenter
+
+	startLaserTimer()
+	startLungeTimer()
+
 	super._ready()
 
 # Class specific methods
@@ -55,6 +63,7 @@ func lungeAtHero() -> void:
 # Start the laser timer
 func fireLaser() -> void:
 	startLaserTimer()
+	if active:	pointAndShoot(laserScene)
 
 # startLungeTimer()
 # Called to star the lunge timer

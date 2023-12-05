@@ -73,6 +73,24 @@ func _draw():
 
 # Class specific methods
 
+# pointAndShoot(weaponScene)
+# Used to fire a projectile weapon
+#
+# Parameters
+#		weaponScene: PackedScene	preload of the weapon's scene
+# Return
+#		None
+#==
+# What the code is doing (steps)
+func pointAndShoot(weaponScene: PackedScene) -> void:
+	var weapon: Area2D  = weaponScene.instantiate()
+	var pos: Vector2 = Globals.heroPosition
+
+	weapon.position = self.global_position
+	weapon.direction = (pos - weapon.position).normalized()
+	weapon.look_at(pos)
+	Globals.weaponsDeployed.add_child(weapon)
+
 # takeDamage(damage)
 # Called by other nodes whenever they deal damage to us
 #

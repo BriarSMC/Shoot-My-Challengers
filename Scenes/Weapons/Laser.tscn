@@ -1,16 +1,62 @@
-[gd_scene load_steps=3 format=3 uid="uid://w7ejv0mdi3co"]
+[gd_scene load_steps=9 format=3 uid="uid://w7ejv0mdi3co"]
 
 [ext_resource type="Script" path="res://Scenes/Weapons/Laser.gd" id="1_iyg8q"]
+[ext_resource type="Texture2D" uid="uid://uni00w483vk4" path="res://Graphics/Weapons/Water Effect and Bullet 16x16.png" id="2_hp61x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erajq"]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwg3s"]
+atlas = ExtResource("2_hp61x")
+region = Rect2(224, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfdxc"]
+atlas = ExtResource("2_hp61x")
+region = Rect2(240, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_squic"]
+atlas = ExtResource("2_hp61x")
+region = Rect2(256, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slf3s"]
+atlas = ExtResource("2_hp61x")
+region = Rect2(272, 160, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ylal"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwg3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfdxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_squic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slf3s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
 
 [node name="Laser" type="Area2D"]
 script = ExtResource("1_iyg8q")
 damage = 5
-startingSpeed = 300.0
+startingSpeed = 1200.0
 scaleFactor = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_erajq")
 
 [node name="WeaponImage" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4ylal")
+autoplay = "default"
+frame_progress = 0.556421
+offset = Vector2(0, -3)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
