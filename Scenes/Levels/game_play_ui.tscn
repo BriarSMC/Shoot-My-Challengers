@@ -64,15 +64,42 @@ text = "Gems: "
 layout_mode = 2
 text = "Challengers Left: "
 
-[node name="HealthBar" type="TextureProgressBar" parent="Panel"]
+[node name="HealthGroup" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -40.0
-offset_top = 50.0
-offset_bottom = 40.0
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 57.0
 grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HBLabels" type="HBoxContainer" parent="Panel/HealthGroup"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="minHealth" type="Label" parent="Panel/HealthGroup/HBLabels"]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+text = "0"
+
+[node name="Label" type="Label" parent="Panel/HealthGroup/HBLabels"]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 1
+
+[node name="maxHealth" type="Label" parent="Panel/HealthGroup/HBLabels"]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "999"
+horizontal_alignment = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="Panel/HealthGroup"]
+layout_mode = 2
 value = 100.0
 rounded = true
 stretch_margin_left = 40

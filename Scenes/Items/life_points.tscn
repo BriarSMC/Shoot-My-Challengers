@@ -46,9 +46,9 @@ vframes = 5
 frame = 33
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ItemImage"]
-autoplay = "Bob"
 libraries = {
 "": SubResource("AnimationLibrary_3jdof")
 }
+autoplay = "Bob"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

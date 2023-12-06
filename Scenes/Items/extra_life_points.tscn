@@ -31,6 +31,7 @@ _data = {
 [node name="ExtraLifePoints" type="Area2D" groups=["Item"]]
 script = ExtResource("1_cf5gp")
 scaleFactor = 1.0
+increaseItemCountBy = 10
 itemType = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,9 +46,9 @@ vframes = 5
 frame = 32
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ItemImage"]
-autoplay = "Bob"
 libraries = {
 "": SubResource("AnimationLibrary_5auut")
 }
+autoplay = "Bob"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
