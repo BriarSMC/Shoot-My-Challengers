@@ -43,8 +43,8 @@ func _physics_process(_delta) -> void:
 	# May have to do a called deferred if the first from being null is a problem
 	if active:
 		var next_path_position: Vector2 = $NavigationAgent2D.get_next_path_position()
-		var direction: Vector2 = (next_path_position - global_position).normalized()
-		velocity = direction * speed
+		var dir: Vector2 = (next_path_position - global_position).normalized()
+		velocity = dir * speed
 		move_and_slide()
 		#look_at(Globals.heroPosition)
 
