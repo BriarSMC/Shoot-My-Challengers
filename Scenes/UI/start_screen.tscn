@@ -125,10 +125,10 @@ modulate = Color(1, 1, 1, 0.0117647)
 texture = ExtResource("2_qqjsp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-autoplay = "FadeFromBlack"
 libraries = {
 "": SubResource("AnimationLibrary_2rt8b")
 }
+autoplay = "FadeFromBlack"
 
 [node name="StartScreenUI" parent="." instance=ExtResource("4_6fi25")]
 

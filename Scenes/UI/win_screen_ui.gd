@@ -26,4 +26,4 @@ func fadeUI():
 # Signal callbacks
 
 func _on_continue_pressed():
-	continueGame.emit()
+		continueGame.emit()

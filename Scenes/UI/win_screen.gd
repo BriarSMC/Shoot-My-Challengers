@@ -13,7 +13,7 @@ class_name WinScreen
 # The following are set based on the Inspector values
 
 # Virtual Godot methods
-	
+
 # Class specific methods
 
 # Signal callbacks
@@ -24,7 +24,7 @@ class_name WinScreen
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Start the animation player for FadeToBlack. This animation player will

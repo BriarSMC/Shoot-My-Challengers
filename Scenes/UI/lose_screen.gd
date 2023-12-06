@@ -22,7 +22,7 @@ class_name LoseScreen
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Start the animation player for FadeToBlack. This animation player will

@@ -25,7 +25,7 @@ signal continueGame
 func fadeUI():
 	print("fadeUI called")
 	$Container/AnimationPlayer.play("FadeToBlack")
-	
+
 # Signal Callbacks
 
 func _on_continue_pressed():

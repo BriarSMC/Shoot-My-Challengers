@@ -70,4 +70,5 @@ libraries = {
 "": SubResource("AnimationLibrary_75onp")
 }
 
+[connection signal="continueGame" from="." to="." method="_on_continue_game"]
 [connection signal="pressed" from="Container/Continue" to="." method="_on_continue_pressed"]

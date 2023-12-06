@@ -63,10 +63,10 @@ script = ExtResource("1_eakih")
 texture = ExtResource("2_4fd4j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-autoplay = "FadeFromBlack"
 libraries = {
 "": SubResource("AnimationLibrary_1haiu")
 }
+autoplay = "FadeFromBlack"
 
 [node name="LoseScreenAI" parent="." instance=ExtResource("3_5dm23")]
 

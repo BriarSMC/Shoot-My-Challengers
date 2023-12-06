@@ -47,8 +47,8 @@ func biteHero() -> void:
 	hero.takeDamage(damage)
 	$BitingTimer.start()
 
-func takeDamage(damage: int) -> void:
-	super.takeDamage(damage)
+#func takeDamage(damage: int) -> void:
+	#super.takeDamage(damage)
 
 # Signal Callbacks
 
@@ -60,7 +60,7 @@ func _on_notice_area_body_entered(body):
 		hero = body
 		active = true
 		body.hypnotize(self)
-		$NoticeArea/NoticeAreaCollider.set_disabled(true)
+		$NoticeArea/NoticeAreaCollider.call_deferred("set_disabled", true)
 
 # Only care about Hero
 # Really shouldn't be called since we disable the collider on contact
