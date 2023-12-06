@@ -55,8 +55,7 @@ func _ready() -> void:
 	add_child(n)
 	Globals.weaponsDeployed = n
 
-	challengersLeft = find_child("Challengers").get_child_count()
-	Globals.challengersDefeated = 0
+	Globals.challengersLeft = find_child("Challengers").get_child_count()
 
 	var gamePlayUI: Object = gamePlayUIScene.instantiate()
 	add_child(gamePlayUI)

@@ -78,7 +78,7 @@ func updateUI() -> void:
 	setColor(Globals.longShieldCount, $Panel/Inventory/LongShields)
 	$Panel/ItemCounts/Coins.text = uiLabels[uiLabelType.COINS] + str(Globals.coinCount)
 	$Panel/ItemCounts/Gems.text = uiLabels[uiLabelType.GEMS] + str(Globals.gemCount)
-	$Panel/ItemCounts/ChallengersLeft.text = uiLabels[uiLabelType.CHALLENGERSLEFT] + str(get_parent().challengersLeft)
+	$Panel/ItemCounts/ChallengersLeft.text = uiLabels[uiLabelType.CHALLENGERSLEFT] + str(Globals.challengersLeft)
 	$Panel/HealthBar.max_value = Globals.maxHealth
 	$Panel/HealthBar.value = Globals.health
 

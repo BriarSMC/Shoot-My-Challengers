@@ -119,7 +119,9 @@ func takeDamage(damage: int) -> void:
 # Return
 #	None
 #==
+# If we are a challenger, then decrement the counter
 # Just get rid of the node
 func die() -> void:
+	if isChallenger: Globals.challengersLeft -= 1
 	queue_free()
 

@@ -85,9 +85,9 @@ var gemCount: int :
 		updateUIValues.emit()
 
 # May be able to delete this one and use the challengersLeft in each Level
-var challengersDefeated: int :
+var challengersLeft: int :
 	set(val):
-		challengersDefeated = val
+		challengersLeft = val
 		updateUIValues.emit()
 
 

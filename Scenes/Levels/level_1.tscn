@@ -33,6 +33,36 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_ya5cc"]
+resource_name = "FadeToBlack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"changeGameScreen", 5, 2],
+"method": &"emit_signal"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_uyyl2"]
 resource_name = "FadeToBlackLose"
 length = 1.5
@@ -93,36 +123,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ya5cc"]
-resource_name = "FadeToBlack"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"changeGameScreen", 5, 2],
-"method": &"emit_signal"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2tgc"]
 _data = {
 "FadeFromBlack": SubResource("Animation_gmpaw"),
@@ -141,6 +141,7 @@ arenaColor = Color(100, 100, 0.384314, 0.0588235)
 [node name="PlayingArea" type="Node2D" parent="."]
 
 [node name="Ground" parent="PlayingArea" instance=ExtResource("2_foxsu")]
+position = Vector2(2083, 559)
 
 [node name="Dungeon" type="TileMap" parent="PlayingArea"]
 z_index = -1
@@ -254,7 +255,7 @@ z_index = 1
 position = Vector2(55, 320)
 
 [node name="TeleportIn" type="Marker2D" parent="."]
-position = Vector2(1580, 124)
+position = Vector2(29, 275)
 
 [node name="SkullArena" type="Marker2D" parent="."]
 position = Vector2(1631, 381)
