@@ -196,6 +196,7 @@ func spawn() -> void:
 # Get the direction to the vampire
 # Save who is hypnotizing us
 func hypnotize(byWhom: Vampire, sw: bool = true) -> void:
+	print("Hero hypnotized: ", sw)
 	hitVampire = false
 	hypnotized = sw
 	active = not sw

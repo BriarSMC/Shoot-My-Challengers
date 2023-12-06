@@ -10,6 +10,7 @@ class_name Vampire
 # Properties
 var startBiting: bool = false
 var hero: Hero
+var hypnotizing: bool = false
 
 # The following properties must be set in the Inspector by the designer
 @export var damage: int = 20						# Normally a weapon property, but we are the weapon
@@ -52,20 +53,24 @@ func biteHero() -> void:
 
 # Signal Callbacks
 
+# If already hypnotizing the hero then ignore
 # Only care about Hero
 # Save pointer to Hero
 # Hypnotize him
 func _on_notice_area_body_entered(body):
+	if hypnotizing: return
 	if body.is_in_group("Hero"):
+		print('Hero entered notice area')
 		hero = body
 		active = true
+		hypnotizing = true
 		body.hypnotize(self)
-		$NoticeArea/NoticeAreaCollider.call_deferred("set_disabled", true)
 
 # Only care about Hero
 # Really shouldn't be called since we disable the collider on contact
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
+		print('Hero exited notice area')
 		active = false
 		body.hypnotize(self, false)
 
