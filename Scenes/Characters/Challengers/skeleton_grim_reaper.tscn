@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://btjf5wvklthx6"]
+[gd_scene load_steps=27 format=3 uid="uid://btjf5wvklthx6"]
 
 [ext_resource type="Texture2D" uid="uid://cnayemc743ewj" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_1.png" id="1_6d2ij"]
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/skeleton_grim_reaper.gd" id="1_qskpw"]
 [ext_resource type="Texture2D" uid="uid://ce4ottugpgybw" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_2.png" id="2_okx3g"]
 [ext_resource type="Shader" path="res://Shaders/immune.gdshader" id="2_u26mf"]
+[ext_resource type="Texture2D" uid="uid://71ac5t8vh4e" path="res://Graphics/DeathAnimations/170.png" id="3_icee6"]
 [ext_resource type="Texture2D" uid="uid://c00m11cktceon" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_3.png" id="3_s7juu"]
 [ext_resource type="Texture2D" uid="uid://b1tg4w84uqyif" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_4.png" id="4_hxhx5"]
 [ext_resource type="Texture2D" uid="uid://0elne404llhr" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v2_1.png" id="5_hqp2o"]
@@ -23,8 +24,83 @@ resource_local_to_scene = true
 shader = ExtResource("2_u26mf")
 shader_parameter/turnWhite = null
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnc1m"]
+atlas = ExtResource("3_icee6")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yxys"]
+atlas = ExtResource("3_icee6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc3jt"]
+atlas = ExtResource("3_icee6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3foae"]
+atlas = ExtResource("3_icee6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk7rm"]
+atlas = ExtResource("3_icee6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kqhu"]
+atlas = ExtResource("3_icee6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p27fj"]
+atlas = ExtResource("3_icee6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehaxw"]
+atlas = ExtResource("3_icee6")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjhwq"]
+atlas = ExtResource("3_icee6")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfh78"]
+atlas = ExtResource("3_icee6")
+region = Rect2(0, 64, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7p7vo"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnc1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yxys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc3jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3foae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk7rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kqhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p27fj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehaxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjhwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfh78")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_6d2ij")
@@ -79,7 +155,7 @@ shape = SubResource("CircleShape2D_wf0o0")
 [node name="CharacterImage" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_tmfsj")
 sprite_frames = SubResource("SpriteFrames_7p7vo")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -102,6 +178,7 @@ one_shot = true
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="animation_finished" from="CharacterImage" to="." method="_on_character_image_animation_finished"]
 [connection signal="timeout" from="Timers/RecalculatePathTimer" to="." method="_on_recalculate_path_timer_timeout"]
 [connection signal="timeout" from="Timers/ScytheCooldownTimer" to="." method="_on_scythe_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/FireballCooldownTimer" to="." method="_on_fireball_cooldown_timer_timeout"]

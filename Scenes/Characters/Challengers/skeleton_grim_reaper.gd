@@ -76,6 +76,9 @@ func useScythe(hero: Hero) -> void:
 	print('Hitting ', hero.name, ' for damange of ', $Scythe.damage)
 
 
+func startDeath() -> void:
+	$CharacterImage.play("Death")
+
 # Signal callbacks
 
 
@@ -103,3 +106,7 @@ func _on_scythe_cooldown_timer_timeout():
 
 func _on_fireball_cooldown_timer_timeout():
 	fireballCooldown = false
+
+
+func _on_character_image_animation_finished():
+	super.die()

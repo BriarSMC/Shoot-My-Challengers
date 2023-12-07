@@ -75,6 +75,9 @@ func throwKnife() -> void:
 	$Timers/ThrowTheKnife.start()
 	pointAndShoot(knifeScene)
 
+func startDeath() -> void:
+	$CharacterImage.play("Death")
+
 # Something collided with our Notice Area. We only care about the hero.
 func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
@@ -89,6 +92,6 @@ func _on_notice_area_body_exited(body):
 func _on_throw_the_knife_timeout():
 	knifeCooldown = false
 
-# Shader
-#func callShader(sw: bool) -> void:
-	#material.set_shader_param("turnWhite", sw)
+# Animation is finished
+func _on_character_image_animation_finished():
+	super.die()

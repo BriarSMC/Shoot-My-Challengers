@@ -169,6 +169,9 @@ func startLaserTimer() -> void:
 	$Timers/LaserTimer.wait_time = randf_range(2.0, 4.0)
 	$Timers/LaserTimer.start()
 
+func startDeath() -> void:
+	$CharacterImage.play("Death")
+
 # die()
 # Called when hour health hits 0 or less
 #
@@ -196,3 +199,7 @@ func _on_lunge_timer_timeout():
 
 func _on_laser_timer_timeout():
 	fireLaser()
+
+
+func _on_character_image_animation_finished():
+	die()

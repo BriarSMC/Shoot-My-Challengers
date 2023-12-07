@@ -48,8 +48,8 @@ func biteHero() -> void:
 	hero.takeDamage(damage)
 	$BitingTimer.start()
 
-#func takeDamage(damage: int) -> void:
-	#super.takeDamage(damage)
+func startDeath() -> void:
+		$CharacterImage/Death.play("Death")
 
 # Signal Callbacks
 
@@ -87,3 +87,7 @@ func _on_area_2d_body_entered(body):
 # TODO: Stop any biting media
 func _on_biting_timer_timeout():
 	hero.hypnotize(self, false)
+
+
+func _on_death_animation_finished():
+	super.die()

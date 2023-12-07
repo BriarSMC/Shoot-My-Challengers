@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://3p2ux16007x0"]
+[gd_scene load_steps=20 format=3 uid="uid://3p2ux16007x0"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/vampire.gd" id="1_hmvp6"]
 [ext_resource type="Texture2D" uid="uid://uv5c7kg1wyrx" path="res://Graphics/Challengers/Dungeon_Enemy_v2.png" id="2_oabd7"]
 [ext_resource type="Shader" path="res://Shaders/immune.gdshader" id="2_plxoq"]
+[ext_resource type="Texture2D" uid="uid://0bacql47xigv" path="res://Graphics/DeathAnimations/152.png" id="4_yof47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csnxy"]
 size = Vector2(13, 91)
@@ -43,6 +44,63 @@ _data = {
 "Idle": SubResource("Animation_sidrx")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks2io"]
+atlas = ExtResource("4_yof47")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25rxl"]
+atlas = ExtResource("4_yof47")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkjqg"]
+atlas = ExtResource("4_yof47")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yuk8"]
+atlas = ExtResource("4_yof47")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci1ka"]
+atlas = ExtResource("4_yof47")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6gqq"]
+atlas = ExtResource("4_yof47")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osaqb"]
+atlas = ExtResource("4_yof47")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8o7f5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks2io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25rxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkjqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yuk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci1ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6gqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osaqb")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}]
+
 [node name="Vampire" type="CharacterBody2D" groups=["Challenger"]]
 collision_layer = 2
 collision_mask = 151
@@ -81,6 +139,10 @@ libraries = {
 }
 autoplay = "Idle"
 
+[node name="Death" type="AnimatedSprite2D" parent="CharacterImage"]
+sprite_frames = SubResource("SpriteFrames_8o7f5")
+animation = &"Death"
+
 [node name="BitingTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -88,4 +150,5 @@ one_shot = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="animation_finished" from="CharacterImage/Death" to="." method="_on_death_animation_finished"]
 [connection signal="timeout" from="BitingTimer" to="." method="_on_biting_timer_timeout"]

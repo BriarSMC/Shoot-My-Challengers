@@ -16,7 +16,6 @@ var direction: Vector2
 var immuneTimer
 const immuneTimerDuration: float = .5
 var characterImage
-var matOverride
 
 var default_font = ThemeDB.fallback_font
 var default_font_size = ThemeDB.fallback_font_size
@@ -130,7 +129,9 @@ func takeDamage(damage: int) -> void:
 	if isHero: return
 	queue_redraw()
 	if health <= 0:
-		self.die()
+		active = false
+		immune = false
+		call("startDeath")
 
 func immuneTimeout() -> void:
 	immune = false

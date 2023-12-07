@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://egreuidahxrp"]
+[gd_scene load_steps=25 format=3 uid="uid://egreuidahxrp"]
 
 [ext_resource type="Texture2D" uid="uid://d04dhuo7vkoaw" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_1.png" id="1_56lot"]
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/skeleton_warrior.gd" id="1_jomj0"]
 [ext_resource type="Texture2D" uid="uid://7ggdyehaa32c" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_2.png" id="2_n656f"]
 [ext_resource type="Shader" path="res://Shaders/immune.gdshader" id="2_qdo75"]
+[ext_resource type="Texture2D" uid="uid://dywoi4ypwnwdl" path="res://Graphics/DeathAnimations/172.png" id="3_0rjjx"]
 [ext_resource type="Texture2D" uid="uid://buh56bwpfp063" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_3.png" id="3_w7kug"]
 [ext_resource type="Texture2D" uid="uid://35o4y2qp5h6t" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_4.png" id="4_vr2cb"]
 [ext_resource type="Texture2D" uid="uid://yd7reu0jv0ff" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v2_1.png" id="5_j7sot"]
@@ -22,8 +23,76 @@ resource_local_to_scene = true
 shader = ExtResource("2_qdo75")
 shader_parameter/turnWhite = null
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl0kf"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inmto"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08vth"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnjm1"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg3y7"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b63q"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxp5a"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxuk6"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdjna"]
+atlas = ExtResource("3_0rjjx")
+region = Rect2(0, 64, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0tfyn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl0kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inmto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08vth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnjm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg3y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b63q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxp5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxuk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdjna")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_56lot")
@@ -81,7 +150,7 @@ shape = SubResource("CircleShape2D_8ui6w")
 [node name="CharacterImage" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_vluxy")
 sprite_frames = SubResource("SpriteFrames_0tfyn")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
 
 [node name="Timers" type="Node2D" parent="."]
@@ -92,4 +161,5 @@ one_shot = true
 
 [connection signal="body_entered" from="DetectionAreas/NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="DetectionAreas/NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="animation_finished" from="CharacterImage" to="." method="_on_character_image_animation_finished"]
 [connection signal="timeout" from="Timers/ThrowTheKnife" to="." method="_on_throw_the_knife_timeout"]

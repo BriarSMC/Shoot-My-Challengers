@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnqfcy6t6aqr0"]
+[gd_scene load_steps=26 format=3 uid="uid://cnqfcy6t6aqr0"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/skull_of_death.gd" id="1_fsni0"]
 [ext_resource type="Shader" path="res://Shaders/immune.gdshader" id="2_rs4bo"]
 [ext_resource type="Texture2D" uid="uid://dxccpjv21qmg5" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_1.png" id="2_wc5oo"]
+[ext_resource type="Texture2D" uid="uid://jtgos4oa1q0v" path="res://Graphics/DeathAnimations/168.png" id="3_5cwrl"]
 [ext_resource type="Texture2D" uid="uid://ddwsokltm1blv" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_2.png" id="3_08ijh"]
 [ext_resource type="Texture2D" uid="uid://cwgghkdu3hdv1" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_3.png" id="4_3milt"]
 [ext_resource type="Texture2D" uid="uid://cemoeplg0dxqo" path="res://Graphics/Challengers/SkullOfDeath/skull_v1_4.png" id="5_6rim7"]
@@ -22,8 +23,83 @@ resource_local_to_scene = true
 shader = ExtResource("2_rs4bo")
 shader_parameter/turnWhite = null
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv32m"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a7aw"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4n1p"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n57ne"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jepwt"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0rat"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uanix"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11d2w"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ybm1"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4yku"]
+atlas = ExtResource("3_5cwrl")
+region = Rect2(0, 64, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_38s6h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv32m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a7aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4n1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n57ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jepwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0rat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uanix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11d2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ybm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4yku")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_wc5oo")
@@ -78,9 +154,8 @@ shape = SubResource("CircleShape2D_6bpyd")
 [node name="CharacterImage" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_d1wub")
 sprite_frames = SubResource("SpriteFrames_38s6h")
-animation = &"Walk"
+animation = &"Death"
 autoplay = "Idle"
-frame_progress = 0.322868
 
 [node name="Timers" type="Node2D" parent="."]
 
@@ -92,5 +167,6 @@ one_shot = true
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="animation_finished" from="CharacterImage" to="." method="_on_character_image_animation_finished"]
 [connection signal="timeout" from="Timers/LungeTimer" to="." method="_on_lunge_timer_timeout"]
 [connection signal="timeout" from="Timers/LaserTimer" to="." method="_on_laser_timer_timeout"]
