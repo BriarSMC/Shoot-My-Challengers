@@ -15,7 +15,7 @@ const fullColor: Color = Color(1,1,1,1)
 const emptyColor: Color = Color(1,0,0,1)
 
 # GamePlayUI label values
-enum uiLabelType {ARROWS, BOMBS, SSHIELDS, LSHIELDS, COINS, GEMS, CHALLENGERSLEFT, }
+enum uiLabelType {ARROWS, BOMBS, SSHIELDS, LSHIELDS, COINS, GEMS, CHALLENGERSLEFT,LEVEL, }
 var uiLabels: Dictionary = {}
 
 # The following properties must be set in the Inspector by the designer
@@ -57,6 +57,7 @@ func saveUILabels() -> void:
 	uiLabels[uiLabelType.COINS] = $Panel/ItemCounts/Coins.text
 	uiLabels[uiLabelType.GEMS] = $Panel/ItemCounts/Gems.text
 	uiLabels[uiLabelType.CHALLENGERSLEFT] = $Panel/ItemCounts/ChallengersLeft.text
+	uiLabels[uiLabelType.LEVEL] = $Panel/Label.text
 
 # updateUI()
 # Updates all the values on the GamePlayUI
@@ -82,6 +83,7 @@ func updateUI() -> void:
 	$Panel/HealthGroup/HealthBar.max_value = Globals.maxHealth
 	$Panel/HealthGroup/HealthBar.value = Globals.health
 	$Panel/HealthGroup/HBLabels/maxHealth.text = str(Globals.maxHealth)
+	$Panel/Label.text = uiLabels[uiLabelType.LEVEL] + str(Globals.currentLevelNdx)
 
 func setColor(v: int, e: Label) -> void:
 	if v > 0:

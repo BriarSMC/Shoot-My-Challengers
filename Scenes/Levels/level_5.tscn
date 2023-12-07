@@ -167,71 +167,43 @@ position = Vector2(132, 7)
 position = Vector2(-32, -62)
 
 [node name="SkeletonWarrior2" parent="Challengers" instance=ExtResource("4_a2h31")]
-visible = false
 position = Vector2(37, -7)
 
 [node name="SkeletonWarrior3" parent="Challengers" instance=ExtResource("4_a2h31")]
 position = Vector2(227, -63)
 
-[node name="SkeletonWarrior4" parent="Challengers" instance=ExtResource("4_a2h31")]
-visible = false
-position = Vector2(-17, 157)
-
-[node name="SkeletonWarrior5" parent="Challengers" instance=ExtResource("4_a2h31")]
-visible = false
-position = Vector2(267, 202)
-
 [node name="SkeletonWarrior6" parent="Challengers" instance=ExtResource("4_a2h31")]
 position = Vector2(-84, 570)
 
 [node name="SkeletonWarrior7" parent="Challengers" instance=ExtResource("4_a2h31")]
-visible = false
 position = Vector2(236, 428)
 
 [node name="SkeletonWarrior8" parent="Challengers" instance=ExtResource("4_a2h31")]
 position = Vector2(563, -29)
 
-[node name="SkeletonWarrior9" parent="Challengers" instance=ExtResource("4_a2h31")]
-visible = false
-position = Vector2(653, 141)
-
-[node name="SkeletonWarrior10" parent="Challengers" instance=ExtResource("4_a2h31")]
-visible = false
-position = Vector2(938, 102)
-
 [node name="SkeletonWarrior11" parent="Challengers" instance=ExtResource("4_a2h31")]
 position = Vector2(991, 510)
 
 [node name="SkeletonWarrior12" parent="Challengers" instance=ExtResource("4_a2h31")]
-visible = false
 position = Vector2(617, 679)
 
 [node name="Vampire" parent="Challengers" instance=ExtResource("5_l4qq2")]
 position = Vector2(-127, 69)
 
 [node name="Vampire2" parent="Challengers" instance=ExtResource("5_l4qq2")]
-visible = false
 position = Vector2(473, 578)
-
-[node name="Vampire3" parent="Challengers" instance=ExtResource("5_l4qq2")]
-visible = false
-position = Vector2(653, 355)
 
 [node name="Vampire4" parent="Challengers" instance=ExtResource("5_l4qq2")]
 position = Vector2(863, -1)
 
 [node name="SkeletonGrimReaper" parent="Challengers" instance=ExtResource("6_k28cw")]
-visible = false
 position = Vector2(934, 749)
-
-[node name="SkeletonGrimReaper2" parent="Challengers" instance=ExtResource("6_k28cw")]
-visible = false
-position = Vector2(946, 582)
 
 [node name="SkullOfDeath" parent="Challengers" instance=ExtResource("7_2dx7s")]
 position = Vector2(618, -62)
 
 [node name="Containers" type="Node2D" parent="."]
+visible = false
 position = Vector2(30, 21)
 
 [node name="LargeChest" parent="Containers" instance=ExtResource("8_7m7mo")]
