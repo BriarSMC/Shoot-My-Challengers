@@ -17,7 +17,7 @@ var primaryWeapon: HeroPWeapon
 var primaryCooldownFinished: bool = true
 var secondaryCooldownFinished: bool = true
 var shieldActive: bool = false
-var immune: bool = false
+#var immune: bool = false
 
 # The following properties must be set in the Inspector by the designer
 @export var targetSpeed: float = 500
@@ -210,6 +210,7 @@ func raiseShield() -> void:
 	if Globals.longShieldCount > 0:
 		Globals.longShieldCount -= 1
 		shieldActive = true
+		hero.immune = true
 		queue_redraw()
 		$Timers/ShieldsActiveTimer.wait_time = 5.0
 		$Timers/ShieldsActiveTimer.start()
@@ -217,6 +218,7 @@ func raiseShield() -> void:
 
 	Globals.shortShieldCount -= 1
 	shieldActive = true
+	hero.immune = true
 	queue_redraw()
 	$Timers/ShieldsActiveTimer.wait_time = 3.0
 	$Timers/ShieldsActiveTimer.start()
@@ -247,10 +249,10 @@ func emptyWarning() -> void:
 # If we are immune, then just return
 # Set our immunity
 func takeDamage(damage: int) -> void:
-	if immune:
+	if hero.immune:
 		return
 
-	immune = true
+	hero.immune = true
 	$Timers/ImmuneTimer.start()
 
 	Globals.health -= damage
@@ -259,6 +261,7 @@ func takeDamage(damage: int) -> void:
 
 func _on_shields_active_timer_timeout():
 	shieldActive = false
+	hero.immune = false
 	queue_redraw()
 
 func _on_primary_cooldown_timer_timeout():
@@ -267,5 +270,3 @@ func _on_primary_cooldown_timer_timeout():
 func _on_secondary_cooldown_timer_timeout():
 	secondaryCooldownFinished = true
 
-func _on_immune_timer_timeout():
-	immune = false

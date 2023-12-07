@@ -20,11 +20,6 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
-[node name="ImmuneTimer" type="Timer" parent="Timers"]
-wait_time = 0.5
-one_shot = true
-
 [connection signal="timeout" from="Timers/PrimaryCooldownTimer" to="." method="_on_primary_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/SecondaryCooldownTimer" to="." method="_on_secondary_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/ShieldsActiveTimer" to="." method="_on_shields_active_timer_timeout"]
-[connection signal="timeout" from="Timers/ImmuneTimer" to="." method="_on_immune_timer_timeout"]
