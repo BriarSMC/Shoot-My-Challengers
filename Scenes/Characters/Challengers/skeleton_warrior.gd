@@ -19,6 +19,9 @@ var knifeCooldown: bool = false
 
 # Virtual Godot methods
 
+#func _ready():
+	#connect('setImmuneShader', callShader)
+	#
 # _physics_process(delta)
 # Called every physics frame
 #
@@ -85,3 +88,7 @@ func _on_notice_area_body_exited(body):
 # Cooldown period for the knife is over
 func _on_throw_the_knife_timeout():
 	knifeCooldown = false
+
+# Shader
+#func callShader(sw: bool) -> void:
+	#material.set_shader_param("turnWhite", sw)

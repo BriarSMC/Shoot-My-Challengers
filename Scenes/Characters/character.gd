@@ -7,10 +7,16 @@ class_name Character
 # This class contains all properties and methods common to all
 # character classes.
 
+#signal setImmuneShader(sw: bool)
+
 # Properties
 var immune: bool = false
 var active: bool = false
 var direction: Vector2
+var immuneTimer
+const immuneTimerDuration: float = .5
+var characterImage
+var matOverride
 
 var default_font = ThemeDB.fallback_font
 var default_font_size = ThemeDB.fallback_font_size
@@ -39,10 +45,22 @@ var healthColor: Color
 # Return
 #	vNone
 #==
-# Scale the object
+# Get our character's image node
+# Scale it
+# Set up our immune timer
 # NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
-	Globals.scaleMe(self.find_child("CharacterImage"), scaleFactor)
+	characterImage  = find_child("CharacterImage")
+	Globals.scaleMe(characterImage, scaleFactor)
+
+	#matOverride = characterImage.get_material_override().duplicate()
+	#characterImage.set_material_override(matOverride)
+
+	immuneTimer  = Timer.new()
+	add_child(immuneTimer)
+	immuneTimer.wait_time = immuneTimerDuration
+	immuneTimer.one_shot = true
+	immuneTimer.connect("timeout", immuneTimeout, 0)
 
 # _draw()
 # Called when draw functions need to happen
@@ -99,13 +117,24 @@ func pointAndShoot(weaponScene: PackedScene) -> void:
 # Return
 #	None
 #==
+# Return if we are immune
 # Deduct the damage from character health
 # If zero or less then call our instance's die method
 func takeDamage(damage: int) -> void:
+	if immune: return
 	health -= damage
+	immune = true
+	characterImage.material.set_shader_parameter("turnWhite", immune)
+	immuneTimer.start()
+
+	if isHero: return
 	queue_redraw()
 	if health <= 0:
 		self.die()
+
+func immuneTimeout() -> void:
+	immune = false
+	characterImage.material.set_shader_parameter("turnWhite", immune)
 
 # die()
 #

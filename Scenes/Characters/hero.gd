@@ -148,8 +148,10 @@ func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true
 	return (to.get_global_position() - src.position).normalized()
 
 func takeDamage(damage: int) -> void:
+	if immune: return
 	print('Hero takeDamage: ', damage)
 	Globals.health -= damage
+	super.takeDamage(damage)
 
 # die()
 # Called by the Character class when our health hits zero

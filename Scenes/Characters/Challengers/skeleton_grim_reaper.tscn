@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://btjf5wvklthx6"]
+[gd_scene load_steps=16 format=3 uid="uid://btjf5wvklthx6"]
 
 [ext_resource type="Texture2D" uid="uid://cnayemc743ewj" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_1.png" id="1_6d2ij"]
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/skeleton_grim_reaper.gd" id="1_qskpw"]
 [ext_resource type="Texture2D" uid="uid://ce4ottugpgybw" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_2.png" id="2_okx3g"]
+[ext_resource type="Shader" path="res://Shaders/immune.gdshader" id="2_u26mf"]
 [ext_resource type="Texture2D" uid="uid://c00m11cktceon" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_3.png" id="3_s7juu"]
 [ext_resource type="Texture2D" uid="uid://b1tg4w84uqyif" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_4.png" id="4_hxhx5"]
 [ext_resource type="Texture2D" uid="uid://0elne404llhr" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v2_1.png" id="5_hqp2o"]
@@ -16,6 +17,11 @@ size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf0o0"]
 radius = 1028.41
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmfsj"]
+resource_local_to_scene = true
+shader = ExtResource("2_u26mf")
+shader_parameter/turnWhite = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7p7vo"]
 animations = [{
@@ -71,6 +77,7 @@ shape = SubResource("RectangleShape2D_s3ry0")
 shape = SubResource("CircleShape2D_wf0o0")
 
 [node name="CharacterImage" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_tmfsj")
 sprite_frames = SubResource("SpriteFrames_7p7vo")
 animation = &"Idle"
 autoplay = "Idle"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://egreuidahxrp"]
+[gd_scene load_steps=15 format=3 uid="uid://egreuidahxrp"]
 
 [ext_resource type="Texture2D" uid="uid://d04dhuo7vkoaw" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_1.png" id="1_56lot"]
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/skeleton_warrior.gd" id="1_jomj0"]
 [ext_resource type="Texture2D" uid="uid://7ggdyehaa32c" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_2.png" id="2_n656f"]
+[ext_resource type="Shader" path="res://Shaders/immune.gdshader" id="2_qdo75"]
 [ext_resource type="Texture2D" uid="uid://buh56bwpfp063" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_3.png" id="3_w7kug"]
 [ext_resource type="Texture2D" uid="uid://35o4y2qp5h6t" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v1_4.png" id="4_vr2cb"]
 [ext_resource type="Texture2D" uid="uid://yd7reu0jv0ff" path="res://Graphics/Challengers/SkeletonWarrior/skeleton2_v2_1.png" id="5_j7sot"]
@@ -12,6 +13,14 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5qid"]
 size = Vector2(15, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ui6w"]
+radius = 228.219
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vluxy"]
+resource_local_to_scene = true
+shader = ExtResource("2_qdo75")
+shader_parameter/turnWhite = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0tfyn"]
 animations = [{
@@ -50,9 +59,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ui6w"]
-radius = 228.219
-
 [node name="SkeletonWarrior" type="CharacterBody2D" groups=["Challenger"]]
 collision_layer = 2
 collision_mask = 151
@@ -65,17 +71,18 @@ scaleFactor = 1.0
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_g5qid")
 
-[node name="CharacterImage" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_0tfyn")
-animation = &"Idle"
-autoplay = "Idle"
-
 [node name="DetectionAreas" type="Node2D" parent="."]
 
 [node name="NoticeArea" type="Area2D" parent="DetectionAreas"]
 
 [node name="NoticeAreaCollider" type="CollisionShape2D" parent="DetectionAreas/NoticeArea"]
 shape = SubResource("CircleShape2D_8ui6w")
+
+[node name="CharacterImage" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_vluxy")
+sprite_frames = SubResource("SpriteFrames_0tfyn")
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="Timers" type="Node2D" parent="."]
 
