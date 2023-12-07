@@ -9,7 +9,6 @@ class_name Fireball
 # Signals
 
 # Properties
-const offset: float = 12.0				# Adjust where the fireball is positioned
 
 # The following properties must be set in the Inspector by the designer
 
@@ -28,7 +27,7 @@ const offset: float = 12.0				# Adjust where the fireball is positioned
 # What the code is doing (steps)
 # NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
-	pass
+	super._ready()
 
 # Class specific methods
 
@@ -41,9 +40,10 @@ func _ready() -> void:
 #	None
 #==
 # Play the explosion
-func explode() -> void:
-	position.x += offset
-	$AnimatedSprite2D.play("Explosion")
+func explode(body = self) -> void:
+	speed = 0
+	position = body.position
+	$WeaponImage.play("Explosion")
 
 # Signal callbacks
 
@@ -58,5 +58,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 # If we contact the Hero, then explode and apply damage
 func _on_body_entered(body):
-	explode()
+	explode(body)
 	# Apply damage
+	if body.is_in_group("Hero"):
+		body.takeDamage(damage)

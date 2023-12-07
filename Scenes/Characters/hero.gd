@@ -77,10 +77,11 @@ func _ready() -> void:
 #		None
 #==
 # If we are hypnotized, then move to the Vampire
+# Stop moving if we are dead
 func _process(delta) -> void:
 	if hypnotized and not hitVampire:
 		position += hypnoDir * hypnoSpeed * delta
-
+	if Globals.health <= 0: active = false
 
 # Class specific methods
 

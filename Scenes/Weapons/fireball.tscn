@@ -105,7 +105,9 @@ animations = [{
 collision_layer = 8
 collision_mask = 145
 script = ExtResource("1_xceq2")
-scaleFactor = 1.0
+damage = 10
+startingSpeed = 300.0
+scaleFactor = 0.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

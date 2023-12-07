@@ -11,6 +11,8 @@ class_name SkeletonGrimReaper
 var scytheCooldown: bool = false
 var fireballCooldown: bool = false
 
+var fireballScene: PackedScene = preload("res://Scenes/Weapons/fireball.tscn")
+
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
@@ -47,6 +49,7 @@ func _physics_process(_delta) -> void:
 	var hero
 
 	if active:
+		useFireball()
 		var next_path_position: Vector2 = $NavigationAgent2D.get_next_path_position()
 		var dir: Vector2 = (next_path_position - global_position).normalized()
 		velocity = dir * speed
@@ -58,6 +61,12 @@ func _physics_process(_delta) -> void:
 
 # Class specific methods
 
+func useFireball() -> void:
+	if fireballCooldown: return
+	$Timers/FireballCooldownTimer.start()
+	fireballCooldown = true
+	pointAndShoot(fireballScene)
+
 func useScythe(hero: Hero) -> void:
 	if scytheCooldown: return
 	$Timers/ScytheCooldownTimer.start()
@@ -65,6 +74,7 @@ func useScythe(hero: Hero) -> void:
 	$Scythe.startAnimation()
 	hero.takeDamage($Scythe.damage)
 	print('Hitting ', hero.name, ' for damange of ', $Scythe.damage)
+
 
 # Signal callbacks
 
@@ -89,3 +99,7 @@ func _on_notice_area_body_exited(body):
 func _on_scythe_cooldown_timer_timeout():
 	print('Scythe cooldown timer fired')
 	scytheCooldown = false
+
+
+func _on_fireball_cooldown_timer_timeout():
+	fireballCooldown = false
