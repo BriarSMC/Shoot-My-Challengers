@@ -13,4 +13,8 @@ class_name Scythe
 
 # Class specific methods
 
+func startAnimation() -> void:
+	$AnimationPlayer.play("Swing")
+
+
 # Signal Callbacks

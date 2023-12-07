@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btjf5wvklthx6"]
+[gd_scene load_steps=14 format=3 uid="uid://btjf5wvklthx6"]
 
 [ext_resource type="Texture2D" uid="uid://cnayemc743ewj" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v1_1.png" id="1_6d2ij"]
 [ext_resource type="Script" path="res://Scenes/Characters/Challengers/skeleton_grim_reaper.gd" id="1_qskpw"]
@@ -9,12 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://bvhq7ssij2mts" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v2_2.png" id="6_4mwvo"]
 [ext_resource type="Texture2D" uid="uid://deqa7ppuu2mal" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v2_3.png" id="7_i8ray"]
 [ext_resource type="Texture2D" uid="uid://b8nmg8g24kurw" path="res://Graphics/Challengers/SkeletonGrimReaper/skeleton_v2_4.png" id="8_s5tqj"]
+[ext_resource type="PackedScene" uid="uid://d1uha5r645hm" path="res://Scenes/Weapons/scythe.tscn" id="10_2mq2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3ry0"]
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf0o0"]
-radius = 731.095
+radius = 1028.41
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7p7vo"]
 animations = [{
@@ -58,7 +59,7 @@ collision_layer = 2
 collision_mask = 151
 script = ExtResource("1_qskpw")
 startingHealth = 50
-startingSpeed = 20.0
+startingSpeed = 200.0
 scaleFactor = 1.0
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
@@ -82,6 +83,13 @@ autoplay = "Idle"
 wait_time = 1.5
 autostart = true
 
+[node name="ScytheCooldownTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Scythe" parent="." instance=ExtResource("10_2mq2t")]
+
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
 [connection signal="timeout" from="Timers/RecalculatePathTimer" to="." method="_on_recalculate_path_timer_timeout"]
+[connection signal="timeout" from="Timers/ScytheCooldownTimer" to="." method="_on_scythe_cooldown_timer_timeout"]

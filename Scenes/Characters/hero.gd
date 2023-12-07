@@ -147,6 +147,7 @@ func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true
 	return (to.get_global_position() - src.position).normalized()
 
 func takeDamage(damage: int) -> void:
+	print('Hero takeDamage: ', damage)
 	Globals.health -= damage
 
 # die()

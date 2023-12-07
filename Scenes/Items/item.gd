@@ -81,6 +81,7 @@ func collected() -> void:
 			Globals.gemCount += increaseItemCountBy
 		itemIs.MAXLIFE:
 			Globals.maxHealth += increaseItemCountBy
+			Globals.health += 15
 		itemIs.LIFE:
 			Globals.health += increaseItemCountBy
 		itemIs.PWEAPON:

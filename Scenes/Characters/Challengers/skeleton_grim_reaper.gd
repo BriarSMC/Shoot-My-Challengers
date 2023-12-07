@@ -8,6 +8,9 @@ class_name SkeletonGrimReaper
 
 # Properties
 
+var scytheCooldown: bool = false
+var fireballCooldown: bool = false
+
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
@@ -39,59 +42,50 @@ func _ready() -> void:
 #	Calculate the new path and move us along the path
 #	# If we upgrade the graphics, then we should look at the dude
 func _physics_process(_delta) -> void:
-	return # TAKE THIS OUT WHEN YOU WANT TO DO REAL STUFF
+	#return # TAKE THIS OUT WHEN YOU WANT TO DO REAL STUFF
 	# May have to do a called deferred if the first from being null is a problem
+	var hero
+
 	if active:
 		var next_path_position: Vector2 = $NavigationAgent2D.get_next_path_position()
 		var dir: Vector2 = (next_path_position - global_position).normalized()
 		velocity = dir * speed
-		move_and_slide()
-		#look_at(Globals.heroPosition)
+		if move_and_slide():
+			hero = get_last_slide_collision().get_collider()
+			if hero.is_in_group("Hero"):
+				useScythe(hero)
 
-# _on_recalculate_path_timer_timeout()
-# Recalculate the path
-#
-# We want to run this every so often since the calculations are CPU intensive.
-# So this method is attached to $Timers/RecalculatePathTimer to accomplish that.
-#
-# Paramters
-#	None
-# Return
-#	None
-#==
-# What the code is doing (steps)
+
+# Class specific methods
+
+func useScythe(hero: Hero) -> void:
+	if scytheCooldown: return
+	$Timers/ScytheCooldownTimer.start()
+	scytheCooldown = true
+	$Scythe.startAnimation()
+	hero.takeDamage($Scythe.damage)
+	print('Hitting ', hero.name, ' for damange of ', $Scythe.damage)
+
+# Signal callbacks
+
+
 func _on_recalculate_path_timer_timeout() -> void:
 	$NavigationAgent2D.target_position = Globals.heroPosition
 
-# _on_notice_area_body_entered(body)
-# Set the active flag only if the Hero enters the notice area.
-#
-# Paramters
-#	body: Object				# Reference to the node entering the area
-# Return
-#	None
-#==
+
 # If it's the Hero, then set the active flag
 # TODO: Play Music
 func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
 		active = true
 
-# _on_notice_area_body_exited(body)
-# Clear the active flag only if the Hero leaves the notice area.
-#
-# Paramters
-#	body: Object				# Reference to the node exiting the area
-# Return
-#	None
-#==
+
 # If it's the Hero, then clear the active flag
 # TODO: Turn off music
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
 		active = false
 
-
-# Class specific methods
-
-# Signal callbacks
+func _on_scythe_cooldown_timer_timeout():
+	print('Scythe cooldown timer fired')
+	scytheCooldown = false

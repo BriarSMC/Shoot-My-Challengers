@@ -163,27 +163,21 @@ layer_1/tile_data = PackedInt32Array(-196608, 131074, 3, -65530, 131074, 3, -262
 position = Vector2(132, 7)
 
 [node name="SkeletonWarrior" parent="Challengers" instance=ExtResource("4_1lw1u")]
-visible = false
 position = Vector2(-51, 68)
 
 [node name="SkeletonWarrior2" parent="Challengers" instance=ExtResource("4_1lw1u")]
-visible = false
 position = Vector2(353, 406)
 
 [node name="SkeletonWarrior3" parent="Challengers" instance=ExtResource("4_1lw1u")]
-visible = false
-position = Vector2(435, 1235)
+position = Vector2(422, 1021)
 
 [node name="SkeletonWarrior4" parent="Challengers" instance=ExtResource("4_1lw1u")]
-visible = false
 position = Vector2(1187, 32)
 
 [node name="SkeletonWarrior5" parent="Challengers" instance=ExtResource("4_1lw1u")]
-visible = false
 position = Vector2(943, 676)
 
 [node name="SkeletonWarrior6" parent="Challengers" instance=ExtResource("4_1lw1u")]
-visible = false
 position = Vector2(2248, 391)
 
 [node name="Vampire" parent="Challengers" instance=ExtResource("5_lpyuj")]
@@ -193,11 +187,9 @@ position = Vector2(1739, 28)
 position = Vector2(1736, 608)
 
 [node name="SkeletonGrimReaper" parent="Challengers" instance=ExtResource("6_f8ddu")]
-visible = false
-position = Vector2(1752, 1194)
+position = Vector2(1646, 976)
 
 [node name="SkullOfDeath" parent="Challengers" instance=ExtResource("6_vtfxl")]
-visible = false
 position = Vector2(2574, -103)
 
 [node name="Containers" type="Node2D" parent="."]
@@ -307,22 +299,28 @@ position = Vector2(2146, 387)
 [node name="Gem2" parent="Containers/MediumChest3" instance=ExtResource("16_3ume5")]
 
 [node name="SmallChest" parent="Containers" instance=ExtResource("8_266ko")]
-visible = false
-position = Vector2(78, 1196)
+position = Vector2(61, 971)
 
 [node name="ShortShieldRefill" parent="Containers/SmallChest" instance=ExtResource("18_lbn4w")]
+visible = false
 
 [node name="ShortShieldRefill2" parent="Containers/SmallChest" instance=ExtResource("18_lbn4w")]
+visible = false
 
 [node name="Coin" parent="Containers/SmallChest" instance=ExtResource("15_3eb8l")]
+visible = false
 
 [node name="Coin2" parent="Containers/SmallChest" instance=ExtResource("15_3eb8l")]
+visible = false
 
 [node name="PrimaryWeaponRefill" parent="Containers/SmallChest" instance=ExtResource("10_w6su4")]
+visible = false
 
 [node name="PrimaryWeaponRefill2" parent="Containers/SmallChest" instance=ExtResource("10_w6su4")]
+visible = false
 
 [node name="Gem" parent="Containers/SmallChest" instance=ExtResource("16_3ume5")]
+visible = false
 
 [node name="SmallChest2" parent="Containers" instance=ExtResource("8_266ko")]
 position = Vector2(1349, 206)
@@ -342,21 +340,28 @@ position = Vector2(1349, 206)
 [node name="Gem" parent="Containers/SmallChest2" instance=ExtResource("16_3ume5")]
 
 [node name="SmallChest3" parent="Containers" instance=ExtResource("8_266ko")]
-position = Vector2(952, 1181)
+position = Vector2(957, 992)
 
 [node name="ShortShieldRefill" parent="Containers/SmallChest3" instance=ExtResource("18_lbn4w")]
+visible = false
 
 [node name="ShortShieldRefill2" parent="Containers/SmallChest3" instance=ExtResource("18_lbn4w")]
+visible = false
 
 [node name="Coin" parent="Containers/SmallChest3" instance=ExtResource("15_3eb8l")]
+visible = false
 
 [node name="Coin2" parent="Containers/SmallChest3" instance=ExtResource("15_3eb8l")]
+visible = false
 
 [node name="PrimaryWeaponRefill" parent="Containers/SmallChest3" instance=ExtResource("10_w6su4")]
+visible = false
 
 [node name="PrimaryWeaponRefill2" parent="Containers/SmallChest3" instance=ExtResource("10_w6su4")]
+visible = false
 
 [node name="Gem" parent="Containers/SmallChest3" instance=ExtResource("16_3ume5")]
+visible = false
 
 [node name="Hero" parent="." instance=ExtResource("10_7lgec")]
 z_index = 1
