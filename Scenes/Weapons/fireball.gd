@@ -40,9 +40,9 @@ func _ready() -> void:
 #	None
 #==
 # Play the explosion
-func explode(body = self) -> void:
+func explode(pos: Vector2) -> void:
 	speed = 0
-	position = body.position
+	position = pos
 	$WeaponImage.play("Explosion")
 
 # Signal callbacks
@@ -50,7 +50,7 @@ func explode(body = self) -> void:
 # If the fireball hasn't hit anyting by now,
 # then explode it
 func _on_explode_timer_timeout():
-	explode()
+	explode(position)
 
 # When the animation finishes, the we can go away
 func _on_animated_sprite_2d_animation_finished():
@@ -58,7 +58,8 @@ func _on_animated_sprite_2d_animation_finished():
 
 # If we contact the Hero, then explode and apply damage
 func _on_body_entered(body):
-	explode(body)
-	# Apply damage
 	if body.is_in_group("Hero"):
 		body.takeDamage(damage)
+		explode(body.global_position)
+	else:
+		explode(position)

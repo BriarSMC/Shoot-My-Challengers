@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://um6mmrwtlisl"]
+[gd_scene load_steps=26 format=3 uid="uid://um6mmrwtlisl"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level_5.gd" id="1_plxd8"]
 [ext_resource type="PackedScene" uid="uid://ckmp78u8vt1xy" path="res://Scenes/Levels/ground.tscn" id="2_i1dlq"]
@@ -11,6 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://fehsnqjtdooa" path="res://Scenes/Items/medium_chest.tscn" id="9_vicmg"]
 [ext_resource type="PackedScene" uid="uid://u56jhr43aik0" path="res://Scenes/Items/small_chest.tscn" id="10_uv5s0"]
 [ext_resource type="PackedScene" uid="uid://c63k14e82n5q4" path="res://Scenes/Characters/hero.tscn" id="11_bj10a"]
+[ext_resource type="PackedScene" uid="uid://dufbjij38tud6" path="res://Scenes/Items/life_points.tscn" id="11_i8cxo"]
+[ext_resource type="PackedScene" uid="uid://7mw663fe3sky" path="res://Scenes/Items/secondary_weapon_refill.tscn" id="11_qcv46"]
+[ext_resource type="PackedScene" uid="uid://i0285wikdqwo" path="res://Scenes/Items/short_shield_refill.tscn" id="12_vecrv"]
+[ext_resource type="PackedScene" uid="uid://cqmro16dvr65l" path="res://Scenes/Items/long_shield_refill.tscn" id="13_fxtq6"]
+[ext_resource type="PackedScene" uid="uid://boow2ix5jkn6j" path="res://Scenes/Items/coin.tscn" id="13_h4ht4"]
+[ext_resource type="PackedScene" uid="uid://c6f37iqrpu3c4" path="res://Scenes/Items/extra_life_points.tscn" id="13_kg56h"]
+[ext_resource type="PackedScene" uid="uid://0guw75f0ngpq" path="res://Scenes/Items/primary_weapon_refill.tscn" id="14_glbxh"]
+[ext_resource type="PackedScene" uid="uid://bmraomi5h26q3" path="res://Scenes/Items/gem.tscn" id="15_hyjog"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y384d"]
 vertices = PackedVector2Array(1063, -97, 1351, -102, 1355, 849, 1061, 445, 678, 851, 678, 638, 678, 441, 677, 610, 652, 637, 653, 610, 639, 838, -97, 845, -96, 154, 640, 134)
@@ -18,8 +26,124 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-96, 154, -97, 845, 639, 838, 652, 637, 678, 638, 678, 851, 1355, 849, 1351, -102, 1063, -97, 1061, 445, 678, 441, 677, 610, 653, 610, 640, 134)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="Animation" id="Animation_gmpaw"]
+resource_name = "FadeFromBlack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ya5cc"]
+resource_name = "FadeToBlack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"changeGameScreen", 1, 0],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_uyyl2"]
+resource_name = "FadeToBlackLose"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"changeGameScreen", 2, 0],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dns80"]
+resource_name = "FadeToBlackWin"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"changeGameScreen", 1, 0],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l2tgc"]
+_data = {
+"FadeFromBlack": SubResource("Animation_gmpaw"),
+"FadeToBlack": SubResource("Animation_ya5cc"),
+"FadeToBlackLose": SubResource("Animation_uyyl2"),
+"FadeToBlackWin": SubResource("Animation_dns80")
+}
+
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_plxd8")
+scaleFactor = 0.3
+levelNumber = 5
 
 [node name="PlayingArea" type="Node2D" parent="."]
 
@@ -40,58 +164,69 @@ layer_2/tile_data = PackedInt32Array(458747, 65538, 3, 458749, 65538, 3, 458751,
 position = Vector2(132, 7)
 
 [node name="SkeletonWarrior" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(49, -89)
+position = Vector2(-32, -62)
 
 [node name="SkeletonWarrior2" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(67, 56)
+visible = false
+position = Vector2(37, -7)
 
 [node name="SkeletonWarrior3" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(287, -22)
+position = Vector2(227, -63)
 
 [node name="SkeletonWarrior4" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(54, 249)
+visible = false
+position = Vector2(-17, 157)
 
 [node name="SkeletonWarrior5" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(319, 245)
+visible = false
+position = Vector2(267, 202)
 
 [node name="SkeletonWarrior6" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(-54, 687)
+position = Vector2(-84, 570)
 
 [node name="SkeletonWarrior7" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(342, 491)
+visible = false
+position = Vector2(236, 428)
 
 [node name="SkeletonWarrior8" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(628, 47)
+position = Vector2(563, -29)
 
 [node name="SkeletonWarrior9" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(732, 185)
+visible = false
+position = Vector2(653, 141)
 
 [node name="SkeletonWarrior10" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(1011, 158)
+visible = false
+position = Vector2(938, 102)
 
 [node name="SkeletonWarrior11" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(1115, 585)
+position = Vector2(991, 510)
 
 [node name="SkeletonWarrior12" parent="Challengers" instance=ExtResource("4_a2h31")]
-position = Vector2(668, 757)
+visible = false
+position = Vector2(617, 679)
 
 [node name="Vampire" parent="Challengers" instance=ExtResource("5_l4qq2")]
-position = Vector2(-92, 97)
+position = Vector2(-127, 69)
 
 [node name="Vampire2" parent="Challengers" instance=ExtResource("5_l4qq2")]
-position = Vector2(535, 616)
+visible = false
+position = Vector2(473, 578)
 
 [node name="Vampire3" parent="Challengers" instance=ExtResource("5_l4qq2")]
-position = Vector2(715, 403)
+visible = false
+position = Vector2(653, 355)
 
 [node name="Vampire4" parent="Challengers" instance=ExtResource("5_l4qq2")]
-position = Vector2(915, 24)
+position = Vector2(863, -1)
 
 [node name="SkeletonGrimReaper" parent="Challengers" instance=ExtResource("6_k28cw")]
-position = Vector2(147, 791)
+visible = false
+position = Vector2(934, 749)
 
 [node name="SkeletonGrimReaper2" parent="Challengers" instance=ExtResource("6_k28cw")]
-position = Vector2(1159, 175)
+visible = false
+position = Vector2(946, 582)
 
 [node name="SkullOfDeath" parent="Challengers" instance=ExtResource("7_2dx7s")]
 position = Vector2(618, -62)
@@ -100,49 +235,303 @@ position = Vector2(618, -62)
 position = Vector2(30, 21)
 
 [node name="LargeChest" parent="Containers" instance=ExtResource("8_7m7mo")]
-position = Vector2(587, 515)
+position = Vector2(502, 433)
+
+[node name="ExtraLifePoints" parent="Containers/LargeChest" instance=ExtResource("13_kg56h")]
+
+[node name="LifePoints" parent="Containers/LargeChest" instance=ExtResource("11_i8cxo")]
+
+[node name="LifePoints2" parent="Containers/LargeChest" instance=ExtResource("11_i8cxo")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/LargeChest" instance=ExtResource("14_glbxh")]
+increaseItemCountBy = 50
+
+[node name="SecondaryWeaponRefill" parent="Containers/LargeChest" instance=ExtResource("11_qcv46")]
+increaseItemCountBy = 5
+
+[node name="LifePoints3" parent="Containers/LargeChest" instance=ExtResource("11_i8cxo")]
+increaseItemCountBy = 30
+
+[node name="LongShieldRefill" parent="Containers/LargeChest" instance=ExtResource("13_fxtq6")]
+increaseItemCountBy = 2
 
 [node name="LargeChest2" parent="Containers" instance=ExtResource("8_7m7mo")]
-position = Vector2(749, 342)
+position = Vector2(712, 269)
+
+[node name="ExtraLifePoints" parent="Containers/LargeChest2" instance=ExtResource("13_kg56h")]
+
+[node name="LifePoints" parent="Containers/LargeChest2" instance=ExtResource("11_i8cxo")]
+
+[node name="LifePoints2" parent="Containers/LargeChest2" instance=ExtResource("11_i8cxo")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/LargeChest2" instance=ExtResource("14_glbxh")]
+increaseItemCountBy = 50
+
+[node name="SecondaryWeaponRefill" parent="Containers/LargeChest2" instance=ExtResource("11_qcv46")]
+increaseItemCountBy = 5
+
+[node name="LifePoints3" parent="Containers/LargeChest2" instance=ExtResource("11_i8cxo")]
+increaseItemCountBy = 30
+
+[node name="LongShieldRefill" parent="Containers/LargeChest2" instance=ExtResource("13_fxtq6")]
+increaseItemCountBy = 2
 
 [node name="LargeChest3" parent="Containers" instance=ExtResource("8_7m7mo")]
-position = Vector2(949, 794)
+position = Vector2(874, 703)
+
+[node name="ExtraLifePoints" parent="Containers/LargeChest3" instance=ExtResource("13_kg56h")]
+
+[node name="LifePoints" parent="Containers/LargeChest3" instance=ExtResource("11_i8cxo")]
+
+[node name="LifePoints2" parent="Containers/LargeChest3" instance=ExtResource("11_i8cxo")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/LargeChest3" instance=ExtResource("14_glbxh")]
+increaseItemCountBy = 50
+
+[node name="SecondaryWeaponRefill" parent="Containers/LargeChest3" instance=ExtResource("11_qcv46")]
+increaseItemCountBy = 5
+
+[node name="LifePoints3" parent="Containers/LargeChest3" instance=ExtResource("11_i8cxo")]
+increaseItemCountBy = 30
+
+[node name="LongShieldRefill" parent="Containers/LargeChest3" instance=ExtResource("13_fxtq6")]
+increaseItemCountBy = 2
 
 [node name="MediumChest" parent="Containers" instance=ExtResource("9_vicmg")]
-position = Vector2(195, 344)
+position = Vector2(126, 293)
+
+[node name="PrimaryWeaponRefill" parent="Containers/MediumChest" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/MediumChest" instance=ExtResource("14_glbxh")]
+
+[node name="SecondaryWeaponRefill" parent="Containers/MediumChest" instance=ExtResource("11_qcv46")]
+
+[node name="SecondaryWeaponRefill2" parent="Containers/MediumChest" instance=ExtResource("11_qcv46")]
+
+[node name="LifePoints" parent="Containers/MediumChest" instance=ExtResource("11_i8cxo")]
+
+[node name="ExtraLifePoints" parent="Containers/MediumChest" instance=ExtResource("13_kg56h")]
+
+[node name="Coin" parent="Containers/MediumChest" instance=ExtResource("13_h4ht4")]
+
+[node name="Gem" parent="Containers/MediumChest" instance=ExtResource("15_hyjog")]
+
+[node name="Gem2" parent="Containers/MediumChest" instance=ExtResource("15_hyjog")]
 
 [node name="MediumChest2" parent="Containers" instance=ExtResource("9_vicmg")]
-position = Vector2(820, 338)
+position = Vector2(769, 285)
+
+[node name="PrimaryWeaponRefill" parent="Containers/MediumChest2" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/MediumChest2" instance=ExtResource("14_glbxh")]
+
+[node name="SecondaryWeaponRefill" parent="Containers/MediumChest2" instance=ExtResource("11_qcv46")]
+
+[node name="SecondaryWeaponRefill2" parent="Containers/MediumChest2" instance=ExtResource("11_qcv46")]
+
+[node name="LifePoints" parent="Containers/MediumChest2" instance=ExtResource("11_i8cxo")]
+
+[node name="ExtraLifePoints" parent="Containers/MediumChest2" instance=ExtResource("13_kg56h")]
+
+[node name="Coin" parent="Containers/MediumChest2" instance=ExtResource("13_h4ht4")]
+
+[node name="Gem" parent="Containers/MediumChest2" instance=ExtResource("15_hyjog")]
+
+[node name="Gem2" parent="Containers/MediumChest2" instance=ExtResource("15_hyjog")]
 
 [node name="MediumChest3" parent="Containers" instance=ExtResource("9_vicmg")]
-position = Vector2(1240, 742)
+position = Vector2(1117, 646)
+
+[node name="PrimaryWeaponRefill" parent="Containers/MediumChest3" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/MediumChest3" instance=ExtResource("14_glbxh")]
+
+[node name="SecondaryWeaponRefill" parent="Containers/MediumChest3" instance=ExtResource("11_qcv46")]
+
+[node name="SecondaryWeaponRefill2" parent="Containers/MediumChest3" instance=ExtResource("11_qcv46")]
+
+[node name="LifePoints" parent="Containers/MediumChest3" instance=ExtResource("11_i8cxo")]
+
+[node name="ExtraLifePoints" parent="Containers/MediumChest3" instance=ExtResource("13_kg56h")]
+
+[node name="Coin" parent="Containers/MediumChest3" instance=ExtResource("13_h4ht4")]
+
+[node name="Gem" parent="Containers/MediumChest3" instance=ExtResource("15_hyjog")]
+
+[node name="Gem2" parent="Containers/MediumChest3" instance=ExtResource("15_hyjog")]
 
 [node name="MediumChest4" parent="Containers" instance=ExtResource("9_vicmg")]
-position = Vector2(868, 488)
+position = Vector2(745, 440)
+
+[node name="PrimaryWeaponRefill" parent="Containers/MediumChest4" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/MediumChest4" instance=ExtResource("14_glbxh")]
+
+[node name="SecondaryWeaponRefill" parent="Containers/MediumChest4" instance=ExtResource("11_qcv46")]
+
+[node name="SecondaryWeaponRefill2" parent="Containers/MediumChest4" instance=ExtResource("11_qcv46")]
+
+[node name="LifePoints" parent="Containers/MediumChest4" instance=ExtResource("11_i8cxo")]
+
+[node name="ExtraLifePoints" parent="Containers/MediumChest4" instance=ExtResource("13_kg56h")]
+
+[node name="Coin" parent="Containers/MediumChest4" instance=ExtResource("13_h4ht4")]
+
+[node name="Gem" parent="Containers/MediumChest4" instance=ExtResource("15_hyjog")]
+
+[node name="Gem2" parent="Containers/MediumChest4" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(516, -80)
+position = Vector2(412, -59)
+
+[node name="LifePoints" parent="Containers/SmallChest" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest2" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(334, 118)
+position = Vector2(262, 33)
+
+[node name="LifePoints" parent="Containers/SmallChest2" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest2" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest2" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest2" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest2" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest2" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest2" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest2" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest3" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(32, 215)
+position = Vector2(-99, 127)
+
+[node name="LifePoints" parent="Containers/SmallChest3" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest3" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest3" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest3" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest3" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest3" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest3" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest3" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest4" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(10, 715)
+position = Vector2(-46, 630)
+
+[node name="LifePoints" parent="Containers/SmallChest4" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest4" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest4" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest4" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest4" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest4" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest4" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest4" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest5" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(502, 723)
+position = Vector2(417, 662)
+
+[node name="LifePoints" parent="Containers/SmallChest5" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest5" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest5" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest5" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest5" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest5" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest5" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest5" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest6" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(946, 351)
+position = Vector2(882, 276)
+
+[node name="LifePoints" parent="Containers/SmallChest6" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest6" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest6" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest6" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest6" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest6" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest6" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest6" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest7" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(1232, -21)
+position = Vector2(1093, -32)
+
+[node name="LifePoints" parent="Containers/SmallChest7" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest7" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest7" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest7" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest7" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest7" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest7" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest7" instance=ExtResource("15_hyjog")]
 
 [node name="SmallChest8" parent="Containers" instance=ExtResource("10_uv5s0")]
-position = Vector2(1088, 361)
+position = Vector2(995, 308)
+
+[node name="LifePoints" parent="Containers/SmallChest8" instance=ExtResource("11_i8cxo")]
+
+[node name="ShortShieldRefill" parent="Containers/SmallChest8" instance=ExtResource("12_vecrv")]
+
+[node name="ShortShieldRefill2" parent="Containers/SmallChest8" instance=ExtResource("12_vecrv")]
+
+[node name="Coin" parent="Containers/SmallChest8" instance=ExtResource("13_h4ht4")]
+
+[node name="Coin2" parent="Containers/SmallChest8" instance=ExtResource("13_h4ht4")]
+
+[node name="PrimaryWeaponRefill" parent="Containers/SmallChest8" instance=ExtResource("14_glbxh")]
+
+[node name="PrimaryWeaponRefill2" parent="Containers/SmallChest8" instance=ExtResource("14_glbxh")]
+
+[node name="Gem" parent="Containers/SmallChest8" instance=ExtResource("15_hyjog")]
 
 [node name="Hero" parent="." instance=ExtResource("11_bj10a")]
 visible = false
@@ -152,5 +541,15 @@ position = Vector2(-39, -31)
 [node name="TeleportIn" type="Marker2D" parent="."]
 position = Vector2(-36, -43)
 
+[node name="SkullArena" type="Marker2D" parent="."]
+position = Vector2(858, 71)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_y384d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l2tgc")
+}
+autoplay = "FadeFromBlack"
