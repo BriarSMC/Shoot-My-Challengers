@@ -90,6 +90,18 @@ func _draw():
 
 # Class specific methods
 
+# setActive(sw)
+# Sets our active property to sw
+#
+# Parameters
+#		sw: bool						Set active to this value
+# Return
+#		Nonen
+#==
+# Set our active to sw
+func setActive(sw: bool) -> void:
+	active = sw
+
 # pointAndShoot(weaponScene)
 # Used to fire a projectile weapon
 #

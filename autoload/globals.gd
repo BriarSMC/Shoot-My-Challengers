@@ -9,6 +9,7 @@ signal updateUIValues
 # Misc globals
 var currentLevelNdx: int				# Current level playing
 var currentLevel: Object				# Current level object pointer
+var sfxNode: Node								# Where to put SFX objects
 var weaponsDeployed: Node2D			# Pointer to the WeaponsDeployed node in the current level
 var startSpawning: bool = false	# Don't want to start spawning until the hero has moved
 

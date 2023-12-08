@@ -180,7 +180,7 @@ func fireSecondary() -> void:
 		$Timers/SecondaryCooldownTimer.start()
 		Globals.secondaryWeaponCount -= 1
 		fireHeroSWeapon.emit()
-
+		SfxHandler.play_sfx(SfxHandler.SFX.HEROSWEAPON)
 
 # func raiseShield()
 # If player activates the shield, then raise it
@@ -236,7 +236,7 @@ func raiseShield() -> void:
 #==
 # Play empty sound
 func emptyWarning() -> void:
-	pass
+	SfxHandler.play_sfx(SfxHandler.SFX.HEROEMPTY)
 
 # takeDamage(damage)
 # Called when something has caused us damage

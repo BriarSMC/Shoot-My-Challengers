@@ -185,7 +185,7 @@ func startDeath() -> void:
 # Indicate the level is finished
 func die(sfx = SFXHandler.SFX.NULL) -> void:
 	levelOver.emit()
-	super.die(SFXHandler.SFX.NULL)
+	super.die(sfx)
 
 # Signal Callbacks
 

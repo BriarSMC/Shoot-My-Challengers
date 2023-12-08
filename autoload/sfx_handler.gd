@@ -12,6 +12,8 @@ class_name SFXHandler
 # Should we need to play a sound not in our dictionary, then the caller
 # can call Sfxhandler.play_sound() with the audio file to play.
 
+# Signals
+
 # Preloaded audio files
 const audioTELEPORT = preload("res://Audio/SoundEffects/Retro Jump StereoUP Simple 01.mp3")
 const audioHEROPWEAPON = preload("res://Audio/SoundEffects/Retro Weapon Arrow 02.mp3")
@@ -57,14 +59,14 @@ enum SFX {NULL, TELEPORT, HEROPWEAPON, HEROSWEAPON, HEROEXPLOSION, HEROEMPTY, SH
 const sfx: Dictionary = {
 	# ID									audio file							pitch range	volume		loop?
 	SFX.NULL: 						[null, 									[], 				0.0, 			false],
-	SFX.TELEPORT:					[audioTELEPORT,					NOPITCH,		-5.0,			false],
+	SFX.TELEPORT:					[audioTELEPORT,					NOPITCH,		-10.0,			false],
 	SFX.HEROPWEAPON:  		[audioHEROPWEAPON,			PITCH_2,		-16.0,		false],
 	SFX.HEROSWEAPON: 			[audioHEROSWEAPON, 			PITCH_2,		-16.0,		false],
-	SFX.HEROEXPLOSION: 		[audioHEROEXPLOSION, 		PITCH_2,		0.0,			false],
-	SFX.HEROEMPTY: 				[audioHEROEMPTY,				PITCH_2,		-16.0,		false],
-	SFX.SHIELD: 					[audioSHIELD, 					NOPITCH,		1.0,			true],
+	SFX.HEROEXPLOSION: 		[audioHEROEXPLOSION, 		PITCH_2,		-16.0,		false],
+	SFX.HEROEMPTY: 				[audioHEROEMPTY,				NOPITCH,		-35.0,		false],
+	SFX.SHIELD: 					[audioSHIELD, 					NOPITCH,		-22.0,			true],
 	SFX.HERODEATH: 				[audioHERODEATH,				NOPITCH,		-16.0,		false],
-	SFX.KNIFE: 						[audioKNIFE, 						PITCH_2,		1.0,			false],
+	SFX.KNIFE: 						[audioKNIFE, 						PITCH_2,		-10.0,		false],
 	SFX.SKELETONWALKING: 	[audioSKELETONWALKING,	NOPITCH,		-8.0,			true],
 	SFX.SWARRIORDEATH:		[audioSWARRIORDEATH,		NOPITCH,		0.0,			false],
 	SFX.VAMPIREBITE:			[audioVAMPIREBITE,			NOPITCH,		0.0,			false],
@@ -112,8 +114,9 @@ const sfx: Dictionary = {
 #		Pointer to the audio player
 #==
 # Just call play_sound with the appropriate audio file
-func play_sfx(sfxKey: SFX, parent: Node = get_tree().current_scene) -> AudioStreamPlayer:
-	return play_sound(sfx[sfxKey][0], parent, sfx[sfxKey][1], sfx[sfxKey][2], sfx[sfxKey][3])
+func play_sfx(sfxKey: SFX) -> AudioStreamPlayer:
+	print('Playing SFX ', SFX.keys()[sfxKey])
+	return play_sound(sfx[sfxKey][0], sfx[sfxKey][1], sfx[sfxKey][2], sfx[sfxKey][3])
 
 # play_sound(sound, parent, pitchRange, volumeDb, loopIt)
 # Play the audio file
@@ -138,9 +141,9 @@ func play_sfx(sfxKey: SFX, parent: Node = get_tree().current_scene) -> AudioStre
 # Set pitch and volume
 # Add new AudioStreamPlayer the indicated node
 # Play the sound
-func play_sound(sound: AudioStream, parent: Node = get_tree().current_scene,
+func play_sound(sound: AudioStream,
 	pitchRange: Array = [1.0, 1.0], volumeDb: float = 1.0, loopIt = false) -> AudioStreamPlayer:
-	if sound == null or parent == null: return null
+	if sound == null: return null
 
 	var streamPlayer = AudioStreamPlayer.new()
 
@@ -153,7 +156,8 @@ func play_sound(sound: AudioStream, parent: Node = get_tree().current_scene,
 	streamPlayer.pitch_scale = randf_range(pitchRange[0], pitchRange[1])
 	streamPlayer.volume_db = volumeDb
 
-	parent.add_child(streamPlayer)
+	Globals.sfxNode.add_child(streamPlayer)
+	print ('Created player ', streamPlayer.name)
 	streamPlayer.play()
 	return streamPlayer
 
@@ -170,4 +174,20 @@ func play_sound(sound: AudioStream, parent: Node = get_tree().current_scene,
 func remove(player: AudioStreamPlayer) -> void:
 	if player == null: return
 	player.stop()
-	player.queue_free()
+	#player.queue_free()
+
+# killAll()
+# Get rid of all sound effects
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# What the code is doing (steps)
+func killAll() -> void:
+	for n in Globals.sfxNode.find_children("*", "AudioStreamPlayer", false, false):
+		if n != null:
+			print('Stopping/Killing ', n.name)
+			n.stop()
+			n.queue_free()

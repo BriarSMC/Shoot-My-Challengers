@@ -9,6 +9,10 @@ class_name Level
 var powerupSpawner: PowerupSpawner
 var skullArena: Marker2D
 var exitLevel: bool = false
+var heroDieCalled: bool = false
+var isHeroDeathFinished: bool = false
+
+@onready var hero: Hero = find_child("Hero")
 
 # Load the game play UI
 @onready var gamePlayUIScene: PackedScene = preload("res://Scenes/Levels/game_play_ui.tscn")
@@ -24,6 +28,9 @@ var exitLevel: bool = false
 # The following are set based on the Inspector values
 
 # Virtual Godot methods
+
+func _enter_tree() -> void:
+	Globals.sfxNode = find_child("SFX")
 
 # _ready()
 # Called when the node is ready
@@ -47,6 +54,7 @@ func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	Globals.currentLevel =  self
 	Globals.currentLevelNdx = levelNumber
+
 
 	find_child("SkullOfDeath").connect("levelOver", levelOver)
 
@@ -92,8 +100,17 @@ func _process(delta) -> void:
 		get_tree().quit()
 
 	if Globals.health <= 0:
-		exitTheLevel('lose')
-		return
+
+		if not heroDieCalled:
+			SfxHandler.killAll()
+			inactivateChallengers()
+			while Globals.sfxNode.get_child_count() > 0: await get_tree().create_timer(0.1).timeout
+			heroDieCalled = true
+			hero.connect("HeroDeathFinished", heroDeathFinished)
+			hero.die()
+			if isHeroDeathFinished:
+				exitTheLevel('lose')
+			return
 
 	if exitLevel:
 		if levelNumber >= 5:
@@ -119,6 +136,11 @@ func _draw() -> void:
 
 # Class specific methods
 
+func inactivateChallengers() -> void:
+	var challengers = find_child("Challengers").find_children("*")
+	for c in challengers:
+		if c.is_in_group("Challenger"): c.call("setActive", false)   #active = false
+
 # exitTheLevel()
 # Exit the level and go to the next
 #
@@ -135,6 +157,10 @@ func exitTheLevel(how: String) -> void:
 		'lose':	$AnimationPlayer.play("FadeToBlackLose")
 
 # Signal Callbacks
+
+# Catch when hero death theatrics are finished
+func heroDeathFinished() -> void:
+	isHeroDeathFinished = true
 
 # levelOver()
 # Indicate the level is over

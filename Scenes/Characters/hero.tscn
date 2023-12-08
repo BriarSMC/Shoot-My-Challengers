@@ -884,7 +884,7 @@ script = ExtResource("1_ife15")
 startingPWeapon = 20
 startingSWeapon = 5
 startingSShield = 3
-startingHealth = 60
+startingHealth = 20
 startingSpeed = 120.0
 scaleFactor = 0.4
 

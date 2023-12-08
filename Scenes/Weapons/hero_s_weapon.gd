@@ -66,13 +66,14 @@ func checkForDamage() -> void:
 # Hide the weapon
 # Run the explosion animation
 # Check if anything was damaged
+# Go BOOM
 func _on_detentation_timer_timeout():
 	$WeaponImage.visible = false
 	drawBlastRadius = false
 	queue_redraw()
 	$AnimatedSprite2D.play("Explosion")
 	checkForDamage()
-
+	SfxHandler.play_sfx(SfxHandler.SFX.HEROEXPLOSION)
 
 # We can go away now
 func _on_animated_sprite_2d_animation_finished():

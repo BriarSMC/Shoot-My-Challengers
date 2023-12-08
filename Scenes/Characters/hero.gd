@@ -5,6 +5,10 @@ class_name Hero
 # NOTE: Do not use the health in the Character class for the hero.
 # Use the health and maxHealth in Globals for Hero's health status.
 
+# Signals
+
+signal HeroDeathFinished
+
 # Properties
 
 var moved: bool = false						# Whether Hero moved this frame
@@ -16,11 +20,6 @@ var vampire: Vampire							# Vampire hypnotizing us
 
 @onready var pWeapon: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
 @onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/hero_s_weapon.tscn")
-
-const PWEAPON_SFX = preload("res://Audio/SoundEffects/Retro Weapon Arrow 02.mp3")
-const SWEAPON_SFX = preload("res://Audio/SoundEffects/Retro Impact Metal 05.mp3")
-const EXPLOSION_SFX = preload("res://Audio/SoundEffects/Retro Weapon Bomb 06.mp3")
-const EMPTY_SFX = preload("res://Audio/SoundEffects/419023__jacco18__acess-denied-buzz-amplified.mp3")
 
 # The following properties must be set in the Inspector by the designer
 @export var startingPWeapon: int
@@ -70,6 +69,8 @@ func _ready() -> void:
 	hypnoSpeed = speed/2.0
 
 	Globals.heroPosition = position
+
+	SfxHandler.play_sfx(SfxHandler.SFX.TELEPORT)
 
 	super._ready()
 
@@ -133,6 +134,7 @@ func fireSWeapon() -> void:
 	weapon.position = self.global_position
 	weapon.direction = Vector2.ZERO
 	Globals.weaponsDeployed.add_child(weapon)
+	SfxHandler.play_sfx(SfxHandler.SFX.HEROSWEAPON)
 
 # getDirection(src, tgt)
 # Return the direction from source to target
@@ -169,7 +171,12 @@ func takeDamage(damage: int) -> void:
 # Debug print for now
 # Call the parent class to do any cleanup work
 func die(sfx: SFXHandler.SFX = SfxHandler.SFX.HERODEATH) -> void:
-	super.die(sfx)
+	active = false
+	var player  = SfxHandler.play_sfx(sfx)
+	player.connect("finished", deathAudioFinished)
+
+func deathAudioFinished() -> void:
+	HeroDeathFinished.emit()
 
 # spawn()
 # Spawn the Hero with a teleport effect
