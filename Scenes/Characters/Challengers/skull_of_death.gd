@@ -183,9 +183,9 @@ func startDeath() -> void:
 #		None
 #==
 # Indicate the level is finished
-func die() -> void:
+func die(sfx = SFXHandler.SFX.NULL) -> void:
 	levelOver.emit()
-	super.die()
+	super.die(SFXHandler.SFX.NULL)
 
 # Signal Callbacks
 
@@ -204,4 +204,4 @@ func _on_laser_timer_timeout():
 
 
 func _on_character_image_animation_finished():
-	die()
+	die(SFXHandler.SFX.NULL)

@@ -151,7 +151,8 @@ func immuneTimeout() -> void:
 #==
 # If we are a challenger, then decrement the counter
 # Just get rid of the node
-func die() -> void:
+func die(sfx: SFXHandler.SFX) -> void:
 	if isChallenger: Globals.challengersLeft -= 1
+	SfxHandler.play_sfx(sfx)
 	queue_free()
 

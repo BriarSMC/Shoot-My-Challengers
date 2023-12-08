@@ -107,4 +107,4 @@ func _on_fireball_cooldown_timer_timeout():
 
 
 func _on_character_image_animation_finished():
-	super.die()
+	super.die(SFXHandler.SFX.NULL)

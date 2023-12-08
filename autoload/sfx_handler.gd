@@ -14,13 +14,16 @@ class_name SFXHandler
 
 # Preloaded audio files
 
-enum SFX {HEROPWEAPON, HEROSWEAPON, HEROEXPLOSION, HEROEMPTY, KNIFE, }
+enum SFX {NULL, HEROPWEAPON, HEROSWEAPON, HEROEXPLOSION, HEROEMPTY, SHIELD, HERODEATH, KNIFE, }
 const sfx: Dictionary = {
-SFX.HEROPWEAPON:  preload("res://Audio/SoundEffects/Retro Weapon Arrow 02.mp3"),
-SFX.HEROSWEAPON: preload("res://Audio/SoundEffects/Retro Impact Metal 05.mp3"),
-SFX.HEROEXPLOSION: preload("res://Audio/SoundEffects/Retro Weapon Bomb 06.mp3"),
-SFX.HEROEMPTY: preload("res://Audio/SoundEffects/419023__jacco18__acess-denied-buzz-amplified.mp3"),
-SFX.KNIFE: preload("res://Audio/SoundEffects/703708__strangehorizon__throwing_arm_3.mp3"),
+	SFX.NULL: null,
+	SFX.HEROPWEAPON:  preload("res://Audio/SoundEffects/Retro Weapon Arrow 02.mp3"),
+	SFX.HEROSWEAPON: preload("res://Audio/SoundEffects/Retro Impact Metal 05.mp3"),
+	SFX.HEROEXPLOSION: preload("res://Audio/SoundEffects/Retro Weapon Bomb 06.mp3"),
+	SFX.HEROEMPTY: preload("res://Audio/SoundEffects/419023__jacco18__acess-denied-buzz-amplified.mp3"),
+	SFX.SHIELD: preload("res://Audio/SoundEffects/44823__timkahn__dronnee.mp3"),
+	SFX.HERODEATH: preload("res://Audio/SoundEffects/572335__jarl_fenrir__dies-irae.mp3"),
+	SFX.KNIFE: preload("res://Audio/SoundEffects/703708__strangehorizon__throwing_arm_3.mp3"),
 }
 # The following properties must be set in the Inspector by the designer
 
@@ -42,12 +45,12 @@ SFX.KNIFE: preload("res://Audio/SoundEffects/703708__strangehorizon__throwing_ar
 #		volumneDb: float		Set the volume to this value
 #													Default is 1.0
 # Return
-#		None
+#		Pointer to the audio player
 #==
 # Just call play_sound with the appropriate audio file
 func play_sfx(sfxKey: SFX, parent: Node = get_tree().current_scene,
-	pitchRange: Vector2 = Vector2(1.0,1.0), volumeDb: float = 1.0) -> void:
-	play_sound(sfx[sfxKey], parent, pitchRange, volumeDb)
+	pitchRange: Vector2 = Vector2(1.0,1.0), volumeDb: float = 1.0) -> AudioStreamPlayer:
+	return play_sound(sfx[sfxKey], parent, pitchRange, volumeDb)
 
 # play_sound(sound, parent, pitchRange, volumeDb)
 # Play the audio file
@@ -61,7 +64,7 @@ func play_sfx(sfxKey: SFX, parent: Node = get_tree().current_scene,
 #		volumneDb: float		Set the volume to this value
 #													Default is 1.0
 # Return
-#		None
+#		Pointer to the audio player
 #==
 # Ignore if arguments are null
 # Create a new AudioStreamPlayer
@@ -71,14 +74,16 @@ func play_sfx(sfxKey: SFX, parent: Node = get_tree().current_scene,
 # Add new AudioStreamPlayer the indicated node
 # Play the sound
 func play_sound(sound: AudioStream, parent: Node = get_tree().current_scene,
-	pitchRange: Vector2 = Vector2(1.0,1.0), volumeDb: float = 1.0) -> void:
-	if sound != null and parent != null:
-		var streamPlayer = AudioStreamPlayer.new()
+	pitchRange: Vector2 = Vector2(1.0,1.0), volumeDb: float = 1.0) -> AudioStreamPlayer:
+	if sound == null or parent == null: return null
 
-		streamPlayer.stream = sound
-		streamPlayer.connect("finished", streamPlayer.queue_free)
-		streamPlayer.pitch_scale = randf_range(pitchRange.x, pitchRange.y)
-		streamPlayer.volume_db = volumeDb
+	var streamPlayer = AudioStreamPlayer.new()
 
-		parent.add_child(streamPlayer)
-		streamPlayer.play()
+	streamPlayer.stream = sound
+	streamPlayer.connect("finished", streamPlayer.queue_free)
+	streamPlayer.pitch_scale = randf_range(pitchRange.x, pitchRange.y)
+	streamPlayer.volume_db = volumeDb
+
+	parent.add_child(streamPlayer)
+	streamPlayer.play()
+	return streamPlayer

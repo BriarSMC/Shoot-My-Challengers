@@ -98,4 +98,4 @@ func _on_throw_the_knife_timeout():
 
 # Animation is finished
 func _on_character_image_animation_finished():
-	super.die()
+	super.die(SFXHandler.SFX.NULL)

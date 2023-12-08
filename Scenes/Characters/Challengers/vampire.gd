@@ -88,4 +88,4 @@ func _on_biting_timer_timeout():
 
 
 func _on_death_animation_finished():
-	super.die()
+	super.die(SFXHandler.SFX.NULL)

@@ -168,8 +168,8 @@ func takeDamage(damage: int) -> void:
 #==
 # Debug print for now
 # Call the parent class to do any cleanup work
-func die() -> void:
-	super.die()
+func die(sfx: SFXHandler.SFX = SfxHandler.SFX.HERODEATH) -> void:
+	super.die(sfx)
 
 # spawn()
 # Spawn the Hero with a teleport effect

@@ -12,6 +12,7 @@ signal shieldsChange
 @onready var hero: Object = self.find_parent("Hero")  # Get the Hero object
 @onready var targetPointer: Object = hero.get_node("TargetPointer")
 
+var shieldSound: AudioStreamPlayer
 var primaryWeapon: HeroPWeapon
 
 var primaryCooldownFinished: bool = true
@@ -212,6 +213,7 @@ func raiseShield() -> void:
 		queue_redraw()
 		$Timers/ShieldsActiveTimer.wait_time = 5.0
 		$Timers/ShieldsActiveTimer.start()
+		shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD, self, Vector2.ONE, -26.0)
 		return
 
 	Globals.shortShieldCount -= 1
@@ -220,7 +222,7 @@ func raiseShield() -> void:
 	queue_redraw()
 	$Timers/ShieldsActiveTimer.wait_time = 3.0
 	$Timers/ShieldsActiveTimer.start()
-
+	shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD, self, Vector2.ONE, -26.0)
 
 
 # emptyWarning()
@@ -261,6 +263,7 @@ func _on_shields_active_timer_timeout():
 	shieldActive = false
 	hero.immune = false
 	queue_redraw()
+	shieldSound.stop()
 
 func _on_primary_cooldown_timer_timeout():
 	primaryCooldownFinished = true
