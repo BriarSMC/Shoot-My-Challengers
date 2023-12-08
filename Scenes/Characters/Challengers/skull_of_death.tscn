@@ -154,7 +154,7 @@ shape = SubResource("CircleShape2D_6bpyd")
 [node name="CharacterImage" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_d1wub")
 sprite_frames = SubResource("SpriteFrames_38s6h")
-animation = &"Death"
+animation = &"Walk"
 autoplay = "Idle"
 
 [node name="Timers" type="Node2D" parent="."]

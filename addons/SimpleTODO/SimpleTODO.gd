@@ -19,7 +19,7 @@ func _enter_tree():
 	todo_screen = preload("res://addons/SimpleTODO/TODO.tscn").instantiate()
 	todo_screen.plugin = self
 	todo_screen.hide()
-	
+
 	get_editor_interface().get_editor_main_screen().add_child(todo_screen)
 	load_data()
 
@@ -31,30 +31,30 @@ func _process(delta: float) -> void:
 		set_process(false)
 		print("TODO loaded")
 		return
-	
+
 	var column = pending_columns.pop_front()
 	todo_screen.column_container.add_child(column)
 
 func _set_window_layout(configuration: ConfigFile):
 	if configuration.has_section("SimpleTODO"):
 		var minimized_tabs = configuration.get_value("SimpleTODO", "minimized_tabs")
-		
+
 		if minimized_tabs.size() <= 0:
 			return
-		
+
 		for i in todo_screen.column_container.get_child_count():
 			var column: PanelContainer = todo_screen.column_container.get_child(i)
 			column.set_minimized.call_deferred(minimized_tabs[i])
 
 func _get_window_layout(configuration: ConfigFile):
 	var new_minimized_tabs = []
-	
+
 	for column in todo_screen.column_container.get_children():
 		if not column is PanelContainer:
 			continue
-		
+
 		new_minimized_tabs.append(column.minimized)
-	
+
 	configuration.set_value("SimpleTODO", "minimized_tabs", new_minimized_tabs)
 
 func _exit_tree():
@@ -79,28 +79,28 @@ func save_data():
 	var data := ConfigFile.new()
 	for column in todo_screen.column_container.get_children():
 		var section = column.header.name_edit.text
-		
+
 		if column.item_container.get_child_count() > 0:
 			for item in column.item_container.get_children():
 				data.set_value(section, str("item", item.id), item.text_field.text)
 		else:
 			data.set_value(section, "__none__", "null")
-	
+
 	data.save(DATA_FILE)
 
 func load_data():
 	var data := ConfigFile.new()
 	data.load(DATA_FILE)
-	
+
 	for section in data.get_sections():
 		var column = todo_screen.create_column()
 		column.ready.connect(column.set_title.bind(section))
 		pending_columns.append(column)
-		
+
 		for item in data.get_section_keys(section):
 			if item == "__none__":
 				continue
-			
+
 			var column_item = column.create_item()
 			column_item.ready.connect(column_item.initialize.bind(data.get_value(section, item), item.to_int()), CONNECT_DEFERRED)
 			column.ready.connect(column_item.add_to_column.bind(column))

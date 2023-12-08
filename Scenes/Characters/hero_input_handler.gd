@@ -147,8 +147,7 @@ func firePrimary() -> void:
 		return
 
 	if Globals.primaryWeaponCount <= 0:
-		print('Primary weapon empty')
-		emptyWarning()
+		emptyWarning() #TODO Add sfx
 		return
 
 	if primaryCooldownFinished:
@@ -172,8 +171,7 @@ func fireSecondary() -> void:
 		return
 
 	if Globals.secondaryWeaponCount <= 0:
-		print('Secondary weapon empty')
-		emptyWarning()
+		emptyWarning() #TODO sfx
 		return
 
 	if secondaryCooldownFinished:

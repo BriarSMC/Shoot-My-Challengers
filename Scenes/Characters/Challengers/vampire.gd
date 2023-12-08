@@ -60,7 +60,6 @@ func startDeath() -> void:
 func _on_notice_area_body_entered(body):
 	if hypnotizing: return
 	if body.is_in_group("Hero"):
-		print('Hero entered notice area')
 		hero = body
 		active = true
 		hypnotizing = true
@@ -70,7 +69,6 @@ func _on_notice_area_body_entered(body):
 # Really shouldn't be called since we disable the collider on contact
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
-		print('Hero exited notice area')
 		active = false
 		body.hypnotize(self, false)
 

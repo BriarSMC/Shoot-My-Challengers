@@ -23,7 +23,6 @@ signal continueGame
 # Class specific methods
 
 func fadeUI():
-	print("fadeUI called")
 	$Container/AnimationPlayer.play("FadeToBlack")
 
 # Signal Callbacks

@@ -19,6 +19,7 @@ config/icon="res://skull_icon.svg"
 [autoload]
 
 Globals="*res://autoload/globals.gd"
+SfxHandler="*res://autoload/sfx_handler.tscn"
 
 [display]
 

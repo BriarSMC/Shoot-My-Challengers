@@ -17,6 +17,11 @@ var vampire: Vampire							# Vampire hypnotizing us
 @onready var pWeapon: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
 @onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/hero_s_weapon.tscn")
 
+const PWEAPON_SFX = preload("res://Audio/SoundEffects/Retro Weapon Arrow 02.mp3")
+const SWEAPON_SFX = preload("res://Audio/SoundEffects/Retro Impact Metal 05.mp3")
+const EXPLOSION_SFX = preload("res://Audio/SoundEffects/Retro Weapon Bomb 06.mp3")
+const EMPTY_SFX = preload("res://Audio/SoundEffects/419023__jacco18__acess-denied-buzz-amplified.mp3")
+
 # The following properties must be set in the Inspector by the designer
 @export var startingPWeapon: int
 @export var startingSWeapon: int
@@ -109,6 +114,7 @@ func firePWeapon() -> void:
 	weapon.direction = (pos - self.position).normalized()
 	weapon.look_at(pos)
 	Globals.weaponsDeployed.add_child(weapon)
+	SfxHandler.play_sfx(SfxHandler.SFX.HEROPWEAPON, self, Vector2.ONE, -16)
 
 # fireSWeapon()
 # Creates amd fires the Hero's Secondary Weapon
@@ -149,7 +155,6 @@ func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true
 
 func takeDamage(damage: int) -> void:
 	if immune: return
-	print('Hero takeDamage: ', damage)
 	Globals.health -= damage
 	super.takeDamage(damage)
 
@@ -200,7 +205,6 @@ func spawn() -> void:
 # Get the direction to the vampire
 # Save who is hypnotizing us
 func hypnotize(byWhom: Vampire, sw: bool = true) -> void:
-	print("Hero hypnotized: ", sw)
 	hitVampire = false
 	hypnotized = sw
 	active = not sw

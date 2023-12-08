@@ -73,8 +73,6 @@ func useScythe(hero: Hero) -> void:
 	scytheCooldown = true
 	$Scythe.startAnimation()
 	hero.takeDamage($Scythe.damage)
-	print('Hitting ', hero.name, ' for damange of ', $Scythe.damage)
-
 
 func startDeath() -> void:
 	$CharacterImage.play("Death")
@@ -91,6 +89,7 @@ func _on_recalculate_path_timer_timeout() -> void:
 func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
 		active = true
+		$CharacterImage.play("Walk")
 
 
 # If it's the Hero, then clear the active flag
@@ -98,11 +97,10 @@ func _on_notice_area_body_entered(body):
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
 		active = false
+		$CharacterImage.play("Idle")
 
 func _on_scythe_cooldown_timer_timeout():
-	print('Scythe cooldown timer fired')
 	scytheCooldown = false
-
 
 func _on_fireball_cooldown_timer_timeout():
 	fireballCooldown = false

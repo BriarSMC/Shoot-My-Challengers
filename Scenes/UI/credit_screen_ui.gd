@@ -24,11 +24,9 @@ signal backButtonClicked
 # Class specific methods
 
 func fadeUI():
-	print("fadeUI called")
 	$VBoxContainer/AnimationPlayer.play("FadeToBlack")
 
 # Signal Callbacks
 
 func _on_back_pressed():
-	print('Credit Screen Back clicked')
 	backButtonClicked.emit()

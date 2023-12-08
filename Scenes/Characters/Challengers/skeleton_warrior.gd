@@ -12,6 +12,7 @@ class_name SkeletonWarrior
 var knifeScene: PackedScene = preload("res://Scenes/Weapons/knife.tscn")
 
 var knifeCooldown: bool = false
+var isIdle: bool = true
 
 # The following properties must be set in the Inspector by the designer
 
@@ -74,6 +75,7 @@ func throwKnife() -> void:
 	knifeCooldown = true
 	$Timers/ThrowTheKnife.start()
 	pointAndShoot(knifeScene)
+	SfxHandler.play_sfx(SfxHandler.SFX.KNIFE, self, Vector2.ONE, 2.0)
 
 func startDeath() -> void:
 	$CharacterImage.play("Death")
@@ -82,11 +84,13 @@ func startDeath() -> void:
 func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
 		active = true
+		$CharacterImage.play("Walk")
 
 # Something exited our Notice Araq. We only care about the hero.
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
 		active = false
+		$CharacterImage.play("Idle")
 
 # Cooldown period for the knife is over
 func _on_throw_the_knife_timeout():

@@ -74,6 +74,7 @@ func _process(delta) -> void:
 		if global_transform.origin.distance_to(arenaCenter) <= 10:
 			global_position = arenaCenter
 			retreatActive = false
+			$CharacterImage.play("Idle")
 
 # Class specific methods
 
@@ -89,6 +90,7 @@ func _process(delta) -> void:
 # Only if we are active
 func lungeAtHero() -> void:
 	startLungeTimer()
+	$CharacterImage.play("Walk")
 	if active:
 		var dir: Vector2 = (Globals.heroPosition - global_position).normalized()
 		velocity =  startingSpeed * dir
