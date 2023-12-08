@@ -10,6 +10,7 @@ class_name SkeletonWarrior
 # Properties
 
 var knifeScene: PackedScene = preload("res://Scenes/Weapons/knife.tscn")
+var walkingAudioPlayer: AudioStreamPlayer
 
 var knifeCooldown: bool = false
 var isIdle: bool = true
@@ -39,9 +40,6 @@ func _physics_process(delta) -> void:
 	if active:
 		moveUs(delta)
 		throwKnife()
-
-
-
 
 # Class specific methods
 
@@ -75,21 +73,32 @@ func throwKnife() -> void:
 	knifeCooldown = true
 	$Timers/ThrowTheKnife.start()
 	pointAndShoot(knifeScene)
-	SfxHandler.play_sfx(SfxHandler.SFX.KNIFE, self, Vector2.ONE, 2.0)
+	SfxHandler.play_sfx(SfxHandler.SFX.KNIFE)
+
+func die(sfx = SfxHandler.SFX.NULL) -> void:
+	super.die(sfx) # Played the sound in startDeath()
 
 func startDeath() -> void:
+	stopWalkingAudio()
+	SfxHandler.play_sfx(SfxHandler.SFX.SWARRIORDEATH)
 	$CharacterImage.play("Death")
+
+# Because the audio player can be freed a couple of times
+func stopWalkingAudio() -> void:
+	if is_instance_valid(walkingAudioPlayer): SfxHandler.remove(walkingAudioPlayer)
 
 # Something collided with our Notice Area. We only care about the hero.
 func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
 		active = true
 		$CharacterImage.play("Walk")
+		walkingAudioPlayer = SfxHandler.play_sfx(SFXHandler.SFX.SKELETONWALKING)
 
 # Something exited our Notice Araq. We only care about the hero.
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
 		active = false
+		stopWalkingAudio()
 		$CharacterImage.play("Idle")
 
 # Cooldown period for the knife is over
@@ -98,4 +107,4 @@ func _on_throw_the_knife_timeout():
 
 # Animation is finished
 func _on_character_image_animation_finished():
-	super.die(SFXHandler.SFX.NULL)
+	die()

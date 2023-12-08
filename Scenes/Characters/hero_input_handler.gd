@@ -213,7 +213,7 @@ func raiseShield() -> void:
 		queue_redraw()
 		$Timers/ShieldsActiveTimer.wait_time = 5.0
 		$Timers/ShieldsActiveTimer.start()
-		shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD, self, Vector2.ONE, -26.0)
+		shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD)
 		return
 
 	Globals.shortShieldCount -= 1
@@ -222,7 +222,7 @@ func raiseShield() -> void:
 	queue_redraw()
 	$Timers/ShieldsActiveTimer.wait_time = 3.0
 	$Timers/ShieldsActiveTimer.start()
-	shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD, self, Vector2.ONE, -26.0)
+	shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD)
 
 
 # emptyWarning()
@@ -263,7 +263,7 @@ func _on_shields_active_timer_timeout():
 	shieldActive = false
 	hero.immune = false
 	queue_redraw()
-	shieldSound.stop()
+	SfxHandler.remove(shieldSound)
 
 func _on_primary_cooldown_timer_timeout():
 	primaryCooldownFinished = true

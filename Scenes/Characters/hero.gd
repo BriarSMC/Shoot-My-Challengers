@@ -114,7 +114,7 @@ func firePWeapon() -> void:
 	weapon.direction = (pos - self.position).normalized()
 	weapon.look_at(pos)
 	Globals.weaponsDeployed.add_child(weapon)
-	SfxHandler.play_sfx(SfxHandler.SFX.HEROPWEAPON, self, Vector2.ONE, -16)
+	SfxHandler.play_sfx(SfxHandler.SFX.HEROPWEAPON)
 
 # fireSWeapon()
 # Creates amd fires the Hero's Secondary Weapon
