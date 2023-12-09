@@ -134,7 +134,7 @@ _data = {
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_uiuaw")
 scaleFactor = 0.3
-levelNumber = 1
+levelNumber = 2
 arenaRadius = 250
 arenaColor = Color(100, 100, 0.384314, 0.0588235)
 
@@ -264,3 +264,5 @@ libraries = {
 "": SubResource("AnimationLibrary_l2tgc")
 }
 autoplay = "FadeFromBlack"
+
+[node name="SFX" type="Node" parent="."]

@@ -133,6 +133,8 @@ _data = {
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_or3dm")
+scaleFactor = 0.3
+levelNumber = 3
 
 [node name="PlayingArea" type="Node2D" parent="."]
 
@@ -260,3 +262,5 @@ libraries = {
 "": SubResource("AnimationLibrary_l2tgc")
 }
 autoplay = "FadeFromBlack"
+
+[node name="SFX" type="Node" parent="."]

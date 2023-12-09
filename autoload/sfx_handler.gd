@@ -174,7 +174,7 @@ func play_sound(sound: AudioStream,
 func remove(player: AudioStreamPlayer) -> void:
 	if player == null: return
 	player.stop()
-	#player.queue_free()
+	player.queue_free()
 
 # killAll()
 # Get rid of all sound effects

@@ -29,6 +29,26 @@ var isHeroDeathFinished: bool = false
 
 # Virtual Godot methods
 
+# _enter_tree()
+# Called when the node is in the tree
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# So, why is this here and not in _ready()? Cuz I don't understand the order
+# of execution for _ready() methods. The documentation and posts about _ready()
+# lead me to think that they are executed in tree order. Don't think so. It may
+# be reverse tree order (I'll have to look into it). Anyway, Globals.sfxNode needs
+# to be set before any other node runs its _ready() because some of them play
+# a sound in the _ready() method. Hmm. Playing a sound requires Globals.sfxNode
+# to be set to the level's SFX node. Oh, BTW, each level needs to have an FSX
+# node. At a later date I may just have the Level class create one dynamically.
+# But that would have to be in _enter_tree() too and I don't know if it makes
+# sense or is 'legal' to create nodes during this time.
+#
+# Also, it may make more sense to move sfxNode to SfxHandler.
 func _enter_tree() -> void:
 	Globals.sfxNode = find_child("SFX")
 
@@ -42,7 +62,7 @@ func _enter_tree() -> void:
 #==
 # Scale the playing area images
 # Set which level is playing
-# Connect to the SkullOfDeath's death
+# Connect to the SkullOfDeath's death signal
 # Set WeaponsDeployed pointer
 # Find out how many challengers there are
 # Create the game play UI
@@ -54,7 +74,6 @@ func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	Globals.currentLevel =  self
 	Globals.currentLevelNdx = levelNumber
-
 
 	find_child("SkullOfDeath").connect("levelOver", levelOver)
 
@@ -92,6 +111,14 @@ func _ready() -> void:
 # Check to see if player wants to quit the game
 # Check to see if we are dead
 # If so, then end the game
+# NOTE: Easier said than done. Didn't want to use signals for this.
+#		So, heroDieCalled is a switch so that we only execute this chunk of
+#		code once. Set the switch so we don't execute this again. Then
+#		kill any outstanding SFX players. Apparently, this is done asynchonously.
+#		So, we need to make sure all the outstanding SFX players are gone before
+#		we can play our death sound. Hence the while loop.
+# 	NOTE 2: Hero class handles the Hero's die() method. Character class only handles
+# 	Challengers die() routines.
 # Check to see if all the enemies are dead
 # If so, then go to next level
 # Call the super
@@ -100,12 +127,11 @@ func _process(delta) -> void:
 		get_tree().quit()
 
 	if Globals.health <= 0:
-
 		if not heroDieCalled:
+			heroDieCalled = true
 			SfxHandler.killAll()
 			inactivateChallengers()
 			while Globals.sfxNode.get_child_count() > 0: await get_tree().create_timer(0.1).timeout
-			heroDieCalled = true
 			hero.connect("HeroDeathFinished", heroDeathFinished)
 			hero.die()
 			if isHeroDeathFinished:

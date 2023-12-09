@@ -1,5 +1,5 @@
 extends Level
-class_name Level1
+class_name Level2
 
 # This is the Level 1 scene
 

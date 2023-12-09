@@ -35,9 +35,9 @@ var vampire: Vampire							# Vampire hypnotizing us
 # Called when the node is ready
 #
 # Paramters
-#	None
+#		None
 # Return
-#	None
+#		None
 #==
 # See if we are using a game controller
 # Turn on TargetPointer if using game controller
@@ -87,7 +87,8 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if hypnotized and not hitVampire:
 		position += hypnoDir * hypnoSpeed * delta
-	if Globals.health <= 0: active = false
+	if Globals.health <= 0:
+		active = false
 
 # Class specific methods
 
@@ -102,6 +103,7 @@ func _process(delta) -> void:
 # Create a new object for the weapon
 # Set its position, direction and rotation
 # Add it to the tree
+# Request SFX to play our sound
 func firePWeapon() -> void:
 	var weapon: Area2D  = pWeapon.instantiate()
 	var pos: Vector2
@@ -128,6 +130,7 @@ func firePWeapon() -> void:
 # Create a new object for the weapon
 # Set its position
 # Add it to the tree
+# Request SFX play our sound
 func fireSWeapon() -> void:
 	var weapon: Area2D  = sWeapon.instantiate()
 
@@ -140,10 +143,10 @@ func fireSWeapon() -> void:
 # Return the direction from source to target
 #
 # Parameters
-#	src: Object					Oject shooting
-#	tgt: Object 				Object of the target
+#		src: Object					Oject shooting
+#		tgt: Object 				Object of the target
 # Return
-#	Vector2						Direction to the target
+#		Vector2						Direction to the target
 #==
 #
 func getDirection(src: Object, tgt: Object = self, useTargetPointer: bool = true) -> Vector2:
@@ -160,21 +163,25 @@ func takeDamage(damage: int) -> void:
 	Globals.health -= damage
 	super.takeDamage(damage)
 
-# die()
+# die(sfx)
 # Called by the Character class when our health hits zero
+# NOTE: We handle our own death. We don't use any of the parent
+# class' die() stuff.
 #
 # Paramters
-#	None
+#		sfx: SfxHandler.SFX	Sound to play
 # Return
-#	None
+#		None
 #==
-# Debug print for now
-# Call the parent class to do any cleanup work
+# Make us inactive
+# Play our death sound
+# Connect to the signal when the sound is finished playing
 func die(sfx: SFXHandler.SFX = SfxHandler.SFX.HERODEATH) -> void:
 	active = false
 	var player  = SfxHandler.play_sfx(sfx)
 	player.connect("finished", deathAudioFinished)
 
+# Death sound is finished playing. Tell the level it's over.
 func deathAudioFinished() -> void:
 	HeroDeathFinished.emit()
 

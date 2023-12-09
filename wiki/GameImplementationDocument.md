@@ -294,3 +294,50 @@ Globals.weaponsDeployed.add_child(instantiated-object)
 
 Chests are RigidBody2D objects. Because of this, we cannot detect when its collider has been hit by the Hero's primary weapon.
 So, the Hero's primary weapon detects if it hit a chest. If it does, then it calls the chest's open method.
+
+# Sound Effects (SFX)
+
+We manage the game's sound effects in module `res://autoload/sfx_handler.tscn`. SMC auto-loads this module at the start of the game.
+We define and pre-load all the game's sound effects in the module. Since it's auto-loads during the splash screen sequence, the player
+should not see any delay in the game.
+
+## Pre-loading the Audio Files
+
+The first section of the module defines a `const` for each of the pre-loaded audio files. The constants names follow the format `audioIDENTIFIER`,
+where IDENTIFIER is a name matching the `enum` statement following this section.
+
+The second section defines some convenient constants used to define the sfx dictionary.
+
+Next is the `enum` defining SFX. Each of the identifiers here match identifiers from the first section. The only exception is the NULL identifier. 
+This is a special identifier in case no sound should be played.
+
+Next is the sfx dictionary. Each sound effect has a corresponding entry in the dictionary. The key is the one of the SFX `enum` 
+identifiers. Each entry is an array describing the sound effect.
+* [0] is the AudioStream defined by the constants in the first section.
+* [1] is a pitch modulation range for the AudioStreamPlayer.
+* [2] is the volume_db value for the AudioStreamPlayer.
+* [3] is a switch controlling looping. true=loop, false=one-shot
+
+## Methods
+
+### `play_sfx(sfxKey)`
+
+This method plays one of the audio file defined in the sfx dictioanry matching the key `sfxKey`. This method calls
+`play_sound()` to play the audio file with the assigned properties.
+
+### `play_sound(sound, pitchRange, volumnDb, loopSw)`
+
+This method plays any audio file specified by the `AudioStream sound`. pitchRange is a 2-element array specifying how
+to alter the pitch of the sound. The method sets the player's pitch to `randf_range(pitchRange[0], pitchRange[1])`. 
+An array of [1.0, 1.0] causes the player to not alter the pitch. `volumeDb` is a float defining the volume for the
+AudioStream. `loopSw` controls whether `play_sound()` automatically delete the player once the audio has finished playing,
+or restart it. If `loopSw` is `true`, then some other code in SMC is responsible for stopping and deleting the player.
+
+### `remove(player)`
+
+This method stops and deletes the `AudioStreamPlayer` specified in `player`.
+
+### `killAll()`
+
+This stops and deletes all the AudioStreamPlayer nodes that are children of the SFX node in the current level.
+

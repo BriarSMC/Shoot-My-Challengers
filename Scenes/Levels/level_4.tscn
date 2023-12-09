@@ -382,3 +382,5 @@ libraries = {
 "": SubResource("AnimationLibrary_l2tgc")
 }
 autoplay = "FadeFromBlack"
+
+[node name="SFX" type="Node" parent="."]
