@@ -56,6 +56,7 @@ func open() -> void:
 	if chestClosed:
 		var animation = find_child("ChestImage")
 		chestClosed = false
+		SfxHandler.play_sfx(SfxHandler.SFX.OPEN)
 		animation.play("Open")
 		displayContents()
 
@@ -81,7 +82,7 @@ func displayContents() -> void:
 		if is_instance_valid(contents[i]):
 			contents[i].visible = true
 			contents[i].startExpires()
-			pos = Vector2(randi_range(-10, 10), randi_range(10, 20))
+			pos = Vector2(randi_range(-50, 10), randi_range(50, 70))
 			contents[i].position = pos
 
 # Signal Callbacks

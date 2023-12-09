@@ -137,18 +137,20 @@ func pointAndShoot(weaponScene: PackedScene) -> void:
 # Deduct the damage from character health
 # If zero or less then call our instance's die method
 func takeDamage(damage: int) -> void:
-	if immune: return
+	if isHero or immune: return
 	health -= damage
-	immune = true
-	characterImage.material.set_shader_parameter("turnWhite", immune)
-	immuneTimer.start()
-
-	if isHero: return
 	queue_redraw()
+
 	if health <= 0:
 		active = false
 		immune = false
 		call("startDeath")
+		return
+
+	immune = true
+	characterImage.material.set_shader_parameter("turnWhite", immune)
+	immuneTimer.start()
+
 
 func immuneTimeout() -> void:
 	immune = false

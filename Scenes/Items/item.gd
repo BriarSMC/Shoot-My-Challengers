@@ -77,21 +77,29 @@ func collected() -> void:
 	match itemType:
 		itemIs.COIN:
 			Globals.coinCount += increaseItemCountBy
+			SfxHandler.play_sfx(SfxHandler.SFX.COIN)
 		itemIs.GEM:
 			Globals.gemCount += increaseItemCountBy
+			SfxHandler.play_sfx(SfxHandler.SFX.GEM)
 		itemIs.MAXLIFE:
 			Globals.maxHealth += increaseItemCountBy
 			Globals.health += 15
+			SfxHandler.play_sfx(SfxHandler.SFX.MAXLIFE)
 		itemIs.LIFE:
 			Globals.health += increaseItemCountBy
+			SfxHandler.play_sfx(SfxHandler.SFX.LIFE)
 		itemIs.PWEAPON:
 			Globals.primaryWeaponCount += increaseItemCountBy
+			SfxHandler.play_sfx(SfxHandler.SFX.PWEAPONREFILL)
 		itemIs.SWEAPON:
 			Globals.secondaryWeaponCount += increaseItemCountBy
+			SfxHandler.play_sfx(SfxHandler.SFX.SWEAPONREFILL)
 		itemIs.SSHIELD:
 			Globals.shortShieldCount += increaseItemCountBy
+			SfxHandler.play_sfx(SfxHandler.SFX.SSHIELDREFILL)
 		itemIs.LSHIELD:
 			Globals.longShieldCount += increaseItemCountBy
+			SfxHandler.play_sfx(SfxHandler.SFX.LSHIELDREFILL)
 
 	queue_free()
 
