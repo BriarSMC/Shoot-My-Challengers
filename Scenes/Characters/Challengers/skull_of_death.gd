@@ -111,7 +111,9 @@ func lungeAtHero() -> void:
 func fireLaser() -> void:
 	startLaserTimer()
 	if lungeActive or retreatActive: return
-	if active:	pointAndShoot(laserScene)
+	if active:
+		SfxHandler.play_sfx(SfxHandler.SFX.SODPWEAPON)
+		pointAndShoot(laserScene)
 
 # throwFireBlast()
 # Throw the fireblast at the Hero
@@ -127,6 +129,7 @@ func throwFireBlast() -> void:
 	var fireBlast: Area2D  = fireBlastScene.instantiate()
 	fireBlast.position = Globals.heroPosition
 	Globals.weaponsDeployed.add_child(fireBlast)
+	SfxHandler.play_sfx(SfxHandler.SFX.SODSWEAPON)
 	fireBlast.connect('fireBlastComplete', fireBlastComplete)
 
 # fireBlastComplete()
@@ -172,6 +175,13 @@ func startLaserTimer() -> void:
 	$Timers/LaserTimer.start()
 
 func startDeath() -> void:
+	match Globals.currentLevelNdx:
+		1: SfxHandler.play_sfx(SfxHandler.SFX.SODDEATH1)
+		2: SfxHandler.play_sfx(SfxHandler.SFX.SODDEATH2)
+		3: SfxHandler.play_sfx(SfxHandler.SFX.SODDEATH3)
+		4: SfxHandler.play_sfx(SfxHandler.SFX.SODDEATH4)
+		5: SfxHandler.play_sfx(SfxHandler.SFX.SODDEATH5)
+
 	$CharacterImage.play("Death")
 
 # die()

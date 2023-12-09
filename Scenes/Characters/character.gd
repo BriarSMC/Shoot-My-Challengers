@@ -29,7 +29,10 @@ var healthColor: Color
 @export var scaleFactor: float					 # Scale factor for Globals.scaleMe()
 
 # The following are set based on the Inspector values
-@onready var health: int = startingHealth		# Set character's starting health
+var health: int :
+	set(val):
+		if val < 0: health = 0
+		else: health = val
 @onready var speed: float = startingSpeed		# Set character's starting speed
 @onready var isChallenger: bool = is_in_group("Challenger")
 @onready var isHero: bool = is_in_group("Hero")
@@ -44,11 +47,13 @@ var healthColor: Color
 # Return
 #	vNone
 #==
+# Set our starting health
 # Get our character's image node
 # Scale it
 # Set up our immune timer
 # NOTE: Child must call super._ready() if it defines own _ready() method
 func _ready() -> void:
+	health =  startingHealth
 	characterImage  = find_child("CharacterImage")
 	Globals.scaleMe(characterImage, scaleFactor)
 
