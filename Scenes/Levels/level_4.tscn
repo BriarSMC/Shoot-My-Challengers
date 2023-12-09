@@ -141,6 +141,7 @@ _data = {
 }
 
 [node name="Level4" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_nfa1e")
 scaleFactor = 0.3
 levelNumber = 4
