@@ -77,29 +77,29 @@ func collected() -> void:
 	match itemType:
 		itemIs.COIN:
 			Globals.coinCount += increaseItemCountBy
-			SfxHandler.play_sfx(SfxHandler.SFX.COIN)
+			SfxHandler.playSfx(SfxHandler.SFX.COIN)
 		itemIs.GEM:
 			Globals.gemCount += increaseItemCountBy
-			SfxHandler.play_sfx(SfxHandler.SFX.GEM)
+			SfxHandler.playSfx(SfxHandler.SFX.GEM)
 		itemIs.MAXLIFE:
 			Globals.maxHealth += increaseItemCountBy
 			Globals.health += 15
-			SfxHandler.play_sfx(SfxHandler.SFX.MAXLIFE)
+			SfxHandler.playSfx(SfxHandler.SFX.MAXLIFE)
 		itemIs.LIFE:
 			Globals.health += increaseItemCountBy
-			SfxHandler.play_sfx(SfxHandler.SFX.LIFE)
+			SfxHandler.playSfx(SfxHandler.SFX.LIFE)
 		itemIs.PWEAPON:
 			Globals.primaryWeaponCount += increaseItemCountBy
-			SfxHandler.play_sfx(SfxHandler.SFX.PWEAPONREFILL)
+			SfxHandler.playSfx(SfxHandler.SFX.PWEAPONREFILL)
 		itemIs.SWEAPON:
 			Globals.secondaryWeaponCount += increaseItemCountBy
-			SfxHandler.play_sfx(SfxHandler.SFX.SWEAPONREFILL)
+			SfxHandler.playSfx(SfxHandler.SFX.SWEAPONREFILL)
 		itemIs.SSHIELD:
 			Globals.shortShieldCount += increaseItemCountBy
-			SfxHandler.play_sfx(SfxHandler.SFX.SSHIELDREFILL)
+			SfxHandler.playSfx(SfxHandler.SFX.SSHIELDREFILL)
 		itemIs.LSHIELD:
 			Globals.longShieldCount += increaseItemCountBy
-			SfxHandler.play_sfx(SfxHandler.SFX.LSHIELDREFILL)
+			SfxHandler.playSfx(SfxHandler.SFX.LSHIELDREFILL)
 
 	queue_free()
 

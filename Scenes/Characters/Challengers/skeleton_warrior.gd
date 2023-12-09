@@ -73,14 +73,14 @@ func throwKnife() -> void:
 	knifeCooldown = true
 	$Timers/ThrowTheKnife.start()
 	pointAndShoot(knifeScene)
-	SfxHandler.play_sfx(SfxHandler.SFX.KNIFE)
+	SfxHandler.playSfx(SfxHandler.SFX.KNIFE)
 
 func die(sfx = SfxHandler.SFX.NULL) -> void:
 	super.die(sfx) # Played the sound in startDeath()
 
 func startDeath() -> void:
 	stopWalkingAudio()
-	SfxHandler.play_sfx(SfxHandler.SFX.SWARRIORDEATH)
+	SfxHandler.playSfx(SfxHandler.SFX.SWARRIORDEATH)
 	$CharacterImage.play("Death")
 
 # Because the audio player can be freed a couple of times
@@ -92,7 +92,7 @@ func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
 		active = true
 		$CharacterImage.play("Walk")
-		walkingAudioPlayer = SfxHandler.play_sfx(SFXHandler.SFX.SKELETONWALKING)
+		walkingAudioPlayer = SfxHandler.playSfx(SFXHandler.SFX.SKELETONWALKING)
 
 # Something exited our Notice Araq. We only care about the hero.
 func _on_notice_area_body_exited(body):

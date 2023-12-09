@@ -172,6 +172,6 @@ func immuneTimeout() -> void:
 # Just get rid of the node
 func die(sfx: SFXHandler.SFX) -> void:
 	if isChallenger: Globals.challengersLeft -= 1
-	SfxHandler.play_sfx(sfx)
+	SfxHandler.playSfx(sfx)
 	queue_free()
 

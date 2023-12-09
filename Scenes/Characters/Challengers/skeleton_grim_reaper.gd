@@ -65,19 +65,19 @@ func useFireball() -> void:
 	if fireballCooldown: return
 	$Timers/FireballCooldownTimer.start()
 	fireballCooldown = true
-	SfxHandler.play_sfx(SfxHandler.SFX.SGRSWEAPON)
+	SfxHandler.playSfx(SfxHandler.SFX.SGRSWEAPON)
 	pointAndShoot(fireballScene)
 
 func useScythe(hero: Hero) -> void:
 	if scytheCooldown: return
 	$Timers/ScytheCooldownTimer.start()
 	scytheCooldown = true
-	SfxHandler.play_sfx(SfxHandler.SFX.SGRPWEAPON)
+	SfxHandler.playSfx(SfxHandler.SFX.SGRPWEAPON)
 	$Scythe.startAnimation()
 	hero.takeDamage($Scythe.damage)
 
 func startDeath() -> void:
-	SfxHandler.play_sfx(SfxHandler.SFX.SGRDEATH)
+	SfxHandler.playSfx(SfxHandler.SFX.SGRDEATH)
 	$CharacterImage.play("Death")
 
 # Signal callbacks

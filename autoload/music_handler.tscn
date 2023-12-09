@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8tpldgil5csh"]
+
+[ext_resource type="Script" path="res://autoload/music_handler.gd" id="1_fxw83"]
+
+[node name="MusicHandler" type="Node"]
+script = ExtResource("1_fxw83")
+
+[node name="PrimaryPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="InterruptPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="PrimaryPlayer" to="." method="_on_primary_player_finished"]
+[connection signal="finished" from="InterruptPlayer" to="." method="_on_interrupt_player_finished"]

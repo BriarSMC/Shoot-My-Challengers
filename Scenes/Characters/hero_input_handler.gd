@@ -193,7 +193,7 @@ func fireSecondary() -> void:
 		$Timers/SecondaryCooldownTimer.start()
 		Globals.secondaryWeaponCount -= 1
 		fireHeroSWeapon.emit()
-		SfxHandler.play_sfx(SfxHandler.SFX.HEROSWEAPON)
+		SfxHandler.playSfx(SfxHandler.SFX.HEROSWEAPON)
 
 # func raiseShield()
 # If player activates the shield, then raise it
@@ -226,7 +226,7 @@ func raiseShield() -> void:
 		queue_redraw()
 		$Timers/ShieldsActiveTimer.wait_time = 5.0
 		$Timers/ShieldsActiveTimer.start()
-		shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD)
+		shieldSound = SfxHandler.playSfx(SfxHandler.SFX.SHIELD)
 		return
 
 	Globals.shortShieldCount -= 1
@@ -235,7 +235,7 @@ func raiseShield() -> void:
 	queue_redraw()
 	$Timers/ShieldsActiveTimer.wait_time = 3.0
 	$Timers/ShieldsActiveTimer.start()
-	shieldSound = SfxHandler.play_sfx(SfxHandler.SFX.SHIELD)
+	shieldSound = SfxHandler.playSfx(SfxHandler.SFX.SHIELD)
 
 
 # emptyWarning()
@@ -249,7 +249,7 @@ func raiseShield() -> void:
 #==
 # Play empty sound
 func emptyWarning() -> void:
-	SfxHandler.play_sfx(SfxHandler.SFX.HEROEMPTY)
+	SfxHandler.playSfx(SfxHandler.SFX.HEROEMPTY)
 
 # takeDamage(damage)
 # Called when something has caused us damage

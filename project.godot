@@ -20,6 +20,7 @@ config/icon="res://skull_icon.svg"
 
 Globals="*res://autoload/globals.gd"
 SfxHandler="*res://autoload/sfx_handler.tscn"
+MusicHandler="*res://autoload/music_handler.tscn"
 
 [display]
 

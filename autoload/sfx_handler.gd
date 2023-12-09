@@ -6,11 +6,11 @@ class_name SFXHandler
 # The enum SFX lists the sound effects used by SMC. The Dictionary
 # sfx has the preloaded sound effect audio files for each of the SFX enums.
 #
-# To play a sound effect, the caller only needs to call Sfxhandler.play_sfx()
+# To play a sound effect, the caller only needs to call Sfxhandler.playSfx()
 # with the appropriate SFX value.
 #
 # Should we need to play a sound not in our dictionary, then the caller
-# can call Sfxhandler.play_sound() with the audio file to play.
+# can call Sfxhandler.playSound() with the audio file to play.
 
 # Signals
 
@@ -46,6 +46,7 @@ const audioPWEAPONREFILL = preload("res://Audio/SoundEffects/396331__nioczkus__1
 const audioSWEAPONREFILL = preload("res://Audio/SoundEffects/500294__bratish__shotgun-reload.mp3")
 const audioSSHIELDREFILL = preload("res://Audio/SoundEffects/523753__matrixxx__new-skill-01.mp3")
 const audioLSHIELDREFILL = preload("res://Audio/SoundEffects/523745__matrixxx__armor-02.mp3")
+const audioUIBUTTON = preload("res://Audio/SoundEffects/Retro Event UI 01.mp3")
 
 const NOPITCH = [1.0, 1.0]
 const PITCH_2 = [.8, 1.2]
@@ -54,7 +55,7 @@ enum SFX {NULL, TELEPORT, HEROPWEAPON, HEROSWEAPON, HEROEXPLOSION, HEROEMPTY, SH
 					 KNIFE, SKELETONWALKING, SWARRIORDEATH, VAMPIREBITE, VAMPIREDEATH, SGRPWEAPON,
 					 SGRSWEAPON, SGRDEATH, SODPWEAPON, SODSWEAPON, SODDEATH1, SODDEATH2, SODDEATH3,
 					 SODDEATH4, SODDEATH5, OPEN,  COIN, GEM, LIFE, MAXLIFE, PWEAPONREFILL, SWEAPONREFILL,
-					 SSHIELDREFILL, LSHIELDREFILL, }
+					 SSHIELDREFILL, LSHIELDREFILL, UIBUTTON, }
 
 const sfx: Dictionary = {
 	# ID									audio file							pitch range	volume		loop?
@@ -90,6 +91,7 @@ const sfx: Dictionary = {
 	SFX.SWEAPONREFILL:		[audioSWEAPONREFILL,		NOPITCH,		-8.0,			false],
 	SFX.SSHIELDREFILL:		[audioSSHIELDREFILL,		NOPITCH,		-8.0,			false],
 	SFX.LSHIELDREFILL:		[audioLSHIELDREFILL,		NOPITCH,		-8.0,			false],
+	SFX.UIBUTTON:					[audioUIBUTTON,					NOPITCH,		-8.0,			false],
 }
 # The following properties must be set in the Inspector by the designer
 
@@ -99,8 +101,10 @@ const sfx: Dictionary = {
 
 # Class specific methods
 
-# play_sfx(sfxKey, parent, pitchRange, volumeDb)
-# Play the audio file in our dictionary
+# playSfx(sfxKey, parent, pitchRange, volumeDb)
+# Play the audio file in our dictionary. We return the
+# New audio player so that the caller can manipulate it
+# if needs be (like stopping a loop and deleting it).
 #
 # Parameters
 #		sfxKey: SFX					Dictionary key of the audio file to play
@@ -113,12 +117,12 @@ const sfx: Dictionary = {
 # Return
 #		Pointer to the audio player
 #==
-# Just call play_sound with the appropriate audio file
-func play_sfx(sfxKey: SFX) -> AudioStreamPlayer:
+# Just call playSound with the appropriate audio file
+func playSfx(sfxKey: SFX) -> AudioStreamPlayer:
 	print('Playing ', SFX.keys()[sfxKey])
-	return play_sound(sfx[sfxKey][0], sfx[sfxKey][1], sfx[sfxKey][2], sfx[sfxKey][3])
+	return playSound(sfx[sfxKey][0], sfx[sfxKey][1], sfx[sfxKey][2], sfx[sfxKey][3])
 
-# play_sound(sound, parent, pitchRange, volumeDb, loopIt)
+# playSound(sound, parent, pitchRange, volumeDb, loopIt)
 # Play the audio file
 #
 # Parameters
@@ -141,7 +145,7 @@ func play_sfx(sfxKey: SFX) -> AudioStreamPlayer:
 # Set pitch and volume
 # Add new AudioStreamPlayer the indicated node
 # Play the sound
-func play_sound(sound: AudioStream,
+func playSound(sound: AudioStream,
 	pitchRange: Array = [1.0, 1.0], volumeDb: float = 1.0, loopIt = false) -> AudioStreamPlayer:
 	if sound == null: return null
 

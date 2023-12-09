@@ -77,7 +77,7 @@ func _ready() -> void:
 
 	Globals.heroPosition = position
 
-	SfxHandler.play_sfx(SfxHandler.SFX.TELEPORT)
+	SfxHandler.playSfx(SfxHandler.SFX.TELEPORT)
 
 	super._ready()
 
@@ -152,7 +152,7 @@ func firePWeapon() -> void:
 	weapon.direction = (pos - self.position).normalized()
 	weapon.look_at(pos)
 	Globals.weaponsDeployed.add_child(weapon)
-	SfxHandler.play_sfx(SfxHandler.SFX.HEROPWEAPON)
+	SfxHandler.playSfx(SfxHandler.SFX.HEROPWEAPON)
 
 # fireSWeapon()
 # Creates amd fires the Hero's Secondary Weapon
@@ -172,7 +172,7 @@ func fireSWeapon() -> void:
 	weapon.position = self.global_position
 	weapon.direction = Vector2.ZERO
 	Globals.weaponsDeployed.add_child(weapon)
-	SfxHandler.play_sfx(SfxHandler.SFX.HEROSWEAPON)
+	SfxHandler.playSfx(SfxHandler.SFX.HEROSWEAPON)
 
 # getDirection(src, tgt)
 # Return the direction from source to target
@@ -213,7 +213,7 @@ func takeDamage(damage: int) -> void:
 # Connect to the signal when the sound is finished playing
 func die(sfx: SFXHandler.SFX = SfxHandler.SFX.HERODEATH) -> void:
 	active = false
-	var player  = SfxHandler.play_sfx(sfx)
+	var player  = SfxHandler.playSfx(sfx)
 	player.connect("finished", deathAudioFinished)
 
 # Death sound is finished playing. Tell the level it's over.

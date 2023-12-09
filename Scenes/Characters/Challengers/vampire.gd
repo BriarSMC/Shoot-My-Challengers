@@ -48,10 +48,10 @@ func biteHero() -> void:
 	hero.takeDamage(damage)
 	print('Damage hero ', damage)
 	$BitingTimer.start()
-	SfxHandler.play_sfx(SfxHandler.SFX.VAMPIREBITE)
+	SfxHandler.playSfx(SfxHandler.SFX.VAMPIREBITE)
 
 func startDeath() -> void:
-		SfxHandler.play_sfx(SfxHandler.SFX.VAMPIREDEATH)
+		SfxHandler.playSfx(SfxHandler.SFX.VAMPIREDEATH)
 		$CharacterImage/Death.play("Death")
 
 # Signal Callbacks

@@ -56,7 +56,7 @@ func open() -> void:
 	if chestClosed:
 		var animation = find_child("ChestImage")
 		chestClosed = false
-		SfxHandler.play_sfx(SfxHandler.SFX.OPEN)
+		SfxHandler.playSfx(SfxHandler.SFX.OPEN)
 		animation.play("Open")
 		displayContents()
 
