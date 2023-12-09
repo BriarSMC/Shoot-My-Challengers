@@ -42,6 +42,7 @@
 - [AntumDeluge](https://freesound.org/people/AntumDeluge/)
 - [Zulfish](https://freesound.org/people/Zulfish/)
 - [strangehorizon](https://freesound.org/people/strangehorizon/)
+- [scorpion67890](https://freesound.org/people/scropion67890)
 - [Za-Games](https://freesound.org/people/Za-Games/)
 - [EminYILDIRIM](https://freesound.org/people/EminYILDIRIM/)
 - [Sadiquecat](https://freesound.org/people/Sadiquecat/)

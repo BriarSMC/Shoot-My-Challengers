@@ -881,10 +881,10 @@ animations = [{
 [node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 collision_mask = 186
 script = ExtResource("1_ife15")
-startingPWeapon = 20
+startingPWeapon = 15
 startingSWeapon = 5
 startingSShield = 3
-startingHealth = 20
+startingHealth = 60
 startingSpeed = 120.0
 scaleFactor = 0.4
 

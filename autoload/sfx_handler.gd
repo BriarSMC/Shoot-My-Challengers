@@ -26,7 +26,7 @@ const audioKNIFE = preload("res://Audio/SoundEffects/703708__strangehorizon__thr
 const audioSKELETONWALKING = preload("res://Audio/SoundEffects/188034__antumdeluge__bones-2.mp3")
 const audioSWARRIORDEATH = preload("res://Audio/SoundEffects/704635__zulfish__monster-dying.mp3")
 const audioVAMPIREBITE = preload("res://Audio/SoundEffects/268501__bernuy__vampire-bites.mp3")
-const audioVAMPIREDEATH = preload("res://Audio/SoundEffects/703708__strangehorizon__throwing_arm_3.mp3")
+const audioVAMPIREDEATH = preload("res://Audio/SoundEffects/169058__scorpion67890__slow-zombie-death.mp3")
 const audioSGRPWEAPON = preload("res://Audio/SoundEffects/539972__za-games__fire-burst-flash.mp3")
 const audioSGRSWEAPON = preload("res://Audio/SoundEffects/706678__sadiquecat__whoosh-bamboo-3.mp3")
 const audioSGRDEATH = preload("res://Audio/SoundEffects/660111__matrixxx__purge-remastered.mp3")
@@ -70,7 +70,7 @@ const sfx: Dictionary = {
 	SFX.SKELETONWALKING: 	[audioSKELETONWALKING,	NOPITCH,		-8.0,			true],
 	SFX.SWARRIORDEATH:		[audioSWARRIORDEATH,		NOPITCH,		0.0,			false],
 	SFX.VAMPIREBITE:			[audioVAMPIREBITE,			NOPITCH,		0.0,			false],
-	SFX.VAMPIREDEATH:			[audioVAMPIREDEATH, 		NOPITCH,		0.0,			false],
+	SFX.VAMPIREDEATH:			[audioVAMPIREDEATH, 		NOPITCH,		-10.0,		false],
 	SFX.SGRPWEAPON:				[audioSGRPWEAPON,				PITCH_2,		0,0, 			false],
 	SFX.SGRSWEAPON:				[audioSGRSWEAPON,				PITCH_2,		0.0,			false],
 	SFX.SGRDEATH:					[audioSGRDEATH,					NOPITCH,		0.0,			false],
@@ -115,7 +115,7 @@ const sfx: Dictionary = {
 #==
 # Just call play_sound with the appropriate audio file
 func play_sfx(sfxKey: SFX) -> AudioStreamPlayer:
-	print('Playing SFX ', SFX.keys()[sfxKey])
+	print('Playing ', SFX.keys()[sfxKey])
 	return play_sound(sfx[sfxKey][0], sfx[sfxKey][1], sfx[sfxKey][2], sfx[sfxKey][3])
 
 # play_sound(sound, parent, pitchRange, volumeDb, loopIt)
@@ -157,7 +157,6 @@ func play_sound(sound: AudioStream,
 	streamPlayer.volume_db = volumeDb
 
 	Globals.sfxNode.add_child(streamPlayer)
-	print ('Created player ', streamPlayer.name)
 	streamPlayer.play()
 	return streamPlayer
 
@@ -188,6 +187,5 @@ func remove(player: AudioStreamPlayer) -> void:
 func killAll() -> void:
 	for n in Globals.sfxNode.find_children("*", "AudioStreamPlayer", false, false):
 		if n != null:
-			print('Stopping/Killing ', n.name)
 			n.stop()
 			n.queue_free()

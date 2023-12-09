@@ -46,9 +46,12 @@ func _process(_delta) -> void:
 # Send damage to hero
 func biteHero() -> void:
 	hero.takeDamage(damage)
+	print('Damage hero ', damage)
 	$BitingTimer.start()
+	SfxHandler.play_sfx(SfxHandler.SFX.VAMPIREBITE)
 
 func startDeath() -> void:
+		SfxHandler.play_sfx(SfxHandler.SFX.VAMPIREDEATH)
 		$CharacterImage/Death.play("Death")
 
 # Signal Callbacks
@@ -70,6 +73,7 @@ func _on_notice_area_body_entered(body):
 func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
 		active = false
+		hypnotizing = false
 		body.hypnotize(self, false)
 
 # Only care about Hero
