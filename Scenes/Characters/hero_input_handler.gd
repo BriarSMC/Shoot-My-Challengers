@@ -100,9 +100,22 @@ func moveHero() -> void:
 
 	hero.direction = Input.get_vector("Left", "Right", "Up", "Down")
 	if hero.direction == Vector2.ZERO:
+		hero.makeIdle()
 		return
 
+	var dirAngle: float = rad_to_deg(hero.direction.angle())
+	if dirAngle < 0.0: dirAngle += 360
+	if dirAngle < 45.0 or dirAngle >= 135.0: hero.facing = hero.EAST
+	if dirAngle >= 45.0 and dirAngle < 135.0: hero.facing = hero.SOUTH
+	if dirAngle >= 135.0 and dirAngle < 225.0: hero.facing = hero.WEST
+	if dirAngle >= 225.0 and dirAngle < 315.0: hero.facing = hero.NORTH
+
+	if hero.facing != hero.previousFacing:
+		hero.previousFacing = hero.facing
+		hero.changeDirection()
+
 	hero.moved = true
+	hero.makeWalking()
 	Globals.startSpawning = true
 	hero.velocity = hero.speed * hero.direction
 	hero.move_and_slide()

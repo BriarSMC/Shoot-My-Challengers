@@ -10,6 +10,10 @@ class_name Hero
 signal HeroDeathFinished
 
 # Properties
+const NORTH = 'NORTH'
+const EAST = 'EAST'
+const SOUTH = 'SOUTH'
+const WEST = 	'WEST'
 
 var moved: bool = false						# Whether Hero moved this frame
 var hitVampire: bool							# We've made contact with the Vampire
@@ -17,6 +21,9 @@ var hypnotized: bool = false			# Whether or not we are hypnotized
 var hypnoDir: Vector2							# Direction of Vampire
 var hypnoSpeed: float							# Movement speed while hypnotized
 var vampire: Vampire							# Vampire hypnotizing us
+var facing: String = EAST 				# Compass point Hero is facing
+var previousFacing: String = EAST
+var isWalking: bool = false
 
 @onready var pWeapon: PackedScene = preload("res://Scenes/Weapons/hero_p_weapon.tscn")
 @onready var sWeapon: PackedScene = preload("res://Scenes/Weapons/hero_s_weapon.tscn")
@@ -91,6 +98,34 @@ func _process(delta) -> void:
 		active = false
 
 # Class specific methods
+
+func changeDirection() -> void:
+	if isWalking:
+		makeWalking(true)
+	else:
+		makeIdle(true)
+
+func makeIdle(force: bool = false) -> void:
+	if not isWalking and not force: return
+	isWalking = false
+	var idleAnimation
+	match facing:
+		NORTH: idleAnimation = 'IdleNorth'
+		EAST: idleAnimation = 'IdleEast'
+		SOUTH: idleAnimation = 'IdleSouth'
+		WEST: idleAnimation = 'IdleWest'
+	$Character/CharacterImage.play(idleAnimation)
+
+func makeWalking(force: bool = false) -> void:
+	if isWalking and not force: return
+	isWalking = true
+	var walkAnimation
+	match facing:
+		NORTH: walkAnimation = 'WalkNorth'
+		EAST: walkAnimation = 'WalkEast'
+		SOUTH: walkAnimation = 'WalkSouth'
+		WEST: walkAnimation = 'WalkWest'
+	$Character/CharacterImage.play(walkAnimation)
 
 # firePWeapon()
 # Creates amd fires the Hero's Primary Weapon
