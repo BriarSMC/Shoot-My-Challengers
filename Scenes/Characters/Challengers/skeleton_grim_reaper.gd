@@ -78,6 +78,7 @@ func useScythe(hero: Hero) -> void:
 
 func startDeath() -> void:
 	SfxHandler.playSfx(SfxHandler.SFX.SGRDEATH)
+	MusicHandler.resumePrimary()
 	$CharacterImage.play("Death")
 
 # Signal callbacks
@@ -93,6 +94,7 @@ func _on_notice_area_body_entered(body):
 	if body.is_in_group("Hero"):
 		active = true
 		$CharacterImage.play("Walk")
+		MusicHandler.playInterrupt(MusicHandler.MUSIC.GRIM)
 
 
 # If it's the Hero, then clear the active flag
@@ -101,6 +103,7 @@ func _on_notice_area_body_exited(body):
 	if body.is_in_group("Hero"):
 		active = false
 		$CharacterImage.play("Idle")
+		MusicHandler.resumePrimary()
 
 func _on_scythe_cooldown_timer_timeout():
 	scytheCooldown = false

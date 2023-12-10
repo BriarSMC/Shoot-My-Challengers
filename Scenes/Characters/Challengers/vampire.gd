@@ -67,6 +67,7 @@ func _on_notice_area_body_entered(body):
 		active = true
 		hypnotizing = true
 		body.hypnotize(self)
+		MusicHandler.playInterrupt(MusicHandler.MUSIC.VAMPIRE)
 
 # Only care about Hero
 # Really shouldn't be called since we disable the collider on contact
@@ -89,6 +90,7 @@ func _on_area_2d_body_entered(body):
 # TODO: Stop any biting media
 func _on_biting_timer_timeout():
 	hero.hypnotize(self, false)
+	MusicHandler.resumePrimary()
 
 
 func _on_death_animation_finished():

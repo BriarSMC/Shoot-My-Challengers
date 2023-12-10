@@ -50,8 +50,6 @@ const music: Dictionary = {
 const AUDIOSTREAM: int = 0
 const VOLUMEDB: int = 1
 
-#var primaryPlayer: AudioStreamPlayer
-#var interruptPlayer: AudioStreamPlayer
 var primaryPlaybackPos: float
 
 # The following properties must be set in the Inspector by the designer
@@ -70,9 +68,6 @@ var primaryPlaybackPos: float
 #==
 # What the code is doing (steps)
 func _ready() -> void:
-	#primaryPlayer = AudioStreamPlayer.new()
-	#interruptPlayer = AudioStreamPlayer.new()
-
 	$PrimaryPlayer.autoplay = false
 	$InterruptPlayer.autoplay = false
 
@@ -121,8 +116,8 @@ func resumePrimary() -> void:
 #==
 # What the code is doing (steps)
 func playInterrupt(id: MUSIC) -> void:
-	$PrimaryPlayer.stop()
 	primaryPlaybackPos = $PrimaryPlayer.get_playback_position()
+	$PrimaryPlayer.stop()
 	$InterruptPlayer.set_stream(music[id][AUDIOSTREAM])
 	$InterruptPlayer.volume_db = music[id][VOLUMEDB]
 	$InterruptPlayer.play()
