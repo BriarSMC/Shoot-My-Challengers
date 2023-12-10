@@ -146,7 +146,7 @@ func firePWeapon() -> void:
 	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
 		pos = $TargetPointer.global_position
 	else:
-		pos = get_viewport().get_global_mouse_position()
+		pos = get_global_mouse_position()
 
 	weapon.position = self.global_position
 	weapon.direction = (pos - self.position).normalized()
