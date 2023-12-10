@@ -11,10 +11,12 @@ config_version=5
 [application]
 
 config/name="Shoot My Challengers"
+config/version="0.1"
 run/main_scene="res://Scenes/UI/splash_screen.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/show_image=false
-config/icon="res://skull_icon.svg"
+config/icon="res://Graphics/Misc/skull_icon.png"
+config/windows_native_icon="res://Graphics/Misc/skull_icon.ico"
 
 [autoload]
 
