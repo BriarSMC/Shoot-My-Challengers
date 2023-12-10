@@ -37,7 +37,7 @@ const music: Dictionary = {
 # ID							audio file			volume_db
 	MUSIC.NULL: 		[null,					-5.0],
 	MUSIC.UIBG: 		[musicUIBG,			-5.0],
-	MUSIC.LEVELS:		[musicLEVELS,		-5.0],
+	MUSIC.LEVELS:		[musicLEVELS,		-12.0],
 	MUSIC.SOD1:			[musicSOD1,			-5.0],
 	MUSIC.SOD2:			[musicSOD2,			-5.0],
 	MUSIC.SOD3:			[musicSOD3,			-5.0],

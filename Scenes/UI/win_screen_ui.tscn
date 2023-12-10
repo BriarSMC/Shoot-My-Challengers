@@ -71,4 +71,5 @@ libraries = {
 }
 
 [connection signal="continueGame" from="." to="." method="_on_continue_game"]
+[connection signal="focus_entered" from="Container/Continue" to="." method="_on_continue_focus_entered"]
 [connection signal="pressed" from="Container/Continue" to="." method="_on_continue_pressed"]

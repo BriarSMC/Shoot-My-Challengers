@@ -3,6 +3,8 @@ class_name yourclassname
 
 # <description>
 
+# Signals
+
 # Properties
 
 # The following properties must be set in the Inspector by the designer

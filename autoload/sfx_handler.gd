@@ -14,6 +14,10 @@ class_name SFXHandler
 
 # Signals
 
+# Properties
+
+var sfxNode: Node
+
 # Preloaded audio files
 const audioTELEPORT = preload("res://Audio/SoundEffects/Retro Jump StereoUP Simple 01.mp3")
 const audioHEROPWEAPON = preload("res://Audio/SoundEffects/Retro Weapon Arrow 02.mp3")
@@ -47,6 +51,7 @@ const audioSWEAPONREFILL = preload("res://Audio/SoundEffects/500294__bratish__sh
 const audioSSHIELDREFILL = preload("res://Audio/SoundEffects/523753__matrixxx__new-skill-01.mp3")
 const audioLSHIELDREFILL = preload("res://Audio/SoundEffects/523745__matrixxx__armor-02.mp3")
 const audioUIBUTTON = preload("res://Audio/SoundEffects/Retro Event UI 01.mp3")
+const audioUIBUTTONBLIP = preload("res://Audio/SoundEffects/351569__ethraiel__blip.mp3")
 
 const NOPITCH = [1.0, 1.0]
 const PITCH_2 = [.8, 1.2]
@@ -55,7 +60,7 @@ enum SFX {NULL, TELEPORT, HEROPWEAPON, HEROSWEAPON, HEROEXPLOSION, HEROEMPTY, SH
 					 KNIFE, SKELETONWALKING, SWARRIORDEATH, VAMPIREBITE, VAMPIREDEATH, SGRPWEAPON,
 					 SGRSWEAPON, SGRDEATH, SODPWEAPON, SODSWEAPON, SODDEATH1, SODDEATH2, SODDEATH3,
 					 SODDEATH4, SODDEATH5, OPEN,  COIN, GEM, LIFE, MAXLIFE, PWEAPONREFILL, SWEAPONREFILL,
-					 SSHIELDREFILL, LSHIELDREFILL, UIBUTTON, }
+					 SSHIELDREFILL, LSHIELDREFILL, UIBUTTON, UIBUTTONBLIP, }
 
 const sfx: Dictionary = {
 	# ID									audio file							pitch range	volume		loop?
@@ -91,13 +96,33 @@ const sfx: Dictionary = {
 	SFX.SWEAPONREFILL:		[audioSWEAPONREFILL,		NOPITCH,		-8.0,			false],
 	SFX.SSHIELDREFILL:		[audioSSHIELDREFILL,		NOPITCH,		-8.0,			false],
 	SFX.LSHIELDREFILL:		[audioLSHIELDREFILL,		NOPITCH,		-8.0,			false],
-	SFX.UIBUTTON:					[audioUIBUTTON,					NOPITCH,		-8.0,			false],
+	SFX.UIBUTTON:					[audioUIBUTTON,					NOPITCH,		-2.0,			false],
+	SFX.UIBUTTONBLIP:			[audioUIBUTTONBLIP,			NOPITCH,		-2.0,			false]
 }
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
 
 # Virtual Godot methods
+
+# _enter_tree()
+# Called when the node is in the tree
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Audio stream players need a home or they don't work. So, we create a node
+# here for them to live in.
+#
+func _enter_tree() -> void:
+	var n: Node
+	n = Node.new() #find_child("SFX")
+	n.name = 'SFX'
+	var sfx = get_tree().get_root().get_node("SfxHandler")
+	sfx.add_child(n)
+	sfxNode = n
 
 # Class specific methods
 
@@ -160,7 +185,7 @@ func playSound(sound: AudioStream,
 	streamPlayer.pitch_scale = randf_range(pitchRange[0], pitchRange[1])
 	streamPlayer.volume_db = volumeDb
 
-	Globals.sfxNode.add_child(streamPlayer)
+	sfxNode.add_child(streamPlayer)
 	streamPlayer.play()
 	return streamPlayer
 
@@ -189,7 +214,7 @@ func remove(player: AudioStreamPlayer) -> void:
 #==
 # What the code is doing (steps)
 func killAll() -> void:
-	for n in Globals.sfxNode.find_children("*", "AudioStreamPlayer", false, false):
+	for n in sfxNode.find_children("*", "AudioStreamPlayer", false, false):
 		if n != null:
 			n.stop()
 			n.queue_free()

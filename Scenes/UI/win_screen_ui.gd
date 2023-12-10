@@ -26,4 +26,9 @@ func fadeUI():
 # Signal callbacks
 
 func _on_continue_pressed():
-		continueGame.emit()
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTON)
+	continueGame.emit()
+
+
+func _on_continue_focus_entered():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTONBLIP)

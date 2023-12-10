@@ -30,13 +30,33 @@ func fadeUI():
 # Signal callbacks
 
 func _on_start_game_pressed():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTON)
 	startGame.emit()
 
 func _on_quit_pressed():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTON)
 	get_tree().quit()
 
 func _on_credits_pressed():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTON)
 	showCredits.emit()
 
 func _on_demo_pressed():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTON)
 	showDemoPage.emit()
+
+
+func _on_start_game_focus_entered():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTONBLIP)
+
+
+func _on_quit_focus_entered():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTONBLIP)
+
+
+func _on_credits_focus_entered():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTONBLIP)
+
+
+func _on_demo_focus_entered():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTONBLIP)

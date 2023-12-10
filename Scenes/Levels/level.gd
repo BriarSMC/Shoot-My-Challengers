@@ -49,7 +49,7 @@ var isHeroDeathFinished: bool = false
 # sense or is 'legal' to create nodes during this time.
 #
 # Also, it may make more sense to move sfxNode to SfxHandler.
-func _enter_tree() -> void:
+func xxx_enter_tree() -> void:
 	Globals.sfxNode = find_child("SFX")
 
 # _ready()
@@ -70,6 +70,7 @@ func _enter_tree() -> void:
 # Set the randomizer
 # Startup the powerup spawner
 # Save location of the Skull Arena
+# Play our music
 func _ready() -> void:
 	Globals.scaleMe($PlayingArea, scaleFactor)		# Adjust how big we are
 	Globals.currentLevel =  self
@@ -98,6 +99,8 @@ func _ready() -> void:
 	add_child(powerupSpawner)
 
 	skullArena = find_child('SkullArena')
+
+	MusicHandler.playPrimary(MusicHandler.MUSIC.LEVELS)
 	super._ready()
 
 # _process(delta)

@@ -29,4 +29,9 @@ func fadeUI():
 # Signal Callbacks
 
 func _on_back_pressed():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTON)
 	backButtonClicked.emit()
+
+
+func _on_back_focus_entered():
+	SfxHandler.playSfx(SfxHandler.SFX.UIBUTTONBLIP)

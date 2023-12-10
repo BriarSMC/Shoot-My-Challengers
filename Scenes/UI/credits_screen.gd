@@ -25,7 +25,7 @@ class_name CreditsScreen
 #
 # Paramters
 #	None
-# Return 
+# Return
 #	None
 #==
 # Start the animation player for FadeToBlack. This animation player will
@@ -37,4 +37,4 @@ func _on_credit_screen_ui_back_to_start():
 
 # When the back button is clicked on our UI, then go back to the start screen
 func _on_credit_screen_ui_back_button_clicked():
-	changeGameScreen.emit(0,0) 
+	changeGameScreen.emit(0,0)

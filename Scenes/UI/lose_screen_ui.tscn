@@ -69,4 +69,5 @@ libraries = {
 "": SubResource("AnimationLibrary_76ua2")
 }
 
+[connection signal="focus_entered" from="Container/Continue" to="." method="_on_continue_focus_entered"]
 [connection signal="pressed" from="Container/Continue" to="." method="_on_continue_pressed"]

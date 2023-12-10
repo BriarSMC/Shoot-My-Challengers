@@ -67,7 +67,11 @@ libraries = {
 "": SubResource("AnimationLibrary_mokyh")
 }
 
+[connection signal="focus_entered" from="VBoxContainer/StartGame" to="." method="_on_start_game_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/Quit" to="." method="_on_quit_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/Credits" to="." method="_on_credits_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/Demo" to="." method="_on_demo_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/Demo" to="." method="_on_demo_pressed"]

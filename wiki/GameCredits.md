@@ -56,6 +56,7 @@
 - [Bratish](https://freesound.org/people/Bratish/)
 - [tim.kahn](https://freesound.org/people/tim.kahn/)
 - [Jacco18](https://freesound.org/people/Jacco18/)
+- [Ethraiel](https://freesound.org/people/Ethraiel/)
 - 
 ### Other Resources
 - [DevTeam.Space](https://devteam.space)
