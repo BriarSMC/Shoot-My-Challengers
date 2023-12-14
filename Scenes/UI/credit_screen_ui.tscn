@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1nw184mg2hj7"]
+[gd_scene load_steps=10 format=3 uid="uid://b1nw184mg2hj7"]
 
 [ext_resource type="Script" path="res://Scenes/UI/credit_screen_ui.gd" id="1_2x01i"]
 [ext_resource type="StyleBox" uid="uid://ctuctcvw68syx" path="res://Scenes/UI/UI-hover-button-style.tres" id="2_23fyy"]
 [ext_resource type="StyleBox" uid="uid://bqgoi1tqc1f3p" path="res://Scenes/UI/UI-normal-button-style.tres" id="3_0o7t2"]
 [ext_resource type="StyleBox" uid="uid://bvk7u42qhe10j" path="res://Scenes/UI/UI-pressed-button-style.tres" id="4_sjor6"]
 [ext_resource type="Script" path="res://Scenes/UI/back.gd" id="5_wfjyx"]
+[ext_resource type="Texture2D" uid="uid://didw10b0mbnxe" path="res://Graphics/Misc/credits.png" id="6_kjive"]
 
 [sub_resource type="Theme" id="Theme_6pptt"]
 Button/styles/focus = ExtResource("2_23fyy")
@@ -35,83 +36,40 @@ _data = {
 [node name="CreditScreenUI" type="CanvasLayer"]
 script = ExtResource("1_2x01i")
 
-[node name="Container" type="Container" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_6pptt")
 
-[node name="ColorRect" type="ColorRect" parent="Container"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Container"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Container/ScrollContainer"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[b]Inspiration[/b]
-   Alistair Coghill
-
-[b]Game Concept[/b]
-   Steven Coghill
-   Brent Coghill
-
-[b]Game Design[/b]
-   Steven Coghill
-
-[b]Game Architecture[/b]
-   Steven Coghill
-
-[b]Coding[/b]
-   Steven Coghill
-
-[b]Graphics[/b]
-   Pixel Poem[i](https://itch.io/profile/pixel-poem)[/i]
-   ClearCode[i](http://www.youtube.com/@ClearCode)[/i]
-   sheep[i](https://opengameart.org/users/sheep)[/i]
-   Winternaut[i](https://opengameart.org/users/winternaut)[/i]
-   Cethiel[i](https://opengameart.org/users/cethiel)[/i]
-   ScratchIO[i](https://opengameart.org/users/scratchio)[/i]
-   Chrisblue[i](https://opengameart.org/users/chrisblue)[/i]
-   cemkalyoncu[i](https://opengameart.org/users/cemkalyoncu)[/i]
-   rawdanitsu[i](https://opengameart.org/users/rawdanitsu)[/i]
-   Nekith[i](https://opengameart.org/users/nekith)[/i]
-
-[b]Music[/b]
-   MATRIXXX_[i](https://freesound.org/people/MATRIXXX_/)[/i]
-   TheoJT[i](https://freesound.org/people/TheoJT/)[/i]
-   SnowFightStudios[i](https://freesound.org/people/SnowFightStudios/)[/i]
-   Sirkoto51[i](https://freesound.org/people/Sirkoto51/)[/i]
-   klavo1985[i](https://freesound.org/people/klavo1985/)[/i]
-   wolfdoctor[i](https://freesound.org/people/wolfdoctor/)[/i]
-
-[b]Sound Effects[/b]
-   Beetlemuse[i](https://freesound.org/people/Beetlemuse/)[/i]
-   jarl_fenrir[i](https://freesound.org/people/jarl_fenrir/)[/i]
-   Bernuy[i](https://freesound.org/people/Bernuy/)[/i]
-   AntumDeluge[i](https://freesound.org/people/AntumDeluge/)[/i]
-   Zulfish[i](https://freesound.org/people/Zulfish/)[/i]
-   strangehorizon[i](https://freesound.org/people/strangehorizon/)[/i]
-   Za-Games[i](https://freesound.org/people/Za-Games/)[/i]
-   EminYILDIRIM[i](https://freesound.org/people/EminYILDIRIM/)[/i]
-   Sadiquecat[i](https://freesound.org/people/Sadiquecat/)[/i]
-   MATRIXXX_[i](https://freesound.org/people/MATRIXXX_/)[/i]
-   jacksonacademyashmore[i](https://freesound.org/people/jacksonacademyashmore/)[/i]
-   Camouflaged_Noob[i](https://freesound.org/people/Camouflaged_Noob/)[/i]
-   harrietniamh[i](https://freesound.org/people/harrietniamh/)[/i]
-   xtrgamr[i](https://freesound.org/people/xtrgamr/)[/i]
-   LittleRobotSoundFactory[i](https://freesound.org/people/LittleRobotSoundFactory/)[/i]
-   nioczkus[i](https://freesound.org/people/nioczkus/)[/i]
-   Bratish[i](https://freesound.org/people/Bratish/)[/i]
-
-[b]Other Resources[/b]
-   DevTeam.Space[i](https://devteam.space)[/i]"
+[node name="TextureRect" type="TextureRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -249.5
+offset_right = 249.5
+offset_bottom = 1967.0
+grow_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource("6_kjive")
 
 [node name="Back" type="Button" parent="Container"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -31.0
+offset_right = 22.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
 text = "Back"
 script = ExtResource("5_wfjyx")
 

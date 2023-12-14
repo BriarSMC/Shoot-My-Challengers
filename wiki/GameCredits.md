@@ -26,7 +26,7 @@
 - [Nekith](https://opengameart.org/users/nekith)
 - [rubberduck](https://opengameart.org/users/rubberduck)
 - [bdragon1727](https://bdragon1727.itch.io/)
-- 
+-
 ### Music
 - [MATRIXXX_](https://freesound.org/people/MATRIXXX_/)
 - [TheoJT](https://freesound.org/people/TheoJT/)
@@ -57,6 +57,6 @@
 - [tim.kahn](https://freesound.org/people/tim.kahn/)
 - [Jacco18](https://freesound.org/people/Jacco18/)
 - [Ethraiel](https://freesound.org/people/Ethraiel/)
-- 
+-
 ### Other Resources
 - [DevTeam.Space](https://devteam.space)

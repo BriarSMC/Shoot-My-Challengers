@@ -15,6 +15,9 @@ class_name CreditsScreen
 
 # Virtual Godot methods
 
+func _process(_delta):
+	Globals.positionUIImage($".")
+
 # Class specific methods
 
 # Signal callbacks

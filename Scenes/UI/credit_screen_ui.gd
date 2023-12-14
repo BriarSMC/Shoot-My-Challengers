@@ -18,8 +18,14 @@ signal backButtonClicked
 # The following properties must be set in the Inspector by the designer
 
 # The following are set based on the Inspector values
+func _ready():
+	$Container/TextureRect.position.y += 200
+
+func _process(delta):
+	$Container/TextureRect.position.y -= 20 * delta
 
 # Virtual Godot methods
+
 
 # Class specific methods
 
