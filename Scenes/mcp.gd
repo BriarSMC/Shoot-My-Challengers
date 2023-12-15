@@ -14,7 +14,6 @@ const LEVELSPATH = "res://Scenes/Levels/"
 const LEVELFILENAME = "level_"
 const LEVELEXTENSION = ".tscn"
 
-var challengersLeft: int					# Number of challengers left on level
 
 # Game Control Scene files
 var gameScenes: Array[String] =[
