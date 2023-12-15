@@ -56,11 +56,11 @@ func _ready() -> void:
 
 # Class specific methods
 
-# changeGameScreen(newState [, level])
+# changeGameScreen(newScreen [, level])
 # This is used to change UI screens & scenes or exit the game
 #
 # Paramters
-#	newState: state				# Switch to this state
+#	newScreen: state				# Switch to this state
 # 	level: int					# Level number to switch to
 # Return
 #	None
