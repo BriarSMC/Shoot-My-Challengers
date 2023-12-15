@@ -124,7 +124,6 @@ func _ready() -> void:
 # 	Challengers die() routines.
 # Check to see if all the enemies are dead
 # If so, then go to next level
-# Call the super
 func _process(delta) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
@@ -147,8 +146,6 @@ func _process(delta) -> void:
 		else:
 			exitTheLevel('next')
 		return
-
-	super._process(delta)
 
 # _draw()
 # Called when any drawing needs to be done

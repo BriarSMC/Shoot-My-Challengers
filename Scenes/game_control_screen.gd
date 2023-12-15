@@ -61,8 +61,6 @@ func _ready():
 # Reposition the graphic
 func _process(delta):
 	Globals.positionUIImage(self)
-	super._process(delta)
-
 
 # _input(event)
 # Called whenever an input event occurs

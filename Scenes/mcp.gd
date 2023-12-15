@@ -53,30 +53,6 @@ func _ready() -> void:
 	else:
 		Globals.inputDevice = Globals.inputType.KEYBOARD
 
-# _process(delta)
-# Called every frame
-#
-# Parameters
-#	delta: float				Elapsed time since last call
-# Return
-#	None
-#==
-# What the code is doing (steps)
-func _process(_delta) -> void:
-	pass
-
-# _physics_process(delta)
-# Called every frame
-#
-# Parameters
-#	delta: float				Elapsed time since last call
-# Return
-#	None
-#==
-# What the code is doing (steps)
-func _physics_process(_delta) -> void:
-	pass
-
 
 # Class specific methods
 
