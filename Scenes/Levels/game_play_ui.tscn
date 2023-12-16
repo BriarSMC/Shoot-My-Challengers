@@ -107,7 +107,7 @@ stretch_margin_right = 40
 texture_under = ExtResource("2_txahm")
 texture_progress = ExtResource("3_15n8l")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="LevelNumber" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
