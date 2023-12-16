@@ -7,13 +7,11 @@ class_name Character
 # This class contains all properties and methods common to all
 # character classes.
 
-#signal setImmuneShader(sw: bool)
-
 # Properties
 var immune: bool = false
 var active: bool = false
 var direction: Vector2
-var immuneTimer
+var immuneTimer: Timer
 const immuneTimerDuration: float = .5
 var characterImage
 

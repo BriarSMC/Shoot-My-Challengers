@@ -46,8 +46,6 @@ var isWalking: bool = false
 # Return
 #		None
 #==
-# See if we are using a game controller
-# Turn on TargetPointer if using game controller
 # Move us to the spawn location
 # Look East
 # Remember to call the parent
@@ -55,12 +53,8 @@ var isWalking: bool = false
 # Set hypnotize stuff
 # Call the parent _ready
 # Save where we are
+# Play the teleport SFX
 func _ready() -> void:
-	if Globals.inputDevice == Globals.inputType.GAMECONTROLLER:
-		$TargetPointer.visible = true
-	else:
-		$TargetPointer.visible = false
-
 	global_position = find_parent("Level*").find_child("TeleportIn").global_position
 	$Character/CharacterImage.play("IdleEast")
 	visible = true
@@ -94,17 +88,39 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if hypnotized and not hitVampire:
 		position += hypnoDir * hypnoSpeed * delta
+		Globals.heroPosition = position
+
 	if Globals.health <= 0:
 		active = false
 
 # Class specific methods
 
+# changeDirection()
+# Called by the input handler when we change direction
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Play the correct animation
 func changeDirection() -> void:
 	if isWalking:
 		makeWalking(true)
 	else:
 		makeIdle(true)
 
+# makeIdle(force)
+# Change the animation for the Hero graphic to idle
+#
+# Parameters
+#		force: bool					Ignore if not true
+# Return
+#		None
+#==
+# If we are already idle or force is false, then Ignore
+# Say we are not walking
+# Play the appropriate animation based on which way we are now facing
 func makeIdle(force: bool = false) -> void:
 	if not isWalking and not force: return
 	isWalking = false
@@ -116,6 +132,17 @@ func makeIdle(force: bool = false) -> void:
 		WEST: idleAnimation = 'IdleWest'
 	$Character/CharacterImage.play(idleAnimation)
 
+# makeWalking(force)
+## Change the animation for the Hero graphic to walking
+#
+# Parameters
+#		force: bool					Ignore if not true
+# Return
+#		None
+#==
+# If we are already walking or force is false, then Ignore
+# Say we are walking
+# Play the appropriate animation based on which way we are now facing
 func makeWalking(force: bool = false) -> void:
 	if isWalking and not force: return
 	isWalking = true
@@ -136,6 +163,7 @@ func makeWalking(force: bool = false) -> void:
 #		None
 #==
 # Create a new object for the weapon
+# Get direction from the pointer
 # Set its position, direction and rotation
 # Add it to the tree
 # Request SFX to play our sound
@@ -216,10 +244,6 @@ func die(sfx: SFXHandler.SFX = SfxHandler.SFX.HERODEATH) -> void:
 	var player  = SfxHandler.playSfx(sfx)
 	player.connect("finished", deathAudioFinished)
 
-# Death sound is finished playing. Tell the level it's over.
-func deathAudioFinished() -> void:
-	HeroDeathFinished.emit()
-
 # spawn()
 # Spawn the Hero with a teleport effect
 #
@@ -260,10 +284,23 @@ func hypnotize(byWhom: Vampire, sw: bool = true) -> void:
 	hypnoDir = (byWhom.get_global_position() - self.position).normalized()
 	vampire = byWhom
 
+# hitVampire()
+# Called when we collide with the Vampire
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Turn on the hitVampire switch
 func hitTheVampire():
 	hitVampire = true
 
 # Signal callbacks
+
+# Death sound is finished playing. Tell the level it's over.
+func deathAudioFinished() -> void:
+	HeroDeathFinished.emit()
 
 # Spawn us when the timer fires
 func _on_spawn_timer_timeout():
