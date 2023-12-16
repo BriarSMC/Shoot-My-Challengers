@@ -3,7 +3,7 @@
 #
 # Parameters
 #		paramname: type				Description
-# Return 
+# Return
 #		value|None					Description
 #==
 # What the code is doing (steps)
@@ -16,7 +16,7 @@ func name(params) -> void:
 #
 # Parameters
 #		None
-# Return 
+# Return
 #		None
 #==
 # What the code is doing (steps)

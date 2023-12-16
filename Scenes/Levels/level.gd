@@ -140,6 +140,17 @@ func _draw() -> void:
 
 # Class specific methods
 
+
+# inactivateChallengers()
+# Set all challengers active to false
+#
+# Parameters
+#		None
+# Return
+#		None
+#==
+# Find all the remaining challengers
+# Turn the active switch off
 func inactivateChallengers() -> void:
 	var challengers = find_child("Challengers").find_children("*")
 	for c in challengers:
