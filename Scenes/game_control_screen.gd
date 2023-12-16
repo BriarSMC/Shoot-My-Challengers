@@ -70,6 +70,7 @@ func _process(delta):
 # Return
 #	None
 #==
+# Delete this for production
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
