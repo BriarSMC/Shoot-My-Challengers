@@ -21,9 +21,6 @@ var isIdle: bool = true
 
 # Virtual Godot methods
 
-#func _ready():
-	#connect('setImmuneShader', callShader)
-	#
 # _physics_process(delta)
 # Called every physics frame
 #
