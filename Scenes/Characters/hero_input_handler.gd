@@ -6,19 +6,16 @@ class_name HeroInputHandler
 # Signals
 signal fireHeroPWeapon
 signal fireHeroSWeapon
-signal shieldsChange
 
 # Properties
 @onready var hero: Object = self.find_parent("Hero")  # Get the Hero object
 @onready var targetPointer: Object = hero.get_node("TargetPointer")
 
 var shieldSound: AudioStreamPlayer
-var primaryWeapon: HeroPWeapon
 
 var primaryCooldownFinished: bool = true
 var secondaryCooldownFinished: bool = true
 var shieldActive: bool = false
-#var immune: bool = false
 
 # The following properties must be set in the Inspector by the designer
 @export var targetSpeed: float = 500
@@ -52,11 +49,14 @@ func _draw() -> void:
 func _process(delta):
 	pollInput(delta)
 
+# Class specific methods
+
 # pollInput(delta)
 # Called whenever an input event occurs
 #
 # Parameters
 #	delta: float					Time elapsed since last call
+#												We need this to move the target pointer
 # Return
 #	None
 #==
@@ -65,7 +65,7 @@ func _process(delta):
 # If we've moved (vector is non-zero), then move the Hero
 #
 func pollInput(delta) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel"): # TODO Delete this for production
 		get_tree().quit()
 	moveTarget(delta)
 	moveHero()
@@ -73,18 +73,13 @@ func pollInput(delta) -> void:
 	fireSecondary()
 	raiseShield()
 
-	if Input.is_key_pressed(KEY_Z): # Debug/Test GamePlayUI
-		Globals.coinCount += 1
-
-# Class specific methods
-
 # moveHero()
 # Move Hero accordingly
 #
 # Parameters
-#	None
+#		None
 # Return
-#	None
+#		None
 #==
 # Just return if we aren't active yet
 # Get the input vector
@@ -193,7 +188,6 @@ func fireSecondary() -> void:
 		$Timers/SecondaryCooldownTimer.start()
 		Globals.secondaryWeaponCount -= 1
 		fireHeroSWeapon.emit()
-		SfxHandler.playSfx(SfxHandler.SFX.HEROSWEAPON)
 
 # func raiseShield()
 # If player activates the shield, then raise it
@@ -251,24 +245,6 @@ func raiseShield() -> void:
 func emptyWarning() -> void:
 	SfxHandler.playSfx(SfxHandler.SFX.HEROEMPTY)
 
-# takeDamage(damage)
-# Called when something has caused us damage
-#
-# Parameters
-#		damage: int					Amount to deduct from health
-# Return
-#		None
-#==
-# If we are immune, then just return
-# Set our immunity
-func takeDamage(damage: int) -> void:
-	if hero.immune:
-		return
-
-	hero.immune = true
-	$Timers/ImmuneTimer.start()
-
-	Globals.health -= damage
 
 # Signal Callbacks
 
