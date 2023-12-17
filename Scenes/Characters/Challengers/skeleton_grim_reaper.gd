@@ -1,5 +1,6 @@
 extends Character
 class_name SkeletonGrimReaper
+
 # This character 'stalks' the Hero. When the Hero is in out Notice Area, then
 # we use a Naviation Agent to move toward him. The NavigationRegion2D in the
 # current level defines our area of operation.
@@ -44,9 +45,8 @@ func _ready() -> void:
 #	Calculate the new path and move us along the path
 #	# If we upgrade the graphics, then we should look at the dude
 func _physics_process(_delta) -> void:
-	#return # TAKE THIS OUT WHEN YOU WANT TO DO REAL STUFF
 	# May have to do a called deferred if the first from being null is a problem
-	var hero
+	var obj
 
 	if active:
 		useFireball()
@@ -54,9 +54,9 @@ func _physics_process(_delta) -> void:
 		var dir: Vector2 = (next_path_position - global_position).normalized()
 		velocity = dir * speed
 		if move_and_slide():
-			hero = get_last_slide_collision().get_collider()
-			if hero.is_in_group("Hero"):
-				useScythe(hero)
+			obj = get_last_slide_collision().get_collider()
+			if obj.is_in_group("Hero"):
+				useScythe(obj)
 
 
 # Class specific methods
