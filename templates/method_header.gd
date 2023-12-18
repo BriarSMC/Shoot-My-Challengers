@@ -2,7 +2,7 @@
 # Brief description
 #
 # Parameters
-#		paramname: type				Description
+#		param: type					Description
 # Return
 #		value|None					Description
 #==
